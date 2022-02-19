@@ -1,0 +1,82 @@
+.page_main__heading {
+    margin: 0;
+    margin-top: 55px;
+    margin-bottom: 96px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.time_form__container {
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.time_form__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.time_input__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.time_input__wrapper::before,
+.time_input__wrapper::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    width: 360px;
+    height: 2px;
+    background-color: #D5DDE0;
+    z-index: -2;
+}
+
+.time_input__wrapper::before {
+    top: 0;
+}
+
+.time_input__wrapper::after {
+    bottom: 0;
+}
+
+.time_input__wrapper:first-child {
+    margin-bottom: 30px;
+}
+
+.time_input__wrapper {
+    margin-bottom: 315px;
+}
+
+.time_form__input {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter Regular";
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #3E4958;
+    border: none;
+}
+
+.time_form__button {
+    align-self: center;
+    width: 205px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    text-align: center;
+}
+
+.time_input__label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}

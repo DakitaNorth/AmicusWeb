@@ -1,0 +1,86 @@
+.parameters {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.parameters::before,
+.parameters::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 2px;
+    left: 26px;
+    background-color: #D5DDE0;
+    z-index: -2;
+}
+
+.parameters__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 339px;
+    height: 58px;
+    margin: 0;
+    padding: 0;
+}
+
+.parameters__item {
+    list-style: none;
+}
+
+.days_item,
+.human_item,
+.time_item {
+    position: relative;
+    display: inline-block;
+    font-family: "Inter Medium";
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    background-color: #FFC032;
+    border-radius: 15px;
+}
+
+.days_item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 37px;
+    padding-right: 10px;
+}
+
+.human_item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 44px;
+    padding-right: 12px;
+    background-color: #476DF5;
+}
+
+.time_item {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 39px;
+    padding-right: 8px;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.days_item svg {
+    position: absolute;
+    left: 13px;
+}
+
+.human_item svg {
+    position: absolute;
+    left: 13px;
+}
+
+.time_item svg {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+}

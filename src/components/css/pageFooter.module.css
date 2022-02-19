@@ -1,0 +1,14 @@
+.page_footer {
+    position: absolute;
+    bottom: 15px;
+}
+
+.page_footer__container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page_footer__text {
+    font-family: "Inter Regular";
+    color: #97ADB6;
+}

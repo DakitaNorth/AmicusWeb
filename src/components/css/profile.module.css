@@ -1,0 +1,96 @@
+.my_profile__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 115px;
+    padding-left: 42px;
+    padding-right: 42px;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.avatar__load_button {
+    margin-bottom: 10px;
+    padding: 0;
+    border: none;
+    background-color: #ffffff;
+}
+
+.avatar__name {
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.avatar__email {
+    font-size: 16px;
+    line-height: 21px;
+    color: #97ADB6;
+}
+
+.setting_list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-bottom: 58px;
+    padding: 0;
+}
+
+.setting_list li {
+    list-style: none;
+}
+
+.setting_list__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 159px;
+    height: 145px;
+    margin-bottom: 10px;
+    padding-bottom: 23px;
+    background-color: #ffffff;
+    border-radius: 15%;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.08);;
+}
+
+.setting_list__item svg {
+    margin-bottom: 10px;
+}
+
+.setting_list__item span {
+    max-width: 83px;
+    font-family: "Inter Bold";
+    font-size: 15px;
+    line-height: 18px;
+    color: #3E4958;
+    text-align: center;
+}
+
+.my_profile__button_out {
+    position: relative;
+    align-self: center;
+    width: 205px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    border-style: none;
+    border-radius: 15px;
+    font-family: "Inter Bold";
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    background-color: #F54747;
+    box-shadow: 0px 2px 8px rgb(194, 56, 56);
+}
+
+.my_profile__button_out svg {
+    position: absolute;
+    left: 20px;
+    top: 11px;
+}

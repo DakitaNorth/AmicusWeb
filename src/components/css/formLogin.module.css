@@ -1,0 +1,58 @@
+.page_main__heading {
+    margin: 0;
+    margin-top: 55px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.form_login {
+    margin-top: 120px;
+}
+
+.form_login__container {
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.form_login__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_login__wrapper label {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.login_input {
+    margin-bottom: 15px;
+}
+
+.login_password {
+    margin-bottom: 10px;
+}
+
+.forgot_password {
+    margin-bottom: 40px;
+    font-size: 16px;
+    text-align: center;
+    color: #97ADB6;
+}
+
+.form_login__button {
+    padding-top: 12px;
+    padding-bottom: 13px;
+}
+
+.password_checkbox_label {
+    position: absolute;
+    top: 125px;
+    right: 15px;
+}

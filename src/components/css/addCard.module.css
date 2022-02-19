@@ -1,0 +1,93 @@
+.form_card_add__container {
+    padding-left: 34px;
+    padding-right: 34px;
+}
+
+.page_main__heading {
+    margin: 0;
+    margin-top: 55px;
+    margin-bottom: 36px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.form_card_add__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.form_card_add__wrapper label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form_input__text {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.form_card_add__shield {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_card_add__shield label {
+    width: 155px;
+}
+
+.form_label_date {
+    position: relative;
+}
+
+.form_label_date::before {
+    content: "/";
+    position: absolute;
+    top: 37px;
+    left: 75px;
+}
+
+.form_card_add__buttons {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    border-radius: 15px;
+}
+
+.form_card_add__buttons::after {
+    content: "";
+    position: absolute;
+    width: 290px;
+    height: 2px;
+    top: 67px;
+    left: 21px;
+    background-color: #D5DDE0;
+}
+
+.form_card_add__buttons span {
+    margin-left: 7px;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.form_card_add__button {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    border: none;
+}
+
+.form_card_add__scane {
+    margin-bottom: 25px;
+}

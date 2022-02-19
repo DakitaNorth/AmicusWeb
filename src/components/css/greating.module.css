@@ -1,0 +1,44 @@
+.page_header__container {
+    display: flex;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page_header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 411px;
+    height: 230px;
+    background-image: url("/src/img/header-background.svg");
+    background-position: 0;
+    background-size: cover;
+    z-index: -2;
+}
+
+.page_header__logo {
+    height: 47px;
+}
+
+.page_header__logo::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 100px;
+    width: 3px;
+    height: 44px;
+    background-image: url("/src/img/header-vector.svg");
+    background-position: 0;
+    background-size: cover;
+}
+
+.page_header__text {
+    display: inline-block;
+    width: 175px;
+    margin-left: 20px;
+    font-family: "Inter Medium";
+    font-size: 14px;
+    color: #ffffff;
+}

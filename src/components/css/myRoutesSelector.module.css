@@ -1,0 +1,54 @@
+.page_main__heading {
+    align-self: center;
+    max-width: 190px;
+    margin: 0;
+    margin-top: 55px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.my_routes__container {
+    margin-bottom: 10px;
+    padding-left: 26px;
+    padding-right: 26px;
+}
+
+.my_routes__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 29px;
+    font-family: "Inter Bold";
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    background-color: #F1F5F6;
+}
+
+.my_routes__label_left {
+    border-radius: 15px 0 0;
+}
+
+.my_routes__label_right {
+    border-radius: 0 15px 0 0;
+}
+
+.my_routes__selector {
+    display: flex;
+}
+
+.my_routes__label_active {
+    color: #ffffff;
+    background-color: #FFC032;
+}
+
+.my_routes__list {
+    padding-left: 36px;
+    padding-right: 36px;
+}

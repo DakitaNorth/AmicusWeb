@@ -1,0 +1,75 @@
+.page_main__heading {
+    align-self: center;
+    max-width: 150px;
+    margin: 0;
+    margin-top: 55px;
+    margin-bottom: 36px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.service_settings__container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 39px;
+    padding-right: 39px;
+}
+
+.service_settings__list {
+    margin: 0;
+    margin-bottom: 277px;
+    padding: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 15%);
+}
+
+.service__item {
+    position: relative;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.service__item:last-child {
+    margin-bottom: 0;
+}
+
+.service__item::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 2px;
+    bottom: -15px;
+    right: 20px;
+    background-color: #D5DDE0;
+}
+
+.service__item:last-child::after {
+    width: 0;
+    height: 0;
+}
+
+.service_text {
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.service_settings__button {
+    align-self: center;
+    width: 205px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+.service_settings__version {
+    align-self: center;
+    font-family: "Inter Light";
+}

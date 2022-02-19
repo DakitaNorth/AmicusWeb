@@ -1,0 +1,190 @@
+.profile_settings__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 36px;
+    padding-left: 39px;
+    padding-right: 39px;
+}
+
+.page_main__heading {
+    align-self: center;
+    max-width: 200px;
+    margin: 0;
+    margin-top: 55px;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar__load_button {
+    position: relative;
+    right: -11px;
+    margin-bottom: 10px;
+    padding: 0;
+    border: none;
+    background-color: #ffffff;
+}
+
+.avatar__name {
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.profile__data {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 150px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    border-radius: 15px;
+}
+
+.profile__data::before,
+.profile__data::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 2px;
+    right: 20px;
+    background-color: #D5DDE0;
+}
+
+.profile__data::before {
+    top: 78px;
+}
+
+.profile__data::after {
+    bottom: 78px;
+}
+
+.profile__data label {
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+.profile__data input {
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    outline: none;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: "Inter Regular", sans-serif;
+    color: #3E4958;
+}
+
+.phone_label,
+.email_label {
+    margin-bottom: 15px;
+}
+
+.phone__input,
+.email__input,
+.password__input {
+    width: 250px;
+    justify-self: flex-end;
+}
+
+.phone_svg,
+.email_svg,
+.password_svg {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    z-index: 1;
+}
+
+.phone__input:focus,
+.email__input:focus,
+.password__input:focus {
+    background-color: #F7F8F9;
+    border: 1px solid #D5DDE0;
+    border-radius: 15px;
+}
+
+.profile_alerts {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    border-radius: 15px;
+}
+
+.profile_alerts__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_alerts__label::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: -37px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #476DF5;
+    border-radius: 4px;
+}
+
+.profile_alerts__heading {
+    font-family: "Inter Bold";
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.profile_alerts__text {
+    color: #97ADB6;
+}
+
+.profile__delete_button {
+    align-self: center;
+    width: 255px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    border-style: none;
+    border-radius: 15px;
+    font-family: "Inter Bold";
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    background-color: #F54747;
+    box-shadow: 0px 2px 8px rgb(194, 56, 56);
+}
+
+.profile__save_button {
+    align-self: center;
+    width: 255px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+.password_checkbox_label {
+    position: absolute;
+    bottom: 270px;
+    right: 75px;
+}

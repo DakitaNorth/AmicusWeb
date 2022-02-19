@@ -1,0 +1,52 @@
+.form_verification {
+    margin-top: 75px;
+}
+
+.form_verification__container {
+    padding-left: 105px;
+    padding-right: 105px;
+}
+
+.form_verification__text {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 70px;
+    font-size: 16px;
+    text-align: center;
+    color: #97ADB6;
+}
+
+.form_verification__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form_verification__input {
+    position: relative;
+    width: 300px;
+    height: 48px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    background-color: #ffffff;
+    border: none;
+    font-family: "Inter Bold";
+    font-size: 36px;
+    letter-spacing: 25px;
+    color: #476DF5;
+}
+
+.form_verification__input::after {
+    position: absolute;
+    content: url(/src/img/verification-line.svg);
+    top: 2px;
+    width: 200px;
+    height: 2px;
+}
+
+.form_verification__button {
+    background-color: #ffffff;
+    border: none;
+    font-size: 16px;
+    color: #FFC032;
+}

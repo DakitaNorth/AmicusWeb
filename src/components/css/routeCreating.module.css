@@ -1,0 +1,157 @@
+.form_create_route {
+    margin-top: 55px;
+    margin-bottom: 10px;
+}
+
+.form_create_route__shield {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_create_route__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.form_create_route__wrapper label {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.form_create_route__where_input {
+    margin-bottom: 20px;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.information_general {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.information_general__item {
+    display: flex;
+    justify-content: space-between;
+    width: 187px;
+    margin-bottom: 10px;
+}
+
+.information_general__text {
+    font-family: "Inter Light";
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.information_general__card_button {
+    position: relative;
+    display: flex;
+    width: 81px;
+    height: 38px;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    padding-left: 38px;
+    padding-right: 6px;
+    font-family: "Inter Medium";
+    line-height: 17px;
+    color: #ffffff;
+    background-color: #FFC032;
+    border-radius: 15px;
+}
+
+.information_general__card_button svg {
+    position: absolute;
+    top: 11px;
+    left: 15px;
+}
+
+.price {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.price label {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.price__input {
+    padding-top: 6px;
+    padding-bottom: 7px;
+    background-color: #F7F8F9;
+    border: 2px solid #D5DDE0;
+    border-radius: 15px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.price__button {
+    position: absolute;
+    bottom: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #F7F8F9;
+}
+
+.price__button_min {
+    left: 25px;
+}
+
+.price__button_max {
+    right: 25px;
+}
+
+.additional {
+    display: flex;
+    flex-direction: column;
+}
+
+.additional label {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.additional__input {
+    height: 149px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Inter Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #3E4958;
+    background-color: #F7F8F9;
+    border: 2px solid #D5DDE0;
+    border-radius: 15px;
+    resize: none;
+}
+
+.form_create_route__button {
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-left: 34px;
+    padding-right: 34px;
+}

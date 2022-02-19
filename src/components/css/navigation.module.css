@@ -1,0 +1,50 @@
+.navigation {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.navigation__list {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    padding-top: 7px;
+}
+
+.navigation__item {
+    list-style: none;
+}
+
+.navigation_link svg {
+    fill: #97ADB6;
+}
+
+.navigation_link__active svg {
+    fill: #476DF5;
+}
+
+.my_route_link .first_path,
+.my_route_link .second_path,
+.my_route_link .third_path {
+    fill: #FFC032;
+}
+
+.my_route_link .fourth_path,
+.my_route_link .fifth_path {
+    fill: #0C2E40;
+}
+
+.my_route_link .sixth_path {
+    fill: #97ADB6;
+}
+
+.messages_link .third_path,
+.account_link .second_path,
+.account_link .third_path {
+    stroke: #97ADB6;
+    stroke-width: 0.5px;
+}

@@ -1,0 +1,25 @@
+.route_list_story__container {
+    position: relative;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.route_list_story__container::before,
+.route_list_story__container::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 2px;
+    left: 26px;
+    background-color: #D5DDE0;
+    z-index: -2;
+}
+
+.route_list_story__container::before {
+    top: -15px;
+}
+
+.route_story {
+    margin: 0;
+    padding: 0;
+}

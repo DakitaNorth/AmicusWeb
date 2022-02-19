@@ -1,0 +1,33 @@
+.has_account {
+    margin-top: 35px;
+  }
+  
+  .has_account__container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .has_account__text {
+    padding-right: 15px;
+  }
+  
+  .has_account__text,
+  .has_account__link {
+    font-size: 16px;
+    color: #97ADB6;
+  }
+  
+  .has_account__link {
+    position: relative;
+    color: #FFC032;
+  }
+  
+  .has_account__link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #FFC032;
+  }
