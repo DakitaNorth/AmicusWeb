@@ -7,19 +7,12 @@ import Parameters from "./parameters";
 import RouteSelectedItem from "./routeSelectedItem";
 import RouteSelectedListItem from "./routeSelectedListItem";
 
-const where = JSON.parse(localStorage.getItem("departureplace"));
-const somewhere = JSON.parse(localStorage.getItem("arrivalplace"));
-const daysParameter = JSON.parse(localStorage.getItem("daysParameter"));
-const humanParameter = JSON.parse(localStorage.getItem("humanParameter"));
-const departureTime = JSON.parse(localStorage.getItem("departureTime"));
-const arrivalTime = JSON.parse(localStorage.getItem("arrivalTime"));
-
-const departureplace = where;
-const arrivalplace = somewhere;
-const weekday = daysParameter;
-const membercount = humanParameter;
-const departuretime = departureTime;
-const arrivaltime = arrivalTime;
+const departureplace = JSON.parse(localStorage.getItem("departureplace"));
+const arrivalplace = JSON.parse(localStorage.getItem("arrivalplace"));
+const weekday = JSON.parse(localStorage.getItem("daysParameter"));
+const membercount = JSON.parse(localStorage.getItem("humanParameter"));
+const departuretime = JSON.parse(localStorage.getItem("departureTime"));
+const arrivaltime = JSON.parse(localStorage.getItem("arrivalTime"));
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",

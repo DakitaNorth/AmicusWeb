@@ -46,6 +46,8 @@ class RouteSelectedList extends Component {
         const routeStandart = this.state.routeSearchData.map((item) => {
             return (
                 <RouteSelectedListItem
+                    autorname={item.autorname}
+                    autorphoto={item.autorphoto}
                     departureplace={item.departureplace}
                     departuretime={item.departuretime}
                     arrivalplace={item.arrivalplace}

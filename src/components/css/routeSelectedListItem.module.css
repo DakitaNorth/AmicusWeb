@@ -6,6 +6,7 @@
 .route_avatar__img {
     width: 48px;
     height: 48px;
+    border-radius: 100px;
 }
 
 .route_avater__name {

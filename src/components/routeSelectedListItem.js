@@ -8,8 +8,8 @@ const RouteSelectedListItem = props => (
         <div className={RouteSelLisItemCSS.route__shield}>
             <div className={RouteSelLisItemCSS.route__wrapper}>
                 <div className={RouteSelLisItemCSS.route_avatar}>
-                    <img className={RouteSelLisItemCSS.route_avatar__img} src={avatar} alt="Фотография водителя" />
-                    <span className={RouteSelLisItemCSS.route_avater__name}>Игорь</span>
+                    <img className={RouteSelLisItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
+                    <span className={RouteSelLisItemCSS.route_avater__name}>{props.autorname}</span>
                 </div>
                 <div className={RouteSelLisItemCSS.route_information}>
                     <div className={RouteSelLisItemCSS.route_information__item_where}>
