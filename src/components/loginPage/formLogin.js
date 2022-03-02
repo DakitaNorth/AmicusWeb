@@ -3,8 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import FormLoginCSS from './css/formLogin.module.css';
 
-import password_lock from "../img/formLogin/passwordLock.svg";
-import password_unlock from "../img/formLogin/passwordUnlock.svg";
+import password_lock from "../../img/formLogin/passwordLock.svg";
+import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 
 const FormLogin = () => {
     const navigate = useNavigate();

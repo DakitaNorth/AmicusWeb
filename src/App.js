@@ -1,18 +1,18 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Greeting from "./components/greating";
-import PageMain from "./components/pageMain";
-import PageFooter from "./components/pageFooter";
+import Greeting from "./components/welcomePage/greating";
+import PageMain from "./components/welcomePage/pageMain";
+import PageFooter from "./components/welcomePage/pageFooter";
 
 import GoBackButton from "./components/goBackButton";
 
-import FormLogin from "./components/formLogin";
-import SocialLogin from "./components/socialLogin";
-import NoAccount from "./components/noAccount";
+import FormLogin from "./components/loginPage/formLogin";
+import SocialLogin from "./components/loginPage/socialLogin";
+import NoAccount from "./components/loginPage/noAccount";
 
-import FormRegistration from "./components/formRegistration";
-import HasAccount from "./components/hasAccount";
+import FormRegistration from "./components/registrPage/formRegistration";
+import HasAccount from "./components/registrPage/hasAccount";
 
 import PasswordRecovery from "./components/passwordRecovery";
 
@@ -22,8 +22,8 @@ import VerificationPage from "./components/verificationPage";
 
 import TestSuccessful from "./components/testSuccessful";
 
-import FormRouteSearch from "./components/formRouteSearch";
-import RouteStoryList from "./components/routeStoryList";
+import FormRouteSearch from "./components/routeSearch/formRouteSearch";
+import RouteStoryList from "./components/routeSearch/routeStoryList";
 import Parameters from "./components/parameters";
 //import RouteStoryItem from "./components/routeStoryItem";
 import Navigation from "./components/navigation";

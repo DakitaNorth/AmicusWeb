@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import RouteStoryItemCSS from './css/routeStoryItem.module.css';
-import avatar from "../img/routeHistory/Group.png";
+import avatar from "../../img/routeHistory/Group.png";
 
 const RouteStoryItem = () => (
     <li className={RouteStoryItemCSS.route_story__item}>
