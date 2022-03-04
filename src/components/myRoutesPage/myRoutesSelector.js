@@ -61,15 +61,15 @@ class MyRoutesSelector extends Component {
                     <div className={MyRoutesSCSS.my_routes__container}>
                         <form className={MyRoutesSCSS.my_routes__wrapper} action="#">
                             <div className={MyRoutesSCSS.my_routes__selector}>
-                                <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_left + " " + MyRoutesSCSS.my_routes__label_active} for="all-radio">
+                                <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_left + " " + MyRoutesSCSS.my_routes__label_active} htmlFor="all-radio">
                                     <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} type="radio" name="radio" id="all-radio" />
                                     Все 
                                 </label>
-                                <label className={MyRoutesSCSS.my_routes__label} for="driver-radio">
+                                <label className={MyRoutesSCSS.my_routes__label} htmlFor="driver-radio">
                                     <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} type="radio" name="radio" id="driver-radio" />
                                     Водитель
                                 </label>
-                                <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_right} for="passenger-radio">
+                                <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_right} htmlFor="passenger-radio">
                                     <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} type="radio" name="radio" id="passenger-radio" />
                                     Пассажир
                                 </label>

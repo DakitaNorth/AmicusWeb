@@ -21,10 +21,10 @@ const formRouteSearch = () => {
             <section className={FormRouteSCSS.form_search_route}>
                 <div className={FormRouteSCSS.form_search_route__container}>
                     <form className={FormRouteSCSS.form_search_route__wrapper} action="#">
-                        <label htmlfor="where-input">Откуда</label>
+                        <label htmlFor="where-input">Откуда</label>
                         <input className={FormRouteSCSS.form_search_route__where_input + " input"} onChange={gettingWhereSomewere} type="text" name="where" placeholder=""
                             id="where-input" />
-                        <label htmlfor="somewhere-input">Куда</label>
+                        <label htmlFor="somewhere-input">Куда</label>
                         <input className={FormRouteSCSS.form_search_route__somewhere_input + " input"} onChange={gettingWhereSomewere} type="text" name="somewhere" placeholder=""
                             id="somewhere-input" />
                         <NavLink to="/selected-route-list" className={FormRouteSCSS.time_form__button + " button"}>Поиск</NavLink>

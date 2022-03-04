@@ -65,7 +65,7 @@ const FormLogin = () => {
                         <label htmlFor="login-input">Номер телефона</label>
                         <input className={FormLoginCSS.login_input + " input"} type="text" name="login" id="login-input" />
                         <label htmlFor="login-password">Пароль</label>
-                        <input className={FormLoginCSS.login_password + " input"} type="password" name="password" id="login-password" />
+                        <input className={FormLoginCSS.login_password + " input"} type="password" name="password" id="login-password" autoComplete="on"/>
                         <input onChange={passwordUnlockLock} className={FormLoginCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
                         <label className={FormLoginCSS.password_checkbox_label} htmlFor="password-unlock">
                             <img className={FormLoginCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img"/>

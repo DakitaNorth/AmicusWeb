@@ -47,13 +47,13 @@ const FormRegistration = () => {
                 <div className={FormRegCSS.form_registration__container}>
                     <form onSubmit={Registration} className={FormRegCSS.form_registration__wrapper} action="#">
                         <label htmlFor="name-input">Ваше имя</label>
-                        <input className="input" type="text" name="name" placeholder="" id="name-input" />
+                        <input className="input" type="text" name="name" id="name-input" />
                         <label htmlFor="login-input">Номер телефона</label>
-                        <input className="input" type="text" name="login" placeholder="" id="login-input" />
+                        <input className="input" type="text" name="login" id="login-input" />
                         <label htmlFor="password-input">Пароль</label>
-                        <input className="input" type="password" name="password" placeholder="" id="password-input" />
+                        <input className="input" type="password" name="password" id="password-input" autoComplete="on"/>
                         <label htmlFor="repeat-input">Повторите ароль</label>
-                        <input className="input" type="password" name="repeat-password" placeholder="" id="repeat-input" />
+                        <input className="input" type="password" name="repeat-password" id="repeat-input" autoComplete="on"/>
                         <div className={FormRegCSS.agree_checkbox__wrapper}>
                             <input className={FormRegCSS.agree_checkbox + " visually-hidden"} type="checkbox" name="agree" id="agree-checkbox" />
                             <label className={FormRegCSS.agree_checkbox__label} htmlFor="agree-checkbox">

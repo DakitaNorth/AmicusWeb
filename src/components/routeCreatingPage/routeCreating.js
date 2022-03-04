@@ -11,10 +11,10 @@ const RouteCreating = () => (
             <div className={RouteCreatingCSS.form_create_route__container}>
                 <form className={RouteCreatingCSS.form_create_route__shield} action="#">
                     <div className={RouteCreatingCSS.form_create_route__wrapper}>
-                        <label for="where-input">Откуда</label>
+                        <label htmlFor="where-input">Откуда</label>
                         <input className={RouteCreatingCSS.form_create_route__where_input + " " + " input"} type="text" name="where" placeholder=""
                             id="where-input" />
-                        <label for="somewhere-input">Куда</label>
+                        <label htmlFor="somewhere-input">Куда</label>
                         <input className={RouteCreatingCSS.form_create_route__somewhere_input + " " + " input"} type="text" name="somewhere"
                             placeholder="" id="somewhere-input" />
                     </div>
@@ -37,14 +37,14 @@ const RouteCreating = () => (
                             </div>
                             <a className={RouteCreatingCSS.information_general__card_button} href="#">
                                 <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.08948 7.19749C3.08948 5.0396 4.83879 3.29028 6.99668 3.29028C9.15457 3.29028 10.9039 5.0396 10.9039 7.19749C10.9039 9.35538 9.15457 11.1047 6.99668 11.1047C4.83879 11.1047 3.08948 9.35538 3.08948 7.19749ZM6.99668 4.52413C5.52023 4.52413 4.32333 5.72103 4.32333 7.19749C4.32333 8.67394 5.52023 9.87084 6.99668 9.87084C8.47313 9.87084 9.67004 8.67394 9.67004 7.19749C9.67004 5.72103 8.47313 4.52413 6.99668 4.52413Z" fill="white" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.0248808 6.25717C0.31634 2.72126 3.27114 0 6.81904 0H7.17434C10.7222 0 13.677 2.72126 13.9685 6.25717C14.1251 8.1566 13.5383 10.0427 12.3319 11.5181L8.38928 16.3398C7.66953 17.2201 6.32384 17.2201 5.60409 16.3398L1.66147 11.5181C0.455037 10.0427 -0.131686 8.1566 0.0248808 6.25717ZM6.81904 1.23385C3.91328 1.23385 1.49327 3.46259 1.25457 6.35853C1.12426 7.93938 1.61257 9.5091 2.61665 10.7371L6.55928 15.5588C6.78535 15.8353 7.20802 15.8353 7.43409 15.5588L11.3767 10.7371C12.3808 9.5091 12.8691 7.93938 12.7388 6.35853C12.5001 3.46259 10.0801 1.23385 7.17434 1.23385H6.81904Z" fill="white" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M3.08948 7.19749C3.08948 5.0396 4.83879 3.29028 6.99668 3.29028C9.15457 3.29028 10.9039 5.0396 10.9039 7.19749C10.9039 9.35538 9.15457 11.1047 6.99668 11.1047C4.83879 11.1047 3.08948 9.35538 3.08948 7.19749ZM6.99668 4.52413C5.52023 4.52413 4.32333 5.72103 4.32333 7.19749C4.32333 8.67394 5.52023 9.87084 6.99668 9.87084C8.47313 9.87084 9.67004 8.67394 9.67004 7.19749C9.67004 5.72103 8.47313 4.52413 6.99668 4.52413Z" fill="white" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M0.0248808 6.25717C0.31634 2.72126 3.27114 0 6.81904 0H7.17434C10.7222 0 13.677 2.72126 13.9685 6.25717C14.1251 8.1566 13.5383 10.0427 12.3319 11.5181L8.38928 16.3398C7.66953 17.2201 6.32384 17.2201 5.60409 16.3398L1.66147 11.5181C0.455037 10.0427 -0.131686 8.1566 0.0248808 6.25717ZM6.81904 1.23385C3.91328 1.23385 1.49327 3.46259 1.25457 6.35853C1.12426 7.93938 1.61257 9.5091 2.61665 10.7371L6.55928 15.5588C6.78535 15.8353 7.20802 15.8353 7.43409 15.5588L11.3767 10.7371C12.3808 9.5091 12.8691 7.93938 12.7388 6.35853C12.5001 3.46259 10.0801 1.23385 7.17434 1.23385H6.81904Z" fill="white" />
                                 </svg>
                                 карта
                             </a>
                         </div>
                         <div className={RouteCreatingCSS.information__price + " " +  RouteCreatingCSS.price}>
-                            <label className={RouteCreatingCSS.price__label} for="price-input">Цена поездки</label>
+                            <label className={RouteCreatingCSS.price__label} htmlFor="price-input">Цена поездки</label>
                             <button className={RouteCreatingCSS.price__button + " " + RouteCreatingCSS.price__button_min}>
                                 <svg width="21" height="2" viewBox="0 0 21 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -52,7 +52,7 @@ const RouteCreating = () => (
                                         fill="#3E4958" />
                                 </svg>
                             </button>
-                            <input className={RouteCreatingCSS.price__input} type="text" name="price" placeholder="250" maxlength="4" id="price-input" />
+                            <input className={RouteCreatingCSS.price__input} type="text" name="price" placeholder="250" maxLength="4" id="price-input" />
                             <button className={RouteCreatingCSS.price__button + " " + RouteCreatingCSS.price__button_max}>
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -62,7 +62,7 @@ const RouteCreating = () => (
                             </button>
                         </div>
                         <div className={RouteCreatingCSS.information__additional + " " + RouteCreatingCSS.additional}>
-                            <label className={RouteCreatingCSS.additional__label} for="additional-input">Дополнительно о поездке</label>
+                            <label className={RouteCreatingCSS.additional__label} htmlFor="additional-input">Дополнительно о поездке</label>
                             <textarea className={RouteCreatingCSS.additional__input} type="text" name="additional" id="additional-input"></textarea>
                         </div>
                     </div>
