@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import MyRoutesItemSCSS from './css/myRoutesItem.module.css';
-import avatar from "../img/routeHistory/Group.png";
+import avatar from "../../img/routeHistory/Group.png";
 
 const MyRoutesItem = props => (
     <div key={props.id} className={MyRoutesItemSCSS.route_driver__item}>

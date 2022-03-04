@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ProfileCSS from './css/profile.module.css';
 
-import avatar_load from "../img/profile-load.svg";
+import avatar_load from "../../img/profile-load.svg";
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
 const phone = LoginPassword.phone;

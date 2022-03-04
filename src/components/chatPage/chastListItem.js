@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ChatListItemCSS from './css/chastListItem.module.css';
 
-import avatar from "../img/routeHistory/Group.png";
+import avatar from "../../img/routeHistory/Group.png";
 
 const ChatListItem = () => (
     <div className={ChatListItemCSS.chat_item}>

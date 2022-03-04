@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ProfileSettingsCSS from './css/profileSettings.module.css';
 
-import avatar_load from "../img/profile-load.svg";
-import password_lock from "../img/formLogin/passwordLock.svg";
-import password_unlock from "../img/formLogin/passwordUnlock.svg";
+import avatar_load from "../../img/profile-load.svg";
+import password_lock from "../../img/formLogin/passwordLock.svg";
+import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
 const phone = LoginPassword.phone;

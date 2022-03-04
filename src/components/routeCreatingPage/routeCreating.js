@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import RouteCreatingCSS from './css/routeCreating.module.css';
 
-import Parameters from "./parameters";
+import Parameters from "../A1General/parameters";
 
 const RouteCreating = () => (
     <div className="universal-form">

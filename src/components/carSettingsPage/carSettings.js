@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import CarSettingsCSS from './css/carSettings.module.css';
 
-import car_img from "../img/carSettings/car.png";
+import car_img from "../../img/carSettings/car.png";
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
 const phone = LoginPassword.phone;

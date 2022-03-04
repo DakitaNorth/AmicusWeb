@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import RouteSelLisItemCSS from './css/routeSelectedListItem.module.css';
-import avatar from "../img/routeHistory/Group.png";
+import avatar from "../../img/routeHistory/Group.png";
 
 const RouteSelectedListItem = props => (
     <li className={RouteSelLisItemCSS.route__item + " " + RouteSelLisItemCSS.route}>

@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import RouteSelCSS from './css/routeSelected.module.css';
 
-import Parameters from "./parameters";
+import Parameters from "../A1General/parameters";
 import RouteSelectedItem from "./routeSelectedItem";
-import RouteSelectedListItem from "./routeSelectedListItem";
+import RouteSelectedListItem from "../selectedRouteListPage/routeSelectedListItem";
 
 const departureplace = JSON.parse(localStorage.getItem("departureplace"));
 const arrivalplace = JSON.parse(localStorage.getItem("arrivalplace"));

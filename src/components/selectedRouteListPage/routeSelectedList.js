@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import RouteSelListCSS from './css/routeSelectedList.module.css';
 
-import Parameters from "./parameters";
+import Parameters from "../A1General/parameters";
 import RouteSelectedListItem from "./routeSelectedListItem";
 
 const where = JSON.parse(localStorage.getItem("departureplace"));

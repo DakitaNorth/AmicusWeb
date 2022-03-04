@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import MyRoutesSelectedCSS from './css/routeSelected.module.css';
+import MyRoutesSelectedCSS from './css/myRoutesSelected.module.css';
 
-import MyRoutesItem from "./myRoutesItem";
+import MyRoutesItem from "../myRoutesPage/myRoutesItem";
 import MyRouteSelectedItem from "./myRoutesSelectedItem";
 //import MyRouteSelectedItemDriver from "./myRoutesSelectedItemDrive";
 
