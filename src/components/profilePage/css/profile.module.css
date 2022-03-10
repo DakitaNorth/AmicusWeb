@@ -20,6 +20,12 @@
     background-color: #ffffff;
 }
 
+.avatar__img {
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+}
+
 .avatar__name {
     font-family: "Inter Bold";
     font-size: 20px;

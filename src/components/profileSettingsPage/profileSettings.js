@@ -37,8 +37,8 @@ class ProfileSettings extends Component {
     }
 
     includeData() {
+        document.getElementById('phone-input').value = this.state.profileSettingsData.phone;
         document.getElementById('email-input').value = this.state.profileSettingsData.mail;
-        document.getElementById('facebook-input').value = this.state.profileSettingsData.facebook;
         document.getElementById('password-input').value = this.state.profileSettingsData.password;
     }
 
@@ -57,23 +57,17 @@ class ProfileSettings extends Component {
         e.preventDefault();
 
         const MAIL_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeusermail";
-        const FACEBOOK_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserfacebook";
         const PASSWORD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserpass";
 
+        // let phones = document.getElementById('phones-input').value;
         let mail = document.getElementById('email-input').value;
-        let facebook = document.getElementById('facebook-input').value;
         let password = document.getElementById('password-input').value;
 
         console.log(mail);
-        console.log(facebook);
         console.log(password);
 
 
         axios.post(MAIL_URL, { userphone, mail }, { headers })
-            .then((response) => {
-                console.log(response);
-            });
-        axios.post(FACEBOOK_URL, { userphone, facebook }, { headers })
             .then((response) => {
                 console.log(response);
             });
@@ -100,13 +94,13 @@ class ProfileSettings extends Component {
                                 <svg className={ProfileSettingsCSS.phone_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M14.505 30C22.5158 30 29.0099 23.2843 29.0099 15C29.0099 6.71573 22.5158 0 14.505 0C6.49409 0 0 6.71573 0 15C0 23.2843 6.49409 30 14.505 30ZM19.1922 17.0423L21.4322 19.3643C21.8772 19.8269 21.8639 20.5928 21.4024 21.0722L20.7628 21.7213L20.749 21.7086C20.4791 21.9275 20.1678 22.1106 19.8347 22.2455C19.5247 22.3702 19.2197 22.4491 18.9014 22.4885C18.7553 22.5046 15.3677 22.8337 11.164 18.477C8.12301 15.325 7.00246 13.0022 7.29825 10.4607C7.33279 10.1437 7.40834 9.82744 7.52969 9.49599C7.66133 9.14778 7.83823 8.82488 8.04992 8.54491L8.03267 8.52716L8.66399 7.86905C9.12642 7.38962 9.86564 7.37563 10.3108 7.83691L12.5508 10.1592C12.996 10.6211 12.9832 11.3867 12.5208 11.8662L12.1484 12.2526L11.391 13.0365C11.4249 13.098 11.4592 13.1623 11.4947 13.2288C11.5005 13.2398 11.5064 13.2509 11.5124 13.262L11.5146 13.2662C11.9105 14.005 12.4521 15.0157 13.4797 16.0805C14.5061 17.1452 15.4815 17.7062 16.1942 18.1154C16.2717 18.1606 16.3456 18.2031 16.4169 18.2438L17.5454 17.0744C18.0071 16.5957 18.746 16.5817 19.1922 17.0423Z" fill="#D5DDE0" />
                                 </svg>
-                                <input className={ProfileSettingsCSS.phone__input + " input"} type="text" name="email" placeholder="ggg@yandex.ru" id="email-input" />
+                                <input className={ProfileSettingsCSS.phone__input + " input"} type="text" name="email" placeholder="ggg@yandex.ru" id="phone-input" />
                             </label>
-                            <label className={ProfileSettingsCSS.email_label} htmlFor="facebook-input">
+                            <label className={ProfileSettingsCSS.email_label} htmlFor="email-input">
                                 <svg className={ProfileSettingsCSS.email_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M29.0099 15C29.0099 23.2843 22.5158 30 14.505 30C6.49409 30 0 23.2843 0 15C0 6.71573 6.49409 0 14.505 0C22.5158 0 29.0099 6.71573 29.0099 15ZM8.53829 12.6989C8.72511 12.8352 9.28827 13.2401 10.2278 13.9134C11.1673 14.5867 11.8871 15.1051 12.3871 15.4686C12.442 15.5085 12.5587 15.5951 12.7372 15.7286C12.9158 15.8622 13.0642 15.9702 13.1822 16.0526C13.3004 16.1349 13.4432 16.2273 13.6109 16.3295C13.7785 16.4317 13.9365 16.5085 14.0848 16.5594C14.2332 16.6106 14.3705 16.6361 14.4969 16.6361H14.5052H14.5135C14.6398 16.6361 14.7772 16.6106 14.9256 16.5594C15.0739 16.5085 15.232 16.4316 15.3995 16.3295C15.567 16.2271 15.7098 16.1349 15.828 16.0526C15.9461 15.9702 16.0944 15.8622 16.273 15.7286C16.4515 15.595 16.5684 15.5085 16.6233 15.4686C17.1287 15.1051 18.4145 14.1817 20.4803 12.6987C20.8814 12.409 21.2164 12.0595 21.4856 11.6504C21.755 11.2415 21.8895 10.8125 21.8895 10.3637C21.8895 9.98862 21.759 9.66757 21.498 9.40055C21.237 9.13347 20.9279 9 20.5709 9H8.43937C8.01633 9 7.69077 9.14771 7.46276 9.44312C7.23477 9.73859 7.12078 10.1079 7.12078 10.5511C7.12078 10.909 7.27192 11.2969 7.57407 11.7145C7.87618 12.1321 8.1977 12.4603 8.53829 12.6989ZM16.9612 16.9819C17.8951 16.2829 19.2633 15.3027 21.0653 14.0415C21.3786 13.8199 21.6533 13.5726 21.8896 13.3V20.0669C21.8896 20.4422 21.7606 20.7629 21.5022 21.0301C21.244 21.2972 20.9336 21.4307 20.571 21.4307H8.43945C8.0768 21.4307 7.76632 21.2972 7.50811 21.0301C7.24984 20.763 7.12078 20.4421 7.12078 20.0669V13.3C7.36254 13.5784 7.64 13.8257 7.95326 14.0415C9.94218 15.4391 11.3075 16.4194 12.0493 16.9819C12.3624 17.2204 12.6166 17.4066 12.8115 17.5401C13.0066 17.6736 13.2662 17.8099 13.5904 17.9491C13.9145 18.0884 14.2167 18.1579 14.4969 18.1579H14.5052H14.5136C14.7939 18.1579 15.0959 18.0884 15.42 17.9491C15.7443 17.8099 16.0037 17.6736 16.1988 17.5401C16.3939 17.4066 16.648 17.2204 16.9612 16.9819Z" fill="#D5DDE0" />
                                 </svg>
-                                <input className={ProfileSettingsCSS.email__input + " input"} type="text" name="facebook" placeholder="@gg" id="facebook-input" />
+                                <input className={ProfileSettingsCSS.email__input + " input"} type="text" name="facebook" placeholder="@gg" id="email-input" />
                             </label>
                             <label className={ProfileSettingsCSS.password_label} htmlFor="password-input">
                                 <svg className={ProfileSettingsCSS.password_svg} width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -17,16 +17,16 @@ const PageMain = () => (
       <div className={PageMainCSS.page_navigation__container}>
         <ul className={PageMainCSS.page_navigation__list}>
           <li>
-            <NavLink className={PageMainCSS.page_navigation__list_link} to="/login" alt="Войти на портал">Войти</NavLink>
+            <NavLink className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__login} to="/login" alt="Войти на портал">Войти</NavLink>
           </li>
           <li>
-            <NavLink className={PageMainCSS.page_navigation__list_link} to="/registration" alt="Регистрация на портале">Регистрация</NavLink>
+            <NavLink className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__registration} to="/registration" alt="Регистрация на портале">Регистрация</NavLink>
           </li>
           <li>
-            <a className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__yellow} href="#" alt="Faq проекта">Faq</a>
+            <NavLink className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__faq} to="/faq" href="#" alt="Faq проекта">Faq</NavLink>
           </li>
           <li>
-            <a className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__yellow} href="#" alt="Ссылка на мобильное приложение">Мобильное приложение</a>
+            <NavLink className={PageMainCSS.page_navigation__list_link + " " + PageMainCSS.page_navigation__list__application} to="/mobileApplication" href="#" alt="Ссылка на мобильное приложение">Мобильное приложение</NavLink>
           </li>
         </ul>
       </div>

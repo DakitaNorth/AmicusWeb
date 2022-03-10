@@ -1,24 +1,9 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 import RouteSelListCSS from './css/routeSelectedList.module.css';
 
 import Parameters from "../A1General/parameters";
 import RouteSelectedListItem from "./routeSelectedListItem";
-
-const where = JSON.parse(localStorage.getItem("departureplace"));
-const somewhere = JSON.parse(localStorage.getItem("arrivalplace"));
-const daysParameter = JSON.parse(localStorage.getItem("daysParameter"));
-const humanParameter = JSON.parse(localStorage.getItem("humanParameter"));
-const departureTime = JSON.parse(localStorage.getItem("departureTime"));
-const arrivalTime = JSON.parse(localStorage.getItem("arrivalTime"));
-
-const departureplace = where;
-const arrivalplace = somewhere;
-const weekday = daysParameter;
-const membercount = humanParameter;
-const departuretime = departureTime;
-const arrivaltime = arrivalTime;
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -27,10 +12,25 @@ const headers = {
 class RouteSelectedList extends Component {
 
     state = {
-        routeSearchData: []
-    }
+        routeSearchData: [], 
+        serviceData: {
+            departureplace: JSON.parse(localStorage.getItem("departureplace")),
+            arrivalplace: JSON.parse(localStorage.getItem("arrivalplace")),
+            weekday: JSON.parse(localStorage.getItem("daysParameter")),
+            membercount: JSON.parse(localStorage.getItem("humanParameter")),
+            departuretime: JSON.parse(localStorage.getItem("departureTime")),
+            arrivaltime: JSON.parse(localStorage.getItem("arrivalTime"))
+        }
+    } 
 
     componentDidMount() {
+        let departureplace = this.state.serviceData.departureplace;
+        let arrivalplace = this.state.serviceData.arrivalplace;
+        let weekday = this.state.serviceData.weekday;
+        let membercount = this.state.serviceData.membercount;
+        let departuretime = this.state.serviceData.departuretime;
+        let arrivaltime = this.state.serviceData.arrivaltime;
+
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/searchtravel";
         axios.post(API_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount, weekday }, { headers })
             .then((response) => {
@@ -62,9 +62,9 @@ class RouteSelectedList extends Component {
                 <section className={RouteSelListCSS.form_search_route}>
                     <div className={RouteSelListCSS.form_search_route__container}>
                         <form className={RouteSelListCSS.form_search_route__wrapper} action="#">
-                            <input className={RouteSelListCSS.form_search_route__where_input + " input"} type="text" name="where" placeholder="" value={departureplace} disabled
+                            <input className={RouteSelListCSS.form_search_route__where_input + " input"} type="text" name="where" placeholder="" value={this.state.serviceData.departureplace} disabled
                                 id="where-input" />
-                            <input className={RouteSelListCSS.form_search_route__somewhere_input + " input"} type="text" name="somewhere" placeholder=""  value={arrivalplace} disabled
+                            <input className={RouteSelListCSS.form_search_route__somewhere_input + " input"} type="text" name="somewhere" placeholder=""  value={this.state.serviceData.arrivalplace} disabled
                                 id="somewhere-input" />
                         </form>
                     </div>

@@ -5,10 +5,6 @@ import ProfileCSS from './css/profile.module.css';
 
 import avatar_load from "../../img/profile-load.svg";
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const phone = LoginPassword.phone;
-const password = LoginPassword.password;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -20,6 +16,10 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        let phone = LoginPassword.phone;
+        let password = LoginPassword.password;
+
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {

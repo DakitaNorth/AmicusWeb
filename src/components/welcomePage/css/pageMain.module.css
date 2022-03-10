@@ -46,21 +46,62 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    width: 145px;
-    height: 145px;
+    width: 135px;
+    height: 135px;
     margin-bottom: 40px;
-    background-color: #476DF5;
+    border: 5px solid #476DF5;
     border-radius: 15%;
-    font-family: "Inter Medium";
+    font-family: "Inter Bold";
     text-transform: uppercase;
-    color: #ffffff;
+    color: #476DF5;
     padding-bottom: 15px;
 }
 
-.page_navigation__list__yellow {
-    background-color: #FFC032;
+.page_navigation__list__login {
+    background-image: url("/src/img/main-page-login.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30px;
 }
 
-.page_navigation__list__yellow:last-child {
+.page_navigation__list__registration {
+    background-image: url("/src/img/main-page-registration.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30px;
+}
+
+.page_navigation__list__login {
+    background-image: url("/src/img/main-page-login.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30px;
+}
+
+.page_navigation__list__registration {
+    background-image: url("/src/img/main-page-registration.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30px;
+}
+
+.page_navigation__list__faq {
+    background-image: url("/src/img/main-page-faq.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 30px;
+}
+
+.page_navigation__list__faq,
+.page_navigation__list__application {
+    border: 5px solid #FFC032;
+    color: #FFC032;
+}
+
+.page_navigation__list__application {
     text-align: center;
+    background-image: url("/src/img/mobile-application.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
 }

@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import ParametersCSS from './css/parameters.module.css';
 
-
-const daysParameter = JSON.parse(localStorage.getItem("daysParameter"));
-const humanParameter = JSON.parse(localStorage.getItem("humanParameter"));
-const departureTime = JSON.parse(localStorage.getItem("departureTime"));
-const arrivalTime = JSON.parse(localStorage.getItem("arrivalTime"));
-
 class Parameters extends Component {
 
     state = {
-        daysData: [daysParameter],
-        humanData: [humanParameter],
-        departureTime: [departureTime],
-        arrivalTime: [arrivalTime],
+        daysData: [],
+        humanData: [],
+        departureTime: [],
+        arrivalTime: []
+    }
+
+    componentDidMount() {
+        this.setState({
+            daysData: JSON.parse(localStorage.getItem("daysParameter")),
+            humanData: JSON.parse(localStorage.getItem("humanParameter")),
+            departureTime: JSON.parse(localStorage.getItem("departureTime")),
+            arrivalTime: JSON.parse(localStorage.getItem("arrivalTime"))
+        });
     }
 
     render() {
