@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import ProfileSettingsCSS from './css/profileSettings.module.css';
 
 import avatar_load from "../../img/profile-load.svg";
@@ -77,6 +78,15 @@ class ProfileSettings extends Component {
             });
     }
 
+    loginInputMask() {
+        let loginInput = document.getElementById("phone-input");
+        let maskOptions = {
+            mask: "+7(000)000-00-00",
+            lazy: false
+        }
+        IMask(loginInput, maskOptions);
+    }
+
     render() {
         return (
             <div className="universal-form">
@@ -94,7 +104,7 @@ class ProfileSettings extends Component {
                                 <svg className={ProfileSettingsCSS.phone_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M14.505 30C22.5158 30 29.0099 23.2843 29.0099 15C29.0099 6.71573 22.5158 0 14.505 0C6.49409 0 0 6.71573 0 15C0 23.2843 6.49409 30 14.505 30ZM19.1922 17.0423L21.4322 19.3643C21.8772 19.8269 21.8639 20.5928 21.4024 21.0722L20.7628 21.7213L20.749 21.7086C20.4791 21.9275 20.1678 22.1106 19.8347 22.2455C19.5247 22.3702 19.2197 22.4491 18.9014 22.4885C18.7553 22.5046 15.3677 22.8337 11.164 18.477C8.12301 15.325 7.00246 13.0022 7.29825 10.4607C7.33279 10.1437 7.40834 9.82744 7.52969 9.49599C7.66133 9.14778 7.83823 8.82488 8.04992 8.54491L8.03267 8.52716L8.66399 7.86905C9.12642 7.38962 9.86564 7.37563 10.3108 7.83691L12.5508 10.1592C12.996 10.6211 12.9832 11.3867 12.5208 11.8662L12.1484 12.2526L11.391 13.0365C11.4249 13.098 11.4592 13.1623 11.4947 13.2288C11.5005 13.2398 11.5064 13.2509 11.5124 13.262L11.5146 13.2662C11.9105 14.005 12.4521 15.0157 13.4797 16.0805C14.5061 17.1452 15.4815 17.7062 16.1942 18.1154C16.2717 18.1606 16.3456 18.2031 16.4169 18.2438L17.5454 17.0744C18.0071 16.5957 18.746 16.5817 19.1922 17.0423Z" fill="#D5DDE0" />
                                 </svg>
-                                <input className={ProfileSettingsCSS.phone__input + " input"} type="text" name="email" placeholder="ggg@yandex.ru" id="phone-input" />
+                                <input onFocus={this.loginInputMask} className={ProfileSettingsCSS.phone__input + " input"} type="text" name="email" placeholder="+7(900)000-00-00" id="phone-input" />
                             </label>
                             <label className={ProfileSettingsCSS.email_label} htmlFor="email-input">
                                 <svg className={ProfileSettingsCSS.email_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

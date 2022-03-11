@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import VievCardCSS from './css/vievCard.module.css';
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -26,6 +27,11 @@ class VievCard extends Component {
                 this.includeData();
                 console.log(this.state);
             });
+
+        document.getElementById('num-card').setAttribute("disabled", "disabled");
+        document.getElementById('date-card').setAttribute("disabled", "disabled");
+        document.getElementById('cvv-card').setAttribute("disabled", "disabled");
+        document.getElementById('name-card').setAttribute("disabled", "disabled");
     }
 
     includeData() {
@@ -33,6 +39,48 @@ class VievCard extends Component {
         document.getElementById('date-card').value = this.state.cardData.date;
         document.getElementById('cvv-card').value = this.state.cardData.cvv;
         document.getElementById('name-card').value = this.state.cardData.owner;
+    }
+
+    disabledInputs() {
+        if (document.getElementById('num-card').disabled &&
+            document.getElementById('date-card').disabled &&
+            document.getElementById('cvv-card').disabled &&
+            document.getElementById('name-card').disabled) {
+
+            document.getElementById('num-card').removeAttribute("disabled");
+            document.getElementById('date-card').removeAttribute("disabled");
+            document.getElementById('cvv-card').removeAttribute("disabled");
+            document.getElementById('name-card').removeAttribute("disabled");
+        }
+        else {
+            document.getElementById('num-card').setAttribute("disabled", "disabled");
+            document.getElementById('date-card').setAttribute("disabled", "disabled");
+            document.getElementById('cvv-card').setAttribute("disabled", "disabled");
+            document.getElementById('name-card').setAttribute("disabled", "disabled");
+        }
+    }
+
+    CardMasks() {
+        let numInput = document.getElementById("num-card");
+        let dateInput = document.getElementById("date-card");
+        let cvvInput = document.getElementById("cvv-card");
+
+        let numMaskOptions = {
+            mask: "0000 0000 0000 0000",
+            lazy: false
+        }
+        let dateMaskOptions = {
+            mask: "00/00",
+            lazy: false
+        }
+        let cvvMaskOptions = {
+            mask: "000",
+            lazy: false
+        }
+
+        IMask(numInput, numMaskOptions);
+        IMask(dateInput, dateMaskOptions);
+        IMask(cvvInput, cvvMaskOptions);
     }
 
     render() {
@@ -50,19 +98,19 @@ class VievCard extends Component {
                             </svg>
                             <label className={VievCardCSS.form_label_num} htmlFor="num-card">
                                 <span className={VievCardCSS.form_input__text}>Номер карты</span>
-                                <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_num} id="num-card" disabled="on"/>
+                                <input onFocus={this.CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_num} id="num-card" placeholder="0000 0000 0000 0000" />
                             </label>
                             <div className={VievCardCSS.form_card_viev__shield}>
                                 <label className={VievCardCSS.form_label_date} htmlFor="date-card">
                                     <span className={VievCardCSS.form_input__text}>Срок действия</span>
-                                    <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_date} id="date-card" disabled="on"/>
+                                    <input onFocus={this.CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_date} placeholder="00/00" id="date-card" />
                                 </label>
                                 <label className={VievCardCSS.form_label_cvv} htmlFor="cvv-card">
                                     <span className={VievCardCSS.form_input__text}>CVV-код</span>
-                                    <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_cvv} id="cvv-card" disabled="on"/>
+                                    <input onFocus={this.CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_cvv} placeholder="000" id="cvv-card" />
                                 </label>
                             </div>
-                            <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_name} id="name-card" disabled="on"/>
+                            <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_name} id="name-card" placeholder="VALDIMIR TIHOMIROV" />
                         </form>
                         <div className={VievCardCSS.form_card_viev__buttons}>
                             <button className={VievCardCSS.form_card_viev__true_viev + " " + VievCardCSS.form_card_viev__button}>
@@ -73,7 +121,7 @@ class VievCard extends Component {
                                 </svg>
                                 <span>Показать данные</span>
                             </button>
-                            <button className={VievCardCSS.form_card_viev__edit + " " + VievCardCSS.form_card_viev__button}>
+                            <button onClick={this.disabledInputs} className={VievCardCSS.form_card_viev__edit + " " + VievCardCSS.form_card_viev__button}>
                                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 0H40V40H0V0Z" fill="white" fillOpacity="0.01" />
                                     <path fillRule="evenodd" clipRule="evenodd" d="M26.1718 5.37277C25.9331 5.13409 25.6094 5 25.2718 5C24.9343 5 24.6105 5.13409 24.3718 5.37277L8.77264 20.972C8.61275 21.1319 8.49834 21.3315 8.44119 21.5503L6.74422 28.047C6.63003 28.4842 6.75618 28.9491 7.07568 29.2686C7.39517 29.5881 7.86011 29.7143 8.29728 29.6001L14.794 27.9031C15.0128 27.8459 15.2124 27.7315 15.3723 27.5716L30.9715 11.9724C31.4685 11.4754 31.4685 10.6696 30.9715 10.1725L26.1718 5.37277ZM10.8167 22.5277L25.2718 8.07264L28.2717 11.0725L13.8166 25.5275L9.75613 26.5882L10.8167 22.5277Z" fill="#3E4958" />

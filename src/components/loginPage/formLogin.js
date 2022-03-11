@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import FormLoginCSS from './css/formLogin.module.css';
 
 import password_lock from "../../img/formLogin/passwordLock.svg";
@@ -56,6 +57,15 @@ const FormLogin = () => {
         }
     }
 
+    function loginInputMask() {
+        let loginInput = document.getElementById("login-input");
+        let maskOptions = {
+            mask: "+7(000)000-00-00",
+            lazy: false
+        }
+        IMask(loginInput, maskOptions);
+    }
+
     return (
         <div className="universal-form">
             <h1 className={FormLoginCSS.page_main__heading}>Авторизация</h1>
@@ -63,7 +73,7 @@ const FormLogin = () => {
                 <div className={FormLoginCSS.form_login__container}>
                     <form onSubmit={Autorization} className={FormLoginCSS.form_login__wrapper} action="#">
                         <label htmlFor="login-input">Номер телефона</label>
-                        <input className={FormLoginCSS.login_input + " input"} type="text" name="login" id="login-input" />
+                        <input onFocus={loginInputMask} className={FormLoginCSS.login_input + " input"} type="text" name="login" placeholder="+7(900)000-00-00" id="login-input" />
                         <label htmlFor="login-password">Пароль</label>
                         <input className={FormLoginCSS.login_password + " input"} type="password" name="password" id="login-password" autoComplete="on"/>
                         <input onChange={passwordUnlockLock} className={FormLoginCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
