@@ -47,7 +47,7 @@ import RouteSelectedList from "./components/selectedRouteListPage/routeSelectedL
 
 import RouteSelected from "./components/selectedRoutePage/routeSelected";
 
-import PaymentMethod from "./components/cardSettingsPage/paymentMethod";
+import PaymentMethod from "./components/paymentMethod/paymentMethod";
 
 import SuccessfulBooking from "./components/successfulBookingPage/successfulBooking";
 

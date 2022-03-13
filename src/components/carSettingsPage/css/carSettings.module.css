@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 36px;
-    padding-left: 39px;
-    padding-right: 39px;
+    padding-left: 26px;
+    padding-right: 26px;
 }
 
 .page_main__heading {
@@ -19,79 +19,7 @@
     color: #3E4958;
 }
 
-.car__img {
-    align-self: center;
-    margin-bottom: 30px;
-}
-
-.car__data {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 35px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 2px solid #D5DDE0;
-    border-radius: 15px;
-}
-
-.car__label {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
-.car__label:last-child {
-    margin-bottom: 0;
-}
-
-.car__label::after {
-    content: "";
-    position: absolute;
-    width: 293px;
-    height: 2px;
-    bottom: -10px;
-    right: 0;
-    background-color: #D5DDE0;
-}
-
-.car__label:last-child::after {
-    width: 0;
-    height: 0;
-}
-
-.car__text {
-    margin-bottom: 5px;
-    color: #97ADB6;
-}
-
-.car__input {
-    outline: none;
-    padding-left: 10px;
-    padding-top: 12px;
-    padding-bottom: 13px;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 15px;
-    font-size: 16px;
-    line-height: 19px;
-    font-family: "Inter Regular", sans-serif;
-    color: #3E4958;
-}
-
-.car__input:focus,
-.car__input:focus,
-.car__input:focus {
-    background-color: #F7F8F9;
-    border: 1px solid #D5DDE0;
-    border-radius: 15px;
-}
-
-.car__button {
-    align-self: center;
-    width: 205px;
-    padding-top: 10px;
-    padding-bottom: 7px;
+.car_settings__list {
+    margin: 0;
+    padding: 0;
 }

@@ -1,4 +1,6 @@
 .form_card_add__container {
+    display: flex;
+    flex-direction: column;
     padding-left: 34px;
     padding-right: 34px;
 }
@@ -18,7 +20,6 @@
 .form_card_add__wrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 60px;
 }
 
 .form_card_add__wrapper label {
@@ -37,6 +38,7 @@
 .form_card_add__shield {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 280px;
 }
 
 .form_card_add__shield label {
@@ -47,12 +49,12 @@
     position: relative;
 }
 
-.form_label_date::before {
+/* .form_label_date::before {
     content: "/";
     position: absolute;
     top: 37px;
     left: 75px;
-}
+} */
 
 .form_card_add__buttons {
     position: relative;
@@ -90,4 +92,11 @@
 
 .form_card_add__scane {
     margin-bottom: 25px;
+}
+
+.add_card__button {
+    align-self: center;
+    width: 205px;
+    padding-top: 10px;
+    padding-bottom: 7px;
 }

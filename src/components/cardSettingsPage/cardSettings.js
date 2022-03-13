@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import CardSettingsCSS from './css/cardSettings.module.css';
 
-import PaymentMetCardItem from "./paymentMethodCardItem";
+import CardSettingsItem from "./cardSettingsItem";
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
 const phone = LoginPassword.phone;
@@ -32,7 +32,7 @@ class CardSettings extends Component {
     render() {
         const cardsStandart = this.state.cardsData.map((item) => {
             return (
-                <PaymentMetCardItem
+                <CardSettingsItem
                     number={item.number}
                     owner={item.owner}
                     date={item.date}

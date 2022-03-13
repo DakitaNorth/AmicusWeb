@@ -1,35 +1,95 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import IMask from "imask";
 import CardSettingsCSS from './css/addCard.module.css';
 
+const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+const user = LoginPassword.phone;
+
+const headers = {
+    "Content-Type": "application/json; charset=utf-8",
+};
+
 class CardSettings extends Component {
+
+    numCardMask() {
+        let numInput = document.getElementById("num-card");
+        let numMaskOptions = {
+            mask: "0000 0000 0000 0000",
+            lazy: false
+        }
+        IMask(numInput, numMaskOptions);
+    }
+
+    dateCardMask() {
+        let dateInput = document.getElementById("date-card");
+        let dateMaskOptions = {
+            mask: "00/00",
+            lazy: false
+        }
+        IMask(dateInput, dateMaskOptions);
+    }
+
+    cvvCardMask() {
+        let cvvInput = document.getElementById("cvv-card");
+        let cvvMaskOptions = {
+            mask: "000",
+            lazy: false
+        }
+        IMask(cvvInput, cvvMaskOptions);
+    }
+
+    saveNewData(e) {
+        e.preventDefault();
+
+        const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
+
+        let number = document.getElementById('num-card').value;
+        let owner = document.getElementById('name-card').value;
+        let date = document.getElementById('date-card').value;
+        let cvv = document.getElementById('cvv-card').value;
+
+        console.log(number);
+        console.log(owner);
+        console.log(date);
+        console.log(cvv);
+
+
+        axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
+            .then((response) => {
+                console.log(response);
+            });
+    }
+
     render() {
         return (
             <div className="universal-form">
                 <h1 className={CardSettingsCSS.page_main__heading}>добавить карту</h1>
                 <section className={CardSettingsCSS.form_card_add}>
                     <div className={CardSettingsCSS.form_card_add__container}>
-                        <form className={CardSettingsCSS.form_card_add__wrapper} action="#">
+                        <form onSubmit={this.saveNewData} className={CardSettingsCSS.form_card_add__wrapper} action="#">
                             <label htmlFor="num-card">
                                 <span className={CardSettingsCSS.form_input__text}>Номер карты</span>
-                                <input className={CardSettingsCSS.form__input + " input"} type="text" name="num-card" placeholder="" id="num-card" />
+                                <input onFocus={this.numCardMask} className={CardSettingsCSS.form__input + " input"} type="text" name="num-card" placeholder="0000 0000 0000 0000" id="num-card" />
                             </label>
                             <label htmlFor="name-card">
                                 <span className={CardSettingsCSS.form_input__text}>Имя на карте</span>
-                                <input className={CardSettingsCSS.form__input + " input"} type="text" name="name-card" placeholder="" id="name-card" />
+                                <input className={CardSettingsCSS.form__input + " input"} type="text" name="name-card" placeholder="VALDIMIR TIHOMIROV" id="name-card" />
                             </label>
                             <div className={CardSettingsCSS.form_card_add__shield}>
                                 <label className={CardSettingsCSS.form_label_date} htmlFor="date-card">
                                     <span className={CardSettingsCSS.form_input__text}>Срок действия</span>
-                                    <input className={CardSettingsCSS.form__input + " " + CardSettingsCSS.form__input_date + " input"} type="text" name="date-card" placeholder="" id="date-card" />
+                                    <input onFocus={this.dateCardMask} className={CardSettingsCSS.form__input + " input " + CardSettingsCSS.form__input_date} type="text" name="date-card" placeholder="00/00" id="date-card" />
                                 </label>
                                 <label htmlFor="cvv-card">
                                     <span className={CardSettingsCSS.form_input__text}>CVV-код</span>
-                                    <input className={CardSettingsCSS.form__input + " input"} type="text" name="cvv-card" placeholder="" id="cvv-card" />
+                                    <input onFocus={this.cvvCardMask} className={CardSettingsCSS.form__input + " input " + CardSettingsCSS.form__input_cvv} type="text" name="cvv-card" placeholder="000" id="cvv-card" />
                                 </label>
                             </div>
+                            <button className={CardSettingsCSS.add_card__button + " button"}>Сохранить</button>
                         </form>
-                        <div className={CardSettingsCSS.form_card_add__buttons}>
+                        {/* <div className={CardSettingsCSS.form_card_add__buttons}>
                             <button className={CardSettingsCSS.form_card_add__scane + " " + CardSettingsCSS.form_card_add__button}>
                                 <svg width="40" height="40" viewBox="0 0 42 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 0H41V40H1V0Z" fill="white" fillOpacity="0.01" />
@@ -60,7 +120,7 @@ class CardSettings extends Component {
                                 </svg>
                                 <span>Добавить face ID</span>
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
             </div>
