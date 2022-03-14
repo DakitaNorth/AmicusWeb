@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import CardSettingsCSS from './css/cardSettings.module.css';
@@ -20,15 +20,11 @@ const CardSettings = () => {
         gettingCardData();
     }, []);
 
-    // useLayoutEffect(() => {
-    //     cardsStandart();
-    // })
-
     function gettingCardData() {
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
         axios.post(API_URL, { phone }, { headers })
             .then((response) => {
-                setCardsData(response.data);
+                setCardsData(response.data); 
             });
     }
 

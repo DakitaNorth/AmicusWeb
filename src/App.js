@@ -65,6 +65,8 @@ import AddCard from "./components/addCardPage/addCard";
 
 import VievCard from "./components/vievCardPage/vievCard";
 
+import VievCar from "./components/vievCarPage/vievCar";
+
 class App extends React.Component {
     render() {
         return (
@@ -189,6 +191,12 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <VievCard />
+                        </div>
+                    } />
+                    <Route path="/viev-car" element={
+                        <div>
+                            <GoBackButton />
+                            <VievCar />
                         </div>
                     } />
                     <Route path="/days-parameter" element={

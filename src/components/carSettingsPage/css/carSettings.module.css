@@ -23,3 +23,24 @@
     margin: 0;
     padding: 0;
 }
+
+.car_list__item {
+    list-style: none;
+}
+
+.car_label {
+    width: 360px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.car_list__item::before,
+.car_list__item::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 2px;
+    background-color: #D5DDE0;
+    z-index: -2;
+}
