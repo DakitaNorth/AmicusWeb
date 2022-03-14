@@ -1,76 +1,83 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import RouteCreatingCSS from './css/routeCreating.module.css';
 
-import Parameters from "../A1General/parameters";
+import CreateParameters from "../routeCreatingPage/createParameters";
 
-const RouteCreating = () => (
-    <div className="universal-form">
-        <h1 className="visually-hidden">Создание маршрута</h1>
-        <section className={RouteCreatingCSS.form_create_route}>
-            <div className={RouteCreatingCSS.form_create_route__container}>
-                <form className={RouteCreatingCSS.form_create_route__shield} action="#">
-                    <div className={RouteCreatingCSS.form_create_route__wrapper}>
-                        <label htmlFor="where-input">Откуда</label>
-                        <input className={RouteCreatingCSS.form_create_route__where_input + " " + " input"} type="text" name="where" placeholder=""
-                            id="where-input" />
-                        <label htmlFor="somewhere-input">Куда</label>
-                        <input className={RouteCreatingCSS.form_create_route__somewhere_input + " " + " input"} type="text" name="somewhere"
-                            placeholder="" id="somewhere-input" />
-                    </div>
-                    <Parameters />
-                    <div className={RouteCreatingCSS.form_create_route__information + " " + RouteCreatingCSS.information}>
-                        <div className={RouteCreatingCSS.information_general}>
-                            <div className={RouteCreatingCSS.information_general__wrapper}>
-                                <div className={RouteCreatingCSS.information_general__item}>
-                                    <span className={RouteCreatingCSS.information_general__text}>Расстояние</span>
-                                    <span className={RouteCreatingCSS.information_general__text}>20км</span>
-                                </div>
-                                <div className={RouteCreatingCSS.information_general__item}>
-                                    <span className={RouteCreatingCSS.information_general__text}>Бензин</span>
-                                    <span className={RouteCreatingCSS.information_general__text}>4л</span>
-                                </div>
-                                <div className={RouteCreatingCSS.information_general__item}>
-                                    <span className={RouteCreatingCSS.information_general__text}>Рекомендуемая<br></br>цена</span>
-                                    <span className={RouteCreatingCSS.information_general__text}>250₽</span>
-                                </div>
+const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+const autor = LoginPassword.phone;
+
+const headers = {
+    "Content-Type": "application/json; charset=utf-8",
+};
+
+const RouteCreating = () => {
+
+    function createRoute(e) {
+        e.preventDefault();
+
+        let departureplace = document.getElementById('where-input').value;
+        let arrivalplace = document.getElementById('somewhere-input').value;
+
+        let departuretime = JSON.parse(localStorage.getItem("CreateDepartureTime"));
+        let arrivaltime = JSON.parse(localStorage.getItem("CreateArrivalTime"));
+        let membercount = JSON.parse(localStorage.getItem("CreateHumanParameter"));
+        let distance = "72 км";
+        let weekday = JSON.parse(localStorage.getItem("CreateDaysParameter"));
+        let automobile = 0;
+
+        let price = document.getElementById('price-input').value;
+        let description = document.getElementById('additional-input').value;
+
+        const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
+
+        axios.post(ADD_ROUTE_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount,
+                                    distance, weekday, automobile, price, description, autor }, { headers })
+            .then((response) => {
+                console.log(response);
+            });
+    }
+
+    return (
+        <div className="universal-form">
+            <h1 className="visually-hidden">Создание маршрута</h1>
+            <section className={RouteCreatingCSS.form_create_route}>
+                <div className={RouteCreatingCSS.form_create_route__container}>
+                    <form onSubmit={createRoute} className={RouteCreatingCSS.form_create_route__shield} action="#">
+                        <div className={RouteCreatingCSS.form_create_route__wrapper}>
+                            <label htmlFor="where-input">Откуда</label>
+                            <input className={RouteCreatingCSS.form_create_route__where_input + " " + " input"} type="text" name="where" placeholder=""
+                                id="where-input" />
+                            <label htmlFor="somewhere-input">Куда</label>
+                            <input className={RouteCreatingCSS.form_create_route__somewhere_input + " " + " input"} type="text" name="somewhere"
+                                placeholder="" id="somewhere-input" />
+                        </div>
+                        <CreateParameters />
+                        <div className={RouteCreatingCSS.form_create_route__information + " " + RouteCreatingCSS.information}>
+                            <div className={RouteCreatingCSS.information__auto + " " + RouteCreatingCSS.auto}>
+                                <NavLink to="/create-auto-select" className={RouteCreatingCSS.auto__select} href="#">
+                                    <svg width="20" height="17" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.4802 5.18614H21.7201C21.586 5.18614 21.4571 5.23795 21.3604 5.33066L20.9846 5.69061C20.3513 4.22512 19.4427 2.77591 18.2154 1.27557C17.552 0.464894 16.5709 0 15.5235 0H8.47642C7.42891 0 6.44782 0.464949 5.78477 1.27562C4.51876 2.82316 3.62822 4.23746 3.00986 5.68544L2.63968 5.33066C2.54291 5.23795 2.41401 5.18614 2.27995 5.18614H0.519865C0.232725 5.18614 0 5.41887 0 5.70601V6.90943C0 7.18384 0.213326 7.4109 0.487182 7.42824L2.29634 7.54218C2.02299 8.34096 1.80955 9.53127 1.80955 11.2099C1.80955 12.6665 2.10047 13.6238 2.60677 14.2435V17.0476C2.60677 17.2881 2.8017 17.4829 3.04215 17.4829H5.04474C5.2853 17.4829 5.48029 17.2881 5.48029 17.0476V15.3063H18.5198V17.0476C18.5198 17.2881 18.7148 17.4829 18.9552 17.4829H20.9578C21.1982 17.4829 21.3932 17.2881 21.3932 17.0476V14.2435C21.8994 13.6238 22.1905 12.6665 22.1905 11.2099C22.1905 9.53127 21.9771 8.34096 21.7037 7.54218L23.5129 7.42824C23.7867 7.4109 24 7.18384 24 6.90943V5.70601C24 5.41887 23.7674 5.18614 23.4802 5.18614ZM7.27055 2.49105C7.5677 2.12787 8.00724 1.91949 8.47642 1.91949H15.5235C15.9927 1.91949 16.4324 2.12787 16.7295 2.49105C17.5881 3.54062 18.2661 4.54505 18.7902 5.5456L5.19782 5.54815C5.7104 4.56984 6.39229 3.56457 7.27055 2.49105ZM5.78933 13.1769C4.79256 13.1769 3.98461 12.8513 3.98461 12.0616C3.98461 11.2718 4.27776 10.6315 5.27446 10.6315C6.27117 10.6315 7.59393 11.2718 7.59393 12.0616C7.59393 12.8513 6.78593 13.1769 5.78933 13.1769ZM13.8918 13.0123H10.1083C9.53794 13.0123 9.07393 12.5483 9.07393 11.978C9.07393 11.818 9.20366 11.6883 9.36374 11.6883H14.6365C14.7965 11.6883 14.9261 11.818 14.9261 11.978C14.9261 12.5484 14.4621 13.0123 13.8918 13.0123ZM18.2107 13.1769C17.214 13.1769 16.406 12.8513 16.406 12.0616C16.406 11.2718 17.7289 10.6315 18.7255 10.6315C19.7222 10.6315 20.0154 11.2718 20.0154 12.0616C20.0154 12.8513 19.2075 13.1769 18.2107 13.1769Z" fill="white" />
+                                    </svg>
+                                    <span className={RouteCreatingCSS.auto__text}>Выбрать автомобиль</span>
+                                </NavLink>
                             </div>
-                            <a className={RouteCreatingCSS.information_general__card_button} href="#">
-                                <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M3.08948 7.19749C3.08948 5.0396 4.83879 3.29028 6.99668 3.29028C9.15457 3.29028 10.9039 5.0396 10.9039 7.19749C10.9039 9.35538 9.15457 11.1047 6.99668 11.1047C4.83879 11.1047 3.08948 9.35538 3.08948 7.19749ZM6.99668 4.52413C5.52023 4.52413 4.32333 5.72103 4.32333 7.19749C4.32333 8.67394 5.52023 9.87084 6.99668 9.87084C8.47313 9.87084 9.67004 8.67394 9.67004 7.19749C9.67004 5.72103 8.47313 4.52413 6.99668 4.52413Z" fill="white" />
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M0.0248808 6.25717C0.31634 2.72126 3.27114 0 6.81904 0H7.17434C10.7222 0 13.677 2.72126 13.9685 6.25717C14.1251 8.1566 13.5383 10.0427 12.3319 11.5181L8.38928 16.3398C7.66953 17.2201 6.32384 17.2201 5.60409 16.3398L1.66147 11.5181C0.455037 10.0427 -0.131686 8.1566 0.0248808 6.25717ZM6.81904 1.23385C3.91328 1.23385 1.49327 3.46259 1.25457 6.35853C1.12426 7.93938 1.61257 9.5091 2.61665 10.7371L6.55928 15.5588C6.78535 15.8353 7.20802 15.8353 7.43409 15.5588L11.3767 10.7371C12.3808 9.5091 12.8691 7.93938 12.7388 6.35853C12.5001 3.46259 10.0801 1.23385 7.17434 1.23385H6.81904Z" fill="white" />
-                                </svg>
-                                карта
-                            </a>
+                            <div className={RouteCreatingCSS.information__price + " " + RouteCreatingCSS.price}>
+                                <label className={RouteCreatingCSS.price__label} htmlFor="price-input">Цена поездки</label>
+                                <input className={RouteCreatingCSS.price__input} type="text" name="price" placeholder="250" maxLength="4" id="price-input" />
+                            </div>
+                            <div className={RouteCreatingCSS.information__additional + " " + RouteCreatingCSS.additional}>
+                                <label className={RouteCreatingCSS.additional__label} htmlFor="additional-input">Дополнительно о поездке</label>
+                                <textarea className={RouteCreatingCSS.additional__input} type="text" name="additional" id="additional-input"></textarea>
+                            </div>
                         </div>
-                        <div className={RouteCreatingCSS.information__price + " " +  RouteCreatingCSS.price}>
-                            <label className={RouteCreatingCSS.price__label} htmlFor="price-input">Цена поездки</label>
-                            <button className={RouteCreatingCSS.price__button + " " + RouteCreatingCSS.price__button_min}>
-                                <svg width="21" height="2" viewBox="0 0 21 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M20.2513 2H0.74874C0.337129 2 0 1.55497 0 1C0 0.450262 0.337129 0 0.74874 0H20.2513C20.6668 0 21 0.450262 21 1C21 1.55497 20.6629 2 20.2513 2Z"
-                                        fill="#3E4958" />
-                                </svg>
-                            </button>
-                            <input className={RouteCreatingCSS.price__input} type="text" name="price" placeholder="250" maxLength="4" id="price-input" />
-                            <button className={RouteCreatingCSS.price__button + " " + RouteCreatingCSS.price__button_max}>
-                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.001 9.96144L10.0002 1.41396C10.0002 0.861736 10.4478 0.414114 11 0.414165C11.5523 0.414217 12 0.861922 12 1.41414L12.0008 9.96163L20.5437 9.96242C21.0959 9.96247 21.5437 10.4102 21.5437 10.9624C21.5438 11.5146 21.0961 11.9622 20.5439 11.9622L12.001 11.9614L12.0018 20.5038C12.0018 21.056 11.5542 21.5037 11.002 21.5036C10.4498 21.5036 10.0021 21.0559 10.002 20.5036L10.0012 11.9612L1.45423 11.9604C0.90201 11.9604 0.454306 11.5127 0.454254 10.9604C0.454202 10.4082 0.901824 9.9606 1.45404 9.96065L10.001 9.96144Z"
-                                        fill="#3E4958" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div className={RouteCreatingCSS.information__additional + " " + RouteCreatingCSS.additional}>
-                            <label className={RouteCreatingCSS.additional__label} htmlFor="additional-input">Дополнительно о поездке</label>
-                            <textarea className={RouteCreatingCSS.additional__input} type="text" name="additional" id="additional-input"></textarea>
-                        </div>
-                    </div>
-                    <button className={RouteCreatingCSS.form_create_route__button + " " + " button"}>Опубликовать</button>
-                </form>
-            </div>
-        </section>
-    </div>
-);
+                        <button className={RouteCreatingCSS.form_create_route__button + " " + " button"}>Опубликовать</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    )
+};
 
 export default RouteCreating;

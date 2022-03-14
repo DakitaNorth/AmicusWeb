@@ -9,7 +9,7 @@
 }
 
 .form_create_route__wrapper {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     margin-bottom: 20px;
     padding-left: 36px;
@@ -35,45 +35,32 @@
     padding-right: 36px;
 }
 
-.information_general {
+.auto {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 15px;
 }
 
-.information_general__item {
-    display: flex;
-    justify-content: space-between;
-    width: 187px;
-    margin-bottom: 10px;
-}
-
-.information_general__text {
-    font-family: "Inter Light";
-    font-size: 12px;
-    line-height: 16px;
-}
-
-.information_general__card_button {
+.auto__select {
     position: relative;
-    display: flex;
-    width: 81px;
-    height: 38px;
+    width: 100%;
     padding-top: 10px;
-    padding-bottom: 11px;
-    padding-left: 38px;
-    padding-right: 6px;
-    font-family: "Inter Medium";
-    line-height: 17px;
-    color: #ffffff;
+    padding-bottom: 10px;
+    padding-left: 37px;
+    display: inline-block;
     background-color: #FFC032;
     border-radius: 15px;
 }
 
-.information_general__card_button svg {
+.auto__select svg {
     position: absolute;
-    top: 11px;
-    left: 15px;
+    left: 10px;
+}
+
+.auto__text {
+    font-family: "Inter Medium";
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
 }
 
 .price {
@@ -97,28 +84,6 @@
     border-radius: 15px;
     line-height: 16px;
     text-align: center;
-}
-
-.price__button {
-    position: absolute;
-    bottom: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15px;
-    height: 15px;
-    margin: 0;
-    padding: 0;
-    border: none;
-    background-color: #F7F8F9;
-}
-
-.price__button_min {
-    left: 25px;
-}
-
-.price__button_max {
-    right: 25px;
 }
 
 .additional {

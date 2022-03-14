@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import RouteSelListCSS from './css/routeSelectedList.module.css';
 
-import Parameters from "../A1General/parameters";
+import SearchParameters from "../routeSearchPage/searchParameters";
 import RouteSelectedListItem from "./routeSelectedListItem";
 
 const headers = {
@@ -68,7 +68,7 @@ class RouteSelectedList extends Component {
                                 id="somewhere-input" />
                         </form>
                     </div>
-                    <Parameters />
+                    <SearchParameters />
                     <div className={RouteSelListCSS.route_list}>
                         <div className={RouteSelListCSS.route_list__container}>
                             <ul className={RouteSelListCSS.route_list__list}>

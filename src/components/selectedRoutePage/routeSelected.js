@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import RouteSelCSS from './css/routeSelected.module.css';
 
-import Parameters from "../A1General/parameters";
+import SearchParameters from "../routeSearchPage/searchParameters";
 import RouteSelectedItem from "./routeSelectedItem";
 import RouteSelectedListItem from "../selectedRouteListPage/routeSelectedListItem";
 
@@ -59,7 +59,7 @@ class RouteSelected extends Component {
                                 id="somewhere-input" />
                         </form>
                     </div>
-                    <Parameters />
+                    <SearchParameters />
                     <div className={RouteSelCSS.route_list}>
                         <div className={RouteSelCSS.route_list__container}>
                             <ul className={RouteSelCSS.route_list__list}>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
-import CardSettingsCSS from './css/addCard.module.css';
+import AddCardCSS from './css/addCard.module.css';
 
 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
 const user = LoginPassword.phone;
@@ -11,9 +11,9 @@ const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-class CardSettings extends Component {
+const AddCard = () => {
 
-    numCardMask() {
+    function numCardMask() {
         let numInput = document.getElementById("num-card");
         let numMaskOptions = {
             mask: "0000 0000 0000 0000",
@@ -22,7 +22,7 @@ class CardSettings extends Component {
         IMask(numInput, numMaskOptions);
     }
 
-    dateCardMask() {
+    function dateCardMask() {
         let dateInput = document.getElementById("date-card");
         let dateMaskOptions = {
             mask: "00/00",
@@ -31,7 +31,7 @@ class CardSettings extends Component {
         IMask(dateInput, dateMaskOptions);
     }
 
-    cvvCardMask() {
+    function cvvCardMask() {
         let cvvInput = document.getElementById("cvv-card");
         let cvvMaskOptions = {
             mask: "000",
@@ -40,7 +40,7 @@ class CardSettings extends Component {
         IMask(cvvInput, cvvMaskOptions);
     }
 
-    saveNewData(e) {
+    function saveNewData(e) {
         e.preventDefault();
 
         const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
@@ -62,35 +62,34 @@ class CardSettings extends Component {
             });
     }
 
-    render() {
-        return (
-            <div className="universal-form">
-                <h1 className={CardSettingsCSS.page_main__heading}>добавить карту</h1>
-                <section className={CardSettingsCSS.form_card_add}>
-                    <div className={CardSettingsCSS.form_card_add__container}>
-                        <form onSubmit={this.saveNewData} className={CardSettingsCSS.form_card_add__wrapper} action="#">
-                            <label htmlFor="num-card">
-                                <span className={CardSettingsCSS.form_input__text}>Номер карты</span>
-                                <input onFocus={this.numCardMask} className={CardSettingsCSS.form__input + " input"} type="text" name="num-card" placeholder="0000 0000 0000 0000" id="num-card" />
+    return (
+        <div className="universal-form">
+            <h1 className={AddCardCSS.page_main__heading}>добавить карту</h1>
+            <section className={AddCardCSS.form_card_add}>
+                <div className={AddCardCSS.form_card_add__container}>
+                    <form onSubmit={saveNewData} className={AddCardCSS.form_card_add__wrapper} action="#">
+                        <label htmlFor="num-card">
+                            <span className={AddCardCSS.form_input__text}>Номер карты</span>
+                            <input onFocus={numCardMask} className={AddCardCSS.form__input + " input"} type="text" name="num-card" placeholder="0000 0000 0000 0000" id="num-card" />
+                        </label>
+                        <label htmlFor="name-card">
+                            <span className={AddCardCSS.form_input__text}>Имя на карте</span>
+                            <input className={AddCardCSS.form__input + " input"} type="text" name="name-card" placeholder="VALDIMIR TIHOMIROV" id="name-card" />
+                        </label>
+                        <div className={AddCardCSS.form_card_add__shield}>
+                            <label className={AddCardCSS.form_label_date} htmlFor="date-card">
+                                <span className={AddCardCSS.form_input__text}>Срок действия</span>
+                                <input onFocus={dateCardMask} className={AddCardCSS.form__input + " input " + AddCardCSS.form__input_date} type="text" name="date-card" placeholder="00/00" id="date-card" />
                             </label>
-                            <label htmlFor="name-card">
-                                <span className={CardSettingsCSS.form_input__text}>Имя на карте</span>
-                                <input className={CardSettingsCSS.form__input + " input"} type="text" name="name-card" placeholder="VALDIMIR TIHOMIROV" id="name-card" />
+                            <label htmlFor="cvv-card">
+                                <span className={AddCardCSS.form_input__text}>CVV-код</span>
+                                <input onFocus={cvvCardMask} className={AddCardCSS.form__input + " input " + AddCardCSS.form__input_cvv} type="text" name="cvv-card" placeholder="000" id="cvv-card" />
                             </label>
-                            <div className={CardSettingsCSS.form_card_add__shield}>
-                                <label className={CardSettingsCSS.form_label_date} htmlFor="date-card">
-                                    <span className={CardSettingsCSS.form_input__text}>Срок действия</span>
-                                    <input onFocus={this.dateCardMask} className={CardSettingsCSS.form__input + " input " + CardSettingsCSS.form__input_date} type="text" name="date-card" placeholder="00/00" id="date-card" />
-                                </label>
-                                <label htmlFor="cvv-card">
-                                    <span className={CardSettingsCSS.form_input__text}>CVV-код</span>
-                                    <input onFocus={this.cvvCardMask} className={CardSettingsCSS.form__input + " input " + CardSettingsCSS.form__input_cvv} type="text" name="cvv-card" placeholder="000" id="cvv-card" />
-                                </label>
-                            </div>
-                            <button className={CardSettingsCSS.add_card__button + " button"}>Сохранить</button>
-                        </form>
-                        {/* <div className={CardSettingsCSS.form_card_add__buttons}>
-                            <button className={CardSettingsCSS.form_card_add__scane + " " + CardSettingsCSS.form_card_add__button}>
+                        </div>
+                        <button className={AddCardCSS.add_card__button + " button"}>Сохранить</button>
+                    </form>
+                    {/* <div className={AddCardCSS.form_card_add__buttons}>
+                            <button className={AddCardCSS.form_card_add__scane + " " + AddCardCSS.form_card_add__button}>
                                 <svg width="40" height="40" viewBox="0 0 42 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 0H41V40H1V0Z" fill="white" fillOpacity="0.01" />
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.7246 6C8.45844 6 5 9.45844 5 13.7246V15C5 15.5523 5.44772 16 6 16C6.55228 16 7 15.5523 7 15V13.7246C7 10.563 9.56301 8 12.7246 8H13.375H15C15.5523 8 16 7.55228 16 7C16 6.44772 15.5523 6 15 6H13.375H12.7246ZM29.2754 6C33.5416 6 37 9.45844 37 13.7246V15C37 15.5523 36.5523 16 36 16C35.4477 16 35 15.5523 35 15V13.7246C35 10.563 32.437 8 29.2754 8H28.625H27C26.4477 8 26 7.55228 26 7C26 6.44772 26.4477 6 27 6H28.625H29.2754ZM37 26.2754C37 30.5416 33.5416 34 29.2754 34H28.625H27C26.4477 34 26 33.5523 26 33C26 32.4477 26.4477 32 27 32H28.625H29.2754C32.437 32 35 29.437 35 26.2754V25C35 24.4477 35.4477 24 36 24C36.5523 24 37 24.4477 37 25V26.2754ZM12.7246 34C8.45844 34 5 30.5416 5 26.2754V25C5 24.4477 5.44772 24 6 24C6.55228 24 7 24.4477 7 25V26.2754C7 29.437 9.56301 32 12.7246 32H13.375H15C15.5523 32 16 32.4477 16 33C16 33.5523 15.5523 34 15 34H13.375H12.7246Z" fill="#3E4958" />
@@ -112,7 +111,7 @@ class CardSettings extends Component {
                                 </svg>
                                 <span>Сканировать карту</span>
                             </button>
-                            <button className={CardSettingsCSS.form_card_add__face_id + " " + CardSettingsCSS.form_card_add__button}>
+                            <button className={AddCardCSS.form_card_add__face_id + " " + AddCardCSS.form_card_add__button}>
                                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 0H40V40H0V0Z" fill="white" fillOpacity="0.01" />
                                     <path fillRule="evenodd" clipRule="evenodd" d="M11.7246 6C7.45844 6 4 9.45844 4 13.7246V15C4 15.5523 4.44772 16 5 16C5.55228 16 6 15.5523 6 15V13.7246C6 10.563 8.56301 8 11.7246 8H12.375H14C14.5523 8 15 7.55228 15 7C15 6.44772 14.5523 6 14 6H12.375H11.7246ZM28.2754 6C32.5416 6 36 9.45844 36 13.7246V15C36 15.5523 35.5523 16 35 16C34.4477 16 34 15.5523 34 15V13.7246C34 10.563 31.437 8 28.2754 8H27.625H26C25.4477 8 25 7.55228 25 7C25 6.44772 25.4477 6 26 6H27.625H28.2754ZM36 26.2754C36 30.5416 32.5416 34 28.2754 34H27.625H26C25.4477 34 25 33.5523 25 33C25 32.4477 25.4477 32 26 32H27.625H28.2754C31.437 32 34 29.437 34 26.2754V25C34 24.4477 34.4477 24 35 24C35.5523 24 36 24.4477 36 25V26.2754ZM11.7246 34C7.45844 34 4 30.5416 4 26.2754V25C4 24.4477 4.44772 24 5 24C5.55228 24 6 24.4477 6 25V26.2754C6 29.437 8.56301 32 11.7246 32H12.375H14C14.5523 32 15 32.4477 15 33C15 33.5523 14.5523 34 14 34H12.375H11.7246Z" fill="#3E4958" />
@@ -121,11 +120,10 @@ class CardSettings extends Component {
                                 <span>Добавить face ID</span>
                             </button>
                         </div> */}
-                    </div>
-                </section>
-            </div>
-        )
-    }
+                </div>
+            </section>
+        </div>
+    )
 };
 
-export default CardSettings;
+export default AddCard;

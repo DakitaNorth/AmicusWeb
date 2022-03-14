@@ -24,7 +24,7 @@ import TestSuccessful from "./components/A1General/testSuccessful";
 
 import FormRouteSearch from "./components/routeSearchPage/formRouteSearch";
 import RouteStoryList from "./components/routeSearchPage/routeStoryList";
-import Parameters from "./components/A1General/parameters";
+import SearchParameters from "./components/routeSearchPage/searchParameters";
 //import RouteStoryItem from "./components/routeStoryItem";
 import Navigation from "./components/A1General/navigation";
 
@@ -37,11 +37,17 @@ import ChatList from "./components/chatPage/chatList";
 
 import Profile from "./components/profilePage/profile";
 
-import DaysParameter from "./components/daysParameterPage/daysParameter";
+import SearchDaysParameter from "./components/SearchDaysParameterPage/daysParameter";
 
-import HumanParameter from "./components/humanParameterPage/humanParameter";
+import SearchHumanParameter from "./components/SearchHumanParameterPage/humanParameter";
 
-import TimeParameter from "./components/timeParameterPage/timeParameter";
+import SearchTimeParameter from "./components/SearchTimeParameterPage/timeParameter";
+
+import CreateDaysParameter from "./components/createDaysParameterPage/daysParameter";
+
+import CreateHumanParameter from "./components/createHumanParameterPage/humanParameter";
+
+import CreateTimeParameter from "./components/createTimeParameterPage/timeParameter";
 
 import RouteSelectedList from "./components/selectedRouteListPage/routeSelectedList";
 
@@ -123,7 +129,7 @@ class App extends React.Component {
                     <Route path="/route-search" element={
                         <div>
                             <FormRouteSearch />
-                            <Parameters />
+                            <SearchParameters />
                             <RouteStoryList/>
                             <Navigation />
                         </div>
@@ -207,24 +213,45 @@ class App extends React.Component {
                             <VievCar />
                         </div>
                     } />
-                    <Route path="/days-parameter" element={
+                    <Route path="/create-days-parameter" element={
                         <div>
                             <GoBackButton />
-                            <DaysParameter />
+                            <CreateDaysParameter />
                             <Navigation />
                         </div>
                     } />
-                    <Route path="/human-parameter" element={
+                    <Route path="/create-human-parameter" element={
                         <div>
                             <GoBackButton />
-                            <HumanParameter />
+                            <CreateHumanParameter />
                             <Navigation />
                         </div>
                     } />
-                    <Route path="/time-parameter" element={
+                    <Route path="/create-time-parameter" element={
                         <div>
                             <GoBackButton />
-                            <TimeParameter />
+                            <CreateTimeParameter />
+                            <Navigation />
+                        </div>
+                    } />
+                    <Route path="/search-days-parameter" element={
+                        <div>
+                            <GoBackButton />
+                            <SearchDaysParameter />
+                            <Navigation />
+                        </div>
+                    } />
+                    <Route path="/search-human-parameter" element={
+                        <div>
+                            <GoBackButton />
+                            <SearchHumanParameter />
+                            <Navigation />
+                        </div>
+                    } />
+                    <Route path="/search-time-parameter" element={
+                        <div>
+                            <GoBackButton />
+                            <SearchTimeParameter />
                             <Navigation />
                         </div>
                     } />
