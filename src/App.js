@@ -63,6 +63,8 @@ import ServiceSettings from "./components/serviceSettingsPage/serviceSettings";
 
 import AddCard from "./components/addCardPage/addCard";
 
+import AddCar from "./components/addCarPage/addCar";
+
 import VievCard from "./components/vievCardPage/vievCard";
 
 import VievCar from "./components/vievCarPage/vievCar";
@@ -185,6 +187,12 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <AddCard />
+                        </div>
+                    } />
+                    <Route path="/add-car" element={
+                        <div>
+                            <GoBackButton />
+                            <AddCar />
                         </div>
                     } />
                     <Route path="/viev-card" element={
