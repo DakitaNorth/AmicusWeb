@@ -10,7 +10,7 @@ import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 const FormLogin = () => {
     const navigate = useNavigate();
 
-    const Autorization = async (e) => {
+    const Autorization = (e) => {
         e.preventDefault();
 
         const phone = "+7(903)542-21-02";
@@ -28,7 +28,7 @@ const FormLogin = () => {
             "Content-Type": "application/json; charset=utf-8",
         };
 
-        await axios
+        axios
             .post("https://xn--80aaggtieo3biv.xn--p1ai/autorization",
                 { phone, password },
                 { headers })
