@@ -65,12 +65,16 @@
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.08);;
 }
 
+.setting_list__item_additionally {
+    padding-bottom: 43px;
+}
+
 .setting_list__item svg {
     margin-bottom: 10px;
 }
 
 .setting_list__item span {
-    max-width: 83px;
+    max-width: 120px;
     font-family: "Inter Bold";
     font-size: 15px;
     line-height: 18px;

@@ -33,7 +33,6 @@ const VievCard = () => {
                 setCardData(response.data[1]);
                 setCardDataNum(response.data[1].number.substring(0, 7) + "XX XXXX XXXX");
             });
-        
     }
 
     function includeData() {

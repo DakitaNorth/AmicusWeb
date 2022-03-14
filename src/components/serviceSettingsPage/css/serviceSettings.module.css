@@ -1,6 +1,5 @@
 .page_main__heading {
     align-self: center;
-    max-width: 150px;
     margin: 0;
     margin-top: 55px;
     margin-bottom: 36px;
@@ -21,7 +20,7 @@
 
 .service_settings__list {
     margin: 0;
-    margin-bottom: 277px;
+    margin-bottom: 450px;
     padding: 0;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -59,14 +58,6 @@
 .service_text {
     margin-left: 15px;
     font-size: 16px;
-}
-
-.service_settings__button {
-    align-self: center;
-    width: 205px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 7px;
 }
 
 .service_settings__version {
