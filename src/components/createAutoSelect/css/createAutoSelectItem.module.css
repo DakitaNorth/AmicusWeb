@@ -1,0 +1,50 @@
+.car_settings__list {
+    margin: 0;
+    padding: 0;
+}
+
+.car_list__item {
+    position: relative;
+    list-style: none;
+}
+
+.car_model {
+    text-transform: uppercase;
+}
+
+.car_color {
+    text-transform: none;
+    color: #3E4958;
+}
+
+.car_model {
+    width: 125px;
+}
+
+.car_statenumber {
+    text-align: end;
+}
+
+.car_color,
+.car_statenumber {
+    width: 75px;
+}
+
+.car_label {
+    width: 360px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.car_list__item::before,
+.car_list__item::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 2px;
+    left: 0;
+    background-color: #D5DDE0;
+    z-index: -2;
+}

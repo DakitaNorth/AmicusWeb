@@ -75,6 +75,8 @@ import VievCard from "./components/vievCardPage/vievCard";
 
 import VievCar from "./components/vievCarPage/vievCar";
 
+import CreateRouteAutoSelect from "./components/createAutoSelect/createAutoSelect";
+
 class App extends React.Component {
     render() {
         return (
@@ -279,6 +281,12 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <SuccessfulBooking />
+                        </div>
+                    } />
+                    <Route path="/auto-select-list" element={
+                        <div>
+                            <GoBackButton />
+                            <CreateRouteAutoSelect />
                         </div>
                     } />
                 </Routes>
