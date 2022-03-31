@@ -19,8 +19,8 @@ const FormRouteSearch = () => {
     }
 
     function includeData() {
-        document.getElementById('where-input').value = JSON.parse(localStorage.getItem("departureplace"));
-        document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("arrivalplace"));
+        document.getElementById('where-input').value = JSON.parse(localStorage.getItem("SearchDepartureplace"));
+        document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("SearchArrivalplace"));
     }
 
     return (

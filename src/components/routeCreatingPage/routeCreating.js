@@ -14,6 +14,12 @@ const headers = {
 
 const RouteCreating = () => {
 
+    const [profileData, setProfileData] = useState([]);
+
+    useEffect(() => {
+        gettingProfileData();
+    });
+
     useLayoutEffect(() => {
         includeData();
     })
@@ -55,6 +61,18 @@ const RouteCreating = () => {
         localStorage.setItem("CreateGettingDescription", JSON.stringify(gettingDescription));
     }
 
+    function gettingProfileData() {
+        let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        let phone = LoginPassword.phone;
+        let password = LoginPassword.password;
+
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+        axios.post(API_URL, { phone, password }, { headers })
+            .then((response) => {
+                setProfileData(response.data);
+            });
+    }
+
     function createRoute(e) {
         e.preventDefault();
 
@@ -71,10 +89,15 @@ const RouteCreating = () => {
         let price = document.getElementById('price-input').value;
         let description = document.getElementById('additional-input').value;
 
+        console.log(profileData);
+
+        let autorname = profileData.name;
+        let autorphoto = profileData.photo;
+
         const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
 
         axios.post(ADD_ROUTE_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount,
-                                    distance, weekday, automobile, price, description, autor }, { headers })
+                                    distance, weekday, automobile, price, description, autor, autorname, autorphoto }, { headers })
             .then((response) => {
                 console.log(response.data);
             });

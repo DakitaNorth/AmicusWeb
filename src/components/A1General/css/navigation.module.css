@@ -19,32 +19,33 @@
     list-style: none;
 }
 
-.navigation_link svg {
+.navigation_link {
+    color: #3E4958;
+}
+
+.navigation_svg {
     fill: #97ADB6;
 }
 
-.navigation_link__active svg {
+.navigation_link__active_svg {
     fill: #476DF5;
 }
 
-.my_route_link .first_path,
-.my_route_link .second_path,
-.my_route_link .third_path {
+.my_route_link__yellow_path,
+.my_route_link__yellow_path,
+.my_route_link__yellow_path {
     fill: #FFC032;
 }
 
-.my_route_link .fourth_path,
-.my_route_link .fifth_path {
+.my_route_link__blue_path {
+    fill: #476DF5;
+}
+
+.my_route_link__black_path,
+.my_route_link__black_path {
     fill: #0C2E40;
 }
 
-.my_route_link .sixth_path {
+.my_route_link__grey_path {
     fill: #97ADB6;
-}
-
-.messages_link .third_path,
-.account_link .second_path,
-.account_link .third_path {
-    stroke: #97ADB6;
-    stroke-width: 0.5px;
 }
