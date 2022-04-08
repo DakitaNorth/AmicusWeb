@@ -51,4 +51,9 @@
 .my_routes__list {
     padding-left: 36px;
     padding-right: 36px;
+    padding-bottom: 60px;
+}
+
+.my_routes__radiobutton {
+    padding: 0;
 }
