@@ -10,11 +10,34 @@ const SearchParameters = () => {
     const [arrivalTime, setArrivalTime] = useState([]);
 
     useEffect(() => {
-        setDaysData(JSON.parse(localStorage.getItem("SearchDaysParameter")));
-        setHumanData(JSON.parse(localStorage.getItem("SearchHumanParameter")));
-        setDepartureTime(JSON.parse(localStorage.getItem("SearchDepartureTime")));
-        setArrivalTime(JSON.parse(localStorage.getItem("SearchArrivalTime")));
+        includeData();
     });
+
+    function includeData() {
+        if (typeof localStorage.getItem("SearchDaysParameter") !== "undefined" && localStorage.getItem("SearchDaysParameter") !== null) {
+            setDaysData(JSON.parse(localStorage.getItem("SearchDaysParameter")));
+        } else {
+            setDaysData("пн вт ср ");
+        }
+
+        if (typeof localStorage.getItem("SearchHumanParameter") !== "undefined" && localStorage.getItem("SearchHumanParameter") !== null) {
+            setHumanData(JSON.parse(localStorage.getItem("SearchHumanParameter")));
+        } else {
+            setHumanData("1");
+        }
+
+        if (typeof localStorage.getItem("SearchDepartureTime") !== "undefined" && localStorage.getItem("SearchDepartureTime") !== null) {
+            setDepartureTime(JSON.parse(localStorage.getItem("SearchDepartureTime")));
+        } else {
+            setDepartureTime("12:00");
+        }
+
+        if (typeof localStorage.getItem("SearchArrivalTime") !== "undefined" && localStorage.getItem("SearchArrivalTime") !== null) {
+            setArrivalTime(JSON.parse(localStorage.getItem("SearchArrivalTime")));
+        } else {
+            setArrivalTime("00:00");
+        }
+    }
 
     return (
         <div className={SearchParametersCSS.parameters}>

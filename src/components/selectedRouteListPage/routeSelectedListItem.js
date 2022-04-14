@@ -23,7 +23,7 @@ const RouteSelectedListItem = props => {
                         </div>
                     </div>
                 </div>
-                <NavLink to={"/selected-route"} className={RouteSelLisItemCSS.route_button}>
+                <NavLink to={"/selected-route/" + props.id} className={RouteSelLisItemCSS.route_button}>
                     <span className={RouteSelLisItemCSS.route_list__text}>Смотреть</span>
                     <span className={RouteSelLisItemCSS.route_list__price}>{props.price} ₽</span>
                 </NavLink>

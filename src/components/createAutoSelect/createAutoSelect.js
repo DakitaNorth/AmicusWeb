@@ -5,9 +5,6 @@ import CreateAutoSelectCSS from './css/createAutoSelect.module.css';
 
 import CreateAutoSelectItem from "./createAutoSelectItem";
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const phone = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -15,22 +12,29 @@ const headers = {
 const CreateAutoSelect = () => {
 
     const [carsData, setCarsData] = useState([]);
+    console.log(carsData);
 
     useEffect(() => {
         gettingCarsData();
     }, []);
 
     function gettingCarsData() {
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
-        axios.post(API_URL, { phone }, { headers })
-            .then((response) => {
-                setCarsData(response.data); 
-            });
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const phone = LoginPassword.phone;
+
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
+            axios.post(API_URL, { phone }, { headers })
+                .then((response) => {
+                    setCarsData(response.data); 
+                });
+        }
     }
 
-    const carsStandart = carsData.map((item) => {
+    const carsStandart = carsData.map((item, pos) => {
         return (
             <CreateAutoSelectItem
+                key={pos}
                 owner={item.owner}
                 statenumber={item.statenumber}
                 model={item.model}

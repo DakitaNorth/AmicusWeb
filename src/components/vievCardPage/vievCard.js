@@ -4,9 +4,6 @@ import axios from "axios";
 import IMask from "imask";
 import VievCardCSS from './css/vievCard.module.css';
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const phone = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -27,12 +24,17 @@ const VievCard = () => {
     })
 
     function gettingCardData() {
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
-        axios.post(API_URL, { phone }, { headers })
-            .then((response) => {
-                setCardData(response.data[1]);
-                setCardDataNum(response.data[1].number.substring(0, 7) + "XX XXXX XXXX");
-            });
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const phone = LoginPassword.phone;
+
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
+            axios.post(API_URL, { phone }, { headers })
+                .then((response) => {
+                    setCardData(response.data[1]);
+                    setCardDataNum(response.data[1].number.substring(0, 7) + "XX XXXX XXXX");
+                });
+        }
     }
 
     function includeData() {

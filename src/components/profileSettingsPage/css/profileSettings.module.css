@@ -50,7 +50,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 150px;
+    margin-bottom: 105px;
     padding-top: 25px;
     padding-bottom: 25px;
     padding-left: 20px;
@@ -98,12 +98,14 @@
 }
 
 .phone_label,
-.email_label {
+.email_label,
+.vk_label {
     margin-bottom: 15px;
 }
 
 .phone__input,
 .email__input,
+.vk__input,
 .password__input {
     width: 250px;
     justify-self: flex-end;
@@ -111,6 +113,7 @@
 
 .phone_svg,
 .email_svg,
+.vk_svg,
 .password_svg {
     position: absolute;
     top: 7px;
@@ -120,6 +123,7 @@
 
 .phone__input:focus,
 .email__input:focus,
+.vk__input:focus,
 .password__input:focus {
     background-color: #F7F8F9;
     border: 1px solid #D5DDE0;

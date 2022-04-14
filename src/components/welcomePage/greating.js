@@ -3,13 +3,6 @@ import { NavLink } from "react-router-dom";
 import GreatingCSS from './css/greating.module.css';
 import logo from "../../img/logo-mobile.svg";
 
-let LoginPassword = {
-    phone: "+7(903)542-21-02",
-    password: "12345"
-}
-
-localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
-
 const Greeting = () => {
     return (
         <header className={GreatingCSS.page_header}>

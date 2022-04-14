@@ -148,7 +148,7 @@ class App extends React.Component {
                             <Navigation />
                         </div>
                     } />
-                    <Route path="/my-route-selected" element={
+                    <Route path="/my-routes/:myRouteID" element={
                         <div>
                             <GoBackButton />
                             <MyRoutesSelected />
@@ -264,7 +264,7 @@ class App extends React.Component {
                             <Navigation />
                         </div>
                     } />
-                    <Route path="/selected-route" element={
+                    <Route path="/selected-route/:selRouteID" element={
                         <div>
                             <GoBackButton />
                             <RouteSelected />

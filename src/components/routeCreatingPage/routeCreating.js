@@ -5,9 +5,6 @@ import RouteCreatingCSS from './css/routeCreating.module.css';
 
 import CreateParameters from "../routeCreatingPage/createParameters";
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-let autor = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -62,15 +59,17 @@ const RouteCreating = () => {
     }
 
     function gettingProfileData() {
-        let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-        let phone = LoginPassword.phone;
-        let password = LoginPassword.password;
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            let phone = LoginPassword.phone;
+            let password = LoginPassword.password;
 
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
-        axios.post(API_URL, { phone, password }, { headers })
-            .then((response) => {
-                setProfileData(response.data);
-            });
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+            axios.post(API_URL, { phone, password }, { headers })
+                .then((response) => {
+                    setProfileData(response.data);
+                });
+        }
     }
 
     function createRoute(e) {
@@ -79,7 +78,7 @@ const RouteCreating = () => {
         let departureplace = document.getElementById('where-input').value;
         let arrivalplace = document.getElementById('somewhere-input').value;
 
-        let departuretime = JSON.parse(localStorage.getItem("CreateDepartureTime")); 
+        let departuretime = JSON.parse(localStorage.getItem("CreateDepartureTime"));
         let arrivaltime = JSON.parse(localStorage.getItem("CreateArrivalTime"));
         let membercount = JSON.parse(localStorage.getItem("CreateHumanParameter"));
         let distance = "72 км";
@@ -91,16 +90,23 @@ const RouteCreating = () => {
 
         console.log(profileData);
 
-        let autorname = profileData.name;
-        let autorphoto = profileData.photo;
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            let autor = LoginPassword.phone;
 
-        const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
+            let autorname = profileData.name;
+            let autorphoto = profileData.photo;
 
-        axios.post(ADD_ROUTE_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount,
-                                    distance, weekday, automobile, price, description, autor, autorname, autorphoto }, { headers })
-            .then((response) => {
-                console.log(response.data);
-            });
+            const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
+
+            axios.post(ADD_ROUTE_URL, {
+                departureplace, arrivalplace, departuretime, arrivaltime, membercount,
+                distance, weekday, automobile, price, description, autor, autorname, autorphoto
+            }, { headers })
+                .then((response) => {
+                    console.log(response.data);
+                });
+        }
     }
 
     return (

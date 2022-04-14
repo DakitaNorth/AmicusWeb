@@ -5,9 +5,6 @@ import CardSettingsCSS from './css/cardSettings.module.css';
 
 import CardSettingsItem from "./cardSettingsItem";
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const phone = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -21,16 +18,22 @@ const CardSettings = () => {
     }, []);
 
     function gettingCardData() {
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
-        axios.post(API_URL, { phone }, { headers })
-            .then((response) => {
-                setCardsData(response.data); 
-            });
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const phone = LoginPassword.phone;
+
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
+            axios.post(API_URL, { phone }, { headers })
+                .then((response) => {
+                    setCardsData(response.data);
+                });
+        }
     }
 
-    const cardsStandart = cardsData.map((item) => {
+    const cardsStandart = cardsData.map((item, pos) => {
         return (
             <CardSettingsItem
+                key={pos}
                 number={item.number}
                 owner={item.owner}
                 date={item.date}

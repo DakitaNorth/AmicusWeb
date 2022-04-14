@@ -58,6 +58,7 @@
     text-align: center;
     color: #3E4958;
     border: none;
+    background-color: transparent;
 }
 
 .human_form__button {

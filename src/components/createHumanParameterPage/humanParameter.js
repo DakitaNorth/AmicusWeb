@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HumanParameterCSS from './css/humanParameter.module.css';
 
@@ -6,11 +6,16 @@ const HumanParameter = () => {
 
     const navigate = useNavigate();
 
+    let inputNumber = 1;
+
+    useEffect(() => {
+        includeData();
+    })
+
     function gettingHumanParameter(e) {
         e.preventDefault();
-        let humanParameter = "";
 
-        humanParameter = document.getElementById('human-input').value;
+        let humanParameter = document.getElementById('human-input').value;
 
         console.log(humanParameter);
 
@@ -19,15 +24,26 @@ const HumanParameter = () => {
         navigate("/creating-route");
     }
 
+    function includeData() {
+        document.getElementById('human-input').value = inputNumber;
+    }
+
     function inputPlus(e) {
         e.preventDefault();
-        document.getElementById('human-input').value += 1;
+        if (inputNumber >= 0 && inputNumber < 9) {
+            inputNumber += 1;
+            document.getElementById('human-input').value = inputNumber;
+        }
     }
 
     function inputMinus(e) {
         e.preventDefault();
-        document.getElementById('human-input').value -= 1;
+        if (inputNumber >= 2) {
+            inputNumber -= 1;
+            document.getElementById('human-input').value = inputNumber;
+        }
     }
+
     return (
         <div className="universal-form">
             <h1 className={HumanParameterCSS.page_main__heading}>Cколько пассажиров?</h1>
@@ -42,7 +58,7 @@ const HumanParameter = () => {
                                         fill="#3E4958" />
                                 </svg>
                             </button>
-                            <input className={HumanParameterCSS.human_form__input} type="text" name="human" placeholder="1" maxLength="1" id="human-input" />
+                            <input className={HumanParameterCSS.human_form__input} type="text" name="human" placeholder="1" maxLength="1" id="human-input" disabled />
                             <button onClick={inputPlus} className={HumanParameterCSS.human_input__button}>
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path

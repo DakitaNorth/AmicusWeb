@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 import RouteSelCSS from './css/routeSelected.module.css';
 
@@ -7,30 +7,32 @@ import SearchParameters from "../routeSearchPage/searchParameters";
 import RouteSelectedItem from "./routeSelectedItem";
 import RouteSelectedListItem from "../selectedRouteListPage/routeSelectedListItem";
 
-const departureplace = JSON.parse(localStorage.getItem("departureplace"));
-const arrivalplace = JSON.parse(localStorage.getItem("arrivalplace"));
-const weekday = JSON.parse(localStorage.getItem("daysParameter"));
-const membercount = JSON.parse(localStorage.getItem("humanParameter"));
-const departuretime = JSON.parse(localStorage.getItem("departureTime"));
-const arrivaltime = JSON.parse(localStorage.getItem("arrivalTime"));
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
 const RouteSelected = () => {
 
-    const [selRoutesData, setSelRoutesData] = useState([]);
+    const params = useParams();
+
+    const [routesData, setRoutesData] = useState([]);
+    const [thisRoutesData, setThisRoutesData] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        gettingSelRoutesData();
+        gettingRoutesData();
     }, []);
 
     useLayoutEffect(() => {
-        includeData();
+        if (isLoading) {
+            gettingThisRoute();
+            includeData();
+            console.log(thisRoutesData);
+        }
     })
 
-    function gettingSelRoutesData() {
+    function gettingRoutesData() {
         let departureplace = JSON.parse(localStorage.getItem("SearchDepartureplace"));
         let arrivalplace = JSON.parse(localStorage.getItem("SearchArrivalplace"));
         let departuretime = JSON.parse(localStorage.getItem("SearchDepartureTime"));
@@ -41,28 +43,25 @@ const RouteSelected = () => {
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/searchtravel";
         axios.post(API_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount, weekday }, { headers })
             .then((response) => {
-                setSelRoutesData(response.data);
-                console.log(response.data);
+                setRoutesData(response.data);
+                setIsLoading(true);
             });
     };
+
+    function gettingThisRoute() {
+        let paramsId = parseInt(params.selRouteID);
+
+        for (var i = 0; i < routesData.length; i++) {
+            if (routesData[i].id == paramsId) {
+                setThisRoutesData(routesData[i]);
+            }
+        }
+    }
 
     function includeData() {
         document.getElementById('where-input').value = JSON.parse(localStorage.getItem("SearchDepartureplace"));
         document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("SearchArrivalplace"));
     }
-
-    const routeStandart = selRoutesData.map((item, pos) => {
-        return (
-            <RouteSelectedItem
-                key={item.id}
-                departureplace={item.departureplace}
-                departuretime={item.departuretime}
-                arrivalplace={item.arrivalplace}
-                arrivaltime={item.arrivaltime}
-                price={item.price}
-            />
-        )
-    });
 
     return (
         <div className="universal-form">
@@ -79,11 +78,17 @@ const RouteSelected = () => {
                 <SearchParameters />
                 <div className={RouteSelCSS.route_list}>
                     <div className={RouteSelCSS.route_list__container}>
-                        <ul className={RouteSelCSS.route_list__list}>
-                            <li className={RouteSelCSS.route__item + " " + RouteSelCSS.route}>
-                                {routeStandart}
-                            </li>
-                        </ul>
+                        <RouteSelectedItem
+                            key={thisRoutesData.id}
+                            id={thisRoutesData.id}
+                            autorname={thisRoutesData.autorname}
+                            autorphoto={thisRoutesData.autorphoto}
+                            departuretime={thisRoutesData.departuretime}
+                            arrivaltime={thisRoutesData.arrivaltime}
+                            membercount={thisRoutesData.membercount}
+                            weekday={thisRoutesData.weekday}
+                            price={thisRoutesData.price}
+                        />
                     </div>
                 </div>
             </section>

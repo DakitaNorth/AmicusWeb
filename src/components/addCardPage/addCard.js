@@ -4,9 +4,6 @@ import axios from "axios";
 import IMask from "imask";
 import AddCardCSS from './css/addCard.module.css';
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const user = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -43,23 +40,28 @@ const AddCard = () => {
     function saveNewData(e) {
         e.preventDefault();
 
-        const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const user = LoginPassword.phone;
 
-        let number = document.getElementById('num-card').value;
-        let owner = document.getElementById('name-card').value;
-        let date = document.getElementById('date-card').value;
-        let cvv = document.getElementById('cvv-card').value;
+            const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
 
-        console.log(number);
-        console.log(owner);
-        console.log(date);
-        console.log(cvv);
+            let number = document.getElementById('num-card').value;
+            let owner = document.getElementById('name-card').value;
+            let date = document.getElementById('date-card').value;
+            let cvv = document.getElementById('cvv-card').value;
+
+            console.log(number);
+            console.log(owner);
+            console.log(date);
+            console.log(cvv);
 
 
-        axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
-            .then((response) => {
-                console.log(response);
-            });
+            axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
+                .then((response) => {
+                    console.log(response);
+                });
+        }
     }
 
     return (

@@ -8,8 +8,8 @@ const MyRoutesItem = props => {
         <div id={props.id} className={MyRoutesItemSCSS.route_driver__item}>
             <div className={MyRoutesItemSCSS.route_driver__shield}>
                 <div className={MyRoutesItemSCSS.route_driver_avatar}>
-                    <img className={MyRoutesItemSCSS.route_driver_avatar__img} src={avatar} alt="Фотография водителя" />
-                    <span className={MyRoutesItemSCSS.route_driver__name}>Игорь</span>
+                    <img className={MyRoutesItemSCSS.route_driver_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
+                    <span className={MyRoutesItemSCSS.route_driver__name}>{props.autorname}</span>
                 </div>
                 <div className={MyRoutesItemSCSS.route_driver_information}>
                     <div className={MyRoutesItemSCSS.route_driver_information__item + " " + MyRoutesItemSCSS.route_driver_information__item_where}>
@@ -25,7 +25,7 @@ const MyRoutesItem = props => {
                     </div>
                 </div>
             </div>
-            <NavLink to="/my-route-selected" className={MyRoutesItemSCSS.route_driver_button}>Подробнее</NavLink>
+            <NavLink to={"/my-routes/" + props.id} className={MyRoutesItemSCSS.route_driver_button}>Подробнее</NavLink>
         </div>
     )
 };

@@ -30,33 +30,3 @@
     padding-left: 36px;
     padding-right: 36px;
 }
-
-.route_list__list {
-    margin: 0;
-    padding: 0;
-}
-
-.route__item {
-    position: relative;
-    list-style: none;
-    margin-bottom: 18px;
-}
-
-/* .route__item::before,
-.route__item::after {
-    content: "";
-    position: absolute;
-    width: 360px;
-    height: 2px;
-    left: -10px;
-    background-color: #D5DDE0;
-    z-index: -2;
-} */
-
-.route__item::before {
-    top: -10px;
-}
-
-.route__item::after {
-    bottom: -15px;
-}

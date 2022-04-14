@@ -6,9 +6,6 @@ import CarSettingsCSS from './css/vievCar.module.css';
 
 import car_img from "../../img/carSettings/car.png";
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const phone = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -27,12 +24,16 @@ const VievCar = () => {
     })
 
     function gettingCarData() {
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
-        axios.post(API_URL, { phone }, { headers })
-            .then((response) => {
-                setCarData(response.data[1]);
-            });
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const phone = LoginPassword.phone;
 
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
+            axios.post(API_URL, { phone }, { headers })
+                .then((response) => {
+                    setCarData(response.data[1]);
+                });
+        }
     }
 
     function includeData() {

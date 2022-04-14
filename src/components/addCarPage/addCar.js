@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AddCarSettingsCSS from './css/addCar.module.css';
 
-const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-const owner = LoginPassword.phone;
-
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -16,18 +13,23 @@ const AddCar = () => {
     function addCar(e) {
         e.preventDefault();
 
-        let statenumber = document.getElementById('num-input').value;
-        let model = document.getElementById('model-input').value;
-        let color = document.getElementById('color-input').value;
-        let places = document.getElementById('places-input').value;
+        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const owner = LoginPassword.phone;
 
-        const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addauto";
+            let statenumber = document.getElementById('num-input').value;
+            let model = document.getElementById('model-input').value;
+            let color = document.getElementById('color-input').value;
+            let places = document.getElementById('places-input').value;
 
-        axios.post(ADD_CARD_URL, { statenumber, model, color, places, owner }, { headers })
-            .then((response) => {
-                navigate("/my-car-settings");
-                console.log(response);
-            });
+            const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addauto";
+
+            axios.post(ADD_CARD_URL, { statenumber, model, color, places, owner }, { headers })
+                .then((response) => {
+                    navigate("/my-car-settings");
+                    console.log(response);
+                });
+        }
     }
 
     return (
