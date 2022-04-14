@@ -132,7 +132,6 @@ class App extends React.Component {
                         <div>
                             <FormRouteSearch />
                             <SearchParameters />
-                            <RouteStoryList/>
                             <Navigation />
                         </div>
                     } />

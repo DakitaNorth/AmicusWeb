@@ -10,11 +10,38 @@ const CreateParameters = () => {
     const [arrivalTime, setArrivalTime] = useState([]);
 
     useEffect(() => {
-        setDaysData(JSON.parse(localStorage.getItem("CreateDaysParameter")));
-        setHumanData(JSON.parse(localStorage.getItem("CreateHumanParameter")));
-        setDepartureTime(JSON.parse(localStorage.getItem("CreateDepartureTime")));
-        setArrivalTime(JSON.parse(localStorage.getItem("CreateArrivalTime")));
+        includeData();
     });
+
+    function includeData() {
+        if (typeof localStorage.getItem("CreateDaysParameter") !== "undefined" && localStorage.getItem("CreateDaysParameter") !== null) {
+            setDaysData(JSON.parse(localStorage.getItem("CreateDaysParameter")));
+        } else {
+            setDaysData("пн вт ср ");
+            localStorage.setItem("CreateDaysParameter", JSON.stringify(daysData));
+        }
+
+        if (typeof localStorage.getItem("CreateHumanParameter") !== "undefined" && localStorage.getItem("CreateHumanParameter") !== null) {
+            setHumanData(JSON.parse(localStorage.getItem("CreateHumanParameter")));
+        } else {
+            setHumanData("1");
+            localStorage.setItem("CreateHumanParameter", JSON.stringify(humanData));
+        }
+
+        if (typeof localStorage.getItem("CreateDepartureTime") !== "undefined" && localStorage.getItem("CreateDepartureTime") !== null) {
+            setDepartureTime(JSON.parse(localStorage.getItem("CreateDepartureTime")));
+        } else {
+            setDepartureTime("12:00");
+            localStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
+        }
+
+        if (typeof localStorage.getItem("CreateArrivalTime") !== "undefined" && localStorage.getItem("CreateArrivalTime") !== null) {
+            setArrivalTime(JSON.parse(localStorage.getItem("CreateArrivalTime")));
+        } else {
+            setArrivalTime("00:00");
+            localStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
+        }
+    }
 
     return (
         <div className={CreateParametersCSS.parameters}>

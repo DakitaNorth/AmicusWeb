@@ -104,6 +104,20 @@ const VievCard = () => {
         IMask(cvvInput, cvvMaskOptions);
     }
 
+    function saveNewData(e) {
+        // e.preventDefault();
+
+        // let cardnumber = document.getElementById('num-card').value;
+
+        // const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delcard";
+
+        // axios.post(DELETE_CARD_URL, { cardnumber }, { headers })
+        //     .then((response) => {
+        //         navigate("/my-card-settings");
+        //         console.log(response);
+        //     });
+    }
+
     function deleteCard(e) {
         e.preventDefault();
 
@@ -165,7 +179,7 @@ const VievCard = () => {
                         </button>
                     </div>
                 </div>
-                <button className={VievCardCSS.viev_card__button + " " + VievCardCSS.viev_card__button_add + " button"}>Сохранить</button>
+                <button onClick={saveNewData} className={VievCardCSS.viev_card__button + " " + VievCardCSS.viev_card__button_add + " button"}>Сохранить</button>
                 <button onClick={deleteCard} className={VievCardCSS.viev_card__button + " " + VievCardCSS.viev_card__button_delete}>Удалить</button>
             </section>
         </div>

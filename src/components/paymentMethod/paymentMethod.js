@@ -2,14 +2,16 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PaymentMethodCSS from './css/paymentMethod.module.css';
+import { useNavigate } from "react-router-dom";
 
-import CardSettingsItem from "../cardSettingsPage/cardSettingsItem";
+import PaymentMethodItem from "./paymentMethodItem";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
 const PaymentMethod = () => {
+    const navigate = useNavigate();
 
     const [cardsData, setCardsData] = useState([]);
 
@@ -30,9 +32,13 @@ const PaymentMethod = () => {
         }
     }
 
+    function selRouteIDPush() {
+        navigate("/successful-booking");
+    };
+
     const cardsStandart = cardsData.map((item, pos) => {
         return (
-            <CardSettingsItem
+            <PaymentMethodItem
                 key={pos}
                 number={item.number}
                 owner={item.owner}
@@ -49,8 +55,8 @@ const PaymentMethod = () => {
                     <ul className={PaymentMethodCSS.payment_list__list}>
                         {cardsStandart}
                         <li className={PaymentMethodCSS.payment_list__item}>
-                            <input className={PaymentMethodCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="cash" id="cash" />
                             <label className={PaymentMethodCSS.payment_label + " " + PaymentMethodCSS.payment_label_cash} htmlFor="cash">
+                                <input className={PaymentMethodCSS.payment_input + " visually-hidden"} onChange={selRouteIDPush} type="radio" name="payment-method" value="cash" id="cash" />
                                 <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M21.2409 21.2509C26.1542 21.2509 28.7172 18.4114 28.7172 14.6574C28.7172 10.9565 26.1967 8 21.2409 8H13.3287V18.4646H10V21.2509H13.3287V23.0801H10V25.877H13.3287V29.78H16.6042V25.877H21.4005V23.0801H16.6042V21.2509H21.2409ZM16.6042 18.4646V10.8076H21.2409C24.0911 10.8076 25.4523 12.456 25.4523 14.668C25.4523 16.9013 24.1017 18.4646 21.1984 18.4646H16.6042Z"
@@ -59,9 +65,9 @@ const PaymentMethod = () => {
                                 <span className={PaymentMethodCSS.payment_name + " " + PaymentMethodCSS.payment_cash}>Наличные</span>
                             </label>
                         </li>
-                        <li className={PaymentMethodCSS.payment_list__item}>
-                            <input className={PaymentMethodCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="add-card" id="add-card" />
+                        {/* <li className={PaymentMethodCSS.payment_list__item}>
                             <label className={PaymentMethodCSS.payment_label + " " + PaymentMethodCSS.payment_label_add} htmlFor="add-card">
+                            <input className={PaymentMethodCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="add-card" id="add-card" />
                                 <a href="#">
                                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" clipRule="evenodd"
@@ -71,10 +77,9 @@ const PaymentMethod = () => {
                                     <span className={PaymentMethodCSS.payment_name + " " + PaymentMethodCSS.payment_add_card}>Добавить карту</span>
                                 </a>
                             </label>
-                        </li>
+                        </li> */}
                     </ul>
                 </form>
-                <NavLink to="/successful-booking">Тест далее</NavLink>
             </section>
         </div>
     )

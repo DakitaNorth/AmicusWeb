@@ -17,7 +17,7 @@ const FormLogin = () => {
     const Autorization = (e) => {
         e.preventDefault();
 
-        const phone = "+7(903)542-21-08";
+        const phone = "+7(903)542-21-02";
         // const phone  = e.target.elements.login.value;
 
         const password = "12345";

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 import MyRoutesSCSS from './css/myRoutesSelector.module.css';
 
@@ -17,8 +16,6 @@ const MyRoutesSelector = () => {
 
     useEffect(() => {
         gettingData();
-        console.log(myDriverData);
-        console.log(myPassagerData);
     }, []);
 
     function gettingData() {
@@ -32,11 +29,13 @@ const MyRoutesSelector = () => {
             axios.post(PASSAGER_URL, { userphone }, { headers })
                 .then((response) => {
                     setMyPassagerData(response.data);
+                    console.log(myPassagerData);
                 });
     
             axios.post(DRIVER_URL, { userphone }, { headers })
                 .then((response) => {
                     setMyDriverData(response.data);
+                    console.log(myDriverData);
                 });
     
             setMyRoutesData(myPassagerData.concat(myDriverData));
@@ -111,7 +110,7 @@ const MyRoutesSelector = () => {
                     </form>
                 </div>
                 <div className={MyRoutesSCSS.my_routes__list}>
-                    {driverStandart}
+                    {allStandart}
                 </div>
             </section>
         </div>

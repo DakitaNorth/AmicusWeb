@@ -4,6 +4,13 @@ import RouteSelItemCSS from './css/routeSelectedItem.module.css';
 import avatar from "../../img/routeHistory/Group.png";
 
 const RouteSelectedItem = props => {
+
+    function selRouteIDPush() {
+        let travelid = props.id;
+        console.log(travelid);
+        localStorage.setItem("SelectedTravelID", JSON.stringify(travelid));
+    };
+
     return (
         <div className={RouteSelItemCSS.route_selected__container}>
             <div className={RouteSelItemCSS.route_selected__wrapper}>
@@ -68,7 +75,7 @@ const RouteSelectedItem = props => {
                     </button>
                 </div>
             </div>
-            <NavLink to="/payment-method" className={RouteSelItemCSS.route_list__button}>
+            <NavLink onClick={selRouteIDPush} to="/payment-method" className={RouteSelItemCSS.route_list__button}>
                 <span className={RouteSelItemCSS.route_list__text}>Забронировать</span>
                 <span className={RouteSelItemCSS.route_list__price}>{props.price} ₽</span>
             </NavLink>

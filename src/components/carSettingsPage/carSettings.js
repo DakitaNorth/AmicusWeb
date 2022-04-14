@@ -27,13 +27,15 @@ const CarSettings = () => {
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
                     setCarsData(response.data);
+                    console.log(carsData);
                 });
         }
     }
 
-    const carsStandart = carsData.map((item) => {
+    const carsStandart = carsData.map((item, pos) => {
         return (
             <CarSettingsItem
+                key={pos}
                 owner={item.owner}
                 statenumber={item.statenumber}
                 model={item.model}
