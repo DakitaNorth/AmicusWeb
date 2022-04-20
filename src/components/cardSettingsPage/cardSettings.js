@@ -18,14 +18,19 @@ const CardSettings = () => {
     }, []);
 
     function gettingCardData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
 
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
-                    setCardsData(response.data);
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setCardsData(response.data); 
+                    }
+                    else {
+                        console.log(cardsData);
+                    }
                 });
         }
     }
@@ -34,6 +39,7 @@ const CardSettings = () => {
         return (
             <CardSettingsItem
                 key={pos}
+                id={item.id}
                 number={item.number}
                 owner={item.owner}
                 date={item.date}

@@ -71,7 +71,7 @@ const FormRegistration = () => {
                         <input onFocus={loginInputMask} className="input" type="text" name="login" placeholder="+7(900)000-00-00" id="login-input" />
                         <label htmlFor="password-input">Пароль</label>
                         <input className="input" type="password" name="password" id="password-input" autoComplete="on" />
-                        <label htmlFor="repeat-input">Повторите ароль</label>
+                        <label htmlFor="repeat-input">Повторите пароль</label>
                         <input className="input" type="password" name="repeatPassword" id="repeat-input" autoComplete="on" />
                         <div className={FormRegCSS.agree_checkbox__wrapper}>
                             <input className={FormRegCSS.agree_checkbox + " visually-hidden"} type="checkbox" name="agree" id="agree-checkbox" />

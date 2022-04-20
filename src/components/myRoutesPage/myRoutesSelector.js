@@ -6,7 +6,7 @@ import MyRoutesItem from "./myRoutesItem";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
-};
+}; 
 
 const MyRoutesSelector = () => {
 
@@ -19,25 +19,33 @@ const MyRoutesSelector = () => {
     }, []);
 
     function gettingData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
-            
+
             const PASSAGER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserpassenger";
             const DRIVER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserdriver";
-    
+
             axios.post(PASSAGER_URL, { userphone }, { headers })
                 .then((response) => {
-                    setMyPassagerData(response.data);
-                    console.log(myPassagerData);
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setMyPassagerData(response.data);
+                    }
+                    else {
+                        console.log(response.data); 
+                    }
                 });
-    
+
             axios.post(DRIVER_URL, { userphone }, { headers })
                 .then((response) => {
-                    setMyDriverData(response.data);
-                    console.log(myDriverData);
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setMyDriverData(response.data);
+                    }
+                    else {
+                        console.log(response.data);
+                    }
                 });
-    
+
             setMyRoutesData(myPassagerData.concat(myDriverData));
         }
     }
@@ -110,7 +118,7 @@ const MyRoutesSelector = () => {
                     </form>
                 </div>
                 <div className={MyRoutesSCSS.my_routes__list}>
-                    {allStandart}
+                    {driverStandart}
                 </div>
             </section>
         </div>

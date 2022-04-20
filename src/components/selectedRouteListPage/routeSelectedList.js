@@ -33,8 +33,12 @@ const RouteSelectedList = () => {
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/searchtravel";
         axios.post(API_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount, weekday }, { headers })
             .then((response) => {
-                setRoutesData(response.data);
-                console.log(response.data);
+                if (Array.isArray(response.data) && response.data.length) {
+                    setRoutesData(response.data);
+                    console.log(response.data);
+                } else {
+                    console.log(response.data);
+                }
             });
     };
 

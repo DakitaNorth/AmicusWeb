@@ -12,24 +12,28 @@ const headers = {
 const CreateAutoSelect = () => {
 
     const [carsData, setCarsData] = useState([]);
-    console.log(carsData);
 
     useEffect(() => {
         gettingCarsData();
     }, []);
 
     function gettingCarsData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
 
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
-                    setCarsData(response.data); 
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setCarsData(response.data); 
+                    }
+                    else {
+                        console.log(carsData);
+                    }
                 });
         }
-    }
+    };
 
     const carsStandart = carsData.map((item, pos) => {
         return (
@@ -50,6 +54,14 @@ const CreateAutoSelect = () => {
                 <form className={CreateAutoSelectCSS.car_settings__form + " " + CreateAutoSelectCSS.car_settings__container} aciton="#">
                     <ul className={CreateAutoSelectCSS.car_settings__list}>
                         {carsStandart}
+                        <li className={CreateAutoSelectCSS.car_list__item}>
+                            <input className={CreateAutoSelectCSS.car_input + " visually-hidden"} type="radio" name="car" value="first-car" id="first-car" />
+                            <label className={CreateAutoSelectCSS.car_label + " " + CreateAutoSelectCSS.car_label_add} htmlFor="first-car">
+                            <NavLink className={CreateAutoSelectCSS.car_link} to="/add-car" href="#">
+                                    <span className={CreateAutoSelectCSS.car_name + " " + CreateAutoSelectCSS.car_add_car}>Добавить машину</span>
+                                </NavLink>
+                            </label>
+                        </li>
                     </ul>
                 </form>
             </section>

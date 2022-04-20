@@ -11,35 +11,40 @@ const SearchParameters = () => {
 
     useEffect(() => {
         includeData();
-    });
+    }, []);
 
     function includeData() {
-        if (typeof localStorage.getItem("SearchDaysParameter") !== "undefined" && localStorage.getItem("SearchDaysParameter") !== null) {
+        let daysParameter = "пн вт ср ";
+        let humanParameter = "1";
+        let departureTime = "12:00";
+        let arrivalTime = "19:00";
+
+        if (JSON.parse(localStorage.getItem("SearchDaysParameter"))) {
             setDaysData(JSON.parse(localStorage.getItem("SearchDaysParameter")));
         } else {
-            setDaysData("пн вт ср ");
-            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysData));
+            setDaysData(daysParameter);
+            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysParameter));
         }
 
-        if (typeof localStorage.getItem("SearchHumanParameter") !== "undefined" && localStorage.getItem("SearchHumanParameter") !== null) {
+        if (JSON.parse(localStorage.getItem("SearchHumanParameter"))) {
             setHumanData(JSON.parse(localStorage.getItem("SearchHumanParameter")));
         } else {
-            setHumanData("1");
-            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysData));
+            setHumanData(humanParameter);
+            localStorage.setItem("SearchHumanParameter", JSON.stringify(humanParameter));
         }
 
-        if (typeof localStorage.getItem("SearchDepartureTime") !== "undefined" && localStorage.getItem("SearchDepartureTime") !== null) {
+        if (JSON.parse(localStorage.getItem("SearchDepartureTime"))) {
             setDepartureTime(JSON.parse(localStorage.getItem("SearchDepartureTime")));
         } else {
-            setDepartureTime("12:00");
-            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysData));
+            setDepartureTime(departureTime);
+            localStorage.setItem("SearchDepartureTime", JSON.stringify(departureTime));
         }
 
-        if (typeof localStorage.getItem("SearchArrivalTime") !== "undefined" && localStorage.getItem("SearchArrivalTime") !== null) {
+        if (JSON.parse(localStorage.getItem("SearchArrivalTime"))) {
             setArrivalTime(JSON.parse(localStorage.getItem("SearchArrivalTime")));
         } else {
-            setArrivalTime("00:00");
-            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysData));
+            setArrivalTime(arrivalTime);
+            localStorage.setItem("SearchArrivalTime", JSON.stringify(arrivalTime));
         }
     }
 

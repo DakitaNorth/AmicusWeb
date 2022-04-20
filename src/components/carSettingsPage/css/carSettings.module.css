@@ -35,6 +35,10 @@
     align-items: center;
 }
 
+.car_link {
+    margin-left: 15px;
+}
+
 .car_list__item::before,
 .car_list__item::after {
     content: "";

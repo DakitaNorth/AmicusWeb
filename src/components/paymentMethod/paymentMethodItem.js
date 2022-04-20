@@ -11,7 +11,7 @@ const PaymentMethodItem = props => {
     const navigate = useNavigate();
 
     function joiningRoute() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
             const travelid = JSON.parse(localStorage.getItem("SelectedTravelID"));

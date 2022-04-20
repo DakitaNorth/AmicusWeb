@@ -17,10 +17,14 @@ const FormLogin = () => {
     const Autorization = (e) => {
         e.preventDefault();
 
+        // const phone = "+7(555)555-55-55";
         const phone = "+7(903)542-21-02";
+
         // const phone  = e.target.elements.login.value;
 
+        // const password = "54321";
         const password = "12345";
+
         // const password = e.target.elements.password.value;
 
         let LoginPassword = {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import VievCardCSS from './css/vievCard.module.css';
@@ -10,45 +10,62 @@ const headers = {
 
 const VievCard = () => {
     const navigate = useNavigate();
+    const params = useParams();
 
     const [cardData, setCardData] = useState([]);
+    const [thisCardData, setThisCardData] = useState([]);
     const [cardDataNum, setCardDataNum] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         gettingCardData();
     }, []);
 
     useLayoutEffect(() => {
-        includeData();
-        disabledInputs();
-    })
+        if (isLoading) {
+            gettingThisCardData();
+            includeData();
+            disabledInputs();
+        }
+    }) 
 
     function gettingCardData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
 
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
-                    setCardData(response.data[1]);
-                    setCardDataNum(response.data[1].number.substring(0, 7) + "XX XXXX XXXX");
+                    setCardData(response.data);
+                    setIsLoading(true);
                 });
+        }
+    }
+
+    function gettingThisCardData() {
+        let paramsId = parseInt(params.myCardID);
+
+        for (var i = 0; i < cardData.length; i++) {
+            if (cardData[i].id === paramsId) {
+                setThisCardData(cardData[i]);
+                setCardDataNum(cardData[i].number.substring(0, 7) + "XX XXXX XXXX");
+            }
         }
     }
 
     function includeData() {
         if (document.getElementById('num-card').value.includes("X")) {
-            document.getElementById('num-card').value = cardData.number;
-            document.getElementById('date-card').value = cardData.date;
-            document.getElementById('cvv-card').value = cardData.cvv;
-            document.getElementById('name-card').value = cardData.owner;
+            document.getElementById('num-card').value = thisCardData.number;
+            document.getElementById('date-card').value = thisCardData.date;
+            document.getElementById('cvv-card').value = thisCardData.cvv;
+            document.getElementById('name-card').value = thisCardData.owner;
         }
         else {
             document.getElementById('num-card').value = cardDataNum;
-            document.getElementById('date-card').value = cardData.date;
+            document.getElementById('date-card').value = thisCardData.date;
             document.getElementById('cvv-card').value = "XXX";
-            document.getElementById('name-card').value = cardData.owner;
+            document.getElementById('name-card').value = thisCardData.owner;
         }
     }
 

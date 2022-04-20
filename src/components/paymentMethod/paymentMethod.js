@@ -20,7 +20,7 @@ const PaymentMethod = () => {
     }, []);
 
     function gettingCardData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
             

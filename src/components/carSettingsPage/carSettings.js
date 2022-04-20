@@ -20,14 +20,18 @@ const CarSettings = () => {
     }, []);
 
     function gettingCarsData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
-                    setCarsData(response.data);
-                    console.log(carsData);
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setCarsData(response.data);
+                    }
+                    else {
+                        console.log(carsData);
+                    }
                 });
         }
     }
@@ -36,6 +40,7 @@ const CarSettings = () => {
         return (
             <CarSettingsItem
                 key={pos}
+                id={item.id}
                 owner={item.owner}
                 statenumber={item.statenumber}
                 model={item.model}
@@ -54,7 +59,7 @@ const CarSettings = () => {
                         <li className={CarSettingsCSS.car_list__item}>
                             <input className={CarSettingsCSS.car_input + " visually-hidden"} type="radio" name="car" value="first-car" id="first-car" />
                             <label className={CarSettingsCSS.car_label + " " + CarSettingsCSS.car_label_add} htmlFor="first-car">
-                                <NavLink to="/add-car" href="#">
+                                <NavLink className={CarSettingsCSS.car_link} to="/add-car" href="#">
                                     <span className={CarSettingsCSS.car_name + " " + CarSettingsCSS.car_add_car}>Добавить машину</span>
                                 </NavLink>
                             </label>

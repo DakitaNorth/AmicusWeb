@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import CarSettingsCSS from './css/vievCar.module.css';
@@ -10,37 +10,54 @@ const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-const VievCar = () => {
+const VievCar = () => { 
     const navigate = useNavigate();
+    const params = useParams();
 
     const [carData, setCarData] = useState([]);
+    const [thisCarData, setThisCarData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         gettingCarData();
     }, []);
 
     useLayoutEffect(() => {
-        includeData();
+        if (isLoading) {
+            gettingThisCarData();
+            includeData();
+        }
     })
 
     function gettingCarData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const phone = LoginPassword.phone;
 
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
             axios.post(API_URL, { phone }, { headers })
                 .then((response) => {
-                    setCarData(response.data[1]);
+                    setCarData(response.data);
+                    setIsLoading(true);
                 });
         }
     }
 
+    function gettingThisCarData() {
+        let paramsId = parseInt(params.myCarID);
+
+        for (var i = 0; i < carData.length; i++) {
+            if (carData[i].id == paramsId) {
+                setThisCarData(carData[i]);
+            }
+        }
+    }
+
     function includeData() {
-        document.getElementById('color-input').value = carData.color;
-        document.getElementById('model-input').value = carData.model;
-        document.getElementById('places-input').value = carData.places;
-        document.getElementById('num-input').value = carData.statenumber;
+        document.getElementById('color-input').value = thisCarData.color;
+        document.getElementById('model-input').value = thisCarData.model;
+        document.getElementById('places-input').value = thisCarData.places;
+        document.getElementById('num-input').value = thisCarData.statenumber;
     }
 
     function deleteCar(e) {

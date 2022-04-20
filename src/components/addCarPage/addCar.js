@@ -13,7 +13,7 @@ const AddCar = () => {
     function addCar(e) {
         e.preventDefault();
 
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const owner = LoginPassword.phone;
 
@@ -22,11 +22,16 @@ const AddCar = () => {
             let color = document.getElementById('color-input').value;
             let places = document.getElementById('places-input').value;
 
+            console.log(statenumber);
+            console.log(model);
+            console.log(color);
+            console.log(places);
+
             const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addauto";
 
             axios.post(ADD_CARD_URL, { statenumber, model, color, places, owner }, { headers })
                 .then((response) => {
-                    navigate("/my-car-settings");
+                    // navigate("/my-car-settings");
                     console.log(response);
                 });
         }

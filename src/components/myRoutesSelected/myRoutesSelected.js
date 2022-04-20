@@ -30,7 +30,7 @@ const MyRoutesSelected = () => {
     })
 
     function gettingData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
 

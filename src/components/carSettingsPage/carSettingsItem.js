@@ -4,7 +4,7 @@ import CarSettingItemCSS from './css/carSettingsItem.module.css';
 
 const CarSettingItem = props => ( 
     <li id={props.statenumber} className={CarSettingItemCSS.car_list__item}>
-        <NavLink to="/viev-car">
+        <NavLink to={"/viev-car/" + props.id}>
             <input className={CarSettingItemCSS.car_input + " visually-hidden"} type="radio" name="car" value="first-car" id="first-car" />
             <label className={CarSettingItemCSS.car_label} htmlFor="first-car">
                 <span className={CarSettingItemCSS.car_model}>{props.model}</span>

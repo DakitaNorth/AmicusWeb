@@ -69,42 +69,42 @@ const ProfileSettings = () => {
 
         let updatephone = document.getElementById('phone-input').value;
         let mail = document.getElementById('email-input').value;
-        let vk = document.getElementById('vk-input').value;
+        let facebook = document.getElementById('vk-input').value;
         let password = document.getElementById('password-input').value;
 
         if (profileSettingsData.phone !== updatephone) {
             axios.post(PRONE_URL, { userphone, updatephone }, { headers })
-            .then((response) => {
-                console.log(updatephone);
-                console.log(LoginPassword);
-                LoginPassword.phone = updatephone;
-                localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
-                console.log(response.data);
-            });
+                .then((response) => {
+                    console.log(updatephone);
+                    console.log(LoginPassword);
+                    LoginPassword.phone = updatephone;
+                    localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
+                    console.log(response.data);
+                });
         }
         if (profileSettingsData.mail !== mail) {
             axios.post(MAIL_URL, { userphone, mail }, { headers })
-            .then((response) => {
-                console.log(mail);
-                console.log(response.data);
-            });
+                .then((response) => {
+                    console.log(mail);
+                    console.log(response.data);
+                });
         }
-        if (profileSettingsData.facebook !== vk) {
-            axios.post(VK_URL, { userphone, vk }, { headers })
-            .then((response) => {
-                console.log(vk);
-                console.log(response.data);
-            });
+        if (profileSettingsData.facebook !== facebook) {
+            axios.post(VK_URL, { userphone, facebook }, { headers })
+                .then((response) => {
+                    console.log(facebook);
+                    console.log(response.data);
+                });
         }
         if (profileSettingsData.password !== password) {
             axios.post(PASSWORD_URL, { userphone, password }, { headers })
-            .then((response) => {
-                console.log(password);
-                console.log(LoginPassword);
-                LoginPassword.password = password;
-                localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
-                console.log(response.data);
-            });
+                .then((response) => {
+                    console.log(password);
+                    console.log(LoginPassword);
+                    LoginPassword.password = password;
+                    localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
+                    console.log(response.data);
+                });
         }
     }
 
@@ -137,9 +137,9 @@ const ProfileSettings = () => {
                         </label>
                         <label className={ProfileSettingsCSS.vk_label} htmlFor="vk-input">
                             <svg className={ProfileSettingsCSS.vk_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M29.0099 15C29.0099 23.2843 22.5158 30 14.505 30C6.49409 30 0 23.2843 0 15C0 6.71573 6.49409 0 14.505 0C22.5158 0 29.0099 6.71573 29.0099 15ZM8.53829 12.6989C8.72511 12.8352 9.28827 13.2401 10.2278 13.9134C11.1673 14.5867 11.8871 15.1051 12.3871 15.4686C12.442 15.5085 12.5587 15.5951 12.7372 15.7286C12.9158 15.8622 13.0642 15.9702 13.1822 16.0526C13.3004 16.1349 13.4432 16.2273 13.6109 16.3295C13.7785 16.4317 13.9365 16.5085 14.0848 16.5594C14.2332 16.6106 14.3705 16.6361 14.4969 16.6361H14.5052H14.5135C14.6398 16.6361 14.7772 16.6106 14.9256 16.5594C15.0739 16.5085 15.232 16.4316 15.3995 16.3295C15.567 16.2271 15.7098 16.1349 15.828 16.0526C15.9461 15.9702 16.0944 15.8622 16.273 15.7286C16.4515 15.595 16.5684 15.5085 16.6233 15.4686C17.1287 15.1051 18.4145 14.1817 20.4803 12.6987C20.8814 12.409 21.2164 12.0595 21.4856 11.6504C21.755 11.2415 21.8895 10.8125 21.8895 10.3637C21.8895 9.98862 21.759 9.66757 21.498 9.40055C21.237 9.13347 20.9279 9 20.5709 9H8.43937C8.01633 9 7.69077 9.14771 7.46276 9.44312C7.23477 9.73859 7.12078 10.1079 7.12078 10.5511C7.12078 10.909 7.27192 11.2969 7.57407 11.7145C7.87618 12.1321 8.1977 12.4603 8.53829 12.6989ZM16.9612 16.9819C17.8951 16.2829 19.2633 15.3027 21.0653 14.0415C21.3786 13.8199 21.6533 13.5726 21.8896 13.3V20.0669C21.8896 20.4422 21.7606 20.7629 21.5022 21.0301C21.244 21.2972 20.9336 21.4307 20.571 21.4307H8.43945C8.0768 21.4307 7.76632 21.2972 7.50811 21.0301C7.24984 20.763 7.12078 20.4421 7.12078 20.0669V13.3C7.36254 13.5784 7.64 13.8257 7.95326 14.0415C9.94218 15.4391 11.3075 16.4194 12.0493 16.9819C12.3624 17.2204 12.6166 17.4066 12.8115 17.5401C13.0066 17.6736 13.2662 17.8099 13.5904 17.9491C13.9145 18.0884 14.2167 18.1579 14.4969 18.1579H14.5052H14.5136C14.7939 18.1579 15.0959 18.0884 15.42 17.9491C15.7443 17.8099 16.0037 17.6736 16.1988 17.5401C16.3939 17.4066 16.648 17.2204 16.9612 16.9819Z" fill="#D5DDE0" />
+                                <path d="M14.5,0C6.5,0,0,6.7,0,15c0,8.3,6.5,15,14.5,15c8,0,14.5-6.7,14.5-15C29,6.7,22.5,0,14.5,0z M20.9,21.2 c-0.8-2.4-2.7-4.2-5.2-4.4v4.4h-0.4c-6.8,0-10.7-4.7-10.9-12.4H8c0.1,5.7,2.6,8.1,4.6,8.6V8.8h3.2v4.9c2-0.2,4-2.5,4.7-4.9h3.2 c-0.5,3-2.8,5.3-4.4,6.2c1.6,0.7,4.1,2.7,5.1,6.2H20.9z"  fill="#D5DDE0" />
                             </svg>
-                            <input className={ProfileSettingsCSS.vk__input + " input"} type="text" name="vk" placeholder="@gg" id="vk-input" />
+                            <input className={ProfileSettingsCSS.vk__input + " input"} type="text" name="vk" placeholder="/ggg" id="vk-input" />
                         </label>
                         <label className={ProfileSettingsCSS.email_label} htmlFor="email-input">
                             <svg className={ProfileSettingsCSS.email_svg} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,10 +154,10 @@ const ProfileSettings = () => {
                             <input className={ProfileSettingsCSS.password__input + " input"} type="password" name="password" autoComplete="on" id="password-input" />
                         </label>
                     </div>
-                    <input onChange={passwordUnlockLock} className={ProfileSettingsCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
                     <label className={ProfileSettingsCSS.password_checkbox_label} htmlFor="password-unlock">
-                        <img className={ProfileSettingsCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
-                    </label>
+                                <input onChange={passwordUnlockLock} className={ProfileSettingsCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
+                                <img className={ProfileSettingsCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
+                            </label>
                     {/* <div className={ProfileSettingsCSS.profile_alerts}>
                     <label className={ProfileSettingsCSS.profile_alerts__label} htmlFor="alert-input">
                         <span className={ProfileSettingsCSS.profile_alerts__heading}>Оповещения</span>

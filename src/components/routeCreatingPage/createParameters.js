@@ -11,34 +11,39 @@ const CreateParameters = () => {
 
     useEffect(() => {
         includeData();
-    });
+    }, []);
 
     function includeData() {
-        if (typeof localStorage.getItem("CreateDaysParameter") !== "undefined" && localStorage.getItem("CreateDaysParameter") !== null) {
+        let daysParameter = "пн вт ср ";
+        let humanParameter = "1";
+        let departureTime = "12:00";
+        let arrivalTime = "19:00";
+
+        if (JSON.parse(localStorage.getItem("CreateDaysParameter"))) {
             setDaysData(JSON.parse(localStorage.getItem("CreateDaysParameter")));
         } else {
-            setDaysData("пн вт ср ");
-            localStorage.setItem("CreateDaysParameter", JSON.stringify(daysData));
+            setDaysData(daysParameter);
+            localStorage.setItem("CreateDaysParameter", JSON.stringify(daysParameter));
         }
 
-        if (typeof localStorage.getItem("CreateHumanParameter") !== "undefined" && localStorage.getItem("CreateHumanParameter") !== null) {
+        if (JSON.parse(localStorage.getItem("CreateHumanParameter"))) {
             setHumanData(JSON.parse(localStorage.getItem("CreateHumanParameter")));
         } else {
-            setHumanData("1");
-            localStorage.setItem("CreateHumanParameter", JSON.stringify(humanData));
+            setHumanData(humanParameter);
+            localStorage.setItem("CreateHumanParameter", JSON.stringify(humanParameter));
         }
 
-        if (typeof localStorage.getItem("CreateDepartureTime") !== "undefined" && localStorage.getItem("CreateDepartureTime") !== null) {
+        if (JSON.parse(localStorage.getItem("CreateDepartureTime"))) {
             setDepartureTime(JSON.parse(localStorage.getItem("CreateDepartureTime")));
         } else {
-            setDepartureTime("12:00");
+            setDepartureTime(departureTime);
             localStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
         }
 
-        if (typeof localStorage.getItem("CreateArrivalTime") !== "undefined" && localStorage.getItem("CreateArrivalTime") !== null) {
+        if (JSON.parse(localStorage.getItem("CreateArrivalTime"))) {
             setArrivalTime(JSON.parse(localStorage.getItem("CreateArrivalTime")));
         } else {
-            setArrivalTime("00:00");
+            setArrivalTime(arrivalTime);
             localStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
         }
     }

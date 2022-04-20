@@ -15,11 +15,8 @@ const RouteCreating = () => {
 
     useEffect(() => {
         gettingProfileData();
-    });
-
-    useLayoutEffect(() => {
         includeData();
-    })
+    }, []);
 
     function includeData() {
         document.getElementById("where-input").value = JSON.parse(localStorage.getItem("СreateDepartureplace"));
@@ -30,7 +27,7 @@ const RouteCreating = () => {
 
         if (JSON.parse(localStorage.getItem("CreateAutoSelectItemID"))) {
             var AutoText = JSON.parse(localStorage.getItem("CreateAutoSelectItemID"));
-        }
+        } 
         else {
             var AutoText = "Выбрать автомобиль";
         }
@@ -59,7 +56,7 @@ const RouteCreating = () => {
     }
 
     function gettingProfileData() {
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             let phone = LoginPassword.phone;
             let password = LoginPassword.password;
@@ -83,14 +80,13 @@ const RouteCreating = () => {
         let membercount = JSON.parse(localStorage.getItem("CreateHumanParameter"));
         let distance = "72 км";
         let weekday = JSON.parse(localStorage.getItem("CreateDaysParameter"));
+
         let automobile = JSON.parse(localStorage.getItem("CreateAutoSelectItemData"));
 
         let price = document.getElementById('price-input').value;
         let description = document.getElementById('additional-input').value;
 
-        console.log(profileData);
-
-        if (typeof localStorage.getItem("LoginPassword") !== "undefined" && localStorage.getItem("LoginPassword") !== null) {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             let autor = LoginPassword.phone;
 
@@ -99,13 +95,17 @@ const RouteCreating = () => {
 
             const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
 
-            axios.post(ADD_ROUTE_URL, {
-                departureplace, arrivalplace, departuretime, arrivaltime, membercount,
-                distance, weekday, automobile, price, description, autor, autorname, autorphoto
-            }, { headers })
-                .then((response) => {
-                    console.log(response.data);
-                });
+            if (departureplace !== "" && arrivalplace !== "" && automobile !== null && price !== "") {
+                axios.post(ADD_ROUTE_URL, {
+                    departureplace, arrivalplace, departuretime, arrivaltime, membercount,
+                    distance, weekday, automobile, price, description, autor, autorname, autorphoto
+                }, { headers })
+                    .then((response) => {
+                        console.log(response.data);
+                    });
+            } else {
+                console.log("Недостаточно данных");
+            }
         }
     }
 

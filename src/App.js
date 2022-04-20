@@ -93,7 +93,6 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <FormLogin />
-                            <SocialLogin />
                             <NoAccount />
                         </div>
                     } />
@@ -202,13 +201,13 @@ class App extends React.Component {
                             <AddCar />
                         </div>
                     } />
-                    <Route path="/viev-card" element={
+                    <Route path="/viev-card/:myCardID" element={
                         <div>
                             <GoBackButton />
                             <VievCard />
                         </div>
                     } />
-                    <Route path="/viev-car" element={
+                    <Route path="/viev-car/:myCarID" element={
                         <div>
                             <GoBackButton />
                             <VievCar />
