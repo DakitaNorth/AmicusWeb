@@ -14,7 +14,7 @@ const PaymentMethodItem = props => {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
-            const travelid = JSON.parse(localStorage.getItem("SelectedTravelID"));
+            const travelid = JSON.parse(sessionStorage.getItem("SelectedTravelID"));
             
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addusertotravel";
             axios.post(API_URL, { travelid, userphone }, { headers })

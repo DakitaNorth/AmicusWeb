@@ -13,17 +13,21 @@ const MyRoutesSelected = () => {
 
     const params = useParams();
 
+    const [myPassagerData, setMyPassagerData] = useState([]);
     const [myDriverData, setMyDriverData] = useState([]);
+    const [myData, setMyData] = useState([]);
+
     const [thisDriverData, setThisDriverData] = useState([]);
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isPassagerLoading, setIsPassagerLoading] = useState(false);
+    const [isDriverLoading, setIsDriverLoading] = useState(false);
 
     useEffect(() => {
         gettingData();
     }, []);
 
     useLayoutEffect(() => {
-        if (isLoading) {
+        if (isPassagerLoading && isDriverLoading) {
             gettingThisRoute();
             includeData();
         }
@@ -34,13 +38,31 @@ const MyRoutesSelected = () => {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
 
+            const PASSAGER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserpassenger";
             const DRIVER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserdriver";
+
+            axios.post(PASSAGER_URL, { userphone }, { headers })
+                .then((response) => {
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setMyPassagerData(response.data);
+                    }
+                    setIsPassagerLoading(true);
+                });
 
             axios.post(DRIVER_URL, { userphone }, { headers })
                 .then((response) => {
-                    setMyDriverData(response.data);
-                    setIsLoading(true);
+                    if (Array.isArray(response.data) && response.data.length) {
+                        for (var i = 0; i <= response.data.length - 1; i++) {
+                            response.data[i].autorname = "Вы";
+                        }
+                        setMyDriverData(response.data);
+                    }
+                    setIsDriverLoading(true);
                 });
+            
+            console.log(myPassagerData);
+            console.log(myDriverData); 
+            console.log(myData);
         }
     }
 

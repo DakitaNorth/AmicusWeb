@@ -1,9 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import MyRouteSelItemCSS from './css/myRoutesSelectedItem.module.css';
 import avatar from "../../img/routeHistory/Group.png";
 
-const MyRouteSelectedItem = props => {
+const headers = {
+    "Content-Type": "application/json; charset=utf-8",
+};
+
+const MyRouteSelectedItem = props => { 
+    const navigate = useNavigate();
+
+    function deleteRoute() {
+        const DELETE_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deltravel";
+
+        let travelid = props.id;
+        console.log(travelid);
+
+        axios.post(DELETE_ROUTE_URL, { travelid }, { headers })
+            .then((response) => {
+                console.log(response.data);
+                navigate("/my-routes");
+            });
+    }
     return (
         <div className={MyRouteSelItemCSS.route_selected__container}>
             <div className={MyRouteSelItemCSS.route_selected__wrapper}>
@@ -20,6 +39,10 @@ const MyRouteSelectedItem = props => {
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_back}>
                             <span className={MyRouteSelItemCSS.route_information__text}>Обратно</span>
                             <span className={MyRouteSelItemCSS.route_information__text}>{props.arrivaltime}</span>
+                        </div>
+                        <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_price}>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_price}>Цена поездки</span>
+                            <span className={MyRouteSelItemCSS.route_information__text}>{props.price}₽</span>
                         </div>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_places}>
                             <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_places}>Свободных мест</span>
@@ -68,10 +91,9 @@ const MyRouteSelectedItem = props => {
                     </button>
                 </div>
             </div>
-            <NavLink to="/payment-method" className={MyRouteSelItemCSS.route_list__button}>
-                <span className={MyRouteSelItemCSS.route_list__text}>Подтвердить</span>
-                <span className={MyRouteSelItemCSS.route_list__price}>{props.price} ₽</span>
-            </NavLink>
+            <button className={MyRouteSelItemCSS.route_list__button}>
+                <span onClick={deleteRoute} className={MyRouteSelItemCSS.route_list__text}>Удалить поездку</span>
+            </button>
         </div>
     )
 };

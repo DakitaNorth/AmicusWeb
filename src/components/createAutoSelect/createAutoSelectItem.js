@@ -15,8 +15,8 @@ const CreateAutoSelectItem = props => {
         console.log(carId);
         console.log(createAutoSelectItemData);
 
-        localStorage.setItem("CreateAutoSelectItemID", JSON.stringify(carId));
-        localStorage.setItem("CreateAutoSelectItemData", JSON.stringify(createAutoSelectItemData));
+        sessionStorage.setItem("CreateAutoSelectItemID", JSON.stringify(carId));
+        sessionStorage.setItem("CreateAutoSelectItemData", JSON.stringify(createAutoSelectItemData));
 
         navigate("/creating-route");
     };

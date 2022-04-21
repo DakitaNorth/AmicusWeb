@@ -8,7 +8,7 @@ const RouteSelectedItem = props => {
     function selRouteIDPush() {
         let travelid = props.id;
         console.log(travelid);
-        localStorage.setItem("SelectedTravelID", JSON.stringify(travelid));
+        sessionStorage.setItem("SelectedTravelID", JSON.stringify(travelid));
     };
 
     return (

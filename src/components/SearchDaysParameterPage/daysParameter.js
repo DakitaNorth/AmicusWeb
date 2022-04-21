@@ -16,7 +16,7 @@ const DaysParameter = () => {
 
         console.log(daysParameter);
 
-        localStorage.setItem("SearchDaysParameter", JSON.stringify(daysParameter));
+        sessionStorage.setItem("SearchDaysParameter", JSON.stringify(daysParameter));
 
         navigate("/route-search");
     }

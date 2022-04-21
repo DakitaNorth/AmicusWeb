@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import RouteSelListCSS from './css/routeSelectedList.module.css';
 
@@ -23,19 +22,28 @@ const RouteSelectedList = () => {
     })
 
     function gettingRoutesData() {
-        let departureplace = JSON.parse(localStorage.getItem("SearchDepartureplace"));
-        let arrivalplace = JSON.parse(localStorage.getItem("SearchArrivalplace"));
-        let departuretime = JSON.parse(localStorage.getItem("SearchDepartureTime"));
-        let arrivaltime = JSON.parse(localStorage.getItem("SearchArrivalTime"));
-        let membercount = JSON.parse(localStorage.getItem("SearchHumanParameter"));
-        let weekday = JSON.parse(localStorage.getItem("SearchDaysParameter"));
+        const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        const owner = LoginPassword.phone;
+
+        let responseCopy = [];
+
+        let departureplace = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
+        let arrivalplace = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
+        let departuretime = JSON.parse(sessionStorage.getItem("SearchDepartureTime"));
+        let arrivaltime = JSON.parse(sessionStorage.getItem("SearchArrivalTime"));
+        let membercount = JSON.parse(sessionStorage.getItem("SearchHumanParameter"));
+        let weekday = JSON.parse(sessionStorage.getItem("SearchDaysParameter"));
 
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/searchtravel";
         axios.post(API_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount, weekday }, { headers })
             .then((response) => {
-                if (Array.isArray(response.data) && response.data.length) {
-                    setRoutesData(response.data);
-                    console.log(response.data);
+                if (Array.isArray(response.data) && response.data.length) { 
+                    for (var i = 0; i <= response.data.length - 1; i++) {
+                        if (response.data[i].autor !== owner) {
+                            responseCopy.push(response.data[i]); 
+                            setRoutesData(responseCopy);
+                        }
+                    }
                 } else {
                     console.log(response.data);
                 }
@@ -43,8 +51,8 @@ const RouteSelectedList = () => {
     };
 
     function includeData() {
-        document.getElementById('where-input').value = JSON.parse(localStorage.getItem("SearchDepartureplace"));
-        document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("SearchArrivalplace"));
+        document.getElementById('where-input').value = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
+        document.getElementById('somewhere-input').value = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
     }
 
     const routeStandart = routesData.map((item, pos) => {

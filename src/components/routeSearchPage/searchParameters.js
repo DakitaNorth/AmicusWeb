@@ -19,32 +19,32 @@ const SearchParameters = () => {
         let departureTime = "12:00";
         let arrivalTime = "19:00";
 
-        if (JSON.parse(localStorage.getItem("SearchDaysParameter"))) {
-            setDaysData(JSON.parse(localStorage.getItem("SearchDaysParameter")));
+        if (JSON.parse(sessionStorage.getItem("SearchDaysParameter"))) {
+            setDaysData(JSON.parse(sessionStorage.getItem("SearchDaysParameter")));
         } else {
             setDaysData(daysParameter);
-            localStorage.setItem("SearchDaysParameter", JSON.stringify(daysParameter));
+            sessionStorage.setItem("SearchDaysParameter", JSON.stringify(daysParameter));
         }
 
-        if (JSON.parse(localStorage.getItem("SearchHumanParameter"))) {
-            setHumanData(JSON.parse(localStorage.getItem("SearchHumanParameter")));
+        if (JSON.parse(sessionStorage.getItem("SearchHumanParameter"))) {
+            setHumanData(JSON.parse(sessionStorage.getItem("SearchHumanParameter")));
         } else {
             setHumanData(humanParameter);
-            localStorage.setItem("SearchHumanParameter", JSON.stringify(humanParameter));
+            sessionStorage.setItem("SearchHumanParameter", JSON.stringify(humanParameter));
         }
 
-        if (JSON.parse(localStorage.getItem("SearchDepartureTime"))) {
-            setDepartureTime(JSON.parse(localStorage.getItem("SearchDepartureTime")));
+        if (JSON.parse(sessionStorage.getItem("SearchDepartureTime"))) {
+            setDepartureTime(JSON.parse(sessionStorage.getItem("SearchDepartureTime")));
         } else {
             setDepartureTime(departureTime);
-            localStorage.setItem("SearchDepartureTime", JSON.stringify(departureTime));
+            sessionStorage.setItem("SearchDepartureTime", JSON.stringify(departureTime));
         }
 
-        if (JSON.parse(localStorage.getItem("SearchArrivalTime"))) {
-            setArrivalTime(JSON.parse(localStorage.getItem("SearchArrivalTime")));
+        if (JSON.parse(sessionStorage.getItem("SearchArrivalTime"))) {
+            setArrivalTime(JSON.parse(sessionStorage.getItem("SearchArrivalTime")));
         } else {
             setArrivalTime(arrivalTime);
-            localStorage.setItem("SearchArrivalTime", JSON.stringify(arrivalTime));
+            sessionStorage.setItem("SearchArrivalTime", JSON.stringify(arrivalTime));
         }
     }
 

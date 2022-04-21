@@ -49,3 +49,7 @@
 .my_route_link__grey_path {
     fill: #97ADB6;
 }
+
+.active_link {
+    background-color: transparent;
+}

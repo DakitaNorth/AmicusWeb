@@ -17,35 +17,33 @@ const FormLogin = () => {
     const Autorization = (e) => {
         e.preventDefault();
 
-        // const phone = "+7(555)555-55-55";
-        const phone = "+7(903)542-21-02";
+        const phone = "+7(555)555-55-55";
+        // const phone = "+7(903)542-21-02";
 
         // const phone  = e.target.elements.login.value;
 
-        // const password = "54321";
-        const password = "12345";
+        const password = "54321";
+        // const password = "12345";
 
         // const password = e.target.elements.password.value;
-
-        let LoginPassword = {
-            phone: phone,
-            password: password
-        }
 
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {
                 if (typeof response.data["phone"] !== "undefined" && response.data["phone"] !== "Bad phone or password") {
+                    let LoginPassword = {
+                        phone: response.data.phone,
+                        password: response.data.password,
+                        name: response.data.name,
+                        id: response.data.id
+                    }
+                    localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
                     navigate("/route-search");
-                    console.log(response.data);
                 }
                 else {
-                    console.log(phone);
-                    console.log(password);
+                    console.log(response.data);
                 }
             });
-
-        localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
     };
 
     function passwordUnlockLock() {

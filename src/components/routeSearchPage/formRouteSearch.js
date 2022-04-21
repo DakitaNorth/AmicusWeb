@@ -10,17 +10,17 @@ const FormRouteSearch = () => {
 
     function gettingWhere() {
         let departureplace = document.getElementById("where-input").value;
-        localStorage.setItem("SearchDepartureplace", JSON.stringify(departureplace));
+        sessionStorage.setItem("SearchDepartureplace", JSON.stringify(departureplace));
     }
 
     function gettingSomewere() {
         let arrivalplace = document.getElementById("somewhere-input").value;
-        localStorage.setItem("SearchArrivalplace", JSON.stringify(arrivalplace));
+        sessionStorage.setItem("SearchArrivalplace", JSON.stringify(arrivalplace));
     }
 
     function includeData() {
-        document.getElementById('where-input').value = JSON.parse(localStorage.getItem("SearchDepartureplace"));
-        document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("SearchArrivalplace"));
+        document.getElementById('where-input').value = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
+        document.getElementById('somewhere-input').value = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
     }
 
     return (

@@ -18,8 +18,8 @@ const TimeParameter = () => {
         console.log(departureTime);
         console.log(arrivalTime);
 
-        localStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
-        localStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
+        sessionStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
+        sessionStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
 
         navigate("/creating-route");
     }

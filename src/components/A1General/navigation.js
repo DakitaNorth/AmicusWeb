@@ -9,16 +9,27 @@ const Navigation = () => {
         var arraySvg = document.getElementsByClassName(NavigationCSS.navigation_svg);
         var yellowPath = document.getElementsByClassName(NavigationCSS.my_route_link__yellow_path);
 
-        for (var i = 0; i <= 4; i++) {
+        let myRouteLink = document.getElementById("my_route_link");
+
+        if (myRouteLink.classList.contains("active")) {
+            for (var j = 0; j <=2; j++) {
+                yellowPath[j].style.fill = "#476DF5";
+            } 
+        } else {
+            for (var j = 0; j <=2; j++) {
+                yellowPath[j].style.fill = "#FFC032";
+            }
+        }
+
+        for (var i = 0; i <= arrayLinks.length - 1; i++) {
             if (arrayLinks[i].classList.contains("active")) {
                 arraySvg[i].classList.add(NavigationCSS.navigation_link__active_svg);
             }
-            else {
+            else { 
                 arraySvg[i].classList.remove(NavigationCSS.navigation_link__active_svg);
             }
         }
     });
-
 
     return (
         <section className={NavigationCSS.navigation}>
@@ -45,7 +56,7 @@ const Navigation = () => {
                         </NavLink>
                     </li>
                     <li className={NavigationCSS.navigation__item}>
-                        <NavLink to="/my-routes" className={NavigationCSS.navigation_link + " " + NavigationCSS.my_route_link}>
+                        <NavLink to="/my-routes" className={NavigationCSS.navigation_link + " " + NavigationCSS.my_route_link} id="my_route_link">
                             <svg className={NavigationCSS.navigation_svg} width="77" height="47" viewBox="0 0 77 47" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-my-routes" >
                                 <path className={NavigationCSS.my_route_link__yellow_path} d="M36.2199 17.7695H16.1963V23.3885H36.2199V17.7695Z" />
                                 <path className={NavigationCSS.my_route_link__yellow_path}

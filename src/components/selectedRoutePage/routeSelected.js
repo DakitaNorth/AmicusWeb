@@ -33,12 +33,12 @@ const RouteSelected = () => {
     })
 
     function gettingRoutesData() {
-        let departureplace = JSON.parse(localStorage.getItem("SearchDepartureplace"));
-        let arrivalplace = JSON.parse(localStorage.getItem("SearchArrivalplace"));
-        let departuretime = JSON.parse(localStorage.getItem("SearchDepartureTime"));
-        let arrivaltime = JSON.parse(localStorage.getItem("SearchArrivalTime"));
-        let membercount = JSON.parse(localStorage.getItem("SearchHumanParameter"));
-        let weekday = JSON.parse(localStorage.getItem("SearchDaysParameter"));
+        let departureplace = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
+        let arrivalplace = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
+        let departuretime = JSON.parse(sessionStorage.getItem("SearchDepartureTime"));
+        let arrivaltime = JSON.parse(sessionStorage.getItem("SearchArrivalTime"));
+        let membercount = JSON.parse(sessionStorage.getItem("SearchHumanParameter"));
+        let weekday = JSON.parse(sessionStorage.getItem("SearchDaysParameter"));
 
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/searchtravel";
         axios.post(API_URL, { departureplace, arrivalplace, departuretime, arrivaltime, membercount, weekday }, { headers })
@@ -59,8 +59,8 @@ const RouteSelected = () => {
     }
 
     function includeData() {
-        document.getElementById('where-input').value = JSON.parse(localStorage.getItem("SearchDepartureplace"));
-        document.getElementById('somewhere-input').value = JSON.parse(localStorage.getItem("SearchArrivalplace"));
+        document.getElementById('where-input').value = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
+        document.getElementById('somewhere-input').value = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
     }
 
     return (

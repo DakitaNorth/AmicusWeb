@@ -18,8 +18,8 @@ const TimeParameter = () => {
         console.log(departureTime);
         console.log(arrivalTime);
 
-        localStorage.setItem("SearchDepartureTime", JSON.stringify(departureTime));
-        localStorage.setItem("SearchArrivalTime", JSON.stringify(arrivalTime));
+        sessionStorage.setItem("SearchDepartureTime", JSON.stringify(departureTime));
+        sessionStorage.setItem("SearchArrivalTime", JSON.stringify(arrivalTime));
 
         navigate("/route-search");
     }

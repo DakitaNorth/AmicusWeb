@@ -19,14 +19,14 @@ const RouteCreating = () => {
     }, []);
 
     function includeData() {
-        document.getElementById("where-input").value = JSON.parse(localStorage.getItem("СreateDepartureplace"));
-        document.getElementById("somewhere-input").value = JSON.parse(localStorage.getItem("СreateArrivalplace"));
+        document.getElementById("where-input").value = JSON.parse(sessionStorage.getItem("СreateDepartureplace"));
+        document.getElementById("somewhere-input").value = JSON.parse(sessionStorage.getItem("СreateArrivalplace"));
 
-        document.getElementById("price-input").value = JSON.parse(localStorage.getItem("CreateGettingPrice"));
-        document.getElementById("additional-input").value = JSON.parse(localStorage.getItem("CreateGettingDescription"));
+        document.getElementById("price-input").value = JSON.parse(sessionStorage.getItem("CreateGettingPrice"));
+        document.getElementById("additional-input").value = JSON.parse(sessionStorage.getItem("CreateGettingDescription"));
 
-        if (JSON.parse(localStorage.getItem("CreateAutoSelectItemID"))) {
-            var AutoText = JSON.parse(localStorage.getItem("CreateAutoSelectItemID"));
+        if (JSON.parse(sessionStorage.getItem("CreateAutoSelectItemID"))) {
+            var AutoText = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemID"));
         } 
         else {
             var AutoText = "Выбрать автомобиль";
@@ -37,22 +37,22 @@ const RouteCreating = () => {
 
     function gettingWhere() {
         let createDepartureplace = document.getElementById("where-input").value;
-        localStorage.setItem("СreateDepartureplace", JSON.stringify(createDepartureplace));
+        sessionStorage.setItem("СreateDepartureplace", JSON.stringify(createDepartureplace));
     }
 
     function gettingSomewere() {
         let createArrivalplace = document.getElementById("somewhere-input").value;
-        localStorage.setItem("СreateArrivalplace", JSON.stringify(createArrivalplace));
+        sessionStorage.setItem("СreateArrivalplace", JSON.stringify(createArrivalplace));
     }
 
     function createGettingPrice() {
         let gettingPrice = document.getElementById("price-input").value;
-        localStorage.setItem("CreateGettingPrice", JSON.stringify(gettingPrice));
+        sessionStorage.setItem("CreateGettingPrice", JSON.stringify(gettingPrice));
     }
 
     function createGettingDescription() {
         let gettingDescription = document.getElementById("additional-input").value;
-        localStorage.setItem("CreateGettingDescription", JSON.stringify(gettingDescription));
+        sessionStorage.setItem("CreateGettingDescription", JSON.stringify(gettingDescription));
     }
 
     function gettingProfileData() {
@@ -75,13 +75,13 @@ const RouteCreating = () => {
         let departureplace = document.getElementById('where-input').value;
         let arrivalplace = document.getElementById('somewhere-input').value;
 
-        let departuretime = JSON.parse(localStorage.getItem("CreateDepartureTime"));
-        let arrivaltime = JSON.parse(localStorage.getItem("CreateArrivalTime"));
-        let membercount = JSON.parse(localStorage.getItem("CreateHumanParameter"));
+        let departuretime = JSON.parse(sessionStorage.getItem("CreateDepartureTime"));
+        let arrivaltime = JSON.parse(sessionStorage.getItem("CreateArrivalTime"));
+        let membercount = JSON.parse(sessionStorage.getItem("CreateHumanParameter"));
         let distance = "72 км";
-        let weekday = JSON.parse(localStorage.getItem("CreateDaysParameter"));
+        let weekday = JSON.parse(sessionStorage.getItem("CreateDaysParameter"));
 
-        let automobile = JSON.parse(localStorage.getItem("CreateAutoSelectItemData"));
+        let automobile = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemData"));
 
         let price = document.getElementById('price-input').value;
         let description = document.getElementById('additional-input').value;

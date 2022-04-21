@@ -19,7 +19,7 @@ const HumanParameter = () => {
 
         console.log(humanParameter);
 
-        localStorage.setItem("SearchHumanParameter", JSON.stringify(humanParameter));
+        sessionStorage.setItem("SearchHumanParameter", JSON.stringify(humanParameter));
 
         navigate("/route-search");
     }

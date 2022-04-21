@@ -19,32 +19,32 @@ const CreateParameters = () => {
         let departureTime = "12:00";
         let arrivalTime = "19:00";
 
-        if (JSON.parse(localStorage.getItem("CreateDaysParameter"))) {
-            setDaysData(JSON.parse(localStorage.getItem("CreateDaysParameter")));
+        if (JSON.parse(sessionStorage.getItem("CreateDaysParameter"))) {
+            setDaysData(JSON.parse(sessionStorage.getItem("CreateDaysParameter")));
         } else {
             setDaysData(daysParameter);
-            localStorage.setItem("CreateDaysParameter", JSON.stringify(daysParameter));
+            sessionStorage.setItem("CreateDaysParameter", JSON.stringify(daysParameter));
         }
 
-        if (JSON.parse(localStorage.getItem("CreateHumanParameter"))) {
-            setHumanData(JSON.parse(localStorage.getItem("CreateHumanParameter")));
+        if (JSON.parse(sessionStorage.getItem("CreateHumanParameter"))) {
+            setHumanData(JSON.parse(sessionStorage.getItem("CreateHumanParameter")));
         } else {
             setHumanData(humanParameter);
-            localStorage.setItem("CreateHumanParameter", JSON.stringify(humanParameter));
+            sessionStorage.setItem("CreateHumanParameter", JSON.stringify(humanParameter));
         }
 
-        if (JSON.parse(localStorage.getItem("CreateDepartureTime"))) {
-            setDepartureTime(JSON.parse(localStorage.getItem("CreateDepartureTime")));
+        if (JSON.parse(sessionStorage.getItem("CreateDepartureTime"))) {
+            setDepartureTime(JSON.parse(sessionStorage.getItem("CreateDepartureTime")));
         } else {
             setDepartureTime(departureTime);
-            localStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
+            sessionStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
         }
 
-        if (JSON.parse(localStorage.getItem("CreateArrivalTime"))) {
-            setArrivalTime(JSON.parse(localStorage.getItem("CreateArrivalTime")));
+        if (JSON.parse(sessionStorage.getItem("CreateArrivalTime"))) {
+            setArrivalTime(JSON.parse(sessionStorage.getItem("CreateArrivalTime")));
         } else {
             setArrivalTime(arrivalTime);
-            localStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
+            sessionStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
         }
     }
 

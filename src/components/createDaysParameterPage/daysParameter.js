@@ -16,7 +16,7 @@ const CreateDaysParameter = () => {
 
         console.log(daysParameter);
 
-        localStorage.setItem("CreateDaysParameter", JSON.stringify(daysParameter));
+        sessionStorage.setItem("CreateDaysParameter", JSON.stringify(daysParameter));
 
         navigate("/creating-route");
     }
