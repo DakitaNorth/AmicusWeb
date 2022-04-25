@@ -1,52 +1,62 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import FormRegCSS from './css/formRegistration.module.css';
 
+import ValidError from "../validError/validError";
+import ValidSuccess from "../validSuccess/validSuccess";
+
 const FormRegistration = () => {
 
     const navigate = useNavigate();
 
-    const Registration = async (e) => {
+    const Registration = (e) => {
         e.preventDefault();
 
         let name = e.target.elements.name.value;
 
         let phone = e.target.elements.login.value;
 
+        let email = e.target.elements.email.value;
+
         let password = e.target.elements.password.value;
 
         let repeatPassword = e.target.elements.repeatPassword.value;
+
+        console.log(name);
+        console.log(phone);
+        console.log(password);
 
         const headers = {
             "Content-Type": "application/json; charset=utf-8",
         };
 
+        const REG_URL = "https://xn--80aaggtieo3biv.xn--p1ai/registration";
+
         if (document.getElementById("agree-checkbox").checked) {
             if (password === repeatPassword) {
-                axios.post("https://xn--80aaggtieo3biv.xn--p1ai/registration",
-                    { password, phone, name },
-                    { headers })
+                axios.post(REG_URL, { password, phone, name }, { headers })
                     .then(response => {
-                        if (response.data["response"] === "User has been registered") {
-                            navigate("/route-search");
-                            console.log(response.data);
-                        }
-                        else if (response.data["response"] === "Phone is already in use") {
-                            console.log("Телефон уже зарегистрирован");
-                        }
-                        else {
-                            console.log(response.data);
-                        }
+                        console.log(response);
+                        // if (response.data["response"] === "User has been registered") {
+                        //     navigate("/route-search");
+                        //     console.log(response.data);
+                        // }
+                        // else if (response.data["response"] === "Phone is already in use") {
+                        //     console.log("Телефон уже зарегистрирован");
+                        // }
+                        // else {
+                        //     console.log(response.data);
+                        // }
                     });
             }
             else {
-                alert("Пароли не совпадают")
+                console.log("Пароли не совпадают")
             }
         }
         else {
-            alert("Политика конфиденциальности не принята")
+            console.log("Политика конфиденциальности не принята")
         }
     };
 
@@ -69,6 +79,8 @@ const FormRegistration = () => {
                         <input className="input" type="text" name="name" placeholder="Даниил" id="name-input" />
                         <label htmlFor="login-input">Номер телефона</label>
                         <input onFocus={loginInputMask} className="input" type="text" name="login" placeholder="+7(900)000-00-00" id="login-input" />
+                        <label htmlFor="email-input">Электронная почта</label>
+                        <input className="input" type="text" name="email" placeholder="amicusDrive@yandex.ru" id="email-input" />
                         <label htmlFor="password-input">Пароль</label>
                         <input className="input" type="password" name="password" id="password-input" autoComplete="on" />
                         <label htmlFor="repeat-input">Повторите пароль</label>

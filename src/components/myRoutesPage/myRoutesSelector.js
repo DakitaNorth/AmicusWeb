@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MyRoutesSCSS from './css/myRoutesSelector.module.css';
 
-import MyRoutesItem from "./myRoutesItem";
+import MyRoutesItemPassager from "./myRoutesItemPassager";
+import MyRoutesItemDriver from "./myRoutesItemDriver";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -12,10 +13,14 @@ const MyRoutesSelector = () => {
 
     const [myPassagerData, setMyPassagerData] = useState([]);
     const [myDriverData, setMyDriverData] = useState([]);
-    const [myRoutesData, setMyRoutesData] = useState([]);
+
+    const [myAllDataDirty, setMyAllDataDirty] = useState(false);
+    const [myPassagerDataDirty, setMyPassagerDataDirty] = useState(false);
+    const [myDriverDataDirty, setMyDriverDataDirty] = useState(false);
 
     useEffect(() => {
         document.getElementById("all-radio").setAttribute("checked", "checked");
+        setMyAllDataDirty(true);
 
         gettingData();
     }, []);
@@ -50,8 +55,6 @@ const MyRoutesSelector = () => {
                         console.log(response.data);
                     }
                 });
-
-            setMyRoutesData(myPassagerData.concat(myDriverData));
         }
     }
 
@@ -66,12 +69,28 @@ const MyRoutesSelector = () => {
 
         e.target.setAttribute("checked", "checked");
         document.querySelector(`[for="${e.target.id}"]`).classList.add(MyRoutesSCSS.my_routes__label_active);;
+
+        if (e.target.id === "all-radio") {
+            setMyAllDataDirty(true);
+            setMyPassagerDataDirty(false);
+            setMyDriverDataDirty(false);
+        }
+        else if (e.target.id === "driver-radio") {
+            setMyAllDataDirty(false);
+            setMyPassagerDataDirty(false);
+            setMyDriverDataDirty(true);
+        }
+        else if (e.target.id === "passenger-radio") {
+            setMyAllDataDirty(false);
+            setMyPassagerDataDirty(true);
+            setMyDriverDataDirty(false);
+        }
     }
 
-    const passagerStandart = myPassagerData.map((item, pos) => {
+    const passagerStandart = myPassagerData.map((item) => {
         return (
-            <MyRoutesItem
-                key={pos}
+            <MyRoutesItemPassager
+                key={item.id}
                 id={item.id}
                 autorname={item.autorname}
                 autorphoto={item.autorphoto}
@@ -83,10 +102,10 @@ const MyRoutesSelector = () => {
         )
     });
 
-    const driverStandart = myDriverData.map((item, pos) => {
+    const driverStandart = myDriverData.map((item) => {
         return (
-            <MyRoutesItem
-                key={pos}
+            <MyRoutesItemDriver
+                key={item.id}
                 id={item.id}
                 autorname={item.autorname}
                 autorphoto={item.autorphoto}
@@ -98,20 +117,6 @@ const MyRoutesSelector = () => {
         )
     });
 
-    const allStandart = myRoutesData.map((item, pos) => {
-        return (
-            <MyRoutesItem
-                key={pos}
-                id={item.id}
-                autorname={item.autorname}
-                autorphoto={item.autorphoto}
-                departureplace={item.departureplace}
-                departuretime={item.departuretime}
-                arrivalplace={item.arrivalplace}
-                arrivaltime={item.arrivaltime}
-            />
-        )
-    });
 
     return (
         <div className="universal-form">
@@ -121,22 +126,24 @@ const MyRoutesSelector = () => {
                     <form className={MyRoutesSCSS.my_routes__wrapper} action="#">
                         <div className={MyRoutesSCSS.my_routes__selector}>
                             <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_left + " " + MyRoutesSCSS.my_routes__label_active} htmlFor="all-radio">
-                                <input className={MyRoutesSCSS.my_routes__radiobutton} onChange={radioChecked} type="radio" name="radio" id="all-radio" />
+                                <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} onChange={radioChecked} type="radio" name="radio" id="all-radio" />
                                 Все
                             </label>
                             <label className={MyRoutesSCSS.my_routes__label} htmlFor="driver-radio">
-                                <input className={MyRoutesSCSS.my_routes__radiobutton} onChange={radioChecked} type="radio" name="radio" id="driver-radio" />
+                                <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} onChange={radioChecked} type="radio" name="radio" id="driver-radio" />
                                 Водитель
                             </label>
                             <label className={MyRoutesSCSS.my_routes__label + " " + MyRoutesSCSS.my_routes__label_right} htmlFor="passenger-radio">
-                                <input className={MyRoutesSCSS.my_routes__radiobutton} onChange={radioChecked} type="radio" name="radio" id="passenger-radio" />
+                                <input className={MyRoutesSCSS.my_routes__radiobutton + " visually-hidden"} onChange={radioChecked} type="radio" name="radio" id="passenger-radio" />
                                 Пассажир
                             </label>
                         </div>
                     </form>
                 </div>
                 <div className={MyRoutesSCSS.my_routes__list}>
-                    {driverStandart}
+                    {(myAllDataDirty) && passagerStandart.concat(driverStandart)}
+                    {(myDriverDataDirty) && driverStandart}
+                    {(myPassagerDataDirty) && passagerStandart}
                 </div>
             </section>
         </div>

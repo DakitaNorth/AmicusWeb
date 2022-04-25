@@ -5,10 +5,6 @@ import ProfileCSS from './css/profile.module.css';
 
 import avatar_load from "../../img/profile-load.svg";
 
-const headers = {
-    "Content-Type": "application/json; charset=utf-8",
-};
-
 const Profile = () => {
 
     const [profileData, setProfileData] = useState([]);
@@ -18,6 +14,10 @@ const Profile = () => {
     }, []);
 
     function gettingProfileData() {
+        const headers = {
+            "Content-Type": "application/json; charset=utf-8",
+        };
+
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
         const phone = LoginPassword.phone;
         const password = LoginPassword.password;
@@ -29,6 +29,24 @@ const Profile = () => {
             });
     }
 
+    function handleFile(e) {
+        let avatarData = e.target.files[0];
+        e.target.value = "";
+
+        var formData = new FormData();
+
+        formData.append("file", avatarData);
+
+        console.log(formData.get("file"));
+
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/uploadphoto";
+
+        axios.post(API_URL, formData)
+            .then((response) => {
+                console.log(response);
+            })
+    }
+
     return (
         <div className="universal-form">
             <h1 className="visually-hidden">Окно профиля</h1>
@@ -36,7 +54,7 @@ const Profile = () => {
                 <div className={ProfileCSS.my_profile__container}>
                     <div className={ProfileCSS.my_profile__avatar + " " + ProfileCSS.avatar}>
                         <label className={ProfileCSS.avatar__load_button} htmlFor="avatar__load_input">
-                            <input type="file" className="visually-hidden" id="avatar__load_input" />
+                            <input type="file" className="visually-hidden" onChange={handleFile} name="avatar__load" id="avatar__load_input" />
                             <img className={ProfileCSS.avatar__img} src={profileData.photo} width="85" height="85" alt="Ваш аватар" />
                         </label>
                         <span className={ProfileCSS.avatar__name}>{profileData.name}</span>

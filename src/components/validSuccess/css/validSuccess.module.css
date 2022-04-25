@@ -1,0 +1,25 @@
+.valid_success {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    font-family: "Inter Regular", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #00ff00;
+
+    transition: 0.5s;
+    transform: translateY(-150%);
+}
+
+.valie_success_visible {
+    transform: translateY(0);
+}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import MyRoutesSelectedCSS from './css/myRoutesSelected.module.css';
 
-import MyRouteSelectedItem from "./myRoutesSelectedItem";
+import MyRoutesSelectedItemDriver from "./myRoutesSelectedItemDriver";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -13,41 +13,22 @@ const MyRoutesSelected = () => {
 
     const params = useParams();
 
-    const [myPassagerData, setMyPassagerData] = useState([]);
-    const [myDriverData, setMyDriverData] = useState([]);
     const [myData, setMyData] = useState([]);
 
-    const [thisDriverData, setThisDriverData] = useState([]);
-
-    const [isPassagerLoading, setIsPassagerLoading] = useState(false);
-    const [isDriverLoading, setIsDriverLoading] = useState(false);
+    const [thisRouteData, setThisRouteData] = useState([]);
 
     useEffect(() => {
         gettingData();
-    }, []);
-
-    useLayoutEffect(() => {
-        if (isPassagerLoading && isDriverLoading) {
-            gettingThisRoute();
-            includeData();
-        }
-    })
+        gettingThisRoute();
+        includeData();
+    }, [myData]);
 
     function gettingData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             const userphone = LoginPassword.phone;
 
-            const PASSAGER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserpassenger";
             const DRIVER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserdriver";
-
-            axios.post(PASSAGER_URL, { userphone }, { headers })
-                .then((response) => {
-                    if (Array.isArray(response.data) && response.data.length) {
-                        setMyPassagerData(response.data);
-                    }
-                    setIsPassagerLoading(true);
-                });
 
             axios.post(DRIVER_URL, { userphone }, { headers })
                 .then((response) => {
@@ -55,30 +36,25 @@ const MyRoutesSelected = () => {
                         for (var i = 0; i <= response.data.length - 1; i++) {
                             response.data[i].autorname = "Вы";
                         }
-                        setMyDriverData(response.data);
+                        setMyData(response.data);
                     }
-                    setIsDriverLoading(true);
                 });
-            
-            console.log(myPassagerData);
-            console.log(myDriverData); 
-            console.log(myData);
         }
     }
 
     function gettingThisRoute() {
-        let paramsId = parseInt(params.myRouteID);
+        let paramsId = parseInt(params.myRouteDriverID);
 
-        for (var i = 0; i < myDriverData.length; i++) {
-            if (myDriverData[i].id == paramsId) {
-                setThisDriverData(myDriverData[i]);
+        for (var i = 0; i < myData.length; i++) {
+            if (myData[i].id === paramsId) {
+                setThisRouteData(myData[i]);
             }
         }
     }
 
     function includeData() {
-        document.getElementById('where-input').value = thisDriverData.departureplace;
-        document.getElementById('somewhere-input').value = thisDriverData.arrivalplace;
+        document.getElementById('where-input').value = thisRouteData.departureplace;
+        document.getElementById('somewhere-input').value = thisRouteData.arrivalplace;
     }
 
     return (
@@ -95,15 +71,15 @@ const MyRoutesSelected = () => {
                 </div>
                 <div className={MyRoutesSelectedCSS.route_list}>
                     <div className={MyRoutesSelectedCSS.route_list__container}>
-                        <MyRouteSelectedItem
-                            id={thisDriverData.id}
-                            autorname={thisDriverData.autorname}
-                            autorphoto={thisDriverData.autorphoto}
-                            departuretime={thisDriverData.departuretime}
-                            arrivaltime={thisDriverData.arrivaltime}
-                            membercount={thisDriverData.membercount}
-                            weekday={thisDriverData.weekday}
-                            price={thisDriverData.price}
+                        <MyRoutesSelectedItemDriver 
+                            id={thisRouteData.id}
+                            autorname={thisRouteData.autorname}
+                            autorphoto={thisRouteData.autorphoto}
+                            departuretime={thisRouteData.departuretime}
+                            arrivaltime={thisRouteData.arrivaltime}
+                            membercount={thisRouteData.membercount}
+                            weekday={thisRouteData.weekday}
+                            price={thisRouteData.price}
                         />
                     </div>
                 </div>

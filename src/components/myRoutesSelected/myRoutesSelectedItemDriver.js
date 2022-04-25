@@ -15,7 +15,6 @@ const MyRouteSelectedItem = props => {
         const DELETE_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deltravel";
 
         let travelid = props.id;
-        console.log(travelid);
 
         axios.post(DELETE_ROUTE_URL, { travelid }, { headers })
             .then((response) => {

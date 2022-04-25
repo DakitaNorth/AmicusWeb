@@ -5,6 +5,9 @@ import RouteCreatingCSS from './css/routeCreating.module.css';
 
 import CreateParameters from "../routeCreatingPage/createParameters";
 
+import ValidError from "../validError/validError";
+import ValidSuccess from "../validSuccess/validSuccess";
+
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -12,6 +15,17 @@ const headers = {
 const RouteCreating = () => {
 
     const [profileData, setProfileData] = useState([]);
+
+    const [whereDirty, setWhereDirty] = useState(false);
+    const [somewhereDirty, setSomewhereDirty] = useState(false);
+    const [priceDirty, setPriceDirty] = useState(false);
+    const [createDirty, setCreateDirty] = useState(false);
+
+    const [createError, setCreateError] = useState("Данные публикации не заполнены");
+
+    const [createYep, setCreateYep] = useState(false);
+
+    const [createSuccess, setCreateSuccess] = useState("Публикация успешно выполнена");
 
     useEffect(() => {
         gettingProfileData();
@@ -27,7 +41,7 @@ const RouteCreating = () => {
 
         if (JSON.parse(sessionStorage.getItem("CreateAutoSelectItemID"))) {
             var AutoText = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemID"));
-        } 
+        }
         else {
             var AutoText = "Выбрать автомобиль";
         }
@@ -38,16 +52,37 @@ const RouteCreating = () => {
     function gettingWhere() {
         let createDepartureplace = document.getElementById("where-input").value;
         sessionStorage.setItem("СreateDepartureplace", JSON.stringify(createDepartureplace));
+
+        if (createDepartureplace !== "") {
+            document.getElementById("where-input").classList.remove(RouteCreatingCSS.not_valid_input);
+            setWhereDirty(true);
+        } else {
+            setWhereDirty(false);
+        }
     }
 
     function gettingSomewere() {
         let createArrivalplace = document.getElementById("somewhere-input").value;
         sessionStorage.setItem("СreateArrivalplace", JSON.stringify(createArrivalplace));
+
+        if (createArrivalplace !== "") {
+            document.getElementById("somewhere-input").classList.remove(RouteCreatingCSS.not_valid_input);
+            setSomewhereDirty(true);
+        } else {
+            setSomewhereDirty(false);
+        }
     }
 
     function createGettingPrice() {
         let gettingPrice = document.getElementById("price-input").value;
         sessionStorage.setItem("CreateGettingPrice", JSON.stringify(gettingPrice));
+
+        if (gettingPrice !== "") {
+            document.getElementById("price-input").classList.remove(RouteCreatingCSS.not_valid_input__price);
+            setPriceDirty(true);
+        } else {
+            setPriceDirty(false);
+        }
     }
 
     function createGettingDescription() {
@@ -71,56 +106,72 @@ const RouteCreating = () => {
 
     function createRoute(e) {
         e.preventDefault();
+        if (whereDirty && somewhereDirty && priceDirty) {
 
-        let departureplace = document.getElementById('where-input').value;
-        let arrivalplace = document.getElementById('somewhere-input').value;
+            let departureplace = document.getElementById('where-input').value;
+            let arrivalplace = document.getElementById('somewhere-input').value;
 
-        let departuretime = JSON.parse(sessionStorage.getItem("CreateDepartureTime"));
-        let arrivaltime = JSON.parse(sessionStorage.getItem("CreateArrivalTime"));
-        let membercount = JSON.parse(sessionStorage.getItem("CreateHumanParameter"));
-        let distance = "72 км";
-        let weekday = JSON.parse(sessionStorage.getItem("CreateDaysParameter"));
+            let departuretime = JSON.parse(sessionStorage.getItem("CreateDepartureTime"));
+            let arrivaltime = JSON.parse(sessionStorage.getItem("CreateArrivalTime"));
+            let membercount = JSON.parse(sessionStorage.getItem("CreateHumanParameter"));
+            let distance = "72 км";
+            let weekday = JSON.parse(sessionStorage.getItem("CreateDaysParameter"));
 
-        let automobile = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemData"));
+            let automobile = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemData"));
 
-        let price = document.getElementById('price-input').value;
-        let description = document.getElementById('additional-input').value;
+            let price = document.getElementById('price-input').value;
+            let description = document.getElementById('additional-input').value;
 
-        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
-            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            let autor = LoginPassword.phone;
+            if (JSON.parse(localStorage.getItem("LoginPassword"))) {
+                const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+                let autor = LoginPassword.phone;
 
-            let autorname = profileData.name;
-            let autorphoto = profileData.photo;
+                let autorname = profileData.name;
+                let autorphoto = profileData.photo;
 
-            const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
+                const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
 
-            if (departureplace !== "" && arrivalplace !== "" && automobile !== null && price !== "") {
-                axios.post(ADD_ROUTE_URL, {
-                    departureplace, arrivalplace, departuretime, arrivaltime, membercount,
-                    distance, weekday, automobile, price, description, autor, autorname, autorphoto
-                }, { headers })
-                    .then((response) => {
-                        console.log(response.data);
-                    });
-            } else {
-                console.log("Недостаточно данных");
+                if (departureplace !== "" && arrivalplace !== "" && automobile !== null && price !== "") {
+                    axios.post(ADD_ROUTE_URL, {
+                        departureplace, arrivalplace, departuretime, arrivaltime, membercount,
+                        distance, weekday, automobile, price, description, autor, autorname, autorphoto
+                    }, { headers })
+                        .then((response) => {
+                            console.log(response.data);
+                            setCreateYep(true);
+                        });
+                } else {
+                    console.log("Недостаточно данных");
+                }
             }
+            setWhereDirty(false);
+            setSomewhereDirty(false);
+            setPriceDirty(false);
+            setCreateDirty(false);
+            setCreateYep(false);
+        }
+        else {
+            setCreateDirty(true);
+            document.getElementById("where-input").classList.add(RouteCreatingCSS.not_valid_input);
+            document.getElementById("somewhere-input").classList.add(RouteCreatingCSS.not_valid_input);
+            document.getElementById("price-input").classList.add(RouteCreatingCSS.not_valid_input__price);
         }
     }
 
     return (
         <div className="universal-form">
+            {(createDirty && createError) && <ValidError error={createError} ifVisible={createDirty}></ValidError>}
+            {(createYep && createSuccess) && <ValidSuccess success={createSuccess} ifVisible={createYep}></ValidSuccess>}
             <h1 className="visually-hidden">Создание маршрута</h1>
             <section className={RouteCreatingCSS.form_create_route}>
                 <div className={RouteCreatingCSS.form_create_route__container}>
                     <form onSubmit={createRoute} className={RouteCreatingCSS.form_create_route__shield} action="#">
                         <div className={RouteCreatingCSS.form_create_route__wrapper}>
                             <label htmlFor="where-input">Откуда</label>
-                            <input className={RouteCreatingCSS.form_create_route__where_input + " " + " input"} onChange={gettingWhere} type="text" name="where" placeholder=""
+                            <input className={RouteCreatingCSS.form_create_route__where_input} onChange={gettingWhere} type="text" name="where" placeholder=""
                                 id="where-input" />
                             <label htmlFor="somewhere-input">Куда</label>
-                            <input className={RouteCreatingCSS.form_create_route__somewhere_input + " " + " input"} onChange={gettingSomewere} type="text" name="somewhere"
+                            <input className={RouteCreatingCSS.form_create_route__somewhere_input} onChange={gettingSomewere} type="text" name="somewhere"
                                 placeholder="" id="somewhere-input" />
                         </div>
                         <CreateParameters />

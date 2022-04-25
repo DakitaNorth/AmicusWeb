@@ -57,7 +57,9 @@ import PaymentMethod from "./components/paymentMethod/paymentMethod";
 
 import SuccessfulBooking from "./components/successfulBookingPage/successfulBooking";
 
-import MyRoutesSelected from "./components/myRoutesSelected/myRoutesSelected";
+import MyRoutesSelectedPassager from "./components/myRoutesSelected/myRoutesSelectedPassager";
+
+import MyRoutesSelectedDriver from "./components/myRoutesSelected/myRoutesSelectedDriver";
 
 import ProfileSettings from "./components/profileSettingsPage/profileSettings";
 
@@ -146,10 +148,17 @@ class App extends React.Component {
                             <Navigation />
                         </div>
                     } />
-                    <Route path="/my-routes/:myRouteID" element={
+                    <Route path="/my-routes-passager/:myRoutePassagerID" element={
                         <div>
                             <GoBackButton />
-                            <MyRoutesSelected />
+                            <MyRoutesSelectedPassager />
+                            <Navigation />
+                        </div>
+                    } />
+                    <Route path="/my-routes-driver/:myRouteDriverID" element={
+                        <div>
+                            <GoBackButton />
+                            <MyRoutesSelectedDriver />
                             <Navigation />
                         </div>
                     } />

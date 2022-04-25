@@ -25,7 +25,7 @@ const MyRoutesItem = props => {
                     </div>
                 </div>
             </div>
-            <NavLink to={"/my-routes/" + props.id} className={MyRoutesItemSCSS.route_driver_button}>Подробнее</NavLink>
+            <NavLink to={"/my-routes-driver/" + props.id} className={MyRoutesItemSCSS.route_driver_button}>Подробнее</NavLink>
         </div>
     )
 };

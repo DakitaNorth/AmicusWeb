@@ -5,13 +5,18 @@ import RouteSelListCSS from './css/routeSelectedList.module.css';
 import SearchParameters from "../routeSearchPage/searchParameters";
 import RouteSelectedListItem from "./routeSelectedListItem";
 
+import ValidError from "../validError/validError";
+
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-const RouteSelectedList = () => {
+const RouteSelectedList = () => { 
 
     const [routesData, setRoutesData] = useState([]); 
+
+    const [searchDirty, setSearchDirty] = useState(false);
+    const [searchError, setSearchError] = useState("Поездки не найдены");
 
     useEffect(() => {
         gettingRoutesData();
@@ -46,6 +51,7 @@ const RouteSelectedList = () => {
                     }
                 } else {
                     console.log(response.data);
+                    setSearchDirty(true);
                 }
             });
     };
@@ -77,6 +83,7 @@ const RouteSelectedList = () => {
             <section className={RouteSelListCSS.form_search_route}>
                 <div className={RouteSelListCSS.form_search_route__container}>
                     <form className={RouteSelListCSS.form_search_route__wrapper} action="#">
+                        {(searchDirty && searchError) && <ValidError error={searchError} ifVisible={searchDirty}></ValidError>}
                         <input className={RouteSelListCSS.form_search_route__where_input + " input"} type="text" name="where" placeholder="" disabled
                             id="where-input" />
                         <input className={RouteSelListCSS.form_search_route__somewhere_input + " input"} type="text" name="somewhere" placeholder="" disabled
