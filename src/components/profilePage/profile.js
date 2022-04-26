@@ -11,9 +11,13 @@ const Profile = () => {
 
     useEffect(() => {
         gettingProfileData();
+
+        if (profileData.photo === null) {
+            profileData.photo = avatar_load;
+        }
     }, []);
 
-    function gettingProfileData() {
+    function gettingProfileData() { 
         const headers = {
             "Content-Type": "application/json; charset=utf-8",
         };

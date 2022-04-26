@@ -1,16 +1,17 @@
 .my_profile__container {
     display: flex;
     flex-direction: column;
-    margin-top: 115px;
-    padding-left: 42px;
-    padding-right: 42px;
+    align-items: center;
+    margin-top: 12vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 5vh;
 }
 
 .avatar__load_button {
@@ -42,8 +43,9 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 330px;
     margin: 0;
-    margin-bottom: 58px;
+    margin-bottom: 10vh;
     padding: 0;
 }
 
@@ -103,4 +105,30 @@
     position: absolute;
     left: 20px;
     top: 11px;
+}
+
+@media (min-width: 768px) {
+    .my_profile__container {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .setting_list {
+        max-width: 690px;
+    }
+
+    .setting_list {
+        margin-bottom: 29vh;
+    }
+
+    .setting_list {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .my_profile__container {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
 }
