@@ -1,7 +1,7 @@
 .navigation {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     height: 60px;
     background-color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
@@ -50,6 +50,19 @@
     fill: #97ADB6;
 }
 
-.active_link {
-    background-color: transparent;
+@media (min-width: 1200px) {
+    .navigation {
+        position: fixed;
+        left: 0;
+        width: 80px;
+        height: 100vh;
+    }
+
+    .navigation__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+    }
 }

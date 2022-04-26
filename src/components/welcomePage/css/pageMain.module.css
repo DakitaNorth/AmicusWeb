@@ -1,11 +1,21 @@
 .page_welcome {
-    margin-top: 125px;
+    margin-top: 15vh;
+}
+
+.page_welcome__container {
+    display: flex;
+    justify-content: center;
 }
 
 .page_welcome__promo {
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 250px;
+    padding: 25px;
+    padding-top: 5px;
+    border-radius: 25px;
+    background-color: #ffffff;
 }
 
 .page_welcome__promo_text:first-child {
@@ -20,13 +30,9 @@
     color: #7E7E7E;
 }
 
-.page_navigation {
-    margin-top: 60px;
-}
-
 .page_navigation__container {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 13vw;
+    padding-right: 13vw;
 }
 
 .page_navigation__list {
@@ -57,6 +63,30 @@
     text-transform: uppercase;
     color: #ffffff;
 }
+
+.page_navigation__list__login:hover,
+.page_navigation__list__registration:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.page_navigation__list__login:active,
+.page_navigation__list__registration:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}
+
+.page_navigation__list__faq:hover,
+.page_navigation__list__application:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.page_navigation__list__faq:active,
+.page_navigation__list__application:active {
+    background-color: #FFAF32;
+}
+
 
 .page_navigation__list__login {
     background-image: url("/src/img/main-page-login.svg");
@@ -105,4 +135,66 @@
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: 15px;
+}
+
+.page_text {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    visibility: hidden;
+}
+
+.page_text__text {
+    width: 335px;
+    font-family: "Inter Regular";
+    font-size: 14px;
+    color: #7E7E7E;
+}
+
+.page_text__text_yellow {
+    color: #FFC032;
+}
+
+@media (min-width: 768px) {
+    .page_welcome {
+        margin-top: 24vh;
+    }
+
+    .page_welcome__promo {
+        padding-top: 10px;
+    }
+
+    .page_navigation__container {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+
+    .page_text {
+        visibility: visible;
+        padding: 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .page_welcome {
+        margin-top: 28vh;
+    }
+
+    .page_navigation {
+        margin-top: 3vh;
+    }
+
+    .page_navigation__container {
+        padding-left: 25vw;
+        padding-right: 25vw;
+    }
+
+    .page_text {
+        margin-left: 25vw;
+        margin-right: 25vw;
+    }
 }

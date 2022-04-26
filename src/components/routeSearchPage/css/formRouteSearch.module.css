@@ -1,7 +1,7 @@
 .page_main__heading {
     margin: 0;
-    margin-top: 55px;
-    margin-bottom: 36px;
+    margin-top: 7vh;
+    margin-bottom: 5vh;
     text-align: center;
     font-family: "Inter Bold";
     font-size: 20px;
@@ -11,13 +11,17 @@
 }
 
 .form_search_route__container {
-    padding-left: 36px;
-    padding-right: 36px;
+    display: flex;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .form_search_route__wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 360px;
+    width: 100vw;
     margin-bottom: 20px;
 }
 
@@ -48,14 +52,29 @@
 
 .time_form__button {
     position: absolute;
-    left: 102px;
+    left: 50vw;
     bottom: 100px;
     width: 205px;
+    margin-left: -102px;
     padding-top: 10px;
     padding-bottom: 7px;
-    text-align: center;
 }
 
 .not_valid_input {
     border: 1px solid #F54747;
+}
+
+@media (min-width: 1200px) {
+    .page_main__heading {
+        padding-left: 8vw;
+        text-align: start;
+    }
+
+    .form_search_route__container {
+        justify-content: left;
+    }
+
+    .time_form__button {
+        left: 10vw;
+    }
 }

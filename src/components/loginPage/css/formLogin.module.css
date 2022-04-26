@@ -1,6 +1,6 @@
 .page_main__heading {
     margin: 0;
-    margin-top: 55px;
+    margin-top: 7vh; 
     text-align: center;
     font-family: "Inter Bold";
     font-size: 20px;
@@ -10,18 +10,21 @@
 }
 
 .form_login {
-    margin-top: 120px;
+    margin-top: 15vh;
 }
 
 .form_login__container {
-    padding-left: 36px;
-    padding-right: 36px;
+    display: flex;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .form_login__wrapper {
-    position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 360px;
+    width: 100vw;
 }
 
 .form_login__wrapper label {
@@ -36,7 +39,19 @@
 }
 
 .login_password {
+    width: 100%;
+}
+
+.login_password__wrapper {
+    position: relative;
     margin-bottom: 10px;
+}
+
+.password_checkbox_label {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
 }
 
 .forgot_password {
@@ -46,13 +61,27 @@
     color: #97ADB6;
 }
 
+.forgot_password:hover {
+    opacity: 0.9;
+    color: #97ADB6;
+}
+
+.forgot_password:active {
+    opacity: 0.7;
+    color: #97ADB6;
+}
+
 .form_login__button {
     padding-top: 12px;
     padding-bottom: 13px;
 }
 
-.password_checkbox_label {
-    position: absolute;
-    top: 125px;
-    right: 15px;
+.form_login__button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.form_login__button:active {
+    background-color: #584BF6;
+    color: #ffffff;
 }

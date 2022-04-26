@@ -66,7 +66,7 @@ const FormRouteSearch = () => {
                         {(searchDirty && searchError) && <ValidError error={searchError} ifVisible={searchDirty}></ValidError>}
                         <label htmlFor="where-input">Откуда</label>
                         <input className={FormRouteSCSS.form_search_route__where_input} onChange={gettingWhere} type="text" name="where"
-                            id="where-input" />
+                            id="where-input" /> 
                         <label htmlFor="somewhere-input">Куда</label>
                         <input className={FormRouteSCSS.form_search_route__somewhere_input} onChange={gettingSomewere} type="text" name="somewhere"
                             id="somewhere-input" />

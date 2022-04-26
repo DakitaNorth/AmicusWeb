@@ -75,11 +75,13 @@ const FormLogin = () => {
                         <label htmlFor="login-input">Номер телефона</label>
                         <input onFocus={loginInputMask} className={FormLoginCSS.login_input + " input"} type="text" name="login" placeholder="+7(900)000-00-00" id="login-input" />
                         <label htmlFor="login-password">Пароль</label>
-                        <input className={FormLoginCSS.login_password + " input"} type="password" name="password" id="login-password" autoComplete="on" />
-                        <input onChange={passwordUnlockLock} className={FormLoginCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
-                        <label className={FormLoginCSS.password_checkbox_label} htmlFor="password-unlock">
-                            <img className={FormLoginCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
-                        </label>
+                        <div className={FormLoginCSS.login_password__wrapper}>
+                            <input className={FormLoginCSS.login_password + " input"} type="password" name="password" id="login-password" autoComplete="on" />
+                            <input onChange={passwordUnlockLock} className={FormLoginCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
+                            <label className={FormLoginCSS.password_checkbox_label} htmlFor="password-unlock">
+                                <img className={FormLoginCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
+                            </label>
+                        </div>
                         <NavLink to="/password-recovery" className={FormLoginCSS.forgot_password}>Забыли пароль?</NavLink>
                         <button to="/route-search" className={FormLoginCSS.form_login__button + " button"} type="submit">Войти</button>
                     </form>

@@ -1,12 +1,13 @@
 .parameters {
-    position: relative;
+    display: flex;
+    justify-content: center;
     margin-bottom: 15px;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
-.parameters::before,
-.parameters::after {
+.parameters__list::before,
+.parameters__list::after {
     content: "";
     position: absolute;
     width: 360px;
@@ -16,11 +17,23 @@
     z-index: -2;
 }
 
+.parameters__list::before {
+    top: 0;
+    left: 0;
+}
+
+.parameters__list::after {
+    bottom: 0;
+    left: 0;
+}
+
 .parameters__list {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 339px;
+    max-width: 360px;
+    width: 100vw;
     height: 58px;
     margin: 0;
     padding: 0;
@@ -83,4 +96,10 @@
     position: absolute;
     top: 10px;
     left: 13px;
+}
+
+@media (min-width: 1200px) {
+    .parameters {
+        justify-content: left;
+    }
 }

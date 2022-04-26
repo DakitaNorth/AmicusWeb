@@ -12,11 +12,11 @@ const Navigation = () => {
         let myRouteLink = document.getElementById("my_route_link");
 
         if (myRouteLink.classList.contains("active")) {
-            for (var j = 0; j <=2; j++) {
+            for (var j = 0; j <= yellowPath.length - 1; j++) {
                 yellowPath[j].style.fill = "#476DF5";
             } 
         } else {
-            for (var j = 0; j <=2; j++) {
+            for (var j = 0; j <= yellowPath.length - 1; j++) {
                 yellowPath[j].style.fill = "#FFC032";
             }
         }
@@ -56,8 +56,8 @@ const Navigation = () => {
                         </NavLink>
                     </li>
                     <li className={NavigationCSS.navigation__item}>
-                        <NavLink to="/my-routes" className={NavigationCSS.navigation_link + " " + NavigationCSS.my_route_link} id="my_route_link">
-                            <svg className={NavigationCSS.navigation_svg} width="77" height="47" viewBox="0 0 77 47" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-my-routes" >
+                        <NavLink to="/my-routes" className={NavigationCSS.navigation_link + " " + NavigationCSS.my_route_link_mobile} id="my_route_link">
+                            <svg className={NavigationCSS.navigation_svg + " " + NavigationCSS.navigation_svg__mobile} width="77" height="47" viewBox="0 0 77 47" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-my-routes" >
                                 <path className={NavigationCSS.my_route_link__yellow_path} d="M36.2199 17.7695H16.1963V23.3885H36.2199V17.7695Z" />
                                 <path className={NavigationCSS.my_route_link__yellow_path}
                                     d="M11.3651 11.4889C11.8121 10.3862 12.376 9.46668 13.0638 8.73377C13.7515 7.99748 14.5012 7.42065 15.3196 7.0033C16.138 6.58596 16.9151 6.27719 17.6545 6.0736C18.3904 5.87341 19.0403 5.74447 19.6042 5.69697C20.1682 5.64608 20.5361 5.62232 20.7115 5.62232H25.6323H30.7216H36.4161V2.83322C36.4161 2.44301 36.3439 2.07656 36.196 1.73047C36.0516 1.38437 35.8453 1.08239 35.5839 0.821124C35.3226 0.56325 35.0131 0.359666 34.6624 0.217157C34.3116 0.0746476 33.9402 0 33.5448 0H20.7081C18.4454 0 16.3546 0.383417 14.4427 1.14686C12.5308 1.9103 10.8699 2.97573 9.47033 4.34653C8.06733 5.71394 6.97382 7.35279 6.18292 9.25291C5.39545 11.153 5 13.2364 5 15.4996V30.9991H10.6945V27.1955V23.3885V17.7695V15.4996C10.6945 13.9286 10.918 12.5917 11.3651 11.4889Z" />
