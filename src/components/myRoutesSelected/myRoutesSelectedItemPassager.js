@@ -14,13 +14,12 @@ const MyRouteSelectedItem = props => {
     function deluserRoute() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const userphone = LoginPassword.phone;
-
-            const DELUSER_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deluserfromtravel";
-
+            const userId = LoginPassword.id;
             let travelid = props.id;
+
+            const DELUSER_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deluserfromtravel/" + travelid + "/" + userId;
     
-            axios.post(DELUSER_ROUTE_URL, { travelid, userphone }, { headers })
+            axios.get(DELUSER_ROUTE_URL, { headers })
                 .then((response) => {
                     console.log(response.data);
                     navigate("/my-routes");

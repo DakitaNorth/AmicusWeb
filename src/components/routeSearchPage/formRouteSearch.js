@@ -14,7 +14,7 @@ const FormRouteSearch = () => {
 
     const [searchError, setSearchError] = useState("Данные поиска некорректны");
 
-    useLayoutEffect(() => {
+    useLayoutEffect(() => { 
         includeData();
     })
 
@@ -63,7 +63,7 @@ const FormRouteSearch = () => {
             <section className={FormRouteSCSS.form_search_route}>
                 <div className={FormRouteSCSS.form_search_route__container}>
                     <form onSubmit={searchRoute} className={FormRouteSCSS.form_search_route__wrapper} action="#">
-                        {(searchDirty && searchError) && <ValidError error={searchError} ifVisible={searchDirty}></ValidError>}
+                        {/* {(searchDirty && searchError) && <ValidError error={searchError} ifVisible={searchDirty}></ValidError>} */}
                         <label htmlFor="where-input">Откуда</label>
                         <input className={FormRouteSCSS.form_search_route__where_input} onChange={gettingWhere} type="text" name="where"
                             id="where-input" /> 

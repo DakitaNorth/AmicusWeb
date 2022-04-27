@@ -26,11 +26,11 @@ const MyRoutesSelected = () => {
     function gettingData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const userphone = LoginPassword.phone;
+            const userId = LoginPassword.id;
 
-            const DRIVER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserdriver";
+            const DRIVER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelswhereuserdriver/" + userId;
 
-            axios.post(DRIVER_URL, { userphone }, { headers })
+            axios.get(DRIVER_URL, { headers })
                 .then((response) => {
                     if (Array.isArray(response.data) && response.data.length) {
                         for (var i = 0; i <= response.data.length - 1; i++) {

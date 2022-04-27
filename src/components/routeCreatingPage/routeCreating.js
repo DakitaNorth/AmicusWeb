@@ -114,7 +114,6 @@ const RouteCreating = () => {
             let departuretime = JSON.parse(sessionStorage.getItem("CreateDepartureTime"));
             let arrivaltime = JSON.parse(sessionStorage.getItem("CreateArrivalTime"));
             let membercount = JSON.parse(sessionStorage.getItem("CreateHumanParameter"));
-            let distance = "72 км";
             let weekday = JSON.parse(sessionStorage.getItem("CreateDaysParameter"));
 
             let automobile = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemData"));
@@ -124,17 +123,14 @@ const RouteCreating = () => {
 
             if (JSON.parse(localStorage.getItem("LoginPassword"))) {
                 const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-                let autor = LoginPassword.phone;
+                let userId = LoginPassword.id;
 
-                let autorname = profileData.name;
-                let autorphoto = profileData.photo;
-
-                const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel";
+                const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel/" + userId;
 
                 if (departureplace !== "" && arrivalplace !== "" && automobile !== null && price !== "") {
                     axios.post(ADD_ROUTE_URL, {
                         departureplace, arrivalplace, departuretime, arrivaltime, membercount,
-                        distance, weekday, automobile, price, description, autor, autorname, autorphoto
+                        price, weekday, automobile, description
                     }, { headers })
                         .then((response) => {
                             console.log(response.data);
@@ -160,8 +156,8 @@ const RouteCreating = () => {
 
     return (
         <div className="universal-form">
-            {(createDirty && createError) && <ValidError error={createError} ifVisible={createDirty}></ValidError>}
-            {(createYep && createSuccess) && <ValidSuccess success={createSuccess} ifVisible={createYep}></ValidSuccess>}
+            {/* {(createDirty && createError) && <ValidError error={createError} ifVisible={createDirty}></ValidError>}
+            {(createYep && createSuccess) && <ValidSuccess success={createSuccess} ifVisible={createYep}></ValidSuccess>} */}
             <h1 className="visually-hidden">Создание маршрута</h1>
             <section className={RouteCreatingCSS.form_create_route}>
                 <div className={RouteCreatingCSS.form_create_route__container}>

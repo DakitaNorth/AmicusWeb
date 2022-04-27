@@ -13,11 +13,11 @@ const PaymentMethodItem = props => {
     function joiningRoute() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const userphone = LoginPassword.phone;
+            const userId = LoginPassword.id;
             const travelid = JSON.parse(sessionStorage.getItem("SelectedTravelID"));
             
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addusertotravel";
-            axios.post(API_URL, { travelid, userphone }, { headers })
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addusertotravel/" + travelid + "/" + userId;
+            axios.get(API_URL, { headers })
                 .then((response) => {
                     console.log(response.data);
                 });

@@ -22,10 +22,10 @@ const PaymentMethod = () => {
     function gettingCardData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const phone = LoginPassword.phone;
+            const userId = LoginPassword.id;
             
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
-            axios.post(API_URL, { phone }, { headers })
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards/" + userId;
+            axios.get(API_URL, { headers })
                 .then((response) => {
                     setCardsData(response.data); 
                 });

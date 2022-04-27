@@ -25,11 +25,11 @@ const MyRoutesSelected = () => {
     function gettingData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const userphone = LoginPassword.phone;
+            const userId = LoginPassword.id;
 
-            const PASSAGER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserpassenger";
+            const PASSAGER_URL = "https://xn--80aaggtieo3biv.xn--p1ai/gettravelwhereuserpassenger/" + userId;
 
-            axios.post(PASSAGER_URL, { userphone }, { headers })
+            axios.get(PASSAGER_URL, { headers })
                 .then((response) => {
                     if (Array.isArray(response.data) && response.data.length) {
                         setMyData(response.data);

@@ -12,11 +12,11 @@ const MyRouteSelectedItem = props => {
     const navigate = useNavigate();
 
     function deleteRoute() {
-        const DELETE_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deltravel";
+        let travelid = props.id; 
 
-        let travelid = props.id;
+        const DELETE_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deltravel/" + travelid;
 
-        axios.post(DELETE_ROUTE_URL, { travelid }, { headers })
+        axios.get(DELETE_ROUTE_URL, { headers })
             .then((response) => {
                 console.log(response.data);
                 navigate("/my-routes");
