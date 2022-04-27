@@ -15,7 +15,7 @@ const Greeting = () => {
                     </picture>
                 </NavLink>
                 <svg className={GreatingCSS.page_header__logo__svg} width="3" height="44" viewBox="0 0 3 44" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L1 45" stroke="#ffffff" stroke-dasharray="3 3" />
+                    <path d="M1 1L1 45" stroke="#ffffff" strokeDasharray="3 3" />
                 </svg>
                 <span className={GreatingCSS.page_header__text}>Поездки на ваш выбор по самым низким ценам</span>
             </div>

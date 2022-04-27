@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import AddCardCSS from './css/addCard.module.css';
@@ -9,6 +9,7 @@ const headers = {
 };
 
 const AddCard = () => {
+    const navigate = useNavigate();
 
     function numCardMask() {
         let numInput = document.getElementById("num-card");
@@ -42,7 +43,7 @@ const AddCard = () => {
 
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const user = LoginPassword.phone;
+            const userId = LoginPassword.id;
 
             const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
 
@@ -57,9 +58,10 @@ const AddCard = () => {
             console.log(cvv);
 
 
-            axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
+            axios.post(ADD_CARD_URL, { userId, number, owner, date, cvv }, { headers })
                 .then((response) => {
                     console.log(response);
+                    navigate("/my-card-settings");
                 });
         }
     }

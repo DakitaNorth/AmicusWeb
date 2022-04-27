@@ -22,9 +22,11 @@ const CarSettings = () => {
     function gettingCarsData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const phone = LoginPassword.phone;
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
-            axios.post(API_URL, { phone }, { headers })
+            const userId = LoginPassword.id;
+
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto/" + userId;
+            console.log(API_URL);
+            axios.get(API_URL, { headers })
                 .then((response) => {
                     if (Array.isArray(response.data) && response.data.length) {
                         setCarsData(response.data);

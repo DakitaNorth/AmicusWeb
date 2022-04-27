@@ -27,7 +27,7 @@ const FormLogin = () => {
 
         // const password = e.target.elements.password.value;
 
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {
                 if (typeof response.data["phone"] !== "undefined" && response.data["phone"] !== "Bad phone or password") {

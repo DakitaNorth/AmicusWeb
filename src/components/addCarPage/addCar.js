@@ -15,10 +15,10 @@ const AddCar = () => {
 
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const owner = LoginPassword.phone;
+            const owner = LoginPassword.id;
 
             let statenumber = document.getElementById('num-input').value;
-            let model = document.getElementById('model-input').value;
+            let model = document.getElementById('model-input').value; 
             let color = document.getElementById('color-input').value;
             let places = document.getElementById('places-input').value;
 
@@ -31,7 +31,7 @@ const AddCar = () => {
 
             axios.post(ADD_CARD_URL, { statenumber, model, color, places, owner }, { headers })
                 .then((response) => {
-                    // navigate("/my-car-settings");
+                    navigate("/my-car-settings");
                     console.log(response);
                 });
         }

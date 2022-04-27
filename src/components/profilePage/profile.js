@@ -11,10 +11,6 @@ const Profile = () => {
 
     useEffect(() => {
         gettingProfileData();
-
-        if (profileData.photo === null) {
-            profileData.photo = avatar_load;
-        }
     }, []);
 
     function gettingProfileData() { 
@@ -26,7 +22,7 @@ const Profile = () => {
         const phone = LoginPassword.phone;
         const password = LoginPassword.password;
 
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {
                 setProfileData(response.data);
@@ -34,6 +30,9 @@ const Profile = () => {
     }
 
     function handleFile(e) {
+        const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        const userId = LoginPassword.id;
+
         let avatarData = e.target.files[0];
         e.target.value = "";
 
@@ -43,12 +42,14 @@ const Profile = () => {
 
         console.log(formData.get("file"));
 
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/uploadphoto";
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/uploadphoto/" + userId;
 
         axios.post(API_URL, formData)
             .then((response) => {
                 console.log(response);
             })
+
+        document.getElementById("avatar__img").src = avatarData;
     }
 
     return (
@@ -59,7 +60,7 @@ const Profile = () => {
                     <div className={ProfileCSS.my_profile__avatar + " " + ProfileCSS.avatar}>
                         <label className={ProfileCSS.avatar__load_button} htmlFor="avatar__load_input">
                             <input type="file" className="visually-hidden" onChange={handleFile} name="avatar__load" id="avatar__load_input" />
-                            <img className={ProfileCSS.avatar__img} src={profileData.photo} width="85" height="85" alt="Ваш аватар" />
+                            <img className={ProfileCSS.avatar__img} src={profileData.photo} width="85" height="85" alt="Ваш аватар" id="avatar__img" />
                         </label>
                         <span className={ProfileCSS.avatar__name}>{profileData.name}</span>
                         <span className={ProfileCSS.avatar__email}>{profileData.mail}</span>

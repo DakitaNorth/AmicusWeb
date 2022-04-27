@@ -32,10 +32,10 @@ const VievCar = () => {
     function gettingCarData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const phone = LoginPassword.phone;
+            const userId = LoginPassword.id;
 
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto";
-            axios.post(API_URL, { phone }, { headers })
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto/" + userId;
+            axios.get(API_URL, { headers })
                 .then((response) => {
                     setCarData(response.data);
                     setIsLoading(true);
@@ -49,6 +49,7 @@ const VievCar = () => {
         for (var i = 0; i < carData.length; i++) {
             if (carData[i].id == paramsId) {
                 setThisCarData(carData[i]);
+                console.log(thisCarData);
             }
         }
     }
@@ -63,11 +64,11 @@ const VievCar = () => {
     function deleteCar(e) {
         e.preventDefault();
 
-        let statenumber = document.getElementById('num-input').value;
+        let thisCarId = thisCarData.id;
 
-        const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delauto";
+        const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delauto/" + thisCarId;
 
-        axios.post(DELETE_CARD_URL, { statenumber }, { headers })
+        axios.get(DELETE_CARD_URL, { headers })
             .then((response) => {
                 navigate("/my-car-settings");
                 console.log(response);

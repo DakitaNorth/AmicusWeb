@@ -8,7 +8,7 @@ const CarSettingItem = props => (
             <input className={CarSettingItemCSS.car_input + " visually-hidden"} type="radio" name="car" value="first-car" id="first-car" />
             <label className={CarSettingItemCSS.car_label} htmlFor="first-car">
                 <span className={CarSettingItemCSS.car_model}>{props.model}</span>
-                <span className={CarSettingItemCSS.car_color}>{props.color.substring(0, 6)}</span>
+                <span className={CarSettingItemCSS.car_color}>{props.color.substring(0, 8)}</span>
                 <span className={CarSettingItemCSS.car_statenumber}>{props.statenumber.substring(0, 8)}</span>
             </label>
         </NavLink>

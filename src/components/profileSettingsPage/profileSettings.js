@@ -29,7 +29,7 @@ const ProfileSettings = () => {
         const phone = LoginPassword.phone;
         const password = LoginPassword.password;
 
-        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
 
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {
@@ -60,7 +60,7 @@ const ProfileSettings = () => {
         e.preventDefault();
 
         let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-        const userphone = LoginPassword.phone;
+        const userId = LoginPassword.ID;
 
         const PRONE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserphone";
         const MAIL_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeusermail";
@@ -68,12 +68,12 @@ const ProfileSettings = () => {
         const PASSWORD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserpass";
 
         let updatephone = document.getElementById('phone-input').value;
-        let mail = document.getElementById('email-input').value;
+        let mail = document.getElementById('email-input').value; 
         let facebook = document.getElementById('vk-input').value;
         let password = document.getElementById('password-input').value;
 
         if (profileSettingsData.phone !== updatephone) {
-            axios.post(PRONE_URL, { userphone, updatephone }, { headers })
+            axios.post(PRONE_URL, { updatephone, userId }, { headers })
                 .then((response) => {
                     console.log(updatephone);
                     console.log(LoginPassword);
@@ -83,21 +83,21 @@ const ProfileSettings = () => {
                 });
         }
         if (profileSettingsData.mail !== mail) {
-            axios.post(MAIL_URL, { userphone, mail }, { headers })
+            axios.post(MAIL_URL, { mail, userId }, { headers })
                 .then((response) => {
                     console.log(mail);
                     console.log(response.data);
                 });
         }
         if (profileSettingsData.facebook !== facebook) {
-            axios.post(VK_URL, { userphone, facebook }, { headers })
+            axios.post(VK_URL, { facebook, userId }, { headers })
                 .then((response) => {
                     console.log(facebook);
                     console.log(response.data);
                 });
         }
         if (profileSettingsData.password !== password) {
-            axios.post(PASSWORD_URL, { userphone, password }, { headers })
+            axios.post(PASSWORD_URL, { password, userId }, { headers })
                 .then((response) => {
                     console.log(password);
                     console.log(LoginPassword);

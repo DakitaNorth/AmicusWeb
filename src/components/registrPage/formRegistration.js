@@ -26,6 +26,7 @@ const FormRegistration = () => {
 
         console.log(name);
         console.log(phone);
+        console.log(email);
         console.log(password);
 
         const headers = {
@@ -36,7 +37,7 @@ const FormRegistration = () => {
 
         if (document.getElementById("agree-checkbox").checked) {
             if (password === repeatPassword) {
-                axios.post(REG_URL, { password, phone, name }, { headers })
+                axios.post(REG_URL, { password, phone, name, email }, { headers })
                     .then(response => {
                         console.log(response);
                         // if (response.data["response"] === "User has been registered") {

@@ -96,7 +96,7 @@ const RouteCreating = () => {
             let phone = LoginPassword.phone;
             let password = LoginPassword.password;
 
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/autorization";
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
             axios.post(API_URL, { phone, password }, { headers })
                 .then((response) => {
                     setProfileData(response.data);

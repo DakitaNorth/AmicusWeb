@@ -29,13 +29,13 @@ const VievCard = () => {
         }
     }) 
 
-    function gettingCardData() {
-        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
+    function gettingCardData() { 
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) { 
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const phone = LoginPassword.phone;
+            const userId = LoginPassword.id;
 
-            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards";
-            axios.post(API_URL, { phone }, { headers })
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards/" + userId; 
+            axios.get(API_URL, { headers })
                 .then((response) => {
                     setCardData(response.data);
                     setIsLoading(true);
@@ -138,11 +138,11 @@ const VievCard = () => {
     function deleteCard(e) {
         e.preventDefault();
 
-        let cardnumber = document.getElementById('num-card').value;
+        let thisCardId = thisCardData.id;
 
-        const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delcard";
+        const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delcard/" + thisCardId;
 
-        axios.post(DELETE_CARD_URL, { cardnumber }, { headers })
+        axios.get(DELETE_CARD_URL, { headers })
             .then((response) => {
                 navigate("/my-card-settings");
                 console.log(response);
