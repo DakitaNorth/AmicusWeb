@@ -66,6 +66,7 @@ const RouteSelectedList = () => {
             <RouteSelectedListItem
                 key={pos}
                 id={item.id}
+                autor={item.autor}
                 autorphoto={item.autorphoto}
                 autorname={item.autorname}
                 departureplace={item.departureplace}

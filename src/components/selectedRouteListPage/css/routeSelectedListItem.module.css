@@ -103,7 +103,7 @@
 }
 
 .route__item::before {
-    top: -10px;
+    top: -12px;
 }
 
 .route__item::after {

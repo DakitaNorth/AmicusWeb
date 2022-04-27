@@ -8,10 +8,12 @@ const RouteSelectedListItem = props => {
         <li key={props.pos} id={props.id} className={RouteSelLisItemCSS.route__item + " " + RouteSelLisItemCSS.route}>
             <div className={RouteSelLisItemCSS.route__shield}>
                 <div className={RouteSelLisItemCSS.route__wrapper}>
-                    <div className={RouteSelLisItemCSS.route_avatar}>
-                        <img className={RouteSelLisItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
-                        <span className={RouteSelLisItemCSS.route_avater__name}>{props.autorname}</span>
-                    </div>
+                    <NavLink to={"/user-profile/" + props.autor}>
+                        <div className={RouteSelLisItemCSS.route_avatar}>
+                            <img className={RouteSelLisItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
+                            <span className={RouteSelLisItemCSS.route_avater__name}>{props.autorname}</span>
+                        </div>
+                    </NavLink>
                     <div className={RouteSelLisItemCSS.route_information}>
                         <div className={RouteSelLisItemCSS.route_information__item_where}>
                             <span className={RouteSelLisItemCSS.route_information__adress}>{props.departureplace}</span>

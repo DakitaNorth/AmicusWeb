@@ -79,6 +79,10 @@ import VievCar from "./components/vievCarPage/vievCar";
 
 import CreateRouteAutoSelect from "./components/createAutoSelect/createAutoSelect";
 
+import UserProfilePage from "./components/userProfilePage/userProfilePage";
+
+import MyRoutesPassagers from "./components/myRoutesPassagers/myRoutesPassagers";
+
 class App extends React.Component {
     render() {
         return (
@@ -154,6 +158,12 @@ class App extends React.Component {
                             <GoBackButton />
                             <MyRoutesSelectedDriver />
                             <Navigation />
+                        </div>
+                    } />
+                    <Route path="/my-routes-passagers/:myRoutesPassagersID" element={
+                        <div>
+                            <GoBackButton />
+                            <MyRoutesPassagers />
                         </div>
                     } />
                     <Route path="/messages" element={
@@ -288,6 +298,12 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <CreateRouteAutoSelect />
+                        </div>
+                    } />
+                    <Route path="/user-profile/:userId" element={
+                        <div>
+                            <GoBackButton />
+                            <UserProfilePage />
                         </div>
                     } />
                 </Routes>

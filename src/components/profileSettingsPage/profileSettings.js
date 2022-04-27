@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import ProfileSettingsCSS from './css/profileSettings.module.css';
@@ -12,6 +13,8 @@ const headers = {
 };
 
 const ProfileSettings = () => {
+
+    const navigate = useNavigate();
 
     const [profileSettingsData, setProfileSettingsData] = useState([]);
 
@@ -83,13 +86,13 @@ const ProfileSettings = () => {
                     console.log(response.data);
                 });
         }
-        // if (profileSettingsData.facebook !== facebook) {
-        //     axios.post(FACEBOOK_URL, { facebook, userId }, { headers })
-        //         .then((response) => {
-        //             console.log(facebook);
-        //             console.log(response.data);
-        //         });
-        // }
+        if (profileSettingsData.facebook !== facebook) {
+            axios.post(FACEBOOK_URL, { facebook, userId }, { headers })
+                .then((response) => {
+                    console.log(facebook);
+                    console.log(response.data);
+                });
+        }
         if (profileSettingsData.mail !== mail) {
             axios.post(MAIL_URL, { mail, userId }, { headers })
                 .then((response) => {
@@ -107,6 +110,21 @@ const ProfileSettings = () => {
                     console.log(response.data);
                 });
         }
+    }
+
+    function deleteProfile(e) {
+        e.preventDefault();
+
+        let profileId = profileSettingsData.id;
+        console.log(profileId);
+
+        const DELETE_PROFILE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deluser/" + profileId;
+
+        axios.get(DELETE_PROFILE_URL, { headers })
+            .then((response) => {
+                console.log(response);
+                navigate("/");
+            });
     }
 
     function loginInputMask() {
@@ -167,7 +185,7 @@ const ProfileSettings = () => {
                     <input className={ProfileSettingsCSS.alerts_input + " visually-hidden"} type="checkbox" name="alert" id="alert-input" />
                 </div> */}
                     <button onClick={saveNewData} className={ProfileSettingsCSS.profile__save_button + " button"}>Сохранить</button>
-                    <button className={ProfileSettingsCSS.profile__delete_button}>Удалить аккаунт</button>
+                    <button onClick={deleteProfile} className={ProfileSettingsCSS.profile__delete_button}>Удалить аккаунт</button>
                 </form>
             </section>
         </div >

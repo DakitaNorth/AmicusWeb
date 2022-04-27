@@ -10,7 +10,7 @@ const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-const VievCar = () => { 
+const VievCar = () => {
     const navigate = useNavigate();
     const params = useParams();
 
@@ -61,6 +61,27 @@ const VievCar = () => {
         document.getElementById('num-input').value = thisCarData.statenumber;
     }
 
+    function saveNewData(e) {
+        e.preventDefault();
+
+        const autoid = thisCarData.id;
+
+        const UPDATA_CAR_DATA = "https://xn--80aaggtieo3biv.xn--p1ai/updateautodata";
+
+        let color = document.getElementById('color-input').value;
+        let model = document.getElementById('model-input').value;
+        let places = document.getElementById('places-input').value;
+        let statenumber = document.getElementById('num-input').value;
+
+
+        if (thisCarData.color !== color || thisCarData.model !== model || thisCarData.places !== places || thisCarData.statenumber !== statenumber) {
+            axios.post(UPDATA_CAR_DATA, { color, model, places, statenumber, autoid }, { headers })
+                .then((response) => {
+                    console.log(response.data);
+                });
+        }
+    }
+
     function deleteCar(e) {
         e.preventDefault();
 
@@ -99,7 +120,7 @@ const VievCar = () => {
                             <input className={CarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
                         </label>
                     </div>
-                    <button className={CarSettingsCSS.car__button + " " + CarSettingsCSS.car__button_save + " button"}>Сохранить</button>
+                    <button onClick={saveNewData} className={CarSettingsCSS.car__button + " " + CarSettingsCSS.car__button_save + " button"}>Сохранить</button>
                     <button onClick={deleteCar} className={CarSettingsCSS.car__button + " " + CarSettingsCSS.car__button_delete}>Удалить</button>
                 </div>
             </section >

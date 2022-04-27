@@ -27,7 +27,13 @@ const PaymentMethod = () => {
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getuserscards/" + userId;
             axios.get(API_URL, { headers })
                 .then((response) => {
-                    setCardsData(response.data); 
+                    if (Array.isArray(response.data) && response.data.length) {
+                        setCardsData(response.data); 
+                        console.log(response.data);
+                    }
+                    else {
+                        console.log(response.data);
+                    }
                 });
         }
     }

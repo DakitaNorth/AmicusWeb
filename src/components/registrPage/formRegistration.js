@@ -40,16 +40,16 @@ const FormRegistration = () => {
                 axios.post(REG_URL, { password, phone, name, email }, { headers })
                     .then(response => {
                         console.log(response);
-                        // if (response.data["response"] === "User has been registered") {
-                        //     navigate("/route-search");
-                        //     console.log(response.data);
-                        // }
-                        // else if (response.data["response"] === "Phone is already in use") {
-                        //     console.log("Телефон уже зарегистрирован");
-                        // }
-                        // else {
-                        //     console.log(response.data);
-                        // }
+                        if (response.data["response"] === "User has been registered") {
+                            navigate("/");
+                            console.log(response.data);
+                        }
+                        else if (response.data["response"] === "Phone is already in use") {
+                            console.log("Телефон уже зарегистрирован");
+                        }
+                        else {
+                            console.log(response.data); 
+                        }
                     });
             }
             else {

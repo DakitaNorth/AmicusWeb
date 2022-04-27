@@ -23,6 +23,7 @@ const PasswordRecovery = () => {
 
       axios.post(API_URL, { email }, { headers })
         .then((response) => {
+          sessionStorage.setItem("RecoveryMail", email);
           sessionStorage.setItem("RecoveryCode", response.data.code);
           navigate("/verification");
           console.log(response.data);

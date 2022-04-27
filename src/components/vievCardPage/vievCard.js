@@ -122,17 +122,24 @@ const VievCard = () => {
     }
 
     function saveNewData(e) {
-        // e.preventDefault();
+        e.preventDefault();
 
-        // let cardnumber = document.getElementById('num-card').value;
+        const cardid = thisCardData.id;
 
-        // const DELETE_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/delcard";
+        const UPDATA_CARD_DATA = "https://xn--80aaggtieo3biv.xn--p1ai/updatecarddata";
 
-        // axios.post(DELETE_CARD_URL, { cardnumber }, { headers })
-        //     .then((response) => {
-        //         navigate("/my-card-settings");
-        //         console.log(response);
-        //     });
+        let number = document.getElementById('num-card').value;
+        let date = document.getElementById('date-card').value;
+        let cvv = document.getElementById('cvv-card').value;
+        let owner = document.getElementById('name-card').value;
+
+
+        if (thisCardData.number !== number || thisCardData.date !== date || thisCardData.cvv !== cvv || thisCardData.owner !== owner) {
+            axios.post(UPDATA_CARD_DATA, { number, date, cvv, owner, cardid }, { headers })
+                .then((response) => {
+                    console.log(response.data);
+                });
+        }
     }
 
     function deleteCard(e) {

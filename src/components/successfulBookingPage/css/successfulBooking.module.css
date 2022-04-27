@@ -28,7 +28,10 @@
 
 .successful_text {
     width: 150px;
+    padding: 0;
     font-family: "Inter Light";
     font-size: 12px;
     text-align: center;
+    border: none;
+    background-color: transparent;
 }
