@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import ProfileSettingsCSS from './css/profileSettings.module.css';
@@ -9,7 +8,7 @@ import password_lock from "../../img/formLogin/passwordLock.svg";
 import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 
 const headers = {
-    "Content-Type": "application/json; charset=utf-8",
+    "Content-Type": "application/json; charset=utf-8"
 };
 
 const ProfileSettings = () => {
@@ -62,37 +61,39 @@ const ProfileSettings = () => {
         let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
         const userId = LoginPassword.ID;
 
-        const PRONE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserphone";
+        const PHONE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserphone";
         const MAIL_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeusermail";
-        const VK_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserfacebook";
-        const PASSWORD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserpass";
+        const FACEBOOK_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserfacebook";
+        const PASSWORD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserpass"; 
 
-        let updatephone = document.getElementById('phone-input').value;
+        let phone = document.getElementById('phone-input').value;
         let mail = document.getElementById('email-input').value; 
         let facebook = document.getElementById('vk-input').value;
         let password = document.getElementById('password-input').value;
 
-        if (profileSettingsData.phone !== updatephone) {
-            axios.post(PRONE_URL, { updatephone, userId }, { headers })
+        console.log(facebook);
+
+        if (profileSettingsData.phone !== phone) {
+            axios.post(PHONE_URL, { phone, userId }, { headers })
                 .then((response) => {
-                    console.log(updatephone);
+                    console.log(phone);
                     console.log(LoginPassword);
-                    LoginPassword.phone = updatephone;
+                    LoginPassword.phone = phone;
                     localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
                     console.log(response.data);
                 });
         }
+        // if (profileSettingsData.facebook !== facebook) {
+        //     axios.post(FACEBOOK_URL, { facebook, userId }, { headers })
+        //         .then((response) => {
+        //             console.log(facebook);
+        //             console.log(response.data);
+        //         });
+        // }
         if (profileSettingsData.mail !== mail) {
             axios.post(MAIL_URL, { mail, userId }, { headers })
                 .then((response) => {
                     console.log(mail);
-                    console.log(response.data);
-                });
-        }
-        if (profileSettingsData.facebook !== facebook) {
-            axios.post(VK_URL, { facebook, userId }, { headers })
-                .then((response) => {
-                    console.log(facebook);
                     console.log(response.data);
                 });
         }

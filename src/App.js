@@ -123,12 +123,6 @@ class App extends React.Component {
                             <VerificationPage />
                         </div>
                     } />
-                    <Route path="/successful" element={
-                        <div>
-                            <GoBackButton />
-                            <TestSuccessful />
-                        </div>
-                    } />
                     <Route path="/route-search" element={
                         <div>
                             <FormRouteSearch />

@@ -10,9 +10,9 @@ const PasswordRecoverySecond = () => {
                 <div className={PassRecSecCSS.form_recovery__container}>
                     <span className={PassRecSecCSS.form_recovery__text}>Отлично!<br></br>Введите новый пароль</span>
                     <form className={PassRecSecCSS.form_recovery__wrapper} action="#">
-                        <label for="password-input">Новый пароль</label>
+                        <label htmlFor="password-input">Новый пароль</label>
                         <input className={"input " + PassRecSecCSS.form_recovery__password_input} type="text" name="password" placeholder="" id="password-input" />
-                        <label for="repeat-input">Повторите ароль</label>
+                        <label htmlFor="repeat-input">Повторите ароль</label>
                         <input className={"input " + PassRecSecCSS.form_recovery__repeat_input} type="text" name="password" placeholder="" id="repeat-input" />
                         <NavLink to="/successful" className={PassRecSecCSS.form_recovery__button + " button"}>Готово</NavLink>
                     </form>
