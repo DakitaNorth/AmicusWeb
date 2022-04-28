@@ -1,0 +1,47 @@
+.my_routes_passagers__item {
+    max-width: 360px;
+    width: 100%;
+    list-style: none;
+}
+
+.my_routes_passagers__wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.my_routes_passagers__wrapper::before,
+.my_routes_passagers__wrapper::after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    width: 360px;
+    height: 2px;
+    background-color: #D5DDE0;
+    z-index: -2;
+}
+
+.my_routes_passagers__wrapper::before {
+    top: -10px;
+}
+
+.my_routes_passagers__wrapper::after {
+    bottom: -10px;
+}
+
+.my_routes_passagers__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+}
+
+.my_routes_passagers__phone {
+    width: 130px;
+}
+
+
+.my_routes_passagers__name {
+    width: 75px;
+}

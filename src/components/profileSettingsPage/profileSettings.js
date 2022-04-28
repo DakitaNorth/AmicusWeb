@@ -62,7 +62,7 @@ const ProfileSettings = () => {
         e.preventDefault();
 
         let LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-        const userId = LoginPassword.ID;
+        const userid = LoginPassword.id;
 
         const PHONE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeuserphone";
         const MAIL_URL = "https://xn--80aaggtieo3biv.xn--p1ai/changeusermail";
@@ -77,7 +77,7 @@ const ProfileSettings = () => {
         console.log(facebook);
 
         if (profileSettingsData.phone !== phone) {
-            axios.post(PHONE_URL, { phone, userId }, { headers })
+            axios.post(PHONE_URL, { phone, userid }, { headers })
                 .then((response) => {
                     console.log(phone);
                     console.log(LoginPassword);
@@ -87,21 +87,21 @@ const ProfileSettings = () => {
                 });
         }
         if (profileSettingsData.facebook !== facebook) {
-            axios.post(FACEBOOK_URL, { facebook, userId }, { headers })
+            axios.post(FACEBOOK_URL, { facebook, userid }, { headers })
                 .then((response) => {
                     console.log(facebook);
                     console.log(response.data);
                 });
         }
         if (profileSettingsData.mail !== mail) {
-            axios.post(MAIL_URL, { mail, userId }, { headers })
+            axios.post(MAIL_URL, { mail, userid }, { headers })
                 .then((response) => {
                     console.log(mail);
                     console.log(response.data);
                 });
         }
         if (profileSettingsData.password !== password) {
-            axios.post(PASSWORD_URL, { password, userId }, { headers })
+            axios.post(PASSWORD_URL, { password, userid }, { headers })
                 .then((response) => {
                     console.log(password);
                     console.log(LoginPassword);

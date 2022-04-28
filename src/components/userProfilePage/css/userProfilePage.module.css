@@ -1,0 +1,111 @@
+.user_profile__wrapper {
+    margin-top: 17vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.user_profile__avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.user_profile__image {
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+}
+
+.user_profile__name {
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.user_profile__mail {
+    font-size: 16px;
+    line-height: 21px;
+    color: #97ADB6;
+}
+
+.user_profile__information {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 95px;
+    padding-top: 25px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+    border-radius: 15px;
+}
+
+.regdata__wrapper,
+.vk__wrapper,
+.phone__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.phone__wrapper {
+    margin-bottom: 0;
+}
+
+.regdata__wrapper::after,
+.vk__wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: -0;
+    width: 290px;
+    height: 2px;
+    background-color: #D5DDE0;
+}
+
+.regdata__label,
+.vk__label,
+.phone__label {
+    margin-bottom: 10px;
+    font-family: "Inter Light";
+    font-size: 14px;
+    line-height: 16px;
+    color: #97ADB6;
+}
+
+.regdata__text,
+.vk__text,
+.phone__text {
+    margin-left: 15px;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.user_profile__buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_profile__button__phone {
+    color: #ffffff;
+    background-color: #47F54E;
+    border-style: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: "Inter Bold";
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 2px 8px #10E325;
+}
+
+.user_profile__button__phone,
+.user_profile__button__chat {
+    align-self: center;
+    width: 255px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+}

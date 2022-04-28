@@ -43,7 +43,7 @@ const AddCard = () => {
 
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const userId = LoginPassword.id;
+            const user = LoginPassword.id;
 
             const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
 
@@ -52,13 +52,14 @@ const AddCard = () => {
             let date = document.getElementById('date-card').value;
             let cvv = document.getElementById('cvv-card').value;
 
-            console.log(number);
-            console.log(owner);
-            console.log(date);
-            console.log(cvv);
+            console.log("ID юзера -->", user);
+            console.log("NUM юзера -->", number);
+            console.log("OWNER юзера -->", owner);
+            console.log("DATE юзера -->", date);
+            console.log("CVV юзера -->", cvv);
 
 
-            axios.post(ADD_CARD_URL, { userId, number, owner, date, cvv }, { headers })
+            axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
                 .then((response) => {
                     console.log(response);
                     navigate("/my-card-settings");

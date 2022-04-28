@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 360px;
 }
 
 .route_selected__wrapper {
@@ -13,6 +14,7 @@
 .route_selected__shield {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .route_avatar {
@@ -47,7 +49,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 95px;
+    width: 150px;
     height: 100px;
 }
 
@@ -55,15 +57,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50px;
     margin: 0;
-    margin-bottom: 5px;
     padding: 0;
     border: 0;
     background-color: #ffffff;
-}
-
-.route_selected__button_map {
-    margin-right: 30px;
 }
 
 .route_selected__button_text {
@@ -74,7 +72,7 @@
 }
 
 .route_selected_information {
-    width: 142px;
+    width: 145px;
     display: flex;
     flex-direction: column;
     margin-left: 10px;
@@ -124,6 +122,19 @@
     top: 4px;
     left: 12px;
     fill: #ffffff;
+}
+
+.route_selected_information__item_description {
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    font-family: "Inter Medium";
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #FFC032;
+    border-radius: 15px;
 }
 
 .route_selected__container::before,

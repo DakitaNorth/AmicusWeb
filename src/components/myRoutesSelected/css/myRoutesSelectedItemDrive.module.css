@@ -75,7 +75,8 @@
     margin-left: 10px;
 }
 
-.route_information__text {
+.route_information__text,
+.route_selected_information__item_description {
     font-family: "Inter Light";
     font-size: 12px;
     line-height: 16px;

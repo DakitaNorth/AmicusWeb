@@ -78,6 +78,7 @@ const MyRoutesSelected = () => {
                             departuretime={thisRouteData.departuretime}
                             arrivaltime={thisRouteData.arrivaltime}
                             membercount={thisRouteData.membercount}
+                            description={thisRouteData.description}
                             weekday={thisRouteData.weekday}
                             price={thisRouteData.price}
                         />

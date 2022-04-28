@@ -300,7 +300,7 @@ class App extends React.Component {
                             <CreateRouteAutoSelect />
                         </div>
                     } />
-                    <Route path="/user-profile/:userId" element={
+                    <Route path="/user-profile/:userId" element={ 
                         <div>
                             <GoBackButton />
                             <UserProfilePage />

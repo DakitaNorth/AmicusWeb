@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import AddCarSettingsCSS from './css/addCar.module.css';
 
 const headers = {
@@ -9,6 +10,15 @@ const headers = {
 
 const AddCar = () => {
     const navigate = useNavigate();
+
+    function numCarMask() {
+        let numInput = document.getElementById("num-input");
+        let numMaskOptions = {
+            mask: "a 000 aa 00aaa",
+            lazy: false
+        }
+        IMask(numInput, numMaskOptions);
+    }
 
     function addCar(e) {
         e.preventDefault();
@@ -53,11 +63,11 @@ const AddCar = () => {
                         </label>
                         <label className={AddCarSettingsCSS.car__label} htmlFor="year-input">
                             <span className={AddCarSettingsCSS.car__text}>Свободных мест</span>
-                            <input className={AddCarSettingsCSS.car__input} type="text" name="places" placeholder="2" id="places-input" />
+                            <input className={AddCarSettingsCSS.car__input} type="text" name="places" placeholder="2" maxLength="1" id="places-input" />
                         </label>
                         <label className={AddCarSettingsCSS.car__label} htmlFor="num-input">
                             <span className={AddCarSettingsCSS.car__text}>Номер машины</span>
-                            <input className={AddCarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
+                            <input onFocus={numCarMask} className={AddCarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
                         </label>
                     </div>
                     <button onClick={addCar} className={AddCarSettingsCSS.car__button + " " + AddCarSettingsCSS.car__button_add + " button"}>Добавить</button>

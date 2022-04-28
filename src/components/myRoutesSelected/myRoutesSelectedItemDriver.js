@@ -8,11 +8,11 @@ const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-const MyRouteSelectedItem = props => { 
+const MyRouteSelectedItem = props => {
     const navigate = useNavigate();
 
     function deleteRoute() {
-        let travelid = props.id; 
+        let travelid = props.id;
 
         const DELETE_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/deltravel/" + travelid;
 
@@ -61,6 +61,9 @@ const MyRouteSelectedItem = props => {
                             </svg>
                             {props.weekday}
                         </span>
+                        {/* <span className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_description}>
+                            {props.description}
+                        </span> */}
                     </div>
                 </div>
                 <div className={MyRouteSelItemCSS.route_selected__buttons}>
