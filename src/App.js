@@ -2,16 +2,19 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Greeting from "./components/welcomePage/greating";
+
 import PageMain from "./components/welcomePage/pageMain";
+
 import PageFooter from "./components/welcomePage/pageFooter";
 
-import GoBackButton from "./components/A1General/goBackButton";
+import GoBackButton from "./components/A1General/goBackButton"; 
 
 import FormLogin from "./components/loginPage/formLogin";
-import SocialLogin from "./components/loginPage/socialLogin";
+
 import NoAccount from "./components/loginPage/noAccount";
 
 import FormRegistration from "./components/registrPage/formRegistration";
+
 import HasAccount from "./components/registrPage/hasAccount";
 
 import PasswordRecovery from "./components/passwordRecoveryPage/passwordRecovery";
@@ -20,16 +23,13 @@ import PasswordRecoverySecond from "./components/passwordRecoveryPage/passwordRe
 
 import VerificationPage from "./components/verificationPage/verificationPage";
 
-import TestSuccessful from "./components/A1General/testSuccessful";
-
 import FormRouteSearch from "./components/routeSearchPage/formRouteSearch";
-import RouteStoryList from "./components/routeSearchPage/routeStoryList";
+
 import SearchParameters from "./components/routeSearchPage/searchParameters";
-//import RouteStoryItem from "./components/routeStoryItem";
+
 import Navigation from "./components/A1General/navigation";
 
 import MyRoutesSelector from "./components/myRoutesPage/myRoutesSelector";
-// import MyRoutesDriver from "./components/myRoutesDriverItem";
 
 import RouteCreating from "./components/routeCreatingPage/routeCreating";
 

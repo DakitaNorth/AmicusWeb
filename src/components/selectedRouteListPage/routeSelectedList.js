@@ -28,7 +28,7 @@ const RouteSelectedList = () => {
 
     function gettingRoutesData() {
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-        const owner = LoginPassword.phone;
+        const userId = LoginPassword.id;
 
         let responseCopy = [];
 
@@ -44,8 +44,9 @@ const RouteSelectedList = () => {
             .then((response) => {
                 if (Array.isArray(response.data) && response.data.length) { 
                     for (var i = 0; i <= response.data.length - 1; i++) {
-                        if (response.data[i].autor !== owner) {
+                        if (response.data[i].autor !== userId) {
                             responseCopy.push(response.data[i]); 
+                            console.log(response.data);
                             setRoutesData(responseCopy);
                         }
                     }

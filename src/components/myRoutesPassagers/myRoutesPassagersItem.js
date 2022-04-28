@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import MyRoutesPassagersCSS from './css/myRoutesPassagersItem.module.css';
 import avatar from "../../img/routeHistory/Group.png";
-
-const headers = {
-    "Content-Type": "application/json; charset=utf-8",
-};
 
 const myRoutesPassagersItem = props => {
     return (

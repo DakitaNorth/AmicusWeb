@@ -5,6 +5,10 @@ import ProfileCSS from './css/profile.module.css';
 
 import avatar_load from "../../img/profile-load.svg";
 
+const headers = {
+    "Content-Type": "application/json; charset=utf-8",
+};
+
 const Profile = () => {
 
     const [profileData, setProfileData] = useState([]);
@@ -14,10 +18,6 @@ const Profile = () => {
     }, []);
 
     function gettingProfileData() { 
-        const headers = {
-            "Content-Type": "application/json; charset=utf-8",
-        };
-
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
         const phone = LoginPassword.phone;
         const password = LoginPassword.password;
@@ -27,7 +27,7 @@ const Profile = () => {
             .then((response) => {
                 setProfileData(response.data);
             });
-    }
+    };
 
     function handleFile(e) {
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -48,9 +48,12 @@ const Profile = () => {
             .then((response) => {
                 console.log(response);
             })
+    };
 
-        document.getElementById("avatar__img").src = avatarData;
-    }
+    function storageCleanUp() {
+        localStorage.clear();
+        sessionStorage.clear();
+    };
 
     return (
         <div className="universal-form">
@@ -104,7 +107,7 @@ const Profile = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <NavLink to="/" className={ProfileCSS.my_profile__button_out}>
+                    <NavLink onClick={storageCleanUp} to="/" className={ProfileCSS.my_profile__button_out}>
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.75 14C8.33579 14 8 14.3358 8 14.75C8 15.1642 8.33579 15.5 8.75 15.5H14.75C15.7165 15.5 16.5 14.7165 16.5 13.75V1.75C16.5 0.783502 15.7165 0 14.75 0H8.75C8.33579 0 8 0.335788 8 0.750001C8 1.16421 8.33579 1.5 8.75 1.5L14.75 1.5C14.8881 1.5 15 1.61193 15 1.75L15 13.75C15 13.8881 14.8881 14 14.75 14H8.75Z" fill="white" />
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.2531 10.1152C11.9434 10.1152 12.5031 9.55557 12.5031 8.86522V6.6247C12.5031 5.93435 11.9434 5.3747 11.2531 5.3747L6.64048 5.3747C6.63396 5.30128 6.62713 5.22787 6.62 5.15448L6.56597 4.5986C6.48354 3.75049 5.58294 3.24258 4.81451 3.61084C3.18029 4.39403 1.70085 5.46578 0.447355 6.77454L0.348156 6.87811C-0.116052 7.36278 -0.116052 8.12712 0.348155 8.6118L0.447355 8.71537C1.70085 10.0241 3.18029 11.0959 4.81451 11.8791C5.58293 12.2473 6.48354 11.7394 6.56597 10.8913L6.62 10.3354C6.62713 10.262 6.63396 10.1886 6.64048 10.1152H11.2531ZM5.94511 8.61522C5.67874 8.61522 5.44326 8.75451 5.31008 8.96598C5.24523 9.06896 5.20464 9.18906 5.19656 9.31853C5.17842 9.60941 5.15524 9.90005 5.12703 10.1903L5.11135 10.3517C4.0753 9.81774 3.11316 9.15283 2.24838 8.37391C2.02402 8.17183 1.80622 7.96208 1.59538 7.74496C2.61892 6.6909 3.80651 5.81069 5.11135 5.13824L5.12703 5.29959C5.15524 5.58987 5.17842 5.88051 5.19656 6.17139C5.22122 6.56671 5.54902 6.8747 5.94511 6.8747H11.0031V8.61522H5.94511Z" fill="white" />

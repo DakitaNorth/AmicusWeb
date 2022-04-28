@@ -12,19 +12,17 @@
     position: absolute;
     width: 360px;
     height: 2px;
-    left: 26px;
+    left: -15px;
     background-color: #D5DDE0;
     z-index: -2;
 }
 
 .parameters__list::before {
     top: 0;
-    left: 0;
 }
 
 .parameters__list::after {
     bottom: 0;
-    left: 0;
 }
 
 .parameters__list {

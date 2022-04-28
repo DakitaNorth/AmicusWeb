@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import RouteSelCSS from './css/routeSelected.module.css';
 
 import SearchParameters from "../routeSearchPage/searchParameters";
 import RouteSelectedItem from "./routeSelectedItem";
-import RouteSelectedListItem from "../selectedRouteListPage/routeSelectedListItem";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -22,15 +21,10 @@ const RouteSelected = () => {
 
     useEffect(() => {
         gettingRoutesData();
-    }, []);
-
-    useLayoutEffect(() => {
-        if (isLoading) {
-            gettingThisRoute();
-            includeData();
-            console.log(thisRoutesData);
-        }
-    })
+        gettingThisRoute();
+        includeData();
+        console.log(thisRoutesData);
+    }, [isLoading]);
 
     function gettingRoutesData() {
         let departureplace = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
@@ -52,7 +46,7 @@ const RouteSelected = () => {
         let paramsId = parseInt(params.selRouteID);
 
         for (var i = 0; i < routesData.length; i++) {
-            if (routesData[i].id == paramsId) {
+            if (routesData[i].id === paramsId) {
                 setThisRoutesData(routesData[i]);
             }
         }
