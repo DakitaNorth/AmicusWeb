@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import MyRoutesPassagersCSS from './css/myRoutesPassagers.module.css';
@@ -14,19 +14,30 @@ const MyRoutesPassagers = () => {
 
     const [myRoutePassagers, setMyRoutePassagers] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
         gettingData();
-    }, []);
+    }, [isLoading]);
 
     function gettingData() {
-        let paramsId = parseInt(params.myRoutesPassagersID);
+        const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        const userName = LoginPassword.name;
+
+        let paramsId = parseInt(params.myRoutesPassagersID); 
 
         const PASSAGERS_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getallpassengerintravel/" + paramsId;
 
         axios.get(PASSAGERS_URL, { headers })
             .then((response) => {
                 if (Array.isArray(response.data) && response.data.length) {
+                    for (var i = 0; i <= response.data.length - 1; i++) {
+                        if (response.data[i].name === userName) {
+                            response.data[i].name = "Вы";
+                        }
+                    }
                     setMyRoutePassagers(response.data);
+                    setIsLoading(true);
                     console.log(response.data);
                 }
                 else {

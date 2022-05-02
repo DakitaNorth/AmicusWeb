@@ -8,7 +8,7 @@ const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
 
-const MyRouteSelectedItem = props => {
+const MyRouteSelectedItem = props => { 
     const navigate = useNavigate();
 
     function deleteRoute() {

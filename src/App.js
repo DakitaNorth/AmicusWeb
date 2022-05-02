@@ -83,6 +83,8 @@ import UserProfilePage from "./components/userProfilePage/userProfilePage";
 
 import MyRoutesPassagers from "./components/myRoutesPassagers/myRoutesPassagers";
 
+import RouteMaps from "./components/routesMaps/routeMaps";
+
 class App extends React.Component {
     render() {
         return (
@@ -304,6 +306,12 @@ class App extends React.Component {
                         <div>
                             <GoBackButton />
                             <UserProfilePage />
+                        </div>
+                    } />
+                    <Route path="/route-map/:routeId" element={ 
+                        <div>
+                            <GoBackButton />
+                            <RouteMaps />
                         </div>
                     } />
                 </Routes>
