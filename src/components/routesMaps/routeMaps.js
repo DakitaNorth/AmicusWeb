@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { YMaps, Map, Placemark } from "react-yandex-maps";
 import RoutesMapCSS from './css/routeMaps.module.css';
 
 const headers = {
@@ -41,20 +40,8 @@ const RouteMaps = () => {
 
     return (
         <div className="universal-form">
-            <h1 className="visually-hidden">Выбор поездки</h1>
-            <section className={RoutesMapCSS.form_search_route}>
-                <YMaps>
-                    <div>
-                        <Map
-                            defaultState={{
-                                center: [54.513845, 36.261224],
-                                zoom: 9
-                            }}
-                        >
-                            <Placemark geometry={[54.513845, 36.261224]}/>
-                        </Map>
-                    </div>
-                </YMaps>
+            <h1 className="visually-hidden">Карта выбранной поездки</h1>
+            <section className={RoutesMapCSS.route_map}>
             </section>
         </div >
     )

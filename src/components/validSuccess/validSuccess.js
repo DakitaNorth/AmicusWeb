@@ -4,10 +4,8 @@ import ValidSuccessCSS from './css/validSuccess.module.css';
 const ValidSuccess = props => {
 
     useEffect(() => {
-        if (props.ifVisible) {
-            document.getElementById("valid_success").classList.add( ValidSuccessCSS.valie_success_visible);
-            setTimeout(() => document.getElementById("valid_success").classList.remove( ValidSuccessCSS.valie_success_visible), 2500);
-        }
+        document.getElementById("valid_success").classList.add( ValidSuccessCSS.valie_success_visible);
+        setTimeout(() => document.getElementById("valid_success").classList.remove( ValidSuccessCSS.valie_success_visible), 2500);
     }, []);
 
     return (

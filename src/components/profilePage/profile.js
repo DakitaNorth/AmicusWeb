@@ -12,10 +12,11 @@ const headers = {
 const Profile = () => {
 
     const [profileData, setProfileData] = useState([]);
+    const [profileReRender, setProfileReRender] = useState(false);
 
     useEffect(() => {
         gettingProfileData();
-    }, []);
+    }, [profileReRender]);
 
     function gettingProfileData() { 
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -25,6 +26,7 @@ const Profile = () => {
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
         axios.post(API_URL, { phone, password }, { headers })
             .then((response) => {
+                console.log(response);
                 setProfileData(response.data);
             });
     };
@@ -47,11 +49,11 @@ const Profile = () => {
         axios.post(API_URL, formData)
             .then((response) => {
                 console.log(response);
+                setProfileReRender(true);
             })
     };
 
     function storageCleanUp() {
-        localStorage.clear();
         sessionStorage.clear();
     };
 

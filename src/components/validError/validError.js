@@ -4,10 +4,8 @@ import ValidErrorCss from './css/validError.module.css';
 const ValidError = props => {
 
     useEffect(() => {
-        if (props.ifVisible) {
-            document.getElementById("valid_error").classList.add(ValidErrorCss.valie_error_visible);
-            setTimeout(() => document.getElementById("valid_error").classList.remove(ValidErrorCss.valie_error_visible), 2500);
-        }
+        document.getElementById("valid_error").classList.add(ValidErrorCss.valie_error_visible);
+        setTimeout(() => document.getElementById("valid_error").classList.remove(ValidErrorCss.valie_error_visible), 2500);
     }, []);
 
     return (

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import IMask from "imask";
 import CarSettingsCSS from './css/vievCar.module.css';
 
 import car_img from "../../img/carSettings/car.png";
@@ -47,7 +46,7 @@ const VievCar = () => {
         let paramsId = parseInt(params.myCarID);
 
         for (var i = 0; i < carData.length; i++) {
-            if (carData[i].id == paramsId) {
+            if (carData[i].id === paramsId) {
                 setThisCarData(carData[i]);
                 console.log(thisCarData);
             }
