@@ -67,7 +67,7 @@ const MyRouteSelectedItem = props => {
                     </div>
                 </div>
                 <div className={MyRouteSelItemCSS.route_selected__buttons}>
-                    <NavLink to="/" className={MyRouteSelItemCSS.route_selected__button + " " + MyRouteSelItemCSS.route_selected__button_map}>
+                    {/* <NavLink to="/" className={MyRouteSelItemCSS.route_selected__button + " " + MyRouteSelItemCSS.route_selected__button_map}>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#F1F5F6" />
                             <path fillRule="evenodd" clipRule="evenodd"
@@ -78,7 +78,7 @@ const MyRouteSelectedItem = props => {
                                 fill="#3E4958" />
                         </svg>
                         <span className={MyRouteSelItemCSS.route_selected__button_text}>Карта</span>
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to="/" className={MyRouteSelItemCSS.route_selected__button + " " + MyRouteSelItemCSS.route_selected__button_chat}>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#F1F5F6" />

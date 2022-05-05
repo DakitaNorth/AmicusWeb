@@ -8,6 +8,9 @@ import avatar_load from "../../img/profile-load.svg";
 import password_lock from "../../img/formLogin/passwordLock.svg";
 import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 
+import ValidError from "../../components/validError/validError";
+import ValidSuccess from "../../components/validSuccess/validSuccess";
+
 const headers = {
     "Content-Type": "application/json; charset=utf-8"
 };
@@ -18,13 +21,19 @@ const ProfileSettings = () => {
 
     const [profileSettingsData, setProfileSettingsData] = useState([]);
 
+    const [editDirty, setEditDirty] = useState(false);
+    const [editError, setEditError] = useState("");
+
+    const [editYep, setEditYep] = useState(false);
+    const [editSuccess, setEditSuccess] = useState("Данные успешно изменены");
+
     useEffect(() => {
         gettingProfileData();
     }, []);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         includeData();
-    })
+    }, [profileSettingsData]);
 
     function gettingProfileData() {
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -74,41 +83,89 @@ const ProfileSettings = () => {
         let facebook = document.getElementById('vk-input').value;
         let password = document.getElementById('password-input').value;
 
-        console.log(facebook);
+        if (phone !== "") {
+            if (profileSettingsData.phone !== phone) {
+                axios.post(PHONE_URL, { phone, userid }, { headers })
+                    .then((response) => {
+                        LoginPassword.phone = phone;
+                        localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
+                        console.log(response.data);
 
-        if (profileSettingsData.phone !== phone) {
-            axios.post(PHONE_URL, { phone, userid }, { headers })
-                .then((response) => {
-                    console.log(phone);
-                    console.log(LoginPassword);
-                    LoginPassword.phone = phone;
-                    localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
-                    console.log(response.data);
-                });
+                        gettingProfileData();
+
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("Телефон успешно изменен")
+                    });
+            }
         }
-        if (profileSettingsData.facebook !== facebook) {
-            axios.post(FACEBOOK_URL, { facebook, userid }, { headers })
-                .then((response) => {
-                    console.log(facebook);
-                    console.log(response.data);
-                });
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Мобильный телефон заполнен некорректно")
         }
-        if (profileSettingsData.mail !== mail) {
-            axios.post(MAIL_URL, { mail, userid }, { headers })
-                .then((response) => {
-                    console.log(mail);
-                    console.log(response.data);
-                });
+
+        if (facebook !== "") {
+            if (profileSettingsData.facebook !== facebook) {
+                axios.post(FACEBOOK_URL, { facebook, userid }, { headers })
+                    .then((response) => {
+                        console.log(response.data);
+
+                        gettingProfileData();
+
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("VK успешно изменен")
+                    });
+            }
         }
-        if (profileSettingsData.password !== password) {
-            axios.post(PASSWORD_URL, { password, userid }, { headers })
-                .then((response) => {
-                    console.log(password);
-                    console.log(LoginPassword);
-                    LoginPassword.password = password;
-                    localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
-                    console.log(response.data);
-                });
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Аккаунт vk заполнен некорректно")
+        }
+
+        if (mail !== "" && mail.includes("@")) {
+            if (profileSettingsData.mail !== mail) {
+                axios.post(MAIL_URL, { mail, userid }, { headers })
+                    .then((response) => {
+                        console.log(mail);
+                        console.log(response.data);
+
+                        gettingProfileData();
+
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("Эл.почта успешно изменена")
+                    });
+            }
+        }
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Эл.почта заполнена некорректно")
+        }
+
+        if (password !== "") {
+            if (profileSettingsData.password !== password) {
+                axios.post(PASSWORD_URL, { password, userid }, { headers })
+                    .then((response) => {
+                        LoginPassword.password = password;
+                        localStorage.setItem("LoginPassword", JSON.stringify(LoginPassword));
+                        console.log(response.data);
+
+                        gettingProfileData();
+
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("Пароль успешно изменен")
+                    });
+            }
+        }
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Пароль заполнен некорректно")
         }
     }
 
@@ -138,6 +195,8 @@ const ProfileSettings = () => {
 
     return (
         <div className="universal-form">
+            {(editDirty && editError) && <ValidError error={editError}></ValidError>}
+            {(editYep && editSuccess) && <ValidSuccess success={editSuccess}></ValidSuccess>}
             <h1 className={ProfileSettingsCSS.page_main__heading}>Настройки профиля</h1>
             <section className={ProfileSettingsCSS.profile_settings}>
                 <form action="#" className={ProfileSettingsCSS.profile_settings__container}>

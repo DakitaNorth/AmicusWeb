@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import axios from "axios";
 import MyRoutesSCSS from './css/myRoutesSelector.module.css';
 
 import MyRoutesItemPassager from "./myRoutesItemPassager";
 import MyRoutesItemDriver from "./myRoutesItemDriver";
+
+import ValidError from "../validError/validError";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -17,6 +19,9 @@ const MyRoutesSelector = () => {
     const [myAllDataDirty, setMyAllDataDirty] = useState(false);
     const [myPassagerDataDirty, setMyPassagerDataDirty] = useState(false);
     const [myDriverDataDirty, setMyDriverDataDirty] = useState(false);
+
+    const [myDataDirty, setMyDataDirty] = useState(false);
+    const [myDataError, setMyDataError] = useState("");
 
     useEffect(() => {
         document.getElementById("all-radio").setAttribute("checked", "checked");
@@ -37,6 +42,7 @@ const MyRoutesSelector = () => {
                 .then((response) => {
                     if (Array.isArray(response.data) && response.data.length) {
                         setMyPassagerData(response.data);
+                        console.log(response.data);
                     }
                     else {
                         console.log(response.data);
@@ -50,6 +56,7 @@ const MyRoutesSelector = () => {
                             response.data[i].autorname = "Вы";
                         }
                         setMyDriverData(response.data);
+                        console.log(response.data);
                     }
                     else {
                         console.log(response.data);
@@ -74,16 +81,34 @@ const MyRoutesSelector = () => {
             setMyAllDataDirty(true);
             setMyPassagerDataDirty(false);
             setMyDriverDataDirty(false);
+
+            if (myDriverData.length === 0 && myPassagerData.length === 0) {
+                setMyDataError("Поездки отсутствуют");
+                setMyDataDirty(true);
+                setTimeout(() => setMyDataDirty(false), 3000);
+            }
         }
         else if (e.target.id === "driver-radio") {
             setMyAllDataDirty(false);
             setMyPassagerDataDirty(false);
             setMyDriverDataDirty(true);
+
+            if (myDriverData.length === 0) {
+                setMyDataError("Водительские поездки отсутствуют");
+                setMyDataDirty(true);
+                setTimeout(() => setMyDataDirty(false), 3000);
+            }
         }
         else if (e.target.id === "passenger-radio") {
             setMyAllDataDirty(false);
             setMyPassagerDataDirty(true);
             setMyDriverDataDirty(false);
+
+            if (myPassagerData.length === 0) {
+                setMyDataError("Пассажирские поездки отсутствуют");
+                setMyDataDirty(true);
+                setTimeout(() => setMyDataDirty(false), 3000);
+            }
         }
     }
 
@@ -120,6 +145,9 @@ const MyRoutesSelector = () => {
 
     return (
         <div className="universal-form">
+            {(myAllDataDirty && myDataDirty) && <ValidError error={myDataError}></ValidError>}
+            {(myPassagerDataDirty && myDataDirty) && <ValidError error={myDataError}></ValidError>}
+            {(myDriverDataDirty && myDataDirty) && <ValidError error={myDataError}></ValidError>}
             <h1 className={MyRoutesSCSS.page_main__heading}>Мои поездки</h1>
             <section className={MyRoutesSCSS.my_routes}>
                 <div className={MyRoutesSCSS.my_routes__container}>

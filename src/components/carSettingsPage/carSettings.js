@@ -25,7 +25,6 @@ const CarSettings = () => {
             const userId = LoginPassword.id;
 
             const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/getusersauto/" + userId;
-            console.log(API_URL);
             axios.get(API_URL, { headers })
                 .then((response) => {
                     if (Array.isArray(response.data) && response.data.length) {
