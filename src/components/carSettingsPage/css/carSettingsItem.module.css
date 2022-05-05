@@ -36,6 +36,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
 }
 
 .car_list__item::before,
@@ -47,4 +48,12 @@
     left: 0;
     background-color: #D5DDE0;
     z-index: -2;
+}
+
+.car_link:hover {
+    color: #3E4958;
+}
+
+.car_link:active {
+    color: #3E4958;
 }

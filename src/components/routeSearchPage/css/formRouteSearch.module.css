@@ -69,6 +69,16 @@
     box-shadow: 0px 2px 8px #1069e3;
 }
 
+.time_form__button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.time_form__button:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}
+
 .not_valid_button {
     background-color: #F54747;
     box-shadow: 0px 2px 8px #F54747;

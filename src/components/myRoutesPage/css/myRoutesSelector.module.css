@@ -29,6 +29,7 @@
     line-height: 14px;
     text-transform: uppercase;
     background-color: #F1F5F6;
+    cursor: pointer;
 }
 
 .my_routes__label_left {

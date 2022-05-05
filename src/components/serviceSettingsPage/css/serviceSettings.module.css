@@ -64,3 +64,13 @@
     align-self: center;
     font-family: "Inter Light";
 }
+
+.service_settings__link:hover {
+    opacity: 0.9;
+    color: #476DF5;
+}
+
+.service_settings__link:active {
+    opacity: 0.7;
+    color: #476DF5;
+}

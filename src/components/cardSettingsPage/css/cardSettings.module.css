@@ -13,7 +13,7 @@
 .payment_list__container {
     margin: 0;
     padding: 0;
-    padding-left: 26px;
+    padding-left: 26px; 
     padding-right: 26px;
 }
 
@@ -80,4 +80,14 @@
     left: 0;
     background-color: #D5DDE0;
     z-index: -2;
+}
+
+.payment_link:hover {
+    opacity: 0.9;
+    color: #476DF5;
+}
+
+.payment_link:active {
+    opacity: 0.7;
+    color: #476DF5;
 }

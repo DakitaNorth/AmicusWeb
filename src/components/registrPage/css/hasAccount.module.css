@@ -21,6 +21,16 @@
     position: relative;
     color: #FFC032;
   }
+
+  .has_account__link:hover {
+    opacity: 0.9;
+    color: #FFC032;
+}
+
+.has_account__link:active {
+    opacity: 0.7;
+    color: #FFC032;
+}
   
   .has_account__link::after {
     content: "";

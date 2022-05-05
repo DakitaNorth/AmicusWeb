@@ -100,6 +100,16 @@
     margin-bottom: 10px;
 }
 
+.car__button_save:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.car__button_save:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}
+
 .car__button_delete {
     border-style: none;
     border-radius: 15px;
@@ -110,4 +120,14 @@
     text-transform: uppercase;
     background-color: #F54747;
     box-shadow: 0px 2px 8px rgb(194 56 56);
+}
+
+.car__button_delete:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.car__button_delete:active {
+    background-color: #df3939;
+    color: #ffffff;
 }

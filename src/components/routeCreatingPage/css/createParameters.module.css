@@ -43,6 +43,22 @@
     border-radius: 15px;
 }
 
+.days_item:hover,
+.human_item:hover,
+.time_item:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.days_item:active,
+.time_item:active {
+    background-color: #FFAF32;
+}
+
+.human_item:active {
+    background-color: #584BF6;
+}
+
 .days_item {
     padding-top: 10px;
     padding-bottom: 10px;

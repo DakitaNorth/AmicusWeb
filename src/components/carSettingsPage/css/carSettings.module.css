@@ -39,6 +39,16 @@
     margin-left: 15px;
 }
 
+.car_link:hover {
+    opacity: 0.9;
+    color: #476DF5;
+}
+
+.car_link:active {
+    opacity: 0.7;
+    color: #476DF5;
+}
+
 .car_list__item::before,
 .car_list__item::after {
     content: "";

@@ -100,3 +100,13 @@
     padding-top: 10px;
     padding-bottom: 7px;
 }
+
+.add_card__button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.add_card__button:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}

@@ -50,6 +50,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
 }
 
 .payment_label_cash,
@@ -81,4 +82,12 @@
     left: 0;
     background-color: #D5DDE0;
     z-index: -2;
+}
+
+.payment_link:hover {
+    color: #3E4958;
+}
+
+.payment_link:active {
+    color: #3E4958;
 }

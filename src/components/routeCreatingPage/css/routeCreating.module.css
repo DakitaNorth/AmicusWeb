@@ -65,6 +65,15 @@
     border-radius: 15px;
 }
 
+.auto__select:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.auto__select:active {
+    background-color: #FFAF32;
+}
+
 .auto__select svg {
     position: absolute;
     left: 10px;
@@ -142,6 +151,16 @@
     font-size: 16px;
     text-align: center;
     box-shadow: 0px 2px 8px #1069e3;
+}
+
+.form_create_route__button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.form_create_route__button:active {
+    background-color: #584BF6;
+    color: #ffffff;
 }
 
 .not_valid_input {

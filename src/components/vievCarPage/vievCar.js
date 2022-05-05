@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import CarSettingsCSS from './css/vievCar.module.css';
 
 import car_img from "../../img/carSettings/car.png";
@@ -70,7 +71,7 @@ const VievCar = () => {
         let color = document.getElementById('color-input').value;
         let model = document.getElementById('model-input').value;
         let places = document.getElementById('places-input').value;
-        let statenumber = document.getElementById('num-input').value;
+        let statenumber = document.getElementById('num-input').value; 
 
 
         if (thisCarData.color !== color || thisCarData.model !== model || thisCarData.places !== places || thisCarData.statenumber !== statenumber) {
@@ -95,6 +96,15 @@ const VievCar = () => {
             });
     }
 
+    function numCarMask() {
+        let numInput = document.getElementById("num-input");
+        let numMaskOptions = {
+            mask: "a 000 aa 00aaa",
+            lazy: false
+        }
+        IMask(numInput, numMaskOptions);
+    }
+
     return (
         <div className="universal-form">
             <h1 className={CarSettingsCSS.page_main__heading}>Настройки авто</h1>
@@ -116,7 +126,7 @@ const VievCar = () => {
                         </label>
                         <label className={CarSettingsCSS.car__label} htmlFor="num-input">
                             <span className={CarSettingsCSS.car__text}>Номер машины</span>
-                            <input className={CarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
+                            <input onFocus={numCarMask} className={CarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
                         </label>
                     </div>
                     <button onClick={saveNewData} className={CarSettingsCSS.car__button + " " + CarSettingsCSS.car__button_save + " button"}>Сохранить</button>

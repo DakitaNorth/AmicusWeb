@@ -14,7 +14,7 @@ const VerificationPage = () => {
 
   const navigate = useNavigate();
 
-  const [serverRecoveryCode, setServerRecoveryCode] = useState(sessionStorage.getItem("RecoveryCode"));
+  const [serverRecoveryCode, setServerRecoveryCode] = useState("");
   const [clientRecoveryCode, setClientRecoveryCode] = useState("");
 
   const [codeDirty, setCodeDirty] = useState(false);
@@ -25,6 +25,8 @@ const VerificationPage = () => {
 
   useEffect(() => {
     let inputs = document.getElementsByClassName(VerCSS.form_verification__input);
+
+    setServerRecoveryCode(sessionStorage.getItem("RecoveryCode"));
 
     for (var i = 1; i <= inputs.length - 1; i++) {
       inputs[i].setAttribute("disabled", "disabled");
@@ -106,7 +108,7 @@ const VerificationPage = () => {
   function sendMesageAgain(e) {
     e.preventDefault();
 
-    let email = sessionStorage.getItem("RecoveryMail");
+    let email = sessionStorage.getItem("RecoveryMail"); 
 
     console.log(email);
 
@@ -114,6 +116,8 @@ const VerificationPage = () => {
     axios.post(API_URL, { email }, { headers })
       .then((response) => {
         console.log(response.data);
+        sessionStorage.setItem("RecoveryCode", response.data.code);
+        setServerRecoveryCode(response.data.code);
         setSendSuccess(true);
         setTimeout(() => setSendSuccess(false), 3000);
         setTextSuccess("Код повторно отправлен");

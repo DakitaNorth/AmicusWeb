@@ -112,3 +112,13 @@
     border-style: none;
     border-radius: 15px;
 }
+
+.route_driver_button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.route_driver_button:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}

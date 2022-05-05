@@ -201,9 +201,9 @@ const ProfileSettings = () => {
             <section className={ProfileSettingsCSS.profile_settings}>
                 <form action="#" className={ProfileSettingsCSS.profile_settings__container}>
                     <div className={ProfileSettingsCSS.profile__avatar + " " + ProfileSettingsCSS.avatar}>
-                        <button className={ProfileSettingsCSS.avatar__load_button}>
+                        <div className={ProfileSettingsCSS.avatar__load_button}>
                             <img className={ProfileSettingsCSS.avatar__img} src={profileSettingsData.photo} width="85" height="85" alt="Ваш аватар" />
-                        </button>
+                        </div>
                         <span className={ProfileSettingsCSS.avatar__name}>{profileSettingsData.name}</span>
                     </div>
                     <div className={ProfileSettingsCSS.profile__data}>

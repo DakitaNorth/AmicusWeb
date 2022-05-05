@@ -4,7 +4,7 @@ import CardSettingItemCSS from './css/cardSettingItem.module.css';
 
 const CardSettingItem = props => ( 
     <li id={props.number} className={CardSettingItemCSS.payment_list__item}>
-        <NavLink to={"/viev-card/" + props.id}>
+        <NavLink className={CardSettingItemCSS.payment_link} to={"/viev-card/" + props.id}>
             <input className={CardSettingItemCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="first-card" id="first-card" />
             <label className={CardSettingItemCSS.payment_label} htmlFor="first-card">
                 <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">

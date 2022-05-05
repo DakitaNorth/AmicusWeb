@@ -19,6 +19,7 @@
     padding: 0;
     border: none;
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .avatar__img {
@@ -67,6 +68,14 @@
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.08);;
 }
 
+.setting_list__item:hover circle {
+    opacity: 0.9;
+}
+
+.setting_list__item:active circle {
+    fill: #584BF6;
+}
+
 .setting_list__item_additionally {
     padding-bottom: 43px;
 }
@@ -99,6 +108,16 @@
     text-transform: uppercase;
     background-color: #F54747;
     box-shadow: 0px 2px 8px rgb(194, 56, 56);
+}
+
+.my_profile__button_out:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.my_profile__button_out:active {
+    background-color: #df3939;
+    color: #ffffff;
 }
 
 .my_profile__button_out svg {
