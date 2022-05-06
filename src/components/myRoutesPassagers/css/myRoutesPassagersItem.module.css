@@ -12,6 +12,14 @@
     margin-bottom: 20px;
 }
 
+.my_routes_passagers__wrapper:hover {
+    color: #3E4958;
+}
+
+.my_routes_passagers__wrapper:active {
+    color: #3E4958;
+}
+
 .my_routes_passagers__wrapper::before,
 .my_routes_passagers__wrapper::after {
     content: "";

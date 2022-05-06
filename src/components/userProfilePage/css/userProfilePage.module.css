@@ -101,6 +101,18 @@
     box-shadow: 0px 2px 8px #10E325;
 }
 
+.user_profile__button__chat {
+    color: #ffffff;
+    background-color: #476DF5;
+    border-style: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: "Inter Bold";
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 2px 8px #1069e3;
+}
+
 .user_profile__button__phone,
 .user_profile__button__chat {
     align-self: center;
@@ -108,4 +120,24 @@
     margin-bottom: 15px;
     padding-top: 10px;
     padding-bottom: 7px;
+}
+
+.user_profile__button__phone:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.user_profile__button__phone:active {
+    background-color: #10E325;
+    color: #ffffff;
+}
+
+.user_profile__button__chat:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.user_profile__button__chat:active {
+    background-color: #584BF6;
+    color: #ffffff;
 }

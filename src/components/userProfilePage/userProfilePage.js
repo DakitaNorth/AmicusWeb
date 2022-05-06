@@ -57,7 +57,7 @@ const UserProfilePage = () => {
             </div>
             <div className={UserProfilePageCSS.user_profile__buttons}>
                 <button className={UserProfilePageCSS.user_profile__button__phone}>Позвонить</button>
-                <button className={UserProfilePageCSS.user_profile__button__chat + " button"}>Написать</button>
+                <button className={UserProfilePageCSS.user_profile__button__chat}>Написать</button> 
             </div>
         </section>
     )
