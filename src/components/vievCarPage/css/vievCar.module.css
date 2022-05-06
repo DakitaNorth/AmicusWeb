@@ -131,3 +131,7 @@
     background-color: #df3939;
     color: #ffffff;
 }
+
+.not_valid_input {
+    border: 1px solid #F54747;
+}

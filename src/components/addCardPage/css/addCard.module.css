@@ -110,3 +110,20 @@
     background-color: #584BF6;
     color: #ffffff;
 }
+
+.form__input {
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    background-color: #F7F8F9;
+    border: 1px solid #D5DDE0;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: "Inter Regular", sans-serif;
+    color: #3E4958;
+}
+
+.not_valid_input {
+    border: 1px solid #F54747;
+}

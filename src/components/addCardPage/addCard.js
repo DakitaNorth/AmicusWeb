@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
 import AddCardCSS from './css/addCard.module.css';
+
+import ValidError from "../validError/validError";
 
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -11,84 +13,99 @@ const headers = {
 const AddCard = () => {
     const navigate = useNavigate();
 
-    function numCardMask() {
-        let numInput = document.getElementById("num-card");
-        let numMaskOptions = {
-            mask: "0000 0000 0000 0000",
-            lazy: false
-        }
-        IMask(numInput, numMaskOptions);
-    }
+    const [addDirty, setAddDirty] = useState(false);
+    const [addError, setAddError] = useState("");
 
-    function dateCardMask() {
-        let dateInput = document.getElementById("date-card");
-        let dateMaskOptions = {
-            mask: "00/00",
-            lazy: false
-        }
-        IMask(dateInput, dateMaskOptions);
-    }
+    useEffect(() => {
+        let numberInput = document.getElementById('num-card');
+        let dateInput = document.getElementById('date-card');
+        let cvvInput = document.getElementById('cvv-card');
 
-    function cvvCardMask() {
-        let cvvInput = document.getElementById("cvv-card");
-        let cvvMaskOptions = {
-            mask: "000",
-            lazy: false
+        numberInput.onfocus = function () {
+            let maskOptions = {
+                mask: "0000 0000 0000 0000",
+                lazy: true
+            }
+            IMask(numberInput, maskOptions);
+            numberInput.classList.remove(AddCardCSS.not_valid_input);
         }
-        IMask(cvvInput, cvvMaskOptions);
-    }
+
+        dateInput.onfocus = function () {
+            let maskOptions = {
+                mask: "00/00",
+                lazy: true
+            }
+            IMask(dateInput, maskOptions);
+            dateInput.classList.remove(AddCardCSS.not_valid_input);
+        }
+
+        cvvInput.onfocus = function () {
+            let maskOptions = {
+                mask: "000",
+                lazy: true
+            }
+            IMask(cvvInput, maskOptions);
+            cvvInput.classList.remove(AddCardCSS.not_valid_input);
+        }
+    });
 
     function saveNewData(e) {
         e.preventDefault();
 
-        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
-            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
-            const user = LoginPassword.id;
+        const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        const user = LoginPassword.id;
 
+        let number = document.getElementById('num-card').value;
+        let owner = document.getElementById('name-card').value;
+        let date = document.getElementById('date-card').value;
+        let cvv = document.getElementById('cvv-card').value;
+
+        if (number !== "" && owner !== "" && date !== "" && cvv !== "") {
             const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addcard";
-
-            let number = document.getElementById('num-card').value;
-            let owner = document.getElementById('name-card').value;
-            let date = document.getElementById('date-card').value;
-            let cvv = document.getElementById('cvv-card').value;
-
-            console.log("ID юзера -->", user);
-            console.log("NUM юзера -->", number);
-            console.log("OWNER юзера -->", owner);
-            console.log("DATE юзера -->", date);
-            console.log("CVV юзера -->", cvv);
-
-
             axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
                 .then((response) => {
                     console.log(response);
                     navigate("/my-card-settings");
                 });
         }
-    }
+        else {
+            setAddDirty(true);
+            setTimeout(() => setAddDirty(false), 3000);
+            setAddError("Данные заполнены некорректно");
+            valueError();
+        }
+    };
+
+    function valueError() {
+        document.getElementById("num-card").classList.add(AddCardCSS.not_valid_input);
+        document.getElementById("name-card").classList.add(AddCardCSS.not_valid_input);
+        document.getElementById("date-card").classList.add(AddCardCSS.not_valid_input);
+        document.getElementById("cvv-card").classList.add(AddCardCSS.not_valid_input);
+    };
 
     return (
         <div className="universal-form">
+            {(addDirty && addError) && <ValidError error={addError}></ValidError>}
             <h1 className={AddCardCSS.page_main__heading}>добавить карту</h1>
             <section className={AddCardCSS.form_card_add}>
                 <div className={AddCardCSS.form_card_add__container}>
                     <form onSubmit={saveNewData} className={AddCardCSS.form_card_add__wrapper} action="#">
                         <label htmlFor="num-card">
                             <span className={AddCardCSS.form_input__text}>Номер карты</span>
-                            <input onFocus={numCardMask} className={AddCardCSS.form__input + " input"} type="text" name="num-card" placeholder="0000 0000 0000 0000" id="num-card" />
+                            <input className={AddCardCSS.form__input} type="text" name="num-card" placeholder="0000 0000 0000 0000" id="num-card" />
                         </label>
                         <label htmlFor="name-card">
                             <span className={AddCardCSS.form_input__text}>Имя на карте</span>
-                            <input className={AddCardCSS.form__input + " input"} type="text" name="name-card" placeholder="VALDIMIR TIHOMIROV" id="name-card" />
+                            <input className={AddCardCSS.form__input} type="text" name="name-card" placeholder="VALDIMIR TIHOMIROV" id="name-card" />
                         </label>
                         <div className={AddCardCSS.form_card_add__shield}>
                             <label className={AddCardCSS.form_label_date} htmlFor="date-card">
                                 <span className={AddCardCSS.form_input__text}>Срок действия</span>
-                                <input onFocus={dateCardMask} className={AddCardCSS.form__input + " input " + AddCardCSS.form__input_date} type="text" name="date-card" placeholder="00/00" id="date-card" />
+                                <input className={AddCardCSS.form__input + " " + AddCardCSS.form__input_date} type="text" name="date-card" placeholder="00/00" id="date-card" />
                             </label>
                             <label htmlFor="cvv-card">
                                 <span className={AddCardCSS.form_input__text}>CVV-код</span>
-                                <input onFocus={cvvCardMask} className={AddCardCSS.form__input + " input " + AddCardCSS.form__input_cvv} type="text" name="cvv-card" placeholder="000" id="cvv-card" />
+                                <input className={AddCardCSS.form__input + " " + AddCardCSS.form__input_cvv} type="text" name="cvv-card" placeholder="000" id="cvv-card" />
                             </label>
                         </div>
                         <button className={AddCardCSS.add_card__button + " button"}>Сохранить</button>
@@ -127,7 +144,7 @@ const AddCard = () => {
                         </div> */}
                 </div>
             </section>
-        </div>
+        </div> 
     )
 };
 

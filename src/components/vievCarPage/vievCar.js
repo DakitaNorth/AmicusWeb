@@ -6,6 +6,9 @@ import CarSettingsCSS from './css/vievCar.module.css';
 
 import car_img from "../../img/carSettings/car.png";
 
+import ValidError from "../validError/validError";
+import ValidSuccess from "../../components/validSuccess/validSuccess";
+
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -16,6 +19,14 @@ const VievCar = () => {
 
     const [carData, setCarData] = useState([]);
     const [thisCarData, setThisCarData] = useState([]);
+
+    
+    const [editDirty, setEditDirty] = useState(false);
+    const [editError, setEditError] = useState("");
+
+    const [editYep, setEditYep] = useState(false);
+    const [editSuccess, setEditSuccess] = useState("Данные успешно изменены");
+
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -27,7 +38,39 @@ const VievCar = () => {
             gettingThisCarData();
             includeData();
         }
-    })
+    });
+
+    useEffect(() => {
+        includeData();
+    }, [thisCarData]);
+
+    useEffect(() => {
+        let statenumberInput = document.getElementById('num-input');
+        let modelInput = document.getElementById('model-input'); 
+        let colorInput = document.getElementById('color-input');
+        let placesInput = document.getElementById('places-input');
+
+        modelInput.onfocus = function () {
+            modelInput.classList.remove(CarSettingsCSS.not_valid_input);
+        }
+
+        colorInput.onfocus = function () {
+            colorInput.classList.remove(CarSettingsCSS.not_valid_input);
+        }
+
+        placesInput.onfocus = function () {
+            placesInput.classList.remove(CarSettingsCSS.not_valid_input);
+        }
+
+        statenumberInput.onfocus = function () {
+            let maskOptions = {
+                mask: "a 000 aa 00aaa",
+                lazy: true
+            }
+            IMask(statenumberInput, maskOptions);
+            statenumberInput.classList.remove(CarSettingsCSS.not_valid_input);
+        }
+    });
 
     function gettingCarData() {
         if (JSON.parse(localStorage.getItem("LoginPassword"))) {
@@ -49,7 +92,6 @@ const VievCar = () => {
         for (var i = 0; i < carData.length; i++) {
             if (carData[i].id === paramsId) {
                 setThisCarData(carData[i]);
-                console.log(thisCarData);
             }
         }
     }
@@ -66,21 +108,42 @@ const VievCar = () => {
 
         const autoid = thisCarData.id;
 
-        const UPDATA_CAR_DATA = "https://xn--80aaggtieo3biv.xn--p1ai/updateautodata";
-
         let color = document.getElementById('color-input').value;
         let model = document.getElementById('model-input').value;
         let places = document.getElementById('places-input').value;
         let statenumber = document.getElementById('num-input').value; 
 
 
-        if (thisCarData.color !== color || thisCarData.model !== model || thisCarData.places !== places || thisCarData.statenumber !== statenumber) {
-            axios.post(UPDATA_CAR_DATA, { color, model, places, statenumber, autoid }, { headers })
-                .then((response) => {
-                    console.log(response.data);
-                });
+        if (color !== "" && model !== "" && places !== "" && statenumber) {
+            if (thisCarData.color !== color || thisCarData.model !== model || thisCarData.places !== places || thisCarData.statenumber !== statenumber) {
+                const UPDATA_CAR_DATA = "https://xn--80aaggtieo3biv.xn--p1ai/updateautodata";
+                axios.post(UPDATA_CAR_DATA, { color, model, places, statenumber, autoid }, { headers })
+                    .then((response) => {
+                        console.log(response.data);
+
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("Данные успешно изменены");
+
+                        gettingCarData();
+                        gettingThisCarData();
+                    });
+            }
         }
-    }
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Данные заполнены некорректно");
+            valueError();
+        }
+    };
+
+    function valueError() {
+        document.getElementById("color-input").classList.add(CarSettingsCSS.not_valid_input);
+        document.getElementById("model-input").classList.add(CarSettingsCSS.not_valid_input);
+        document.getElementById("places-input").classList.add(CarSettingsCSS.not_valid_input);
+        document.getElementById("num-input").classList.add(CarSettingsCSS.not_valid_input);
+    };
 
     function deleteCar(e) {
         e.preventDefault();
@@ -94,19 +157,12 @@ const VievCar = () => {
                 navigate("/my-car-settings");
                 console.log(response);
             });
-    }
-
-    function numCarMask() {
-        let numInput = document.getElementById("num-input");
-        let numMaskOptions = {
-            mask: "a 000 aa 00aaa",
-            lazy: false
-        }
-        IMask(numInput, numMaskOptions);
-    }
+    };
 
     return (
         <div className="universal-form">
+            {(editDirty && editError) && <ValidError error={editError}></ValidError>}
+            {(editYep && editSuccess) && <ValidSuccess success={editSuccess}></ValidSuccess>}
             <h1 className={CarSettingsCSS.page_main__heading}>Настройки авто</h1>
             <section className={CarSettingsCSS.car_settings}>
                 <div className={CarSettingsCSS.car_settings__container}>
@@ -126,7 +182,7 @@ const VievCar = () => {
                         </label>
                         <label className={CarSettingsCSS.car__label} htmlFor="num-input">
                             <span className={CarSettingsCSS.car__text}>Номер машины</span>
-                            <input onFocus={numCarMask} className={CarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
+                            <input className={CarSettingsCSS.car__input} type="text" name="num" placeholder="Я360МА.40" id="num-input" />
                         </label>
                     </div>
                     <button onClick={saveNewData} className={CarSettingsCSS.car__button + " " + CarSettingsCSS.car__button_save + " button"}>Сохранить</button>
