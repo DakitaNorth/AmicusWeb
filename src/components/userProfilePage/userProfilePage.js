@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
 import UserProfilePageCSS from './css/userProfilePage.module.css';
@@ -27,7 +27,7 @@ const UserProfilePage = () => {
 
         axios.get(THIS_PROFILE_DATA_URL, { headers })
             .then((response) => {
-                setThisProfileData(response.data[0]);
+                setThisProfileData(response.data);
                 setIsLoading(true);
                 console.log(thisProfileData);
             });
@@ -56,8 +56,8 @@ const UserProfilePage = () => {
                 </div>
             </div>
             <div className={UserProfilePageCSS.user_profile__buttons}>
-                <button className={UserProfilePageCSS.user_profile__button__phone}>Позвонить</button>
-                <button className={UserProfilePageCSS.user_profile__button__chat}>Написать</button> 
+                <a className={UserProfilePageCSS.user_profile__button__phone} href={"tel:" + thisProfileData.phone}>Позвонить</a>
+                <button className={UserProfilePageCSS.user_profile__button__chat}>Написать</button>  
             </div>
         </section>
     )
