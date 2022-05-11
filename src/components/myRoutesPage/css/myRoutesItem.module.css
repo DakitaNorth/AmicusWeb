@@ -1,18 +1,18 @@
 .route_driver__item {
+    position: relative;
     display: flex;
     flex-direction: column;
-    list-style: none;
-    position: relative;
     margin-bottom: 18px;
+    list-style: none;
 }
 
 .route_driver__item::before,
 .route_driver__item::after {
     content: "";
     position: absolute;
-    width: 360px;
+    width: 100%;
     height: 2px;
-    left: -10px;
+    left: -0;
     background-color: #D5DDE0;
     z-index: -2;
 }
@@ -31,7 +31,7 @@
 
 .route_driver_avatar {
     position: relative;
-    margin-right: 59px;
+    margin-right: 80px;
 }
 
 .route_driver_avatar__img {

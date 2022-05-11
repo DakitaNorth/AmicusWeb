@@ -10,17 +10,21 @@
 }
 
 .form_verification {
-    margin-top: 75px;
+    margin-top: 10vh;
 }
 
 .form_verification__container {
-    padding-left: 55px;
-    padding-right: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15vw;
+    padding-right: 15vw;
 }
 
 .form_verification__text {
     position: relative;
     display: inline-block;
+    max-width: 290px;
     margin-bottom: 70px;
     font-size: 16px;
     text-align: center;
@@ -31,6 +35,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 290px;
+    width: 100%;
 }
 
 .form_verification__input_wrapper {
@@ -95,4 +101,10 @@
 .not_valid_input {
     border-bottom: 2px solid #F54747;
     color: #F54747;
+}
+
+@media (min-width: 1200px) {
+    .form_verification {
+        margin-top: 15vh;
+    }
 }

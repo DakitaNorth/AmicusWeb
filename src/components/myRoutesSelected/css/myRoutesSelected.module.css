@@ -1,17 +1,21 @@
 .form_search_route {
-    margin-top: 55px;
+    margin-top: 7vh;
     margin-bottom: 10px;
 }
 
 .form_search_route__container {
-    margin-bottom: 30px;
-    padding-left: 36px;
-    padding-right: 36px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .form_search_route__wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 360px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -27,6 +31,8 @@
 }
 
 .route_list__container {
+    display: flex;
+    justify-content: center;
     padding-left: 10vw;
     padding-right: 10vw;
 }

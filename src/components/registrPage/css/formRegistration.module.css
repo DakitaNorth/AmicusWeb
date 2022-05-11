@@ -11,10 +11,12 @@
 }
 
 .form_registration {
-    margin-top: 35px;
+    margin-top: 5vh;
 }
 
 .form_registration__container {
+    display: flex;
+    justify-content: center;
     padding-left: 10vw;
     padding-right: 10vw;
 }
@@ -22,6 +24,8 @@
 .form_registration__wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 360px;
+    width: 100%;
 }
 
 .form_registration__wrapper label {
@@ -121,7 +125,7 @@
 .agree_checkbox:checked+label::after {
     content: "";
     position: absolute;
-    top: 11.5px;
+    top: 11px;
     left: -33px;
     width: 12px;
     height: 12px;

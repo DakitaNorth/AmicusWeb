@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     max-width: 360px;
+    width: 100%;
 }
 
 .route_selected__wrapper {
@@ -137,23 +138,18 @@
     border-radius: 15px;
 }
 
-.route_selected__container::before,
-.route_selected__container::after {
+.route_selected__container::before {
     content: "";
     position: absolute;
-    width: 360px;
+    width: 100%;
     height: 2px;
-    left: -10px;
+    left: 0;
     background-color: #D5DDE0;
     z-index: -2;
 }
 
 .route_selected__container::before {
     top: -10px;
-}
-
-.route_selected__container::after {
-    bottom: -310px;
 }
 
 .route_list__button {
