@@ -1,8 +1,9 @@
 .form_card_add__container {
     display: flex;
     flex-direction: column;
-    padding-left: 34px;
-    padding-right: 34px;
+    align-items: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .page_main__heading {
@@ -20,6 +21,8 @@
 .form_card_add__wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 330px;
+    width: 100%;
 }
 
 .form_card_add__wrapper label {

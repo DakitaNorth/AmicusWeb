@@ -11,10 +11,13 @@
 }
 
 .payment_list__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
     padding: 0;
-    padding-left: 26px; 
-    padding-right: 26px;
+    padding-left: 6vw; 
+    padding-right: 6vw;
 }
 
 .payment_list__list {
@@ -24,6 +27,7 @@
 
 .payment_list__item {
     position: relative;
+    cursor: pointer;
     list-style: none;
 }
 
@@ -82,12 +86,26 @@
     z-index: -2;
 }
 
+.payment_item_link:hover {
+    color: #3E4958;
+}
+
+.payment_item_link:active {
+    color: #3E4958;
+}
+
 .payment_link:hover {
     opacity: 0.9;
-    color: #476DF5;
 }
 
 .payment_link:active {
     opacity: 0.7;
+}
+
+.payment_link:hover .payment_add_card {
+    color: #476DF5;
+}
+
+.payment_link:active .payment_add_card {
     color: #476DF5;
 }

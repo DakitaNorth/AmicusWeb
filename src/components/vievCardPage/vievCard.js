@@ -4,6 +4,9 @@ import axios from "axios";
 import IMask from "imask";
 import VievCardCSS from './css/vievCard.module.css';
 
+import ValidError from "../validError/validError";
+import ValidSuccess from "../../components/validSuccess/validSuccess";
+
 const headers = {
     "Content-Type": "application/json; charset=utf-8",
 };
@@ -14,7 +17,15 @@ const VievCard = () => {
 
     const [cardData, setCardData] = useState([]);
     const [thisCardData, setThisCardData] = useState([]);
+
     const [cardDataNum, setCardDataNum] = useState("");
+
+    const [editDirty, setEditDirty] = useState(false);
+    const [editError, setEditError] = useState("");
+
+    const [editYep, setEditYep] = useState(false);
+    const [editSuccess, setEditSuccess] = useState("Данные успешно изменены");
+
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -27,7 +38,37 @@ const VievCard = () => {
             includeData();
             disabledInputs();
         }
-    }) 
+    });
+
+    useEffect(() => {
+        let numberInput = document.getElementById('num-card');
+        let dateInput = document.getElementById('date-card');
+        let cvvInput = document.getElementById('cvv-card');
+
+        numberInput.onfocus = function () {
+            let maskOptions = {
+                mask: "0000 0000 0000 0000",
+                lazy: true
+            }
+            IMask(numberInput, maskOptions);
+        }
+
+        dateInput.onfocus = function () {
+            let maskOptions = {
+                mask: "00/00",
+                lazy: true
+            }
+            IMask(dateInput, maskOptions);
+        }
+
+        cvvInput.onfocus = function () {
+            let maskOptions = {
+                mask: "000",
+                lazy: true
+            }
+            IMask(cvvInput, maskOptions);
+        }
+    });
 
     function gettingCardData() { 
         if (JSON.parse(localStorage.getItem("LoginPassword"))) { 
@@ -77,8 +118,6 @@ const VievCard = () => {
     }
 
     function setDisabledInputs() {
-        includeData();
-
         if (document.getElementById('num-card').disabled &&
             document.getElementById('date-card').disabled &&
             document.getElementById('cvv-card').disabled &&
@@ -88,37 +127,25 @@ const VievCard = () => {
             document.getElementById('date-card').removeAttribute("disabled");
             document.getElementById('cvv-card').removeAttribute("disabled");
             document.getElementById('name-card').removeAttribute("disabled");
+
+            document.getElementById('num-card').value = thisCardData.number;
+            document.getElementById('date-card').value = thisCardData.date;
+            document.getElementById('cvv-card').value = thisCardData.cvv;
+            document.getElementById('name-card').value = thisCardData.owner;
         }
         else {
             document.getElementById('num-card').setAttribute("disabled", "disabled");
             document.getElementById('date-card').setAttribute("disabled", "disabled");
             document.getElementById('cvv-card').setAttribute("disabled", "disabled");
             document.getElementById('name-card').setAttribute("disabled", "disabled");
+
+            document.getElementById('num-card').value = cardDataNum;
+            document.getElementById('date-card').value = thisCardData.date;
+            document.getElementById('cvv-card').value = "XXX";
+            document.getElementById('name-card').value = thisCardData.owner;
         }
+
         document.getElementById('num-card').focus();
-    }
-
-    function CardMasks() {
-        let numInput = document.getElementById("num-card");
-        let dateInput = document.getElementById("date-card");
-        let cvvInput = document.getElementById("cvv-card");
-
-        let numMaskOptions = {
-            mask: "0000 0000 0000 0000",
-            lazy: false
-        }
-        let dateMaskOptions = {
-            mask: "00/00",
-            lazy: false
-        }
-        let cvvMaskOptions = {
-            mask: "000",
-            lazy: false
-        }
-
-        IMask(numInput, numMaskOptions);
-        IMask(dateInput, dateMaskOptions);
-        IMask(cvvInput, cvvMaskOptions);
     }
 
     function saveNewData(e) {
@@ -131,16 +158,26 @@ const VievCard = () => {
         let number = document.getElementById('num-card').value;
         let date = document.getElementById('date-card').value;
         let cvv = document.getElementById('cvv-card').value;
-        let owner = document.getElementById('name-card').value;
+        let owner = document.getElementById('name-card').value; 
 
+        if (number !== "" && date !== "" && cvv !== "" && owner !== "") {
+            if (thisCardData.number !== number || thisCardData.date !== date || thisCardData.cvv !== cvv || thisCardData.owner !== owner) {
+                axios.post(UPDATA_CARD_DATA, { number, date, cvv, owner, cardid }, { headers })
+                    .then((response) => {
+                        console.log(response.data);
 
-        if (thisCardData.number !== number || thisCardData.date !== date || thisCardData.cvv !== cvv || thisCardData.owner !== owner) {
-            axios.post(UPDATA_CARD_DATA, { number, date, cvv, owner, cardid }, { headers })
-                .then((response) => {
-                    console.log(response.data);
-                });
+                        setEditYep(true);
+                        setTimeout(() => setEditYep(false), 3000);
+                        setEditSuccess("Данные успешно изменены");
+                    });
+            }
         }
-    }
+        else {
+            setEditDirty(true);
+            setTimeout(() => setEditDirty(false), 3000);
+            setEditError("Данные заполнены некорректно");
+        }
+    };
 
     function deleteCard(e) {
         e.preventDefault();
@@ -158,6 +195,8 @@ const VievCard = () => {
 
     return (
         <div className="universal-form">
+            {(editDirty && editError) && <ValidError error={editError}></ValidError>}
+            {(editYep && editSuccess) && <ValidSuccess success={editSuccess}></ValidSuccess>}
             <h1 className={VievCardCSS.page_main__heading}>ваша карта</h1>
             <section className={VievCardCSS.form_card_viev}>
                 <div className={VievCardCSS.form_card_viev__container}>
@@ -170,16 +209,16 @@ const VievCard = () => {
                         </svg>
                         <label className={VievCardCSS.form_label_num} htmlFor="num-card">
                             <span className={VievCardCSS.form_input__text}>Номер карты</span>
-                            <input onFocus={CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_num} id="num-card" placeholder="0000 0000 0000 0000" />
+                            <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_num} id="num-card" placeholder="0000 0000 0000 0000" />
                         </label>
                         <div className={VievCardCSS.form_card_viev__shield}>
                             <label className={VievCardCSS.form_label_date} htmlFor="date-card">
                                 <span className={VievCardCSS.form_input__text}>Срок действия</span>
-                                <input onFocus={CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_date} placeholder="00/00" id="date-card" />
+                                <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_date} placeholder="00/00" id="date-card" />
                             </label>
                             <label className={VievCardCSS.form_label_cvv} htmlFor="cvv-card">
                                 <span className={VievCardCSS.form_input__text}>CVV-код</span>
-                                <input onFocus={CardMasks} className={VievCardCSS.form__input + " " + VievCardCSS.form__input_cvv} placeholder="000" id="cvv-card" />
+                                <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_cvv} placeholder="000" id="cvv-card" />
                             </label>
                         </div>
                         <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_name} id="name-card" placeholder="VALDIMIR TIHOMIROV" />
@@ -206,7 +245,7 @@ const VievCard = () => {
                 <button onClick={saveNewData} className={VievCardCSS.viev_card__button + " " + VievCardCSS.viev_card__button_add + " button"}>Сохранить</button>
                 <button onClick={deleteCard} className={VievCardCSS.viev_card__button + " " + VievCardCSS.viev_card__button_delete}>Удалить</button>
             </section>
-        </div>
+        </div> 
     )
 
 };

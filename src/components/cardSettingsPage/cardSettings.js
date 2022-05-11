@@ -52,7 +52,7 @@ const CardSettings = () => {
             <h1 className={CardSettingsCSS.page_main__heading}>список карт</h1>
             <section className={CardSettingsCSS.payment_list}>
                 <form className={CardSettingsCSS.payment_form + " " + CardSettingsCSS.payment_list__container} aciton="#">
-                    <ul className={CardSettingsCSS.payment_list__list}>
+                    <ul className={CardSettingsCSS.payment_list__list}> 
                         {cardsStandart}
                         <li className={CardSettingsCSS.payment_list__item}>
                             <input className={CardSettingsCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="add-card" id="add-card" />

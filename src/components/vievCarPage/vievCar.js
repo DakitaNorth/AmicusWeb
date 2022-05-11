@@ -19,7 +19,6 @@ const VievCar = () => {
 
     const [carData, setCarData] = useState([]);
     const [thisCarData, setThisCarData] = useState([]);
-
     
     const [editDirty, setEditDirty] = useState(false);
     const [editError, setEditError] = useState("");

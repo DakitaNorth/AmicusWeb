@@ -231,11 +231,11 @@ const ProfileSettings = () => {
                             </svg>
                             <input className={ProfileSettingsCSS.password__input + " input"} type="password" name="password" autoComplete="on" id="password-input" />
                         </label>
+                        <label className={ProfileSettingsCSS.password_checkbox_label} htmlFor="password-unlock">
+                            <input onChange={passwordUnlockLock} className={ProfileSettingsCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
+                            <img className={ProfileSettingsCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
+                        </label>
                     </div>
-                    <label className={ProfileSettingsCSS.password_checkbox_label} htmlFor="password-unlock">
-                                <input onChange={passwordUnlockLock} className={ProfileSettingsCSS.password_checkbox + " visually-hidden"} type="checkbox" name="password-unlock" id="password-unlock" />
-                                <img className={ProfileSettingsCSS.password_checkbox_img} src={password_unlock} width="22" height="22" alt="" id="password-unlock-img" />
-                            </label>
                     {/* <div className={ProfileSettingsCSS.profile_alerts}>
                     <label className={ProfileSettingsCSS.profile_alerts__label} htmlFor="alert-input">
                         <span className={ProfileSettingsCSS.profile_alerts__heading}>Оповещения</span>

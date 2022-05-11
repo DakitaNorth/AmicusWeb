@@ -14,13 +14,15 @@
 .service_settings__container {
     display: flex;
     flex-direction: column;
-    padding-left: 39px;
-    padding-right: 39px;
+    align-items: center;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
 
 .service_settings__list {
+    max-width: 340px;
+    width: 100%;
     margin: 0;
-    margin-bottom: 450px;
     padding: 0;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -43,7 +45,7 @@
 .service__item::after {
     content: "";
     position: absolute;
-    width: 250px;
+    width: 255px;
     height: 2px;
     bottom: -15px;
     right: 20px;
@@ -61,7 +63,10 @@
 }
 
 .service_settings__version {
-    align-self: center;
+    position: absolute;
+    width: 100vw;
+    bottom: 5vh;
+    text-align: center;
     font-family: "Inter Light";
 }
 

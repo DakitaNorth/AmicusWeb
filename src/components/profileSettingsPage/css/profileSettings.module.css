@@ -1,9 +1,10 @@
 .profile_settings__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 36px;
-    padding-left: 39px;
-    padding-right: 39px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .page_main__heading {
@@ -23,6 +24,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 30px;
 }
 
@@ -49,6 +52,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 95px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -71,7 +76,10 @@
     background-color: #D5DDE0;
 }
 
-.profile__data label {
+.phone_label,
+.vk_label,
+.email_label,
+.password_label {
     position: relative;
     display: flex;
     justify-content: end;
@@ -207,7 +215,7 @@
 
 .password_checkbox_label {
     position: absolute;
-    bottom: 262px;
-    right: 75px;
+    bottom: 35px;
+    right: 30px;
     cursor: pointer;
 }

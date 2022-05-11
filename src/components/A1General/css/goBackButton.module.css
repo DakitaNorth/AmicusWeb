@@ -5,4 +5,11 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    z-index: 1;
+}
+
+@media (min-width: 1440px) {
+    .go_back {
+        left: 90px;
+    }
 }

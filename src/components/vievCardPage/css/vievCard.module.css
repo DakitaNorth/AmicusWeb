@@ -16,12 +16,17 @@
 }
 
 .form_card_viev__container {
-    padding-left: 34px;
-    padding-right: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .form_card_viev__wrapper {
     position: relative;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 53px;
     padding-top: 45px;
     padding-bottom: 29px;
@@ -93,6 +98,8 @@
 
 .form_card_viev__buttons {
     position: relative;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 115px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -142,6 +149,16 @@
     margin-bottom: 10px;
 }
 
+.viev_card__button_add:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.viev_card__button_add:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}
+
 .viev_card__button_delete {
     border-style: none;
     border-radius: 15px;
@@ -152,4 +169,14 @@
     text-transform: uppercase;
     background-color: #F54747;
     box-shadow: 0px 2px 8px rgb(194 56 56);
+}
+
+.viev_card__button_delete:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.viev_card__button_delete:active {
+    background-color: #df3939;
+    color: #ffffff;
 }
