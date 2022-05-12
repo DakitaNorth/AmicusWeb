@@ -50,8 +50,8 @@ const FormRouteSearch = () => {
     function searchRoute(e) {
         e.preventDefault();
 
-        let departureplace = JSON.parse(sessionStorage.getItem("SearchDepartureplace"));
-        let arrivalplace = JSON.parse(sessionStorage.getItem("SearchArrivalplace"));
+        let departureplace = document.getElementById("where-input").value;
+        let arrivalplace = document.getElementById("somewhere-input").value;
 
         console.log(departureplace);
         console.log(arrivalplace);

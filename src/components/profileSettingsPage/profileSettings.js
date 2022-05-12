@@ -8,6 +8,7 @@ import avatar_load from "../../img/profile-load.svg";
 import password_lock from "../../img/formLogin/passwordLock.svg";
 import password_unlock from "../../img/formLogin/passwordUnlock.svg";
 
+import AreUSure from "../areUSure/areUSure";
 import ValidError from "../../components/validError/validError";
 import ValidSuccess from "../../components/validSuccess/validSuccess";
 
@@ -20,6 +21,9 @@ const ProfileSettings = () => {
     const navigate = useNavigate();
 
     const [profileSettingsData, setProfileSettingsData] = useState([]);
+
+    const [deleteDirty, setDeleteDirty] = useState(false);
+    const [deleteText, setDeleteText] = useState("");
 
     const [editDirty, setEditDirty] = useState(false);
     const [editError, setEditError] = useState("");
@@ -195,6 +199,7 @@ const ProfileSettings = () => {
 
     return (
         <div className="universal-form">
+            {(deleteDirty && deleteText) && <AreUSure text={deleteText}></AreUSure>}
             {(editDirty && editError) && <ValidError error={editError}></ValidError>}
             {(editYep && editSuccess) && <ValidSuccess success={editSuccess}></ValidSuccess>}
             <h1 className={ProfileSettingsCSS.page_main__heading}>Настройки профиля</h1>
