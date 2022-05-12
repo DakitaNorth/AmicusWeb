@@ -112,8 +112,8 @@
     left: 13px;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .parameters {
         justify-content: left;
     }
-}
+} */

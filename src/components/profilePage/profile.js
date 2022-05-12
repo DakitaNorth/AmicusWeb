@@ -50,6 +50,7 @@ const Profile = () => {
             .then((response) => {
                 console.log(response);
                 setProfileReRender(true);
+                setTimeout(() => setProfileReRender(false), 3000);
             })
     };
 

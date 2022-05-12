@@ -88,7 +88,7 @@
     border: 1px solid #F54747;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .page_main__heading {
         padding-left: 8vw;
         text-align: start;
@@ -101,4 +101,4 @@
     .time_form__button {
         left: 10vw;
     }
-}
+} */

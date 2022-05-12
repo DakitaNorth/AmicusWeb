@@ -57,7 +57,7 @@ const UserProfilePage = () => {
             </div>
             <div className={UserProfilePageCSS.user_profile__buttons}>
                 <a className={UserProfilePageCSS.user_profile__button__phone} href={"tel:" + thisProfileData.phone}>Позвонить</a>
-                <button className={UserProfilePageCSS.user_profile__button__chat}>Написать</button>  
+                <NavLink className={UserProfilePageCSS.user_profile__button__chat} to="/">Написать</NavLink>  
             </div>
         </section>
     )

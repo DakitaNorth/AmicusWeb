@@ -1,4 +1,7 @@
 .user_profile__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 17vh;
     padding-left: 10vw;
     padding-right: 10vw;
@@ -8,6 +11,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 5vh;
 }
 
@@ -32,6 +37,8 @@
 .user_profile__information {
     display: flex;
     flex-direction: column;
+    max-width: 330px;
+    width: 100%;
     margin-bottom: 95px;
     padding-top: 25px;
     padding-bottom: 40px;
@@ -133,11 +140,11 @@
 }
 
 .user_profile__button__chat:hover {
-    opacity: 0.9;
+    opacity: 0.9; 
     color: #ffffff;
 }
 
 .user_profile__button__chat:active {
     background-color: #584BF6;
     color: #ffffff;
-}
+} 

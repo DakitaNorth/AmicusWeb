@@ -1,6 +1,8 @@
 .route_selected__container {
     display: flex;
     flex-direction: column;
+    max-width: 360px;
+    width: 100%;
 }
 
 .route_selected__wrapper {
