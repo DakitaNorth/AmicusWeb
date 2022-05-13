@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import MyRoutesItemSCSS from './css/myRoutesItem.module.css';
 import avatar from "../../img/routeHistory/Group.png";
 
-const MyRoutesItem = props => {
+const MyRoutesItem = props => { 
     return (
         <div id={props.id} className={MyRoutesItemSCSS.route_driver__item}>
             <div className={MyRoutesItemSCSS.route_driver__shield}>
-                <div className={MyRoutesItemSCSS.route_driver_avatar}>
+                <div className={MyRoutesItemSCSS.route_driver_avatar}> 
                     <img className={MyRoutesItemSCSS.route_driver_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
                     <span className={MyRoutesItemSCSS.route_driver__name}>{props.autorname}</span>
                 </div>

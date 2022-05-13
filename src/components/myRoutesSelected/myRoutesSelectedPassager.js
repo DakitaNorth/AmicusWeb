@@ -72,6 +72,7 @@ const MyRoutesSelected = () => {
                     <div className={MyRoutesSelectedCSS.route_list__container}>
                         <MyRoutesSelectedItemPassager
                             id={thisRouteData.id}
+                            autor={thisRouteData.autor}
                             autorname={thisRouteData.autorname}
                             autorphoto={thisRouteData.autorphoto}
                             departuretime={thisRouteData.departuretime}

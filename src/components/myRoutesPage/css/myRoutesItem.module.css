@@ -67,9 +67,22 @@
 
 .route_driver_information__item_where,
 .route_driver_information__item_somewhere {
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 232px;
+}
+
+.route_driver_information__item_where::before,
+.route_driver_information__item_somewhere::before { 
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    border-top: 1px dashed #D5DDE0;
+    z-index: -2;
 }
 
 .route_driver_information__adress,
@@ -77,6 +90,15 @@
     font-family: "Inter Light";
     font-size: 12px;
     line-height: 16px;
+    background-color: #ffffff;
+}
+
+.route_driver_information__adress {
+    padding-right: 10px;
+}
+
+.route_driver_information__time {
+    padding-left: 10px;
 }
 
 .route_driver_information__item_status {
@@ -99,6 +121,7 @@
 }
 
 .route_driver_button {
+    position: relative;
     padding-top: 8px;
     padding-bottom: 7px;
     font-family: "Inter Bold";
@@ -113,6 +136,16 @@
     border-radius: 15px;
 }
 
+.route_driver_button::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 13px;
+    right: 15px;
+    background-image: url("/src/img/shape-buttons.svg");
+    background-repeat: no-repeat;
+}
+ 
 .route_driver_button:hover {
     opacity: 0.9;
     color: #ffffff;
@@ -121,4 +154,4 @@
 .route_driver_button:active {
     background-color: #584BF6;
     color: #ffffff;
-}
+} 

@@ -75,6 +75,7 @@ const RouteSelected = () => {
                         <RouteSelectedItem
                             key={thisRoutesData.id}
                             id={thisRoutesData.id}
+                            autor={thisRoutesData.autor}
                             autorname={thisRoutesData.autorname}
                             autorphoto={thisRoutesData.autorphoto}
                             departuretime={thisRoutesData.departuretime}

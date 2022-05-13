@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import MyRouteSelItemCSS from './css/myRoutesSelectedItem.module.css';
+import MyRouteSelItemCSS from './css/myRoutesSelectedItem.module.css'; 
 import avatar from "../../img/routeHistory/Group.png";
 
 import ValidSuccess from "../validSuccess/validSuccess";
@@ -32,26 +32,28 @@ const MyRouteSelectedItem = props => {
         <div className={MyRouteSelItemCSS.route_selected__container}>
             <div className={MyRouteSelItemCSS.route_selected__wrapper}>
                 <div className={MyRouteSelItemCSS.route_selected__shield}>
-                    <div className={MyRouteSelItemCSS.route_avatar}>
-                        <img className={MyRouteSelItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
-                        <span className={MyRouteSelItemCSS.route_avater__name}>{props.autorname}</span>
-                    </div>
+                    <NavLink to={"/user-profile/" + props.autor}>
+                        <div className={MyRouteSelItemCSS.route_avatar}>
+                            <img className={MyRouteSelItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
+                            <span className={MyRouteSelItemCSS.route_avater__name}>{props.autorname}</span>
+                        </div>
+                    </NavLink>
                     <div className={MyRouteSelItemCSS.route_selected_information}>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_there}>
-                            <span className={MyRouteSelItemCSS.route_information__text}>Туда</span>
-                            <span className={MyRouteSelItemCSS.route_information__text}>{props.departuretime}</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_label}>Туда</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_value}>{props.departuretime}</span>
                         </div>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_back}>
-                            <span className={MyRouteSelItemCSS.route_information__text}>Обратно</span>
-                            <span className={MyRouteSelItemCSS.route_information__text}>{props.arrivaltime}</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_label}>Обратно</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_value}>{props.arrivaltime}</span>
                         </div>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_price}>
-                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_price}>Цена поездки</span>
-                            <span className={MyRouteSelItemCSS.route_information__text}>{props.price}₽</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_price + " " + MyRouteSelItemCSS.route_information__text_label}>Цена поездки</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_value}>{props.price}₽</span>
                         </div>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_places}>
-                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_places}>Свободных мест</span>
-                            <span className={MyRouteSelItemCSS.route_information__text}>{props.membercount}</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_places + " " + MyRouteSelItemCSS.route_information__text_label}>Свободных мест</span>
+                            <span className={MyRouteSelItemCSS.route_information__text + " " + MyRouteSelItemCSS.route_information__text_value}>{props.membercount}</span>
                         </div>
                         <span className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_days}>
                             <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">

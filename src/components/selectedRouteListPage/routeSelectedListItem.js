@@ -17,7 +17,7 @@ const RouteSelectedListItem = props => {
                     <div className={RouteSelLisItemCSS.route_information}>
                         <div className={RouteSelLisItemCSS.route_information__item_where}>
                             <span className={RouteSelLisItemCSS.route_information__adress}>{props.departureplace}</span>
-                            <span className={RouteSelLisItemCSS.route_information__time}>{props.departuretime}</span>
+                            <span className={RouteSelLisItemCSS.route_information__time}>{props.departuretime}</span> 
                         </div>
                         <div className={RouteSelLisItemCSS.route_information__item_somewhere}>
                             <span className={RouteSelLisItemCSS.route_information__adress}>{props.arrivalplace}</span>

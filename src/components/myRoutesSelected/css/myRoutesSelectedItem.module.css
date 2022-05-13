@@ -83,6 +83,7 @@
     font-family: "Inter Light";
     font-size: 12px;
     line-height: 16px;
+    background-color: #ffffff;
 }
 
 .route_selected_information__item {
@@ -93,12 +94,40 @@
     width: 67px;
 }
 
+.route_selected_information__item_places .route_information__text {
+    display: flex;
+    align-items: center;
+}
+
 .route_selected_information__item_there,
 .route_selected_information__item_back,
 .route_selected_information__item_places,
 .route_selected_information__item_price {
+    position: relative;
     display: flex;
     justify-content: space-between;
+}
+
+.route_selected_information__item_there::before,
+.route_selected_information__item_back::before,
+.route_selected_information__item_places::before,
+.route_selected_information__item_price::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    border-top: 1px dashed #D5DDE0;
+    z-index: -2;
+}
+
+.route_information__text_label {
+    padding-right: 10px;
+}
+
+.route_information__text_value {
+    padding-left: 10px;
 }
 
 .route_selected_information__item_days {
@@ -179,4 +208,4 @@
 
 .route_list__text {
     margin-right: 10px;
-}
+} 

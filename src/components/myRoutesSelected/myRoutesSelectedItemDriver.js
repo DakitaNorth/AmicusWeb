@@ -26,10 +26,12 @@ const MyRouteSelectedItem = props => {
         <div className={MyRouteSelItemCSS.route_selected__container}>
             <div className={MyRouteSelItemCSS.route_selected__wrapper}>
                 <div className={MyRouteSelItemCSS.route_selected__shield}>
-                    <div className={MyRouteSelItemCSS.route_avatar}>
-                        <img className={MyRouteSelItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
-                        <span className={MyRouteSelItemCSS.route_avater__name}>{props.autorname}</span>
-                    </div>
+                    <NavLink to={"/user-profile/" + props.autor}>
+                        <div className={MyRouteSelItemCSS.route_avatar}>
+                            <img className={MyRouteSelItemCSS.route_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
+                            <span className={MyRouteSelItemCSS.route_avater__name}>{props.autorname}</span>
+                        </div>
+                    </NavLink>
                     <div className={MyRouteSelItemCSS.route_selected_information}>
                         <div className={MyRouteSelItemCSS.route_selected_information__item + " " + MyRouteSelItemCSS.route_selected_information__item_there}>
                             <span className={MyRouteSelItemCSS.route_information__text}>Туда</span>
