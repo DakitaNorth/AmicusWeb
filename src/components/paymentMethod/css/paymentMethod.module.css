@@ -35,10 +35,6 @@
     text-transform: uppercase;
 }
 
-.payment_name {
-    padding-left: 51px;
-}
-
 .payment_cash,
 .payment_add_card {
     text-transform: none;
@@ -60,17 +56,18 @@
 
 .payment_cash,
 .payment_add_card {
-    padding-left: 68px;
+    padding-left: 80px;
 }
 
 .payment_label {
     position: relative;
+    cursor: pointer;
 }
 
-.payment_label svg {
+.payment__img {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 14px;
 }
 
 .payment_list__item::before,
@@ -82,4 +79,22 @@
     left: 0;
     background-color: #D5DDE0;
     z-index: -2;
+}
+
+.payment_link:hover {
+    opacity: 0.9;
+}
+
+.payment_link:active {
+    opacity: 0.7;
+}
+
+.payment_link:hover .payment_label_cash,
+.payment_link:hover .payment_add_card {
+    color: #476DF5;
+}
+
+.payment_link:active .payment_label_cash,
+.payment_link:active .payment_add_card {
+    color: #476DF5;
 }

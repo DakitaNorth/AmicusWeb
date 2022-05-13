@@ -33,17 +33,6 @@
     text-transform: uppercase;
 }
 
-.payment_name {
-    width: 200px;
-    padding-left: 51px;
-}
-
-.payment_cash,
-.payment_add_card {
-    text-transform: none;
-    color: #3E4958;
-}
-
 .payment_label {
     width: 360px;
     height: 60px;
@@ -52,18 +41,9 @@
     align-items: center;
 }
 
-.payment_label_cash,
-.payment_label_add {
-    justify-content: start;
-}
-
-.payment_cash,
-.payment_add_card {
-    padding-left: 68px;
-}
-
 .payment_label {
     position: relative;
+    cursor: pointer;
 }
 
 .payment_label svg {

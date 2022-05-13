@@ -37,12 +37,8 @@
     text-transform: uppercase;
 }
 
-.payment_name {
-    padding-left: 51px;
-}
-
-.payment_cash,
 .payment_add_card {
+    padding-left: 80px;
     text-transform: none;
     color: #3E4958;
 }
@@ -53,26 +49,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
 }
 
-.payment_label_cash,
 .payment_label_add {
+    position: relative;
     justify-content: start;
 }
 
-.payment_cash,
-.payment_add_card {
-    padding-left: 68px;
-}
-
-.payment_label {
-    position: relative;
-}
-
-.payment_label svg {
+.payment__img_add {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    left: 14px;
 }
 
 .payment_list__item::before,

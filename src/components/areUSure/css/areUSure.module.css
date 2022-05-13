@@ -1,0 +1,56 @@
+.sure {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -180px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px rgb(0 0 0 / 8%);
+
+    transition: 0.5s;
+    transform: translateY(-150%);
+}
+
+.sure_visible {
+    transform: translateY(0);
+}
+
+.sure__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 360px;
+    height: 40px;
+}
+
+.sure__buttons_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 130px;
+}
+
+.sure__text {
+    font-family: "Inter Regular", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: #F54747;
+}
+
+.sure__button {
+    width: 60px;
+    border-style: none;
+    border-radius: 15px;
+    font-family: "Inter Bold";
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.sure__button_yes {
+    background-color: #476DF5;
+}
+
+.sure__button_no {
+    background-color: #F54747;
+}
