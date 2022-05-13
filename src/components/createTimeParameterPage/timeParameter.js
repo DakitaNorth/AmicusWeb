@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import IMask from "imask";
 import TimeParameterCSS from './css/timeParameter.module.css';
@@ -6,6 +6,24 @@ import TimeParameterCSS from './css/timeParameter.module.css';
 const TimeParameter = () => {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let departureInput = document.getElementById("time-departure-input");
+        let arrivalInput = document.getElementById("time-arrival-input");
+
+        let maskOptions = {
+            mask: "00:00",
+            lazy: true
+        };
+
+        departureInput.onfocus = function () {
+            IMask(departureInput, maskOptions);
+        };
+
+        arrivalInput.onfocus = function () {
+            IMask(arrivalInput, maskOptions);
+        };
+    });
 
     function gettingTimeParameter(e) {
         e.preventDefault();
@@ -16,7 +34,7 @@ const TimeParameter = () => {
         arrivalTime = document.getElementById('time-arrival-input').value;
 
         console.log(departureTime);
-        console.log(arrivalTime);
+        console.log(arrivalTime); 
 
         sessionStorage.setItem("CreateDepartureTime", JSON.stringify(departureTime));
         sessionStorage.setItem("CreateArrivalTime", JSON.stringify(arrivalTime));
@@ -24,23 +42,16 @@ const TimeParameter = () => {
         navigate("/creating-route");
     }
 
-    function departureMask() {
-        let departureInput = document.getElementById("time-departure-input");
-        let cvvMaskOptions = {
-            mask: "00:00",
-            lazy: false
-        }
-        IMask(departureInput, cvvMaskOptions);
-    }
+    function timeEnter(e) {
+        e.preventDefault();
 
-    function arrivalMask() {
-        let arrivalInput = document.getElementById("time-arrival-input");
-        let cvvMaskOptions = {
-            mask: "00:00",
-            lazy: false
+        let inputValue = e.target.value;
+        let inputId = e.target.id;
+
+        if (inputId === "time-departure-input" && inputValue.length == 5) {
+            document.getElementById("time-arrival-input").focus();
         }
-        IMask(arrivalInput, cvvMaskOptions);
-    }
+    };
 
     return (
         <div className="universal-form">
@@ -50,11 +61,11 @@ const TimeParameter = () => {
                     <form className={TimeParameterCSS.time_form__wrapper} action="#">
                         <div className={TimeParameterCSS.time_input__wrapper}>
                             <label className={TimeParameterCSS.time_input__label} htmlFor="time-departure-input">Туда</label>
-                            <input onFocus={departureMask} className={TimeParameterCSS.time_form__input} type="text" name="time-departure" placeholder="07:00" id="time-departure-input" />
+                            <input onChange={timeEnter} className={TimeParameterCSS.time_form__input} type="text" name="time-departure" placeholder="07:00" id="time-departure-input" />
                         </div>
                         <div className={TimeParameterCSS.time_input__wrapper}>
                             <label className={TimeParameterCSS.time_input__label} htmlFor="time-arrival-input">Обратно</label>
-                            <input onFocus={arrivalMask} className={TimeParameterCSS.time_form__input} type="text" name="time-arrival" placeholder="22:00" id="time-arrival-input" />
+                            <input className={TimeParameterCSS.time_form__input} type="text" name="time-arrival" placeholder="22:00" id="time-arrival-input" />
                         </div>
                         <button onClick={gettingTimeParameter}className={TimeParameterCSS.time_form__button + " button"}>Сохранить</button>
                     </form>

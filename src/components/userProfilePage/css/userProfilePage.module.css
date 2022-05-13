@@ -3,8 +3,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 17vh;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
 
 .user_profile__avatar {

@@ -11,8 +11,8 @@
 }
 
 .time_form__container {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .time_form__wrapper {
@@ -34,7 +34,7 @@
     content: "";
     position: absolute;
     left: -10px;
-    width: 360px;
+    width: 85vw;
     height: 2px;
     background-color: #D5DDE0;
     z-index: -2;
@@ -79,4 +79,18 @@
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+@media (min-width: 768px) {
+    .time_input__wrapper::before,
+    .time_input__wrapper::after {
+        width: 82.5vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .time_input__wrapper::before,
+    .time_input__wrapper::after {
+        width: 81.5vw;
+    }
 }

@@ -11,8 +11,8 @@
 }
 
 .human_form__container {
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .human_form__wrapper {
@@ -34,7 +34,7 @@
     content: "";
     position: absolute;
     left: -10px;
-    width: 360px;
+    width: 85vw;
     height: 2px;
     background-color: #D5DDE0;
     z-index: -2;
@@ -79,4 +79,18 @@
     padding: 0;
     border: none;
     background-color: #ffffff;
+}
+
+@media (min-width: 768px) {
+    .human_input__wrapper::before,
+    .human_input__wrapper::after {
+        width: 82.5vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .human_input__wrapper::before,
+    .human_input__wrapper::after {
+        width: 81.5vw;
+    }
 }

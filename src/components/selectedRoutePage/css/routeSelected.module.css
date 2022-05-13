@@ -6,8 +6,8 @@
 .form_search_route__container {
     display: flex;
     justify-content: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
 
 .form_search_route__wrapper {
@@ -32,6 +32,6 @@
 .route_list__container {
     display: flex;
     justify-content: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }

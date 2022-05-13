@@ -16,8 +16,8 @@
 .form_login__container {
     display: flex;
     justify-content: center;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
 
 .form_login__wrapper {
