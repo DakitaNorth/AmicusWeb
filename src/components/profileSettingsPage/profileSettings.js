@@ -31,13 +31,19 @@ const ProfileSettings = () => {
     const [editYep, setEditYep] = useState(false);
     const [editSuccess, setEditSuccess] = useState("Данные успешно изменены");
 
+    const [profileReRender, setProfileReRender] = useState(false);
+
     useEffect(() => {
-        gettingProfileData();
+        gettingProfileData(); 
     }, []);
 
     useEffect(() => {
         includeData();
     }, [profileSettingsData]);
+
+    useEffect(() => {
+        gettingProfileData();
+    }, [profileReRender]);
 
     function gettingProfileData() {
         const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -192,10 +198,33 @@ const ProfileSettings = () => {
         let loginInput = document.getElementById("phone-input");
         let maskOptions = {
             mask: "+7(000)000-00-00",
-            lazy: false
+            lazy: true
         }
         IMask(loginInput, maskOptions);
     }
+
+    function handleFile(e) {
+        const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        const userId = LoginPassword.id;
+
+        let avatarData = e.target.files[0];
+        e.target.value = "";
+
+        var formData = new FormData();
+
+        formData.append("file", avatarData);
+
+        console.log(formData.get("file"));
+
+        const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/uploadphoto/" + userId;
+
+        axios.post(API_URL, formData)
+            .then((response) => {
+                console.log(response);
+                setProfileReRender(true);
+                setTimeout(() => setProfileReRender(false), 3000);
+            })
+    };
 
     return (
         <div className="universal-form">
@@ -206,9 +235,10 @@ const ProfileSettings = () => {
             <section className={ProfileSettingsCSS.profile_settings}>
                 <form action="#" className={ProfileSettingsCSS.profile_settings__container}>
                     <div className={ProfileSettingsCSS.profile__avatar + " " + ProfileSettingsCSS.avatar}>
-                        <div className={ProfileSettingsCSS.avatar__load_button}>
-                            <img className={ProfileSettingsCSS.avatar__img} src={profileSettingsData.photo} width="85" height="85" alt="Ваш аватар" />
-                        </div>
+                        <label className={ProfileSettingsCSS.avatar__load_button} htmlFor="avatar__load_input">
+                            <input type="file" className="visually-hidden" onChange={handleFile} name="avatar__load" id="avatar__load_input" />
+                            <img className={ProfileSettingsCSS.avatar__img} src={profileSettingsData.photo} width="85" height="85" alt="Ваш аватар" id="avatar__img" />
+                        </label>
                         <span className={ProfileSettingsCSS.avatar__name}>{profileSettingsData.name}</span>
                     </div>
                     <div className={ProfileSettingsCSS.profile__data}>

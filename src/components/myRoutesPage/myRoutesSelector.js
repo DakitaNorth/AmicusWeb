@@ -117,6 +117,7 @@ const MyRoutesSelector = () => {
             <MyRoutesItemPassager
                 key={item.id}
                 id={item.id}
+                autor={item.autor}
                 autorname={item.autorname}
                 autorphoto={item.autorphoto}
                 departureplace={item.departureplace}
@@ -132,6 +133,7 @@ const MyRoutesSelector = () => {
             <MyRoutesItemDriver
                 key={item.id}
                 id={item.id}
+                autor={item.autor}
                 autorname={item.autorname}
                 autorphoto={item.autorphoto}
                 departureplace={item.departureplace}
