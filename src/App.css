@@ -133,3 +133,9 @@ input[type="radio"].visually-hidden {
   text-transform: uppercase;
   color: #3E4958;
 }
+
+.app__wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}

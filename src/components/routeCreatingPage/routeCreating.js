@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import RouteCreatingCSS from './css/routeCreating.module.css';
+import RouteCreatingCSS from "./css/routeCreating.module.css";
 
 import CreateParameters from "../routeCreatingPage/createParameters";
 
@@ -87,8 +87,8 @@ const RouteCreating = () => {
     function createRoute(e) {
         e.preventDefault();
 
-        let departureplace = document.getElementById('where-input').value;
-        let arrivalplace = document.getElementById('somewhere-input').value;
+        let departureplace = document.getElementById("where-input").value;
+        let arrivalplace = document.getElementById("somewhere-input").value;
 
         let departuretime = JSON.parse(sessionStorage.getItem("CreateDepartureTime"));
         let arrivaltime = JSON.parse(sessionStorage.getItem("CreateArrivalTime"));
@@ -97,8 +97,8 @@ const RouteCreating = () => {
 
         let automobile = JSON.parse(sessionStorage.getItem("CreateAutoSelectItemData"));
 
-        let price = document.getElementById('price-input').value;
-        let description = document.getElementById('additional-input').value;
+        let price = document.getElementById("price-input").value;
+        let description = document.getElementById("additional-input").value;
 
         if (departureplace !== "" && arrivalplace !== "" && price !== "") {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
@@ -136,7 +136,7 @@ const RouteCreating = () => {
         <div className="universal-form">
             {(createDirty && createError) && <ValidError error={createError}></ValidError>}
             {(createYep && createSuccess) && <ValidSuccess success={createSuccess}></ValidSuccess>}
-            <h1 className="visually-hidden">Создание маршрута</h1>
+            <h1 className={RouteCreatingCSS.page_main__heading + " visually-hidden"}>Создание маршрута</h1>
             <section className={RouteCreatingCSS.form_create_route}>
                 <div className={RouteCreatingCSS.form_create_route__container}>
                     <form onSubmit={createRoute} className={RouteCreatingCSS.form_create_route__shield} action="#">
