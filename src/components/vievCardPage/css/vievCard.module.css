@@ -36,10 +36,10 @@
     box-shadow: 0 4px 15px rgb(0 0 0 / 15%);
 }
 
-.form_card_viev__wrapper svg {
+.form_card_viev__img {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 15px; 
 }
 
 .form_label_num,

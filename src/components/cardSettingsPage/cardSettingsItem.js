@@ -20,10 +20,10 @@ const CardSettingItem = props => {
         else if (props.banksystem === "China UnionPay") {
             setImg(UnionImg);
         }
-    }, []);
+    }, []); 
 
     return (
-        <li id={props.number} className={CardSettingItemCSS.payment_list__item}>
+        <li id={props.number} className={CardSettingItemCSS.payment_list__item}> 
             <NavLink className={CardSettingItemCSS.payment_item_link} to={"/viev-card/" + props.id}>
                 <input className={CardSettingItemCSS.payment_input + " visually-hidden"} type="radio" name="payment-method" value="first-card" id="first-card" />
                 <label className={CardSettingItemCSS.payment_label} htmlFor="first-card">

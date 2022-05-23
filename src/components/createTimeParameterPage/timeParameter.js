@@ -67,7 +67,7 @@ const TimeParameter = () => {
                             <label className={TimeParameterCSS.time_input__label} htmlFor="time-arrival-input">Обратно</label>
                             <input className={TimeParameterCSS.time_form__input} type="text" name="time-arrival" placeholder="22:00" id="time-arrival-input" />
                         </div>
-                        <button onClick={gettingTimeParameter}className={TimeParameterCSS.time_form__button + " button"}>Сохранить</button>
+                        <button onClick={gettingTimeParameter}className={TimeParameterCSS.time_form__button}>Сохранить</button>
                     </form>
                 </div>
             </section>

@@ -94,9 +94,11 @@
 }
 
 .my_profile__button_out {
-    position: relative;
-    align-self: center;
+    position: absolute;
+    left: 50vw;
+    bottom: 100px;
     width: 205px;
+    margin-left: -102px;
     padding-top: 10px;
     padding-bottom: 7px;
     border-style: none;
@@ -107,7 +109,7 @@
     color: #ffffff;
     text-transform: uppercase;
     background-color: #F54747;
-    box-shadow: 0px 2px 8px rgb(194, 56, 56);
+    box-shadow: 0px 2px 8px rgb(194, 56, 56); 
 }
 
 .my_profile__button_out:hover {

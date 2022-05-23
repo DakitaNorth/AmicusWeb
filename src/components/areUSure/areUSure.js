@@ -13,6 +13,7 @@ const AreUSure = props => {
     function functionYes() {
         if (props.text === "storageCleanUp") {
             sessionStorage.clear();
+            localStorage.clear();
             navigate("/");
         }
     };

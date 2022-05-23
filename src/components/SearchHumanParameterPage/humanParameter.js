@@ -67,7 +67,7 @@ const HumanParameter = () => {
                                 </svg>
                             </button>
                         </div>
-                        <button onClick={gettingHumanParameter} className={HumanParameterCSS.human_form__button + " button"}>Сохранить</button>
+                        <button onClick={gettingHumanParameter} className={HumanParameterCSS.human_form__button}>Сохранить</button>
                     </form>
                 </div>
             </section>

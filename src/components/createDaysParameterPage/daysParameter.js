@@ -71,7 +71,7 @@ const CreateDaysParameter = () => {
                                 </label>
                             </li>
                         </ul>
-                        <button onClick={gettingDaysParameter} className={DaysParameterCSS.days_form__button + " button"}>Сохранить</button>
+                        <button onClick={gettingDaysParameter} className={DaysParameterCSS.days_form__button}>Сохранить</button>
                     </form>
                 </div>
             </section>

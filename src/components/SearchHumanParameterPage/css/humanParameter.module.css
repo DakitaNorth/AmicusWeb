@@ -62,11 +62,32 @@
 }
 
 .human_form__button {
-    align-self: center;
+    position: absolute;
+    left: 50vw;
+    bottom: 100px;
     width: 205px;
+    margin-left: -102px;
     padding-top: 10px;
     padding-bottom: 7px;
+    color: #ffffff;
+    background-color: #476DF5;
+    border-style: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: "Inter Bold";
+    font-size: 16px;
     text-align: center;
+    box-shadow: 0px 2px 8px #1069e3; 
+}
+
+.human_form__button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.human_form__button:active {
+    background-color: #584BF6;
+    color: #ffffff;
 }
 
 .human_input__button {

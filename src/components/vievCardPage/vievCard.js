@@ -2,7 +2,11 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
-import VievCardCSS from './css/vievCard.module.css';
+import VievCardCSS from "./css/vievCard.module.css";
+
+import MasterImg from "../../img/cardSettings/master.svg";
+import MirImg from "../../img/cardSettings/mir.svg";
+import UnionImg from "../../img/cardSettings/unionpay.svg";
 
 import ValidError from "../validError/validError";
 import ValidSuccess from "../../components/validSuccess/validSuccess";
@@ -19,6 +23,8 @@ const VievCard = () => {
     const [thisCardData, setThisCardData] = useState([]);
 
     const [cardDataNum, setCardDataNum] = useState("");
+
+    const [img, setImg] = useState();
 
     const [editDirty, setEditDirty] = useState(false);
     const [editError, setEditError] = useState("");
@@ -41,9 +47,9 @@ const VievCard = () => {
     });
 
     useEffect(() => {
-        let numberInput = document.getElementById('num-card');
-        let dateInput = document.getElementById('date-card');
-        let cvvInput = document.getElementById('cvv-card');
+        let numberInput = document.getElementById("num-card");
+        let dateInput = document.getElementById("date-card");
+        let cvvInput = document.getElementById("cvv-card");
 
         numberInput.onfocus = function () {
             let maskOptions = {
@@ -82,7 +88,7 @@ const VievCard = () => {
                     setIsLoading(true);
                 });
         }
-    }
+    };
 
     function gettingThisCardData() {
         let paramsId = parseInt(params.myCardID);
@@ -90,63 +96,80 @@ const VievCard = () => {
         for (var i = 0; i < cardData.length; i++) {
             if (cardData[i].id === paramsId) {
                 setThisCardData(cardData[i]);
+                console.log(thisCardData);
                 setCardDataNum(cardData[i].number.substring(0, 7) + "XX XXXX XXXX");
             }
         }
-    }
+    };
+
+    function includeDataImg() {
+        if (thisCardData.banksystem === "MasterCard") {
+            setImg(MasterImg);
+        }
+        else if (thisCardData.banksystem === "МИР") {
+            setImg(MirImg);
+        }
+        else if (thisCardData.banksystem === "China UnionPay") {
+            setImg(UnionImg);
+        }
+    };
 
     function includeData() {
-        if (document.getElementById('num-card').value.includes("X")) {
-            document.getElementById('num-card').value = thisCardData.number;
-            document.getElementById('date-card').value = thisCardData.date;
-            document.getElementById('cvv-card').value = thisCardData.cvv;
-            document.getElementById('name-card').value = thisCardData.owner;
+        if (document.getElementById("cvv-card").value.includes("X")) {
+            document.getElementById("num-card").value = thisCardData.number;
+            document.getElementById("date-card").value = thisCardData.date;
+            document.getElementById("cvv-card").value = thisCardData.cvv;
+            document.getElementById("name-card").value = thisCardData.owner;
+
+            includeDataImg();
         }
         else {
-            document.getElementById('num-card').value = cardDataNum;
-            document.getElementById('date-card').value = thisCardData.date;
-            document.getElementById('cvv-card').value = "XXX";
-            document.getElementById('name-card').value = thisCardData.owner;
+            document.getElementById("num-card").value = cardDataNum;
+            document.getElementById("date-card").value = thisCardData.date;
+            document.getElementById("cvv-card").value = "XXX";
+            document.getElementById("name-card").value = thisCardData.owner;
+
+            includeDataImg();
         }
-    }
+    };
 
     function disabledInputs() {
-        document.getElementById('num-card').setAttribute("disabled", "disabled");
-        document.getElementById('date-card').setAttribute("disabled", "disabled");
-        document.getElementById('cvv-card').setAttribute("disabled", "disabled");
-        document.getElementById('name-card').setAttribute("disabled", "disabled");
-    }
+        document.getElementById("num-card").setAttribute("disabled", "disabled");
+        document.getElementById("date-card").setAttribute("disabled", "disabled");
+        document.getElementById("cvv-card").setAttribute("disabled", "disabled");
+        document.getElementById("name-card").setAttribute("disabled", "disabled");
+    };
 
     function setDisabledInputs() {
-        if (document.getElementById('num-card').disabled &&
-            document.getElementById('date-card').disabled &&
-            document.getElementById('cvv-card').disabled &&
-            document.getElementById('name-card').disabled) {
+        if (document.getElementById("num-card").disabled &&
+            document.getElementById("date-card").disabled &&
+            document.getElementById("cvv-card").disabled &&
+            document.getElementById("name-card").disabled) {
 
-            document.getElementById('num-card').removeAttribute("disabled");
-            document.getElementById('date-card').removeAttribute("disabled");
-            document.getElementById('cvv-card').removeAttribute("disabled");
-            document.getElementById('name-card').removeAttribute("disabled");
+            document.getElementById("num-card").removeAttribute("disabled");
+            document.getElementById("date-card").removeAttribute("disabled");
+            document.getElementById("cvv-card").removeAttribute("disabled");
+            document.getElementById("name-card").removeAttribute("disabled");
 
-            document.getElementById('num-card').value = thisCardData.number;
-            document.getElementById('date-card').value = thisCardData.date;
-            document.getElementById('cvv-card').value = thisCardData.cvv;
-            document.getElementById('name-card').value = thisCardData.owner;
+            document.getElementById("num-card").value = thisCardData.number;
+            document.getElementById("date-card").value = thisCardData.date;
+            document.getElementById("cvv-card").value = thisCardData.cvv;
+            document.getElementById("name-card").value = thisCardData.owner;
         }
         else {
-            document.getElementById('num-card').setAttribute("disabled", "disabled");
-            document.getElementById('date-card').setAttribute("disabled", "disabled");
-            document.getElementById('cvv-card').setAttribute("disabled", "disabled");
-            document.getElementById('name-card').setAttribute("disabled", "disabled");
+            document.getElementById("num-card").setAttribute("disabled", "disabled");
+            document.getElementById("date-card").setAttribute("disabled", "disabled");
+            document.getElementById("cvv-card").setAttribute("disabled", "disabled");
+            document.getElementById("name-card").setAttribute("disabled", "disabled");
 
-            document.getElementById('num-card').value = cardDataNum;
-            document.getElementById('date-card').value = thisCardData.date;
-            document.getElementById('cvv-card').value = "XXX";
-            document.getElementById('name-card').value = thisCardData.owner;
+            document.getElementById("num-card").value = cardDataNum;
+            document.getElementById("date-card").value = thisCardData.date;
+            document.getElementById("cvv-card").value = "XXX";
+            document.getElementById("name-card").value = thisCardData.owner;
         }
 
-        document.getElementById('num-card').focus();
-    }
+        document.getElementById("num-card").focus();
+    };
 
     function saveNewData(e) {
         e.preventDefault();
@@ -155,10 +178,10 @@ const VievCard = () => {
 
         const UPDATA_CARD_DATA = "https://xn--80aaggtieo3biv.xn--p1ai/updatecarddata";
 
-        let number = document.getElementById('num-card').value;
-        let date = document.getElementById('date-card').value;
-        let cvv = document.getElementById('cvv-card').value;
-        let owner = document.getElementById('name-card').value; 
+        let number = document.getElementById("num-card").value;
+        let date = document.getElementById("date-card").value;
+        let cvv = document.getElementById("cvv-card").value;
+        let owner = document.getElementById("name-card").value; 
 
         if (number !== "" && date !== "" && cvv !== "" && owner !== "") {
             if (thisCardData.number !== number || thisCardData.date !== date || thisCardData.cvv !== cvv || thisCardData.owner !== owner) {
@@ -191,7 +214,7 @@ const VievCard = () => {
                 navigate("/my-card-settings");
                 console.log(response);
             });
-    }
+    };
 
     return (
         <div className="universal-form">
@@ -201,12 +224,7 @@ const VievCard = () => {
             <section className={VievCardCSS.form_card_viev}>
                 <div className={VievCardCSS.form_card_viev__container}>
                     <form className={VievCardCSS.form_card_viev__wrapper} action="#">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M54.5748 39.9302V39.3081H54.4179L54.2363 39.7354L54.0557 39.3081H53.8978V39.9302H54.0093V39.461L54.179 39.8659H54.2945L54.4643 39.46V39.9302H54.5748ZM53.579 39.9302V39.4141H53.7803V39.3091H53.2671V39.4141H53.4684V39.9302H53.579Z" fill="#F79410" />
-                            <path d="M36.7712 42.6016H23.2177V17.4316H36.7712V42.6016Z" fill="#FF5F00" />
-                            <path d="M24.0845 30.012C24.0845 24.9061 26.3979 20.358 30.0006 17.427C27.3661 15.2837 24.0411 14.0044 20.4276 14.0044C11.873 14.0044 4.93848 21.1711 4.93848 30.012C4.93848 38.8528 11.873 46.0195 20.4276 46.0195C24.0411 46.0195 27.3661 44.7403 30.0006 42.597C26.3979 39.666 24.0845 35.1178 24.0845 30.012Z" fill="#EB001B" />
-                            <path d="M55.0568 30.0076C55.0568 38.8484 48.1223 46.0151 39.5676 46.0151C35.9541 46.0151 32.6292 44.7359 29.9937 42.5926C33.5973 39.6616 35.9108 35.1134 35.9108 30.0076C35.9108 24.9017 33.5973 20.3536 29.9937 17.4226C32.6292 15.2793 35.9541 14 39.5676 14C48.1223 14 55.0568 21.1667 55.0568 30.0076Z" fill="#F79E1B" />
-                        </svg>
+                        <img className={VievCardCSS.form_card_viev__img} width="50" height="50" src={img} alt="Label карты" />
                         <label className={VievCardCSS.form_label_num} htmlFor="num-card">
                             <span className={VievCardCSS.form_input__text}>Номер карты</span>
                             <input className={VievCardCSS.form__input + " " + VievCardCSS.form__input_num} id="num-card" placeholder="0000 0000 0000 0000" />
