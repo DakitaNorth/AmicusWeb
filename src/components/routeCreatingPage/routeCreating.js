@@ -136,7 +136,7 @@ const RouteCreating = () => {
         <div className="universal-form">
             {(createDirty && createError) && <ValidError error={createError}></ValidError>}
             {(createYep && createSuccess) && <ValidSuccess success={createSuccess}></ValidSuccess>}
-            <h1 className={RouteCreatingCSS.page_main__heading + " visually-hidden"}>Создание маршрута</h1>
+            <h1 className={RouteCreatingCSS.page_main__heading}>Новый маршрут</h1>
             <section className={RouteCreatingCSS.form_create_route}>
                 <div className={RouteCreatingCSS.form_create_route__container}>
                     <form onSubmit={createRoute} className={RouteCreatingCSS.form_create_route__shield} action="#">
