@@ -7,7 +7,9 @@ const SuccessfulBooking = () => {
     const navigate = useNavigate();
 
     let [timer, setTimer] = useState(15);
-    const [timerId, setTimerId] = useState(setTimeout(navigate("/my-routes"), 15000));
+    const [timerId, setTimerId] = useState(setTimeout(() => {
+        // navigate("/my-routes");
+    }, 15000));
 
     useEffect(() => {
         setTimeout(timerLink, 1000);
@@ -20,7 +22,7 @@ const SuccessfulBooking = () => {
             setTimeout(timerLink, 1000);
         }
         else {
-            console.log("Таймер умер");
+            console.log("Таймер умер"); 
         }
     };
 

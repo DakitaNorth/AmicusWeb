@@ -27,11 +27,11 @@
 
 .route_driver__shield {
     display: flex;
+    justify-content: space-between;
 }
 
 .route_driver_avatar {
     position: relative;
-    margin-right: 80px;
 }
 
 .route_driver_avatar__img {
@@ -154,4 +154,4 @@
 .route_driver_button:active {
     background-color: #584BF6;
     color: #ffffff;
-} 
+}

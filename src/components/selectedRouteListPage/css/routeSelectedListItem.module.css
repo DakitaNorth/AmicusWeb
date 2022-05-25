@@ -1,6 +1,5 @@
 .route_avatar {
     position: relative;
-    margin-right: 80px;
 }
 
 .route_avatar__img {
@@ -131,7 +130,6 @@
     margin-bottom: 23px;
 }
 
-.route__item::before,
 .route__item::after {
     content: "";
     position: absolute;
@@ -140,10 +138,6 @@
     left: 0;
     background-color: #D5DDE0;
     z-index: -2;
-}
-
-.route__item::before {
-    top: -12px;
 }
 
 .route__item::after {

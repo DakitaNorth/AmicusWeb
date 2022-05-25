@@ -147,4 +147,11 @@
 .user_profile__button__chat:active {
     background-color: #584BF6;
     color: #ffffff;
-} 
+}
+
+
+@media (min-width: 320px) {
+    .user_profile__wrapper {
+        margin-top: 7vh;
+    }
+}

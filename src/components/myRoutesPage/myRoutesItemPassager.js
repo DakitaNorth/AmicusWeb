@@ -7,7 +7,7 @@ const MyRoutesItem = props => {
     return (
         <div id={props.id} className={MyRoutesItemSCSS.route_driver__item}>
             <div className={MyRoutesItemSCSS.route_driver__shield}>
-                <NavLink to={"/user-profile/" + props.autor}>
+                <NavLink className={MyRoutesItemSCSS.route_driver_avatar__wrapper} to={"/user-profile/" + props.autor}>
                     <div className={MyRoutesItemSCSS.route_driver_avatar}>
                         <img className={MyRoutesItemSCSS.route_driver_avatar__img} src={props.autorphoto} alt="Фотография водителя" />
                         <span className={MyRoutesItemSCSS.route_driver__name}>{props.autorname}</span>

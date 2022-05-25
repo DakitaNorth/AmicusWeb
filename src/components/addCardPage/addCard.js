@@ -65,7 +65,7 @@ const AddCard = () => {
             axios.post(ADD_CARD_URL, { user, number, owner, date, cvv }, { headers })
                 .then((response) => {
                     console.log(response);
-                    navigate("/my-card-settings");
+                    navigate(-1); 
                 });
         }
         else {

@@ -1,6 +1,5 @@
 .form_search_route {
     margin-top: 7vh;
-    margin-bottom: 10px;
 }
 
 .form_search_route__container {
@@ -15,7 +14,7 @@
     flex-direction: column;
     max-width: 360px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_search_route__wrapper label {
@@ -26,21 +25,22 @@
 }
 
 .form_search_route__where_input {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .route_list {
-    margin-top: -5px;
-}
-
-.route_list__container {
+    display: flex;
+    justify-content: center;
     padding-left: 6vw;
     padding-right: 6vw;
 }
 
+.route_list__container {
+    max-width: 360px;
+    width: 100%;
+}
+
 .route_list__list {
-    display: flex;
-    justify-content: center;
     margin: 0;
     padding: 0;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import VerCSS from './css/verificationPage.module.css';
 
 import ValidError from "../../components/validError/validError";
@@ -34,7 +35,6 @@ const VerificationPage = () => {
 
     document.getElementById("code-input-1").focus();
   }, []);
-
 
   function codeEnter(e) {
     let inputValue = e.target.value;

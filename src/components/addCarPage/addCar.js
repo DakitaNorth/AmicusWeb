@@ -59,8 +59,8 @@ const AddCar = () => {
             const ADD_CARD_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addauto";
             axios.post(ADD_CARD_URL, { statenumber, model, color, places, owner }, { headers })
                 .then((response) => {
-                    navigate("/my-car-settings");
                     console.log(response);
+                    navigate(-1); 
                 });
         }
         else {

@@ -15,7 +15,7 @@
     flex-direction: column;
     max-width: 360px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_search_route__wrapper label {
@@ -26,7 +26,7 @@
 }
 
 .form_search_route__where_input {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .route_list__container {

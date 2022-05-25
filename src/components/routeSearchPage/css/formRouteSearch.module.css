@@ -22,7 +22,7 @@
     flex-direction: column;
     max-width: 360px;
     width: 100vw;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_search_route__wrapper label {
@@ -33,7 +33,7 @@
 }
 
 .form_search_route__where_input {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_search_route__where_input,
@@ -86,6 +86,16 @@
 
 .not_valid_input {
     border: 1px solid #F54747;
+}
+
+@media (min-width: 320px) {
+    .page_main__heading {
+        display: none;
+    }
+
+    .form_search_route__container {
+        margin-top: 7vh;
+    }
 }
 
 /* @media (min-width: 1200px) {

@@ -42,11 +42,10 @@
 
 .setting_list {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     max-width: 330px;
     margin: 0;
-    margin-bottom: 10vh;
     padding: 0;
 }
 
@@ -59,10 +58,12 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    width: 159px;
-    height: 145px;
-    margin-bottom: 10px;
-    padding-bottom: 23px;
+    max-width: 152px;
+    max-height: 145px;
+    width: 37vw;
+    height: 18vh;
+    margin-bottom: 16px;
+    padding-bottom: 26px;
     background-color: #ffffff;
     border-radius: 15%;
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.08);;
@@ -128,18 +129,15 @@
     top: 11px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 320px) {
     .my_profile__container {
-        padding-left: 5vw;
-        padding-right: 5vw;
+        margin-top: 7vh;
     }
+}
 
+@media (min-width: 768px) {
     .setting_list {
         max-width: 690px;
-    }
-
-    .setting_list {
-        margin-bottom: 29vh;
     }
 
     .setting_list {
@@ -153,3 +151,7 @@
         padding-right: 20vw;
     }
 }
+
+/* @media (min-resolution: 3dppx)  {
+
+} */

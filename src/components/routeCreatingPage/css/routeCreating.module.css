@@ -10,6 +10,10 @@
     color: #3E4958;
 }
 
+.form_create_route {
+    padding-bottom: 60px;
+}
+
 .form_create_route__shield {
     display: flex;
     flex-direction: column;
@@ -23,7 +27,7 @@
     flex-direction: column;
     max-width: 360px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_create_route__wrapper label {
@@ -34,7 +38,7 @@
 }
 
 .form_create_route__where_input {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .form_create_route__where_input,
@@ -189,4 +193,14 @@
 .not_valid_button {
     background-color: #F54747;
     box-shadow: 0px 2px 8px #F54747;
+}
+
+@media (min-width: 320px) {
+    .page_main__heading {
+        display: none;
+    }
+
+    .form_create_route {
+        margin-top: 7vh;
+    }
 }
