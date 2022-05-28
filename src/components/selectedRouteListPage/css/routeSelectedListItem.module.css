@@ -116,6 +116,7 @@
 
 .route__wrapper {
     display: flex;
+    justify-content: space-between;
 }
 
 .route_list__text {

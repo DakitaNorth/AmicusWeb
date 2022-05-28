@@ -1,17 +1,19 @@
 .car_settings__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 36px;
+    align-items: center; 
+    margin-top: 7vh;
     padding-left: 6vw;
     padding-right: 6vw;
 }
 
 .page_main__heading {
+    display: none;
     align-self: center;
     max-width: 240px;
     margin: 0;
     margin-top: 7vh;
+    margin-bottom: 5vh;
     text-align: center;
     font-family: "Inter Bold";
     font-size: 20px;
@@ -48,4 +50,14 @@
     height: 2px;
     background-color: #D5DDE0;
     z-index: -2;
+}
+
+@media (min-height: 721px) {
+    .page_main__heading {
+        display: block;
+    }
+
+    .car_settings__container {
+        margin-top: 0;
+    }
 }
