@@ -52,8 +52,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    width: 135px;
-    height: 135px;
+    max-width: 135px;
+    max-height: 135px;
+    width: 33vw;
+    height: 33vw;
     margin-bottom: 40px;
     padding-bottom: 15px;
     background-color: #476DF5;

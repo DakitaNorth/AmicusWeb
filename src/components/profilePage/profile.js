@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ProfileCSS from "./css/profile.module.css";
 
-import avatar_load from "../../img/profile-load.svg";
+import avatar_load from "../../img/preloader/preloader_avatar.svg";
 
 import AreUSure from "../areUSure/areUSure";
 
@@ -20,6 +20,8 @@ const Profile = () => {
     const [outText, setOutText] = useState("");
 
     useEffect(() => {
+        document.getElementById("avatar__img").src = avatar_load;
+
         gettingProfileData();
     }, [profileReRender]);
 
@@ -65,7 +67,6 @@ const Profile = () => {
         setOutText("storageCleanUp");
     };
 
-
     return (
         <div className="universal-form">
             {(outDirty && outText) && <AreUSure text={outText}></AreUSure>}
@@ -77,8 +78,8 @@ const Profile = () => {
                             <input type="file" className="visually-hidden" onChange={handleFile} name="avatar__load" id="avatar__load_input" />
                             <img className={ProfileCSS.avatar__img} src={profileData.photo} width="85" height="85" alt="Ваш аватар" id="avatar__img" />
                         </label>
-                            <span className={ProfileCSS.avatar__name}>{profileData.name}</span>
-                            <span className={ProfileCSS.avatar__email}>{profileData.mail}</span>
+                        <span className={ProfileCSS.avatar__name}>{profileData.name}</span>
+                        <span className={ProfileCSS.avatar__email}>{profileData.mail}</span>
                     </div>
                     <ul className={ProfileCSS.my_profile__setting_list + " " + ProfileCSS.setting_list}>
                         <li>

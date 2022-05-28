@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 155px;
+    height: 145px;
     margin-bottom: 5vh;
 }
 
@@ -59,10 +61,10 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    max-width: 152px;
+    max-width: 145px;
     max-height: 145px;
     width: 37vw;
-    height: 18vh;
+    height: 37vw;
     margin-bottom: 16px;
     padding-bottom: 26px;
     background-color: #ffffff;

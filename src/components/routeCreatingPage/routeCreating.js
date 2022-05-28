@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import IMask from "imask";
 import RouteCreatingCSS from "./css/routeCreating.module.css";
 
 import CreateParameters from "../routeCreatingPage/createParameters";
@@ -43,6 +44,11 @@ const RouteCreating = () => {
         }
 
         priceInput.onfocus = function () {
+            let maskOptions = {
+                mask: "000",
+                lazy: true
+            };
+            IMask(priceInput, maskOptions);
             priceInput.classList.remove(RouteCreatingCSS.not_valid_input_price);
         }
     });
@@ -104,6 +110,9 @@ const RouteCreating = () => {
             const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
             let userId = LoginPassword.id;
 
+            document.getElementById("create-button").setAttribute("disabled", "disabled");
+            setTimeout(() => document.getElementById("create-button").removeAttribute("disabled", "disabled"), 5000);
+
             const ADD_ROUTE_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addtravel/" + userId;
             axios.post(ADD_ROUTE_URL, {
                 departureplace, arrivalplace, departuretime, arrivaltime, membercount,
@@ -111,13 +120,15 @@ const RouteCreating = () => {
             }, { headers })
                 .then((response) => {
                     console.log(response.data);
+
                     setCreateYep(true);
-                    setTimeout(() => setCreateYep(false), 3000);
+                    setTimeout(() => setCreateYep(false), 5000);
+                    afterCreateRoute();
                 });
         }
         else {
             setCreateDirty(true);
-            setTimeout(() => setCreateDirty(false), 3000);
+            setTimeout(() => setCreateDirty(false), 5000);
             valueError();
         }
     }
@@ -130,6 +141,20 @@ const RouteCreating = () => {
         document.getElementById("price-input").classList.add(RouteCreatingCSS.not_valid_input_price);
 
         setTimeout(() => document.getElementById("create-button").classList.remove(RouteCreatingCSS.not_valid_button), 2500);
+    };
+
+    function afterCreateRoute() {
+        document.getElementById("where-input").value = "";
+        document.getElementById("somewhere-input").value = "";
+        document.getElementById("auto-text").textContent = "Выбрать автомобиль";
+        document.getElementById("price-input").value = "";
+        document.getElementById("additional-input").value = "";
+
+        sessionStorage.removeItem("СreateArrivalplace");
+        sessionStorage.removeItem("СreateDepartureplace");
+        sessionStorage.removeItem("CreateAutoSelectItemID");
+        sessionStorage.removeItem("CreateGettingPrice");
+        sessionStorage.removeItem("CreateGettingDescription");
     };
 
     return (
