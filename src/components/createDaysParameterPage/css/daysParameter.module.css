@@ -20,10 +20,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 59px;
+    height: 80px;
     margin: 0;
     padding: 0;
-    margin-bottom: 63vh;
+    margin-bottom: 50.5vh;
 }
 
 .days_form__item {
@@ -86,11 +86,8 @@
 }
 
 .days_form__button {
-    position: absolute;
-    left: 50vw;
-    bottom: 100px;
+    align-self: center;
     width: 205px;
-    margin-left: -102px;
     padding-top: 10px;
     padding-bottom: 7px;
     color: #ffffff;
