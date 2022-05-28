@@ -1,13 +1,15 @@
-.profile_settings__container {
+.profile_settings__container { 
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 36px;
+    margin-top: 7vh;
+    padding-bottom: 30px;
     padding-left: 6vw;
     padding-right: 6vw;
 }
 
 .page_main__heading {
+    display: none;
     align-self: center;
     max-width: 200px;
     margin: 0;
@@ -219,4 +221,14 @@
     bottom: 35px;
     right: 30px;
     cursor: pointer;
+}
+
+@media (min-height: 721px) {
+    .page_main__heading {
+        display: block;
+    }
+
+    .profile_settings__container {
+        margin-top: 36px;
+    }
 }

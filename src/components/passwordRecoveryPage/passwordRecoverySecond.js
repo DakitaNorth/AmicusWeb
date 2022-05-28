@@ -43,9 +43,9 @@ const PasswordRecoverySecond = () => {
                     <form onSubmit={saveNewPassword} className={PassRecSecCSS.form_recovery__wrapper} action="#">
                         <label htmlFor="password-input">Новый пароль</label>
                         <input className={"input " + PassRecSecCSS.form_recovery__password_input} type="text" name="password" placeholder="" id="password-input" />
-                        <label htmlFor="repeat-input">Повторите ароль</label>
+                        <label htmlFor="repeat-input">Повторите пароль</label>
                         <input className={"input " + PassRecSecCSS.form_recovery__repeat_input} type="text" name="repeat" placeholder="" id="repeat-input" />
-                        <button className={PassRecSecCSS.form_recovery__button + " button"}>Восстановить</button>
+                        <button className={PassRecSecCSS.form_recovery__button}>Восстановить</button>
                     </form>
                 </div>
             </section>

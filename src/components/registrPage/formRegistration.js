@@ -48,15 +48,9 @@ const FormRegistration = () => {
 
         loginInput.onfocus = function () {
             let maskOptions = {
-                mask: [
-                    {
-                        mask: '+{7}(000)000-00-00'
-                    },
-                    {
-                        mask: /^\S*@?\S*$/
-                    }
-                ]
-            }
+                mask: "+{7}(000)000-00-00",
+                lazy: true
+            };
             IMask(loginInput, maskOptions);
             loginInput.classList.remove(FormRegCSS.not_valid_input);
         }
@@ -140,7 +134,7 @@ const FormRegistration = () => {
                         <label htmlFor="name-input">Ваше имя</label>
                         <input className={FormRegCSS.form_registration__input} type="text" name="name" placeholder="Даниил" id="name-input" />
                         <label htmlFor="login-input">Номер телефона</label>
-                        <input className={FormRegCSS.form_registration__input} type="text" name="login" placeholder="+7(900)000-00-00" id="login-input" />
+                        <input className={FormRegCSS.form_registration__input} type="tel" name="login" placeholder="+7(900)000-00-00" id="login-input" />
                         <label htmlFor="email-input">Электронная почта</label>
                         <input className={FormRegCSS.form_registration__input} type="text" name="email" placeholder="amicusDrive@yandex.ru" id="email-input" />
                         <label htmlFor="password-input">Пароль</label>

@@ -1,4 +1,5 @@
 .page_main__heading {
+    display: none;
     margin: 0;
     margin-top: 7vh;
     margin-bottom: 5vh;
@@ -11,7 +12,7 @@
 }
 
 .form_create_route {
-    padding-bottom: 60px;
+    margin-top: 7vh;
 }
 
 .form_create_route__shield {
@@ -60,6 +61,7 @@
     flex-direction: column;
     max-width: 360px;
     width: 100%;
+    margin-bottom: 25px;
 }
 
 .auto {
@@ -150,11 +152,7 @@
 }
 
 .form_create_route__button {
-    position: absolute;
-    left: 50vw;
-    bottom: 100px;
     width: 205px;
-    margin-left: -102px;
     padding-top: 10px;
     padding-bottom: 7px;
     color: #ffffff;
@@ -195,12 +193,12 @@
     box-shadow: 0px 2px 8px #F54747;
 }
 
-@media (min-width: 320px) {
+@media (min-height: 721px) {
     .page_main__heading {
-        display: none;
+        display: block;
     }
 
     .form_create_route {
-        margin-top: 7vh;
+        margin-top: 0;
     }
 }

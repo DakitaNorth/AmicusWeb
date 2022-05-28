@@ -68,6 +68,16 @@ const VerificationPage = () => {
     }
   };
 
+  function codeFocus(e) {
+    let inputId = e.target.id;
+
+    let maskOptions = {
+      mask: "0",
+      lazy: true
+    }
+    IMask(document.getElementById(inputId), maskOptions);
+  };
+
   function recoveryCode() {
     if ((clientRecoveryCode + document.getElementById("code-input-6").value) === serverRecoveryCode) {
       navigate("/password-recovery-second");
@@ -134,12 +144,12 @@ const VerificationPage = () => {
           <span className={VerCSS.form_verification__text}>Код был отправлен на вашу электронную почту</span>
           <form className={VerCSS.form_verification__wrapper} action="#">
             <label htmlFor="code-input-1" className={VerCSS.form_verification__input_wrapper}>
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code1" placeholder="" maxLength="1" id="code-input-1" />
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code2" placeholder="" maxLength="1" id="code-input-2" />
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code3" placeholder="" maxLength="1" id="code-input-3" />
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code4" placeholder="" maxLength="1" id="code-input-4" />
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code5" placeholder="" maxLength="1" id="code-input-5" />
-              <input className={VerCSS.form_verification__input} onChange={codeEnter} type="text" name="code6" placeholder="" maxLength="1" id="code-input-6" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code1" placeholder="" maxLength="1" id="code-input-1" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code2" placeholder="" maxLength="1" id="code-input-2" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code3" placeholder="" maxLength="1" id="code-input-3" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code4" placeholder="" maxLength="1" id="code-input-4" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code5" placeholder="" maxLength="1" id="code-input-5" />
+              <input className={VerCSS.form_verification__input} onFocus={codeFocus} onChange={codeEnter} type="tel" name="code6" placeholder="" maxLength="1" id="code-input-6" />
             </label>
             <button onClick={sendMesageAgain} className={VerCSS.form_verification__button}>Отправить повторно</button>
             <button onClick={deleteValue} className={VerCSS.form_verification__button + " " + VerCSS.form_verification__button_delete}>Стереть значение</button>

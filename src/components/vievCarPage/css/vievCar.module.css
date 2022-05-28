@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 36px;
+    margin-top: 7vh;
+    padding-bottom: 19px;
     padding-left: 6vw;
     padding-right: 6vw;
 }
 
 .page_main__heading {
+    display: none;
     align-self: center;
     max-width: 240px;
     margin: 0;
@@ -137,4 +139,14 @@
 
 .not_valid_input {
     border: 1px solid #F54747;
+}
+
+@media (min-height: 721px) {
+    .page_main__heading {
+        display: block;
+    }
+
+    .car_settings__container {
+        margin-top: 0;
+    }
 }

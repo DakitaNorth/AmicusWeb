@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import IMask from "imask";
-import FormLoginCSS from './css/formLogin.module.css';
+import FormLoginCSS from "./css/formLogin.module.css";
 
 import ValidError from "../../components/validError/validError";
 
@@ -25,15 +25,9 @@ const FormLogin = () => {
 
         loginInput.onfocus = function () {
             let maskOptions = {
-                mask: [
-                    {
-                        mask: '+{7}(000)000-00-00'
-                    },
-                    {
-                        mask: /^\S*@?\S*$/
-                    }
-                ]
-            }
+                mask: "+{7}(000)000-00-00",
+                lazy: true
+            };
             IMask(loginInput, maskOptions);
             loginInput.classList.remove(FormLoginCSS.not_valid_input);
         }
@@ -80,13 +74,13 @@ const FormLogin = () => {
     };
 
     function passwordUnlockLock() {
-        if (document.getElementById('password-unlock').checked) {
-            document.getElementById('password-unlock-img').setAttribute('src', password_lock);
-            document.getElementById('login-password').setAttribute('type', 'text');
+        if (document.getElementById("password-unlock").checked) {
+            document.getElementById("password-unlock-img").setAttribute("src", password_lock);
+            document.getElementById("login-password").setAttribute("type", "text");
         }
         else {
-            document.getElementById('password-unlock-img').setAttribute('src', password_unlock);
-            document.getElementById('login-password').setAttribute('type', 'password');
+            document.getElementById("password-unlock-img").setAttribute("src", password_unlock);
+            document.getElementById("login-password").setAttribute("type", "password");
         }
     };
 
@@ -103,7 +97,7 @@ const FormLogin = () => {
                 <div className={FormLoginCSS.form_login__container}>
                     <form onSubmit={Autorization} className={FormLoginCSS.form_login__wrapper} action="#">
                         <label htmlFor="login-input">Номер телефона</label>
-                        <input className={FormLoginCSS.login_input} type="text" name="phone" placeholder="+7(900)000-00-00" id="login-input" />
+                        <input className={FormLoginCSS.login_input} type="tel" name="phone" placeholder="+7(900)000-00-00" id="login-input" />
                         <label htmlFor="login-password">Пароль</label>
                         <div className={FormLoginCSS.login_password__wrapper}>
                             <input className={FormLoginCSS.login_password} type="password" name="password" id="login-password" autoComplete="on" />

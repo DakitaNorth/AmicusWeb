@@ -62,7 +62,7 @@ const PasswordRecovery = () => {
           <form onSubmit={sendMesage} className={PassRecCSS.form_recovery__wrapper} action="#">
             <label htmlFor="email-input">Ваша почта</label>
             <input className={PassRecCSS.form_recovery__input} type="text" name="email" placeholder="amicusDrive@yandex.ru" id="email-input" />
-            <button className={PassRecCSS.form_recovery__button + " button"}>Отправить</button>
+            <button className={PassRecCSS.form_recovery__button}>Отправить</button>
           </form>
         </div>
       </section>

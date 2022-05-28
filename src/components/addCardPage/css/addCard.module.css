@@ -2,11 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 7vh;
+    padding-bottom: 19px;
     padding-left: 6vw;
     padding-right: 6vw;
 }
 
 .page_main__heading {
+    display: none;
     margin: 0;
     margin-top: 7vh;
     margin-bottom: 36px;
@@ -129,4 +132,14 @@
 
 .not_valid_input {
     border: 1px solid #F54747;
+}
+
+@media (min-height: 721px) {
+    .page_main__heading {
+        display: block;
+    }
+
+    .form_card_add__container {
+        margin-top: 36px;
+    }
 }

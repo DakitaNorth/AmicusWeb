@@ -165,7 +165,7 @@ const VievCar = () => {
             <h1 className={CarSettingsCSS.page_main__heading}>Настройки авто</h1>
             <section className={CarSettingsCSS.car_settings}>
                 <div className={CarSettingsCSS.car_settings__container}>
-                    <img className={CarSettingsCSS.car__img} src={car_img} width="203.5" height="135.67" alt="Ваш автомобиль" />
+                    <img className={CarSettingsCSS.car__img} src={car_img} width="195" height="130" alt="Ваш автомобиль" />
                     <div className={CarSettingsCSS.car__data}>
                         <label className={CarSettingsCSS.car__label} htmlFor="body-input">
                             <span className={CarSettingsCSS.car__text}>Цвет</span>
