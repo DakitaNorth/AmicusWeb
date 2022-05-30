@@ -86,6 +86,8 @@ import MyRoutesPassagers from "./components/myRoutesPassagers/myRoutesPassagers"
 
 import RouteMaps from "./components/routesMaps/routeMaps";
 
+import FaqPage from "./components/faqPage/faqPage";
+
 import IsLoginBefore from "./components/isLoginBefore/isLoginBefore";
 
 const App = () => {
@@ -105,7 +107,7 @@ const App = () => {
     window.addEventListener('resize', () => {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-      });
+    });
 
     return (
         <>
@@ -114,10 +116,16 @@ const App = () => {
                     <Routes location={item}>
                         <Route path="*" element={
                             <div>
-                                <IsLoginBefore/>
+                                <IsLoginBefore />
                                 <Greeting />
                                 <PageMain />
                                 <PageFooter />
+                            </div>
+                        } />
+                        <Route path="/faq" element={
+                            <div>
+                                <GoBackButton />
+                                <FaqPage />
                             </div>
                         } />
                         <Route path="/login" element={
@@ -221,7 +229,7 @@ const App = () => {
                                 <CardSettings />
                             </div>
                         } />
-                        <Route path="/my-servics-settings" element={
+                        <Route path="/my-service-settings" element={
                             <div>
                                 <GoBackButton />
                                 <ServiceSettings />

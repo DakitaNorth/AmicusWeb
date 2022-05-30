@@ -9,7 +9,7 @@ const ServiceSettings = () => (
             <div className={ServiceSettingsCSS.service_settings__container}>
                 <ul className={ServiceSettingsCSS.service_settings__list + " " + ServiceSettingsCSS.service}>
                     <li className={ServiceSettingsCSS.service__item}>
-                        <NavLink to="/" className={ServiceSettingsCSS.service_settings__link}>
+                        <NavLink to="/faq" className={ServiceSettingsCSS.service_settings__link}>
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <ellipse cx="14.505" cy="15" rx="14.505" ry="15" fill="#D5DDE0" />
                                 <path d="M12.9541 18.7553H14.675V18.6692C14.7036 16.891 15.1625 16.1166 16.4245 15.3279C17.6864 14.5607 18.4321 13.4565 18.4321 11.8719C18.4321 9.6348 16.7973 8 14.2734 8C11.9503 8 10.1076 9.43403 10 11.8719H11.8069C11.9144 10.1797 13.0975 9.4914 14.2734 9.4914C15.6214 9.4914 16.7113 10.3805 16.7113 11.7859C16.7113 12.9259 16.0588 13.7433 15.2199 14.2524C13.8145 15.1056 12.9756 15.9374 12.9541 18.6692V18.7553ZM13.8719 23C14.5817 23 15.1625 22.4192 15.1625 21.7094C15.1625 20.9995 14.5817 20.4187 13.8719 20.4187C13.162 20.4187 12.5813 20.9995 12.5813 21.7094C12.5813 22.4192 13.162 23 13.8719 23Z" fill="white" />

@@ -1,0 +1,116 @@
+.page_main__heading {
+    align-self: center;
+    margin: 0;
+    margin-top: 7vh;
+    margin-bottom: 5vh;
+    text-align: center;
+    font-family: "Inter Bold";
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #3E4958;
+}
+
+.faq_page__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-bottom: 7vh;
+}
+
+.faq_page__list {
+    max-width: 360px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 15%);
+}
+
+.faq__item_text {
+    display: none;
+    padding: 5px;
+    margin-bottom: 15px;
+    font-family: "Inter Regular";
+    font-size: 14px;
+    line-height: 17px;
+
+    opacity: 0;
+    animation: ani 0.5s forwards;
+}
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.faq__item_text_visible {
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 15px;
+    font-family: "Inter Regular";
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.faq__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.faq__item:last-child {
+    margin-bottom: 0;
+}
+
+/* .faq__item::after {
+    content: "";
+    position: absolute;
+    width: 255px;
+    height: 2px;
+    bottom: -15px;
+    right: 20px;
+    background-color: #D5DDE0;
+} */
+
+.faq__item_label {
+    align-self: center;
+    margin-bottom: 15px;
+    font-family: "Inter Medium";
+    font-size: 16px;
+}
+
+.faq__item_button {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 3.5px;
+    color: #ffffff;
+    background-color: #476DF5;
+    border-style: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: "Inter Bold";
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0px 2px 8px #1069e3;
+}
+
+.faq__item_button:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.faq__item_button:active {
+    background-color: #584BF6;
+    color: #ffffff;
+}
