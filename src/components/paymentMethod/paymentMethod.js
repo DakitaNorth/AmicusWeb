@@ -41,7 +41,19 @@ const PaymentMethod = () => {
         }
     }
 
-    function selRouteIDPush() {
+    function joiningRoute() {
+        if (JSON.parse(localStorage.getItem("LoginPassword"))) {
+            const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+            const userId = LoginPassword.id;
+            const travelid = JSON.parse(sessionStorage.getItem("SelectedTravelID"));
+            
+            const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/addusertotravel/" + travelid + "/" + userId;
+            axios.get(API_URL, { headers })
+                .then((response) => {
+                    console.log(response.data);
+                });
+        }
+
         navigate("/successful-booking");
     };
 
@@ -66,7 +78,7 @@ const PaymentMethod = () => {
                         {cardsStandart}
                         <li className={PaymentMethodCSS.payment_list__item}>
                             <label className={PaymentMethodCSS.payment_label + " " + PaymentMethodCSS.payment_label_cash + " " + PaymentMethodCSS.payment_link} htmlFor="cash">
-                                <input className={PaymentMethodCSS.payment_input + " visually-hidden"} onChange={selRouteIDPush} type="radio" name="payment-method" value="cash" id="cash" />
+                                <input className={PaymentMethodCSS.payment_input + " visually-hidden"} onChange={joiningRoute} type="radio" name="payment-method" value="cash" id="cash" />
                                 <img className={PaymentMethodCSS.payment__img} width="38" height="38" src={CashImg} alt="Label карты" />
                                 <span className={PaymentMethodCSS.payment_name + " " + PaymentMethodCSS.payment_cash}>Наличные</span>
                             </label>

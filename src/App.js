@@ -36,6 +36,8 @@ import RouteCreating from "./components/routeCreatingPage/routeCreating";
 
 import ChatList from "./components/chatPage/chatList";
 
+import ChatItem from "./components/chatItem/chatItem";
+
 import Profile from "./components/profilePage/profile";
 
 import SearchDaysParameter from "./components/SearchDaysParameterPage/daysParameter";
@@ -203,6 +205,12 @@ const App = () => {
                             <div>
                                 <ChatList />
                                 <Navigation />
+                            </div>
+                        } />
+                        <Route path="/messages-item" element={
+                            <div>
+                                <GoBackButton />
+                                <ChatItem />
                             </div>
                         } />
                         <Route path="/profile" element={

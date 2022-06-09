@@ -81,7 +81,7 @@ const MyRouteSelectedItem = props => {
                         </svg>
                         <span className={MyRouteSelItemCSS.route_selected__button_text}>Карта</span>
                     </NavLink> */}
-                    <NavLink to="/" className={MyRouteSelItemCSS.route_selected__button + " " + MyRouteSelItemCSS.route_selected__button_chat}>
+                    <NavLink to="/messages" className={MyRouteSelItemCSS.route_selected__button + " " + MyRouteSelItemCSS.route_selected__button_chat}>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#F1F5F6" />
                             <path

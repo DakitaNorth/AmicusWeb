@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { ref, push, onValue } from "firebase/database";
 import axios from "axios";
-
 import UserProfilePageCSS from './css/userProfilePage.module.css';
+
+import { db } from "../firebase/firebase";
+
 import avatar from "../../img/routeHistory/Group.png";
 
 const headers = {
@@ -10,6 +13,8 @@ const headers = {
 };
 
 const UserProfilePage = () => {
+
+    const navigation = useNavigate();
 
     const params = useParams();
 
@@ -31,6 +36,48 @@ const UserProfilePage = () => {
                 setIsLoading(true);
                 console.log(thisProfileData);
             });
+    };
+
+    function goToChat() {
+        // const allChats = [];
+
+        // let profilePhone = thisProfileData.phone;
+        // sessionStorage.setItem("phoneToChat", JSON.stringify(profilePhone));
+
+        // const LoginPassword = JSON.parse(localStorage.getItem("LoginPassword"));
+        
+        // const FIREBASE_CHATS_REF = ref(db, "chat");
+        // const FIREBASE_ADD_CHAT_REF = ref(db, "chat/");
+
+        // onValue(FIREBASE_CHATS_REF, (snapshot) => {
+        //     if (snapshot.exists()) {
+        //         snapshot.forEach(function (childSnapshot) {
+        //             var childData = childSnapshot.val();
+        //             allChats.push(childData);
+        //         });
+        //     }
+        // });
+
+        // for (var i = 0; i <= allChats.length - 1; i++) {
+        //     if (thisProfileData.phone !== allChats[i].user_1) {
+        //         push(FIREBASE_ADD_CHAT_REF, {
+        //             messages: {
+        //                 user: LoginPassword.phone,
+        //                 msg: ""
+        //             },
+        //             user_1: thisProfileData.phone,
+        //             user_2: LoginPassword.phone
+        //         });
+
+        //         console.log("Чат зарегистрирован");
+        //         navigation("/messages-item");
+        //     }
+        //     else {
+        //         console.log("Чат зарегистрирован ранее");
+        //         navigation("/messages-item");
+        //     }
+        // }
+        navigation("/messages");
     };
 
     return (
@@ -57,7 +104,7 @@ const UserProfilePage = () => {
             </div>
             <div className={UserProfilePageCSS.user_profile__buttons}>
                 <a className={UserProfilePageCSS.user_profile__button__phone} href={"tel:" + thisProfileData.phone}>Позвонить</a>
-                <NavLink className={UserProfilePageCSS.user_profile__button__chat} to="/">Написать</NavLink>  
+                <button onClick={goToChat} className={UserProfilePageCSS.user_profile__button__chat}>Написать</button>  
             </div>
         </section>
     )

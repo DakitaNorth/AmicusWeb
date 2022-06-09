@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { set, push, ref } from "firebase/database";
 import axios from "axios";
 import IMask from "imask";
 import FormRegCSS from './css/formRegistration.module.css';
 
+import { db } from "../firebase/firebase";
+
 import ValidError from "../validError/validError";
+
+import wordFile from "../../word/AmicusDrivePolitics.docx";
 
 const FormRegistration = () => {
 
@@ -56,7 +61,7 @@ const FormRegistration = () => {
         }
     });
 
-    const Registration = (e) => {
+    const Registration = async (e) => {
         e.preventDefault();
 
         let name = e.target.elements.name.value;
@@ -69,11 +74,15 @@ const FormRegistration = () => {
 
         let repeatPassword = e.target.elements.repeatPassword.value;
 
+        var profile_pic = "https://xn--80aaggtieo3biv.xn--p1ai/images/unload.jpg";
+
         const headers = {
             "Content-Type": "application/json; charset=utf-8",
         };
 
         const REG_URL = "https://xn--80aaggtieo3biv.xn--p1ai/registration";
+
+        const FIREBASE_REG_REF = ref(db, "users/" + phone);
 
         if (document.getElementById("agree-checkbox").checked) {
             if (name !== "" && phone !== "" && email !== "" && password !== "" && repeatPassword !== "") {
@@ -83,6 +92,12 @@ const FormRegistration = () => {
                             console.log(response);
                             if (response.data["response"] === "User has been registered") {
                                 navigate("/");
+                                // set(FIREBASE_REG_REF, {
+                                //     phone,
+                                //     email,
+                                //     name,
+                                //     profile_pic
+                                // });
                                 console.log(response.data);
                             }
                             else if (response.data["response"] === "Phone is already in use") {
@@ -145,7 +160,7 @@ const FormRegistration = () => {
                             <input className={FormRegCSS.agree_checkbox + " visually-hidden"} type="checkbox" name="agree" id="agree-checkbox" />
                             <label className={FormRegCSS.agree_checkbox__label} htmlFor="agree-checkbox">
                                 <span>Я согласен с условиями</span>
-                                <a className={FormRegCSS.agree_checkbox__link} href="#">политики конфиденциальности</a>
+                                <a href={wordFile} download="" className={FormRegCSS.agree_checkbox__link}>политики конфиденциальности</a>
                             </label>
                         </div>
                         <button to="/verification" className={FormRegCSS.form_registration__button + " button"}>Далее</button>

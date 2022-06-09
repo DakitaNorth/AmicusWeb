@@ -63,7 +63,7 @@ const RouteSelectedItem = props => {
                         </svg>
                         <span className={RouteSelItemCSS.route_selected__button_text}>Карта</span>
                     </button> */}
-                    <button className={RouteSelItemCSS.route_selected__button + " " + RouteSelItemCSS.route_selected__button_chat}>
+                    <NavLink to="/messages" className={RouteSelItemCSS.route_selected__button + " " + RouteSelItemCSS.route_selected__button_chat}>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#F1F5F6" />
                             <path
@@ -74,7 +74,7 @@ const RouteSelectedItem = props => {
                                 stroke="#3E4958" strokeWidth="0.5" />
                         </svg>
                         <span className={RouteSelItemCSS.route_selected__button_text}>Чат</span>
-                    </button>
+                    </NavLink>
                     <NavLink to={"/my-routes-passagers/" + props.id} className={RouteSelItemCSS.route_selected__button + " " + RouteSelItemCSS.route_selected__button_passagers}>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#F1F5F6" />

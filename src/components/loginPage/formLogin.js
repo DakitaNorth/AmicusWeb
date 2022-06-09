@@ -40,15 +40,14 @@ const FormLogin = () => {
     const Autorization = (e) => {
         e.preventDefault();
 
-        const phone = "+7(910)522-32-00"; 
-        // const phone = "+7(903)542-21-02";
+        // // const phone = "+7(777)111-11-11"; 
+        // const phone = "+7(999)999-99-99";
 
-        // const phone  = e.target.elements.phone.value; 
+        const phone  = e.target.elements.phone.value; 
 
-        const password = "123";
         // const password = "12345";
 
-        // const password = e.target.elements.password.value;
+        const password = e.target.elements.password.value;
 
         const API_URL = "https://xn--80aaggtieo3biv.xn--p1ai/authorization";
         axios.post(API_URL, { phone, password }, { headers })

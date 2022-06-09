@@ -1,7 +1,7 @@
 .page_main__heading {
     margin: 0;
     margin-top: 7vh;
-    margin-bottom: 36px;
+    margin-bottom: 5vh;
     text-align: center;
     font-family: "Inter Bold";
     font-size: 20px;
@@ -10,16 +10,70 @@
     color: #3E4958;
 }
 
-.chat_list__list {
+/* .chat_list__list {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 6vw;
+    padding-right: 6vw;
+} */
+
+.chats_empty__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-bottom: 7vh;
 }
 
-.chat_list__item {
-    margin-bottom: 18px;
-    list-style: none;
+.chats_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 360px;
+    width: 100%;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 15%);
+}
+
+.chats_empty__img {
+    margin-bottom: 15px;
+}
+
+.chats_empty__text {
+    padding: 5px;
+    margin-bottom: 15px;
+    font-family: "Inter Regular";
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+}
+
+.mobile_ver_download {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 3.5px;
+    color: #ffffff;
+    background-color: #476DF5;
+    border-style: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: "Inter Bold";
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0px 2px 8px #1069e3; 
+}
+
+.mobile_ver_download:hover {
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.mobile_ver_download:active {
+    background-color: #584BF6;
+    color: #ffffff;
 }
